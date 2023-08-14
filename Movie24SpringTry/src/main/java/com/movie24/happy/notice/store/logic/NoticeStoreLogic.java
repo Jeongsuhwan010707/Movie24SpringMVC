@@ -43,7 +43,7 @@ public class NoticeStoreLogic implements NoticeStore{
 			result.append("<a id='postNum' href='/movie24/post.do?currentPage=" + (startNavi - 1) + "'><<a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
-			result.append("<a href='/movie24/post.do?currentPage=" + i + "'>" + i + " </a>");
+			result.append("<a href='/notice/post.do?currentPage=" + i + "'>" + i + " </a>");
 		}
 		if (needNext) {
 			result.append("<a id='postNum' href='/movie24/post.do?currentPage=" + (endNavi + 1) + "'>><a>");
