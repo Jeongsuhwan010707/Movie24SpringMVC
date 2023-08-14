@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie24</title>
+        <link rel="stylesheet" href="/resources/css/movieReservation/Movie24_pay_done.css">
+    </head>
+    <body>
+        <div>
+            <header>
+                <div id="title_box">
+                    <h1 id="title"><a href="/">MOVIE</a></h1>
+                    <h1><a id="title_num" href="/">24</a></h1>
+                </div>
+                <div id="small_title_box">
+                    <h3 id="small_title">All Time <br> Movie Theater*</h3>
+                </div>
+                <div id="title_right">
+                    <ul>
+                        <li><a href="/movie24/help/Movie24_help.html"><img src="/resources/images/free-icon-operator-8111794.png" alt=""></a></li>
+                        <li><a href=""><img src="/resources/images/free-icon-help-round-button-61079.png" alt=""></a></li>
+                        <li><a href="/movie24/myPage/Movie24_myPage.html"><img src="/resources/images/free-icon-user-5264565.png" alt=""></a></li>
+                        <div id="login">
+                            <li><a href="/movie24/login/Movie24_login.html"><img src="/resources/images/free-icon-lock-2089784.png" alt="로그인"></a></li>
+                        </div>
+                    </ul>
+                </div>
+               
+            </header>
+            <!-- -----------네비게이터 영역----------------------------------- -->
+            <nav>
+                <!-- <a href=""><img id="menu" src="/resources/images/menu.png" alt=""></a> -->
+                <div id="navigator_tag">
+                    <ul id="nav_ul">
+                        <li><a href="">영화</a></li>
+                        <li><a href="/movie24/movieReservation/Movie24_time.html">예매</a></li>
+                        <li><a href="">극장</a></li>
+                        <li><a href="/movie24/store/Movie24_store.html">스토어</a></li>
+                        <li><a href="">이벤트</a></li>
+                        <li><a href="">혜택</a></li>
+                    </ul>
+
+                    <input type="text" placeholder="영화 제목을 검색해보세요.">
+                    <button><img src="/resources/images/돋보기.png" alt=""></button>
+                </div>
+                <div id="menu_text">
+                    <ul id="movie">
+                        <h3>영화</h3>
+                        <li><a href="">인기차트</a></li>
+                        <li><a href="">전체영화</a></li>
+                    </ul>
+                    <ul id="reservation">
+                        <h3>예매</h3>
+                        <li><a href="/movie24/movieReservation/Movie24_time.html">빠른예매</a></li>
+                        <li><a href="/movie24/movieReservation/Movie24_time.html">상영시간표</a></li>
+                    </ul>
+                    <ul id="theater">
+                        <h3>극장</h3>
+                        <li><a href="">근처영화관</a></li>
+                        <li><a href="">전체영화관</a></li>
+                    </ul>
+                    <ul id="store">
+                        <h3>스토어</h3>
+                        <li><a href="/movie24/store/Movie24_store.html">영화관람권</a></li>
+                        <li><a href="/movie24/store/Movie24_store.html">기프트카드</a></li>
+                        <li><a href="/movie24/store/Movie24_store.html">기프티콘</a></li>
+                    </ul>
+                    <ul id="event">
+                        <h3>이벤트</h3>
+                        <li><a href="">진행중인 이벤트</a></li>
+                        <li><a href="">당첨자 발표</a></li>
+                        <li><a href="">종료된 이벤트</a></li>
+                    </ul>
+                    <ul id="benefit">
+                        <h3>혜택</h3>
+                        <li><a href="">할인정보</a></li>
+                        <li><a href="">vip혜택</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- -----------------메인--------------------------- -->
+<main>
+        <div id="congret">
+            <img src="/resources/images/cinema (1).png" alt="">
+        </div>
+        <div id="main_text">
+            <h1>감사합니다!
+                <br>결제가 완료되었습니다.
+            </h1>
+            <p>마이페이지에서 구매내역을 확인해보세요~</p>
+        </div>
+        <div id="button">
+            <a href="/">Home</a>
+        </div>
+</main>
+         <!-- --------------------푸터---------------------------------- -->
+         <footer class="footer">
+            <div class="footer-container">
+              <ul class="footer-list">
+                <li><a href="">이용약관</a></li>
+                <li><a href="">개인정보처리방침</a></li>
+                <li><a href="">회사소개</a></li>
+                <li><a href="">광고/제휴/출점문의</a></li>
+                <li><a href="">법적고지</a></li>
+                <li><a href="">채용정보</a></li>
+                <li><a href="">편성기준</a></li>
+              </ul>
+              <div class="footer-content">
+                <hr class="footer-line">
+                <p>저작권 © 2023 My Website. All rights reserved.</p>
+              </div>
+            </div>
+            <p>()경기도 의정부시 상금로 102-37, 스페셜빌딩(금오동)
+                <br>대표이사 : 정모씨 | 사업자 등록번호 : 010-7777-7777 | 통신판매업신고번호 : 2023-의정부시-0527
+                <br>COPYRIGHT @ Movie24.by_suhwan.All rights reserved
+            </p>
+          </footer>
+    </div>
+    <!-- 스크립트 -->
+    <script>
+        var ulElement = document.getElementById('nav_ul');
+        var liElements = ulElement.querySelectorAll('li');
+        var menuText = document.getElementById('menu_text');
+
+        liElements.forEach(li => {
+        li.addEventListener('mouseenter', () => {
+                menuText.classList.add('active');
+                menuText.style.zIndex= 5000;
+            });
+
+        });
+        document.getElementById("menu_text").addEventListener('mouseleave', () => {
+            menuText.classList.remove('active');
+            menuText.style.zIndex= -1;
+        });
+
+    </script>

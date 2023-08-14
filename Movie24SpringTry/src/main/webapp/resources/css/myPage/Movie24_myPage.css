@@ -1,0 +1,461 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    text-decoration: 1px solid black;
+}
+ul li{
+    list-style: none;
+}
+/* ----------------------헤더--------------------------- */
+header{
+    width: 1300px;
+    height: 150px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    /* background-color: red; */
+}
+    header a:visited{
+        color: black;
+    }
+    
+    #title{
+        width: 180px;
+        height: 150px;
+        float: left;
+        padding-top: 45px;
+        padding-right: 0;
+        /* background-color: red; */
+        font-family: 'PyeongChangPeace-Bold';
+        font-size: 45px;
+        text-align: center;
+    }
+        #title_num{
+            width: 70px;
+            color: #362FD9;
+            font-family: 'PyeongChangPeace-Bold';
+            padding-top: 45px;
+            font-size: 45px;
+            float: left;
+        }
+    #small_title{
+        width: 300px;
+        height: 150px;
+        float: left;
+        font-family: 'S-CoreDream-3Light';
+        padding: 70px 25px;
+        /* background-color: blue; */
+        font-size: 20px;
+        font-weight: 200;
+        color: grey;
+        line-height: 30px;
+    }
+    #title_right{
+        float: right;
+        width: 500px;
+        height: 100px;
+        /* background-color: yellow; */
+        
+    }
+        header ul img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-top: 30px;
+        }
+        #title_right ul li{
+            float: right;
+            padding: 30px 30px;
+            margin-right: 3px;
+            margin-top: 20px;
+        }
+   
+/* -----------------네비게이터-------------------------- */
+nav{
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(to right, #362FD9, #85CDFD);
+    font-family: 'LINESeedKR-Bd';
+    font-weight: 400;
+    padding-left: 308px;
+    margin: 0 auto;
+    position : relative;
+}  
+#navigator_tag{
+    width: 1300px;
+    height: 65px;
+    margin: 0 auto;
+}
+    nav input{
+        border: 0px;
+        margin: 12px 10px;
+        margin-left: 145px;
+        width: 300px;
+        height: 40px;
+        float: left;
+        font-size: 15px;
+        
+    }
+    nav button{
+        border: 0px solid black;
+        width: 40px;
+        height: 40px;
+        margin: 12px 0px;
+        background-color: transparent;
+    }
+    nav img{
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin: auto;
+    }
+    #nav_ul li{
+        margin-top: 6px;
+        margin-right: 30px;
+        padding: 16px;
+        font-size: 20px;
+        float: left;
+        font-weight: 400;
+    }
+    #nav_ul a:link{
+        color: white;
+    }
+    #nav_ul a:visited{
+        color: white;
+    }
+    
+        #menu_text{
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            border: 0px solid black;
+            background-color: white;
+            float: left;
+            width: 1300px;
+            height: 250px;
+            font-size: 20px;
+            z-index: 1500;
+            max-height : 0px;
+            opacity: 0;
+            transition: opacity 0.7s ease, max-height 0.7s ease-out;
+            text-align: center;
+        }
+        #menu_text.active {
+            max-height: 250px;
+            opacity: 1;
+          }
+        
+        #menu_text a:link, #menu_text a:visited{
+            color: grey;
+        }
+            #movie, #theater, #reservation, #store, #event{
+                float: left;
+                border-right: 2px solid gainsboro;
+                width: 215px;
+                /* padding: 10px 40px; */
+                line-height: 50px;
+                height: 220px;
+                margin-top: 5px;
+                transition: opacity 0.7s ease;
+            }
+            #benefit{
+                float: left;
+                width: 215px;
+                /* padding: 10px 15px; */
+                line-height: 50px;
+                margin-top: 5px;
+                height: 220px;
+                transition: opacity 0.7s ease;
+            }
+/* -----------------------------------메인-------------------- */
+    main{
+        margin: 0 auto;
+        width: 1300px;
+        height: 1500px;
+        /* background-color: red; */
+        position: relative;
+        margin-top: 20px auto;
+
+    }
+    #up_area{
+        width: 1300px;
+        height: 550px;
+        background: linear-gradient(to bottom, #e1eff8, #a6d9fa);
+        border-radius: 15px;
+        margin: 20px auto;
+    }
+    #myPage_up{
+        width: 100%;
+        height: 50%;
+        /* background-color: red; */
+    }
+    #myPage_blank{
+        width: 100%;
+        height: 10%;
+    }
+        #myPage_up_1{
+            height: 100%;
+            width: 25%;
+            /* background-color: red; */
+            float: left;
+            /* display: inline; */
+            padding-top: 38px;
+            padding-left: 80px;
+        }
+            #myPage_up_1 img{
+                width: 200px;
+               
+            }
+        #myPage_up_2{
+            height: 100%;
+            width: 40%;
+            /* background-color: green; */
+            float: left;
+            /* display: inline; */
+            padding: 100px 0px 0px 40px;
+        }
+            #myPage_up_2 h1{
+                padding: 20px 0px;
+                color: #352fd9a9;
+                font-family: 'LINESeedKR-Bd';
+                font-weight: 400;
+                letter-spacing: 2px;
+                word-spacing: 5px
+            }
+            #myPage_up_2 p{
+                font-family: 'S-CoreDream-3Light';
+                font-weight: 500;
+                padding-left: 5px;
+            }
+        #myPage_up_3{
+            height: 80%;
+            width: 20%;
+            /* background-color: cyan; */
+            float: left;
+            border-left: 2px solid white;
+            padding: 20px 0px;
+        }
+        #myPage_blank2{
+            width: 100%;
+            height: 10%;
+            /* background-color: red; */
+            border-top: 1px solid white;
+        }
+        #myPage_blank3{
+            width: 5%;
+            height: 80%;
+            float: left;
+            border-right: 1px solid white;
+            /* background-color: red; */
+        }
+        #myPage_blank4{
+            width: 5%;
+            height: 80%;
+            float: left;
+            border-right: 1px solid white;
+            /* background-color: red; */
+        }
+    #myPage_down{
+        width: 100%;
+        height: 40%;
+        /* background-color: blue; */
+        
+    }
+    #myPage_down h1{
+        font-family: 'LINESeedKR-Bd';
+        margin: 30px 0px;
+        text-align: center;
+        color: #352fd9;
+    }
+    #myPage_down p{
+        font-family: 'S-CoreDream-3Light';
+        text-align: center;
+        font-weight: 400;
+        line-height: 1.8;
+    }
+    
+        #myPage_down_1, #myPage_down_2{
+            width: 30%;
+            height: 100%;
+            /* background-color: red; */
+            float: left;
+        }
+        #myPage_down_3{
+            width: 30%;
+            height: 100%;
+            float: left;
+            text-align: center;
+        }
+            #myPage_down_3 img{
+                width: 250px;
+                height: 40px;
+                text-align: center;
+            }
+            
+            #main_menu{
+                width: 18%;
+                height: 100%;
+                float: left;
+                /* background-color: red; */
+                border-top: 2px solid #ccc;
+        }
+            #blank_1{
+                width: 100%;
+                height: 300px;
+            }
+        #main_menu h3{
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding: 20px 20px;
+            width: 200px;
+            height: 70px;
+        }
+        main li a:link, main li a:visited{
+            color: grey;
+            font-weight: 500;
+        }
+        #main_menu a{
+            line-height: 1.7;
+            margin-left: 20px;
+        }
+        #main_menu a:hover{
+            background-color: #eee;
+        }
+        #member{
+            float: left;
+        }
+        #main_blank{
+            height: 500px;
+            width: 4%;
+            /* background-color: red; */
+            display: inline-block;
+        }
+        #main_area{
+            width: 78%;
+            float: right;
+            height: 700px;
+            /* background-color: blue; */
+        }
+            #main_area img{
+                width: 50px;
+            }
+        #area1{
+            width: 100%;
+            height: 150px;
+            /* background-color: red; */
+            border: 1px solid #222;
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #area1_1, #area1_2{
+            border-right: 1px dotted #ccc;
+        }
+            #area1_1, #area1_2, #area1_3{
+                width: 33.3%;
+                height: 100%;
+                float: left;
+                padding: 20px 20px;
+            }
+        #area2{
+            width: 100%;
+            height: 100px;
+            /* background-color: green; */
+            margin: 30px 0px;
+            border: 1px solid #222;
+            padding-top: 35px;
+        }
+        #area3{
+            width: 100%;
+            height: 150px;
+            /* background-color: cyan; */
+            margin: 30px 0px;
+            border: 1px solid #222;
+            padding-top: 60px;
+        }
+        #next{
+            position: fixed;
+            top: 750px;
+            right: 22%;
+            width: 130px;
+            height: 50px;
+            background-color: #362FD9;
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 12px;
+        }
+        
+    /* ----------푸터------------------------- */
+.footer {
+    width: 100%;
+    height: 250px;
+    background-color: #f2f2f2;
+    padding: 50px 50px;
+    }
+      
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-list li {
+        display: inline-block;
+        margin-right: 10px;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      
+      .footer-content {
+        text-align: right;
+      }
+      
+      .footer-line {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+      
+      .footer p {
+        margin: 10px 0px;
+        font-size: 15px;
+      }
+      a:link, a:visited{
+        color: black;
+      }

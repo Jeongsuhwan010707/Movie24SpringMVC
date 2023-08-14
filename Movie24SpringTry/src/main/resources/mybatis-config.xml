@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+ 		<typeAlias type="com.movie24.happy.member.domain.Member" alias="Member"/>
+ 		<typeAlias type="com.movie24.happy.notice.domain.Notice" alias="Notice"/>
+ 		<typeAlias type="com.movie24.happy.event.domain.EventSRC" alias="Event"/>
+ 		<typeAlias type="com.movie24.happy.info.domain.MovieInfo" alias="Info"/>
+ 	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/member-Mapper.xml" />
+		<mapper resource="mappers/notice-Mapper.xml" />
+		<mapper resource="mappers/event-Mapper.xml" />
+		<mapper resource="mappers/info-Mapper.xml" />
+	</mappers>
+</configuration>

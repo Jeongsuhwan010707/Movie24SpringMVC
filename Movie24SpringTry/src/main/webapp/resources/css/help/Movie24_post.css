@@ -1,0 +1,434 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    text-decoration: 1px solid black;
+}
+ul li{
+    list-style: none;
+}
+/* ----------------------헤더--------------------------- */
+header{
+    width: 1300px;
+    height: 150px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    /* background-color: red; */
+}
+    header a:visited{
+        color: black;
+    }
+    
+    #title{
+        width: 180px;
+        height: 150px;
+        float: left;
+        padding-top: 45px;
+        padding-right: 0;
+        /* background-color: red; */
+        font-family: 'PyeongChangPeace-Bold';
+        font-size: 45px;
+        text-align: center;
+    }
+        #title_num{
+            width: 70px;
+            color: #362FD9;
+            font-family: 'PyeongChangPeace-Bold';
+            padding-top: 45px;
+            font-size: 45px;
+            float: left;
+        }
+    #small_title{
+        width: 300px;
+        height: 150px;
+        float: left;
+        font-family: 'S-CoreDream-3Light';
+        padding: 70px 25px;
+        /* background-color: blue; */
+        font-size: 20px;
+        font-weight: 200;
+        color: grey;
+        line-height: 30px;
+    }
+    caption{
+        caption-side: bottom;
+    }
+    #title_right{
+        float: right;
+        width: 500px;
+        height: 100px;
+        /* background-color: yellow; */
+        
+    }
+         header ul img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-top: 30px;
+        }
+        #title_right ul li{
+            float: right;
+            padding: 30px 30px;
+            margin-right: 3px;
+            margin-top: 20px;
+        }
+   
+/* -----------------네비게이터-------------------------- */
+nav{
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(to right, #362FD9, #85CDFD);
+    font-family: 'LINESeedKR-Bd';
+    font-weight: 400;
+    padding-left: 308px;
+    margin: 0 auto;
+    position : relative;
+}  
+#navigator_tag{
+    width: 1300px;
+    height: 65px;
+    margin: 0 auto;
+}
+    nav input{
+        border: 0px;
+        margin: 12px 10px;
+        margin-left: 145px;
+        width: 300px;
+        height: 40px;
+        float: left;
+        font-size: 15px;
+        
+    }
+    nav button{
+        border: 0px solid black;
+        width: 40px;
+        height: 40px;
+        margin: 12px 0px;
+        background-color: transparent;
+    }
+    nav img{
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin: auto;
+    }
+    #nav_ul li{
+        margin-top: 6px;
+        margin-right: 30px;
+        padding: 16px;
+        font-size: 20px;
+        float: left;
+        font-weight: 400;
+    }
+    #nav_ul a:link{
+        color: white;
+    }
+    #nav_ul a:visited{
+        color: white;
+    }
+    
+        #menu_text{
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            border: 0px solid black;
+            background-color: white;
+            float: left;
+            width: 1300px;
+            height: 250px;
+            font-size: 20px;
+            z-index: 1500;
+            max-height : 0px;
+            opacity: 0;
+            transition: opacity 0.7s ease, max-height 0.7s ease-out;
+            text-align: center;
+        }
+        #menu_text.active {
+            max-height: 250px;
+            opacity: 1;
+          }
+        
+        #menu_text a:link, #menu_text a:visited{
+            color: grey;
+        }
+            #movie, #theater, #reservation, #store, #event{
+                float: left;
+                border-right: 2px solid gainsboro;
+                width: 215px;
+                /* padding: 10px 40px; */
+                line-height: 50px;
+                height: 220px;
+                margin-top: 5px;
+                transition: opacity 0.7s ease;
+            }
+            #benefit{
+                float: left;
+                width: 215px;
+                /* padding: 10px 15px; */
+                line-height: 50px;
+                margin-top: 5px;
+                height: 220px;
+                transition: opacity 0.7s ease;
+            }
+/* -----------------------------------메인-------------------- */
+    main{
+        margin: 0 auto;
+        width: 1300px;
+        height: 1300px;
+        /* background-color: red; */
+        position: relative;
+        margin-top: 20px auto;
+
+    }
+            #main_menu{
+                width: 18%;
+                height: 100%;
+                float: left;
+                /* background-color: red; */
+                border-top: 2px solid #ccc;
+        }
+            #blank_1{
+                width: 100%;
+                height: 50px;
+            }
+        #main_menu h3{
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding: 20px 20px;
+            width: 200px;
+            height: 70px;
+        }
+        main li a:link, main li a:visited{
+            color: grey;
+            font-weight: 500;
+        }
+        #main_menu a{
+            line-height: 1.7;
+            margin-left: 20px;
+        }
+        #main_menu a:hover{
+            background-color: #eee;
+        }
+        #member{
+            float: left;
+        }
+        #main_blank{
+            height: 90%;
+            width: 4%;
+            /* background-color: red; */
+            float: left;
+        }
+        #h2{
+            float: left;
+            width: 1000px;
+            height: 100px;
+            font-family: 'S-CoreDream-3Light';
+            font-weight: 600;
+            font-size: 23px;
+            padding-top: 27px;
+            border-bottom: 1px solid #222;
+        }
+        #post-text{
+            width: 1000px;
+            height: 70px;
+            float: left;
+            padding-top: 13px;
+        }
+        #post-text input{
+            width: 300px;
+            height: 40px;
+            font-size: 18px;
+        }
+        #post-text select{
+            width: 100px;
+            height: 40px;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        #post-text #searchPost{
+            font-size: 18px;
+            width: 120px;
+            height: 40px;
+            font-family: 'LINESeedKR-Bd';
+            color: white;
+            background-color: #222;
+			padding-top: 4px;        
+/*             position: absolute; */
+/*             top: 168px; */
+/*             left: 53.6%; */
+        }
+        #table{
+            width: 1000px;
+            height: 50px;
+            float: left;
+            /* background-color: red; */
+            text-align: center;
+            background-color: #eee;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        .tr{
+            width: 150px;
+            height: 50px;
+            font-size: 18px;
+            padding-bottom: 6px;
+        }
+        #tr{
+            width: 400px;
+            font-size: 18px;
+            padding-bottom: 6px;
+        }
+        #table-1{
+            width: 1000px;
+            height: 785px;
+            float: left;
+            /* background-color: red; */
+            text-align: center;
+            padding-top: 2px;
+            border-bottom: 1px solid #ccc;
+        }
+        #table-1 a:link, #table-1 a:visited{
+            color: black;
+        }
+        #number{
+            width: 1000px;
+            margin: 88px auto;
+            height: 50px;
+            float: left;
+            text-align: center;
+            padding-top: 9px;
+        }
+        #number a:link, #number a:visited{
+            color: #9c9b9b;
+        }
+        #number a{
+            font-size: 25px;
+            padding: 10px 10px;
+            font-family: 'LINESeedKR-Bd';
+        }
+        #number button{
+            width: 80px;
+            height: 35px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 2px;
+            background-color: transparent;
+            border-radius: 5px;
+        }
+        #number img{
+            width: 15px;
+            margin-top: 3px;
+        }
+        #nextButton{
+        	position: absolute;
+        	bottom: 200px;
+        	right: 280px;
+        	padding-top: 10px;
+        }
+        #postInsert{
+        	width: 100px;
+            height: 40px;
+            color: white;
+            float:right;
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 9px; 
+            background-color: #362FD9;
+            margin-left: 20px;
+            padding-bottom: 4px;
+            margin-top: 4px;
+        }
+        #postNum{
+        	 font-family: 'S-CoreDream-3Light';
+        	 font-size: 17px;
+        	 color: #222;
+        }
+        #postMain a:link, #postMain a:visited{
+        	color: #362FD9;
+        	font-weight: 600;
+        }
+        #postMain #tr:hover{
+        	text-decoration: underLine;
+        	color: #362FD9;
+        }
+        #postMain{
+        	font-weight: 600;
+        }
+        #postList #tr:hover{
+        	text-decoration: underLine;
+        	font-weight: 600;
+        }
+    /* ----------푸터------------------------- */
+.footer {
+    width: 100%;
+    height: 250px;
+    background-color: #f2f2f2;
+    padding: 50px 50px;
+    }
+      
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-list li {
+        display: inline-block;
+        margin-right: 10px;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      
+      .footer-content {
+        text-align: right;
+      }
+      
+      .footer-line {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+      
+      .footer p {
+        margin: 10px 0px;
+        font-size: 15px;
+      }
+      a:link, a:visited{
+        color: black;
+      }

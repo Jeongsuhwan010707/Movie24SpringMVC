@@ -1,0 +1,378 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    text-decoration: 1px solid black;
+}
+ul li{
+    list-style: none;
+}
+/* ----------------------헤더--------------------------- */
+header{
+    width: 1300px;
+    height: 150px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    /* background-color: red; */
+}
+    header a:visited{
+        color: black;
+    }
+    
+    #title{
+        width: 180px;
+        height: 150px;
+        float: left;
+        padding-top: 45px;
+        padding-right: 0;
+        /* background-color: red; */
+        font-family: 'PyeongChangPeace-Bold';
+        font-size: 45px;
+        text-align: center;
+    }
+        #title_num{
+            width: 70px;
+            color: #362FD9;
+            font-family: 'PyeongChangPeace-Bold';
+            padding-top: 45px;
+            font-size: 45px;
+            float: left;
+        }
+    #small_title{
+        width: 300px;
+        height: 150px;
+        float: left;
+        font-family: 'S-CoreDream-3Light';
+        padding: 70px 25px;
+        /* background-color: blue; */
+        font-size: 20px;
+        font-weight: 200;
+        color: grey;
+        line-height: 30px;
+    }
+    caption{
+        caption-side: bottom;
+    }
+    #title_right{
+        float: right;
+        width: 500px;
+        height: 100px;
+        /* background-color: yellow; */
+        
+    }
+         header ul img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-top: 30px;
+        }
+        #title_right ul li{
+            float: right;
+            padding: 30px 30px;
+            margin-right: 3px;
+            margin-top: 20px;
+        }
+    
+/* -----------------네비게이터-------------------------- */
+nav{
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(to right, #362FD9, #85CDFD);
+    font-family: 'LINESeedKR-Bd';
+    font-weight: 400;
+    padding-left: 308px;
+    margin: 0 auto;
+    position : relative;
+}  
+#navigator_tag{
+    width: 1300px;
+    height: 65px;
+    margin: 0 auto;
+}
+    nav input{
+        border: 0px;
+        margin: 12px 10px;
+        margin-left: 145px;
+        width: 300px;
+        height: 40px;
+        float: left;
+        font-size: 15px;
+        
+    }
+    nav button{
+        border: 0px solid black;
+        width: 40px;
+        height: 40px;
+        margin: 12px 0px;
+        background-color: transparent;
+    }
+    nav img{
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin: auto;
+    }
+    #nav_ul li{
+        margin-top: 6px;
+        margin-right: 30px;
+        padding: 16px;
+        font-size: 20px;
+        float: left;
+        font-weight: 400;
+    }
+    #nav_ul a:link{
+        color: white;
+    }
+    #nav_ul a:visited{
+        color: white;
+    }
+    
+        #menu_text{
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            border: 0px solid black;
+            background-color: white;
+            float: left;
+            width: 1300px;
+            height: 250px;
+            font-size: 20px;
+            z-index: 1500;
+            max-height : 0px;
+            opacity: 0;
+            transition: opacity 0.7s ease, max-height 0.7s ease-out;
+            text-align: center;
+        }
+        #menu_text.active {
+            max-height: 250px;
+            opacity: 1;
+          }
+        
+        #menu_text a:link, #menu_text a:visited{
+            color: grey;
+        }
+            #movie, #theater, #reservation, #store, #event{
+                float: left;
+                border-right: 2px solid gainsboro;
+                width: 215px;
+                /* padding: 10px 40px; */
+                line-height: 50px;
+                height: 220px;
+                margin-top: 5px;
+                transition: opacity 0.7s ease;
+            }
+            #benefit{
+                float: left;
+                width: 215px;
+                /* padding: 10px 15px; */
+                line-height: 50px;
+                margin-top: 5px;
+                height: 220px;
+                transition: opacity 0.7s ease;
+            }
+/* -----------------------------------메인-------------------- */
+   main{
+        margin: 0 auto;
+        width: 1300px;
+        height: 1100px;
+        /* background-color: red; */
+        position: relative;
+        margin-top: 20px auto;
+
+    }
+            #main_menu{
+                width: 18%;
+                height: 100%;
+                float: left;
+                /* background-color: red; */
+                border-top: 2px solid #ccc;
+        }
+            #blank_1{
+                width: 100%;
+                height: 50px;
+            }
+        #main_menu h3{
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding: 20px 20px;
+            width: 200px;
+            height: 70px;
+        }
+        main li a:link, main li a:visited{
+            color: grey;
+            font-weight: 500;
+        }
+        #main_menu a{
+            line-height: 1.7;
+            margin-left: 20px;
+        }
+        #main_menu a:hover{
+            background-color: #eee;
+        }
+        #member{
+            float: left;
+        }
+        #main_blank{
+            height: 90%;
+            width: 4%;
+            /* background-color: red; */
+            float: left;
+        }
+        #h2{
+            float: left;
+            width: 1000px;
+            height: 100px;
+            font-family: 'S-CoreDream-3Light';
+            font-weight: 600;
+            font-size: 23px;
+            padding-top: 27px;
+            border-bottom: 1px solid #222;
+        }
+     
+       
+        #main_button button{
+            position: absolute;
+            top: 85px;
+            right: 2%;
+            width: 100px;
+            height: 40px;
+            background-color: #362FD9;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 7px;
+        }
+        #main_button button:hover{
+            opacity: 0.7;
+            transition: opacity 0.4s ease;
+        }
+        #smbtn{
+            position: absolute;
+            top: 85px;
+            right: 11%;
+            width: 100px;
+            height: 40px;
+            border: 2px solid #362FD9;
+            background-color: inherit;
+            text-align: center;
+            color: #362FD9;
+            border-radius: 5px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 7px;
+        }
+       
+        #titleArea #contentarea, #imgArea{
+            float: left;
+        }
+        #postTitle{
+            width: 1000px;
+            height: 50px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-family: 'S-CoreDream-3Light';
+            border: 1px solid #d5d5d5;
+        }
+        #postImg{
+            width: 1000px;
+            border: 1px solid #ccc;
+        }
+        ::placeholder{
+            padding-bottom: 500px;
+        } 
+        input:focus {
+             outline: 1px solid #a6a5a5; 
+        }
+        textarea:focus{
+            outline: 1px solid #a6a5a5; 
+        }
+        textarea{
+            width: 1000px;
+            text-align: left;
+            height: 600px;
+            /* margin-bottom: 20px; */
+            font-size: 17px;
+            font-family: 'S-CoreDream-3Light';
+            border: 1px solid #d5d5d5;
+        }
+        #postLast{
+            float: left;
+            width: 1000px;
+            height: 20px;
+            margin-top: 70px;
+            border-top: 1px solid #222;
+        }
+    /* ----------푸터------------------------- */
+.footer {
+    width: 100%;
+    height: 250px;
+    background-color: #f2f2f2;
+    padding: 50px 50px;
+    }
+      
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-list li {
+        display: inline-block;
+        margin-right: 10px;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      
+      .footer-content {
+        text-align: right;
+      }
+      
+      .footer-line {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+      
+      .footer p {
+        margin: 10px 0px;
+        font-size: 15px;
+      }
+      a:link, a:visited{
+        color: black;
+      }

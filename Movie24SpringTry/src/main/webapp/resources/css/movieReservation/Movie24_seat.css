@@ -1,0 +1,449 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    text-decoration: 1px solid black;
+}
+ul li{
+    list-style: none;
+}
+/* ----------------------헤더--------------------------- */
+header{
+    width: 1300px;
+    height: 150px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    /* background-color: red; */
+}
+    header a:visited{
+        color: black;
+    }
+    
+    #title{
+        width: 180px;
+        height: 150px;
+        float: left;
+        padding-top: 45px;
+        padding-right: 0;
+        /* background-color: red; */
+        font-family: 'PyeongChangPeace-Bold';
+        font-size: 45px;
+        text-align: center;
+    }
+        #title_num{
+            width: 70px;
+            color: #362FD9;
+            font-family: 'PyeongChangPeace-Bold';
+            padding-top: 45px;
+            font-size: 45px;
+            float: left;
+        }
+    #small_title{
+        width: 300px;
+        height: 150px;
+        float: left;
+        font-family: 'S-CoreDream-3Light';
+        padding: 70px 25px;
+        /* background-color: blue; */
+        font-size: 20px;
+        font-weight: 200;
+        color: grey;
+        line-height: 30px;
+    }
+    caption{
+        caption-side: bottom;
+    }
+    #title_right{
+        float: right;
+        width: 500px;
+        height: 100px;
+        /* background-color: yellow; */
+        
+    }
+         header ul img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-top: 30px;
+        }
+        #title_right ul li{
+            float: right;
+            padding: 30px 30px;
+            margin-right: 3px;
+            margin-top: 20px;
+        }
+   
+/* -----------------네비게이터-------------------------- */
+nav{
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(to right, #362FD9, #85CDFD);
+    font-family: 'LINESeedKR-Bd';
+    font-weight: 400;
+    padding-left: 308px;
+    margin: 0 auto;
+    position : relative;
+}  
+#navigator_tag{
+    width: 1300px;
+    height: 65px;
+    margin: 0 auto;
+}
+    nav input{
+        border: 0px;
+        margin: 12px 10px;
+        margin-left: 145px;
+        width: 300px;
+        height: 40px;
+        float: left;
+        font-size: 15px;
+        
+    }
+    nav button{
+        border: 0px solid black;
+        width: 40px;
+        height: 40px;
+        margin: 12px 0px;
+        background-color: transparent;
+    }
+    nav img{
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin: auto;
+    }
+    #nav_ul li{
+        margin-top: 6px;
+        margin-right: 30px;
+        padding: 16px;
+        font-size: 20px;
+        float: left;
+        font-weight: 400;
+    }
+    #nav_ul a:link{
+        color: white;
+    }
+    #nav_ul a:visited{
+        color: white;
+    }
+    
+        #menu_text{
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            border: 0px solid black;
+            background-color: white;
+            float: left;
+            width: 1300px;
+            height: 250px;
+            font-size: 20px;
+            z-index: 1500;
+            max-height : 0px;
+            opacity: 0;
+            transition: opacity 0.7s ease, max-height 0.7s ease-out;
+            text-align: center;
+        }
+        #menu_text.active {
+            max-height: 250px;
+            opacity: 1;
+          }
+        
+        #menu_text a:link, #menu_text a:visited{
+            color: grey;
+        }
+            #movie, #theater, #reservation, #store, #event{
+                float: left;
+                border-right: 2px solid gainsboro;
+                width: 215px;
+                /* padding: 10px 40px; */
+                line-height: 50px;
+                height: 220px;
+                margin-top: 5px;
+                transition: opacity 0.7s ease;
+            }
+            #benefit{
+                float: left;
+                width: 215px;
+                /* padding: 10px 15px; */
+                line-height: 50px;
+                margin-top: 5px;
+                height: 220px;
+                transition: opacity 0.7s ease;
+            }
+/* -----------------------------------메인-------------------- */
+    main{
+        margin: 0 auto;
+        width: 1300px;
+        height: 950px;
+        /* background-color: red; */
+        position: relative;
+    }
+    #main_button{
+        width: 100%;
+        height: 80px;
+        padding-right: 28px;
+    }
+    #main_button button{
+        width: 100px;
+        height: 30px;
+        background-color: #f2f2f2;
+        border: 1px solid #222;
+        font-family: 'LINESeedKR-Bd';
+        font-size: 17px;
+        float: right;
+        margin: 25px 10px;
+        padding-top: 5px;
+        color: #222;
+        border-radius: 5px;
+    }
+        main h1{
+            font-family: 'LINESeedKR-Bd';
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+    #select{
+        width: 900px;
+        height: 600px;
+        float: left;
+        /* background-color: red; */
+    }
+    #select_logo{
+        width: 100%;
+        height: 80px;
+        font-size: 20px;
+        padding-top: 25px;
+        /* background-color: green; */
+        border-top: 1px solid #222;
+        font-weight: 600;
+        color: #222;
+        padding-left: 15px;
+    }
+    #select_per{
+        width: 100%;
+        height: 50px;
+        padding-top: 10px;
+        font-size: 17px;
+        background-color: #eee;
+        float: left;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #select_per p{
+        float: left;
+        font-size: 17px;
+        font-weight: 500;
+        padding-left: 60px;
+        padding-top: 3px;
+    }
+    #select_per ul li{
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        border: 2px solid #222;
+        margin: 0px 5px;
+        float: left;
+    }
+    #select_per ul li:hover{
+        background-color: #222;
+        color: white;
+    }
+    #select_img{
+        width: 100%;
+        height: 500px;
+        text-align: center;
+        padding-top: 50px;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        margin-top: 20px;
+    }
+    #price{
+        width: 350px;
+        height: 600px;
+        background-color: #333333;
+        float: left;
+        border-radius: 13px;
+        margin-left: 30px;
+        color: white;
+
+    }
+    #price1{
+        border-bottom: 1px solid #5c5c5c;
+        width: 100%;
+        height: 50px;
+    }
+    #price1 img{
+        float: left;
+        padding: 10px 10px;
+        width: 50px;
+    }
+    #price1 h3{
+        font-size: 20px;
+        padding: 10px 10px;
+    }
+    #price2{
+        width: 100%;
+        height: 150px;
+    }
+    #price2-1{
+        width: 60%;
+        height: 100%;
+        float: left;
+        font-size: 18px;
+        line-height: 1.6;
+        padding: 25px 20px;
+    }
+    #price2-2{
+        width: 40%;
+        height: 100%;
+        float: left;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    #price2-2 img{
+        width: 80px;
+        float: left;
+    }
+    #price3{
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #price4{
+        width: 100%;
+        height: 50px;
+        /* background-color: #5c5c5c; */
+        font-size: 17px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    #price4-1{
+        float: left;
+        width: 50%;
+        height: 100%;
+        padding: 13px 10px;
+        font-weight: 500;
+    }
+    #price4-2{
+        width: 50%;
+        height: 100%;
+        float: right;
+    }
+    #price4-2 p{
+        float: right;
+    }
+    #price-number1{
+        font-size: 30px;
+        color: rgb(44, 226, 226);
+        padding-top: 2px;
+    }
+    #price-number2{
+        padding: 13px 10px;
+        font-weight: 550;
+    }
+   #price a:link, #price a:visited{
+    color: white;
+   }
+   #price5{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background-color: #5c5c5c;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'LINESeedKR-Bd';
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+   }
+   #price5-1-1{
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #787777;
+    padding-top: 15px;
+   }
+   #price5-2-2{
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding-top: 15px;
+   }
+   #price5-1-1:hover{
+    background-color: #362FD9;
+    border-bottom-left-radius: 10px;
+   } 
+   #price5-2-2:hover{
+    background-color: #362FD9;
+    border-bottom-right-radius: 10px;
+   }
+    /* ----------푸터------------------------- */
+.footer {
+    width: 100%;
+    height: 250px;
+    background-color: #f2f2f2;
+    padding: 50px 50px;
+    }
+      
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-list li {
+        display: inline-block;
+        margin-right: 10px;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      
+      .footer-content {
+        text-align: right;
+      }
+      
+      .footer-line {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+      
+      .footer p {
+        margin: 10px 0px;
+        font-size: 15px;
+      }
+      a:link, a:visited{
+        color: black;
+      }

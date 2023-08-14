@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EventMapper">
+	<resultMap type="movie24.event.model.vo.EventSRC" id="EventResultMap">
+		<id property="eventImgNum" column="EVENT_IMG_NUM"/>
+		<result property="imageSRC" column="IMAGE_SRC" />
+	</resultMap>
+	<select id="getEventImage" resultType="string">
+		SELECT IMAGE_SRC FROM EVENT_TBL WHERE EVENT_IMG_NUM = #{eventSrcNum}
+	</select>
+</mapper>

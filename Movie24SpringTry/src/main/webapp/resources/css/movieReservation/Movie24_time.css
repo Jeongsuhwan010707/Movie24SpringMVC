@@ -1,0 +1,463 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    text-decoration: 1px solid black;
+}
+ul li{
+    list-style: none;
+}
+/* ----------------------헤더--------------------------- */
+header{
+    width: 1300px;
+    height: 150px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    /* background-color: red; */
+}
+    header a:visited{
+        color: black;
+    }
+    
+    #title{
+        width: 180px;
+        height: 150px;
+        float: left;
+        padding-top: 45px;
+        padding-right: 0;
+        /* background-color: red; */
+        font-family: 'PyeongChangPeace-Bold';
+        font-size: 45px;
+        text-align: center;
+    }
+        #title_num{
+            width: 70px;
+            color: #362FD9;
+            font-family: 'PyeongChangPeace-Bold';
+            padding-top: 45px;
+            font-size: 45px;
+            float: left;
+        }
+    #small_title{
+        width: 300px;
+        height: 150px;
+        float: left;
+        font-family: 'S-CoreDream-3Light';
+        padding: 70px 25px;
+        /* background-color: blue; */
+        font-size: 20px;
+        font-weight: 200;
+        color: grey;
+        line-height: 30px;
+    }
+    caption{
+        caption-side: bottom;
+    }
+    #title_right{
+        float: right;
+        width: 500px;
+        height: 100px;
+        /* background-color: yellow; */
+        
+    }
+         header ul img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-top: 30px;
+        }
+        #title_right ul li{
+            float: right;
+            padding: 30px 30px;
+            margin-right: 3px;
+            margin-top: 20px;
+        }
+    
+/* -----------------네비게이터-------------------------- */
+nav{
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(to right, #362FD9, #85CDFD);
+    font-family: 'LINESeedKR-Bd';
+    font-weight: 400;
+    padding-left: 308px;
+    margin: 0 auto;
+    position : relative;
+}  
+#navigator_tag{
+    width: 1300px;
+    height: 65px;
+    margin: 0 auto;
+}
+    nav input{
+        border: 0px;
+        margin: 12px 10px;
+        margin-left: 145px;
+        width: 300px;
+        height: 40px;
+        float: left;
+        font-size: 15px;
+        
+    }
+    nav button{
+        border: 0px solid black;
+        width: 40px;
+        height: 40px;
+        margin: 12px 0px;
+        background-color: transparent;
+    }
+    nav img{
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin: auto;
+    }
+    #nav_ul li{
+        margin-top: 6px;
+        margin-right: 30px;
+        padding: 16px;
+        font-size: 20px;
+        float: left;
+        font-weight: 400;
+    }
+    #nav_ul a:link{
+        color: white;
+    }
+    #nav_ul a:visited{
+        color: white;
+    }
+    
+        #menu_text{
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            border: 0px solid black;
+            background-color: white;
+            float: left;
+            width: 1300px;
+            height: 250px;
+            font-size: 20px;
+            z-index: 1500;
+            max-height : 0px;
+            opacity: 0;
+            transition: opacity 0.7s ease, max-height 0.7s ease-out;
+            text-align: center;
+        }
+        #menu_text.active {
+            max-height: 250px;
+            opacity: 1;
+          }
+        
+        #menu_text a:link, #menu_text a:visited{
+            color: grey;
+        }
+            #movie, #theater, #reservation, #store, #event{
+                float: left;
+                border-right: 2px solid gainsboro;
+                width: 215px;
+                /* padding: 10px 40px; */
+                line-height: 50px;
+                height: 220px;
+                margin-top: 5px;
+                transition: opacity 0.7s ease;
+            }
+            #benefit{
+                float: left;
+                width: 215px;
+                /* padding: 10px 15px; */
+                line-height: 50px;
+                margin-top: 5px;
+                height: 220px;
+                transition: opacity 0.7s ease;
+            }
+/* -----------------------------------메인-------------------- */
+    main{
+        margin: 0 auto;
+        width: 1300px;
+        height: 1900px;
+        /* background-color: red; */
+        position: relative;
+    }
+    #main_select{
+        width: 1000px;
+        height: 400px;
+        /* background-color: red; */
+        margin: 50px auto;
+        border-radius: 13px;
+        border: 5px solid grey;
+    }
+        #main_select_left{
+            width: 20%;
+            height: 100%;
+            float: left;
+            /* background-color: blue; */
+            text-align: center;
+        }
+            #main_select_left a:visited, #main_select_left a:link{
+                color: #222222d2;
+            }
+            #main_select_left img{
+                width: 30px;
+                margin-right: 5px;
+            }
+            #main_select_left a{
+                font-size: 30px;
+                font-family: 'S-CoreDream-3Light';
+                font-weight: 400;
+            }
+            #main_select_left1{
+                width: 100%;
+                height: 50%;
+                border-bottom: 2px dotted #ccc;
+                padding-top: 75px;
+            }
+            #main_select_left2{
+                width: 100%;
+                height: 50%;
+                padding-top: 70px;
+                background-color: #eee;
+            }
+        #main_select_right{
+            width: 80%;
+            height: 100%;
+            /* background-color: red; */
+            float: left;
+        }
+
+            #main_select_right1{
+                width: 100%;
+                height: 20%;
+                /* background-color: blue; */
+                padding: 25px 25px;
+                font-size: 17px;
+                font-family: 'S-CoreDream-3Light';
+                border-bottom: 1px solid #ccc;
+            }
+                #span1{
+                    padding-right: 25px;
+                    border-right: 1px solid #ccc;
+                }
+                #span2{
+                    padding-left: 20px;
+                }
+                
+            #main_select_right2{
+                width: 100%;
+                height: 80%;
+            }
+            #main_select_right2 li:hover{
+                background-color: #eee;
+            }
+            .ul{
+                float: left;
+                width: 33%;
+                text-align: center;
+                height: 100%;
+                line-height: 1.9;
+                margin-top: 60px;
+            }
+                .ul a:link, .ul a:visited{
+                    color: #201d85d2;
+                    font-size: 20px;
+                    font-family: 'S-CoreDream-3Light';
+                    font-weight: 600;
+                }
+    /* -------------------- 선택창 밑 메인-----------------------*/
+        #banner{
+            width: 100%;
+            height: 100px;
+            padding-top: 30px;
+        }
+            #banner span{
+                font-family: 'S-CoreDream-3Light';
+                font-size: 30px;
+                padding: 0px 20px;
+            }
+            #span_banner{
+                border-right: 1px solid #ccc;
+                padding-right: 100px;
+            }
+        #number{
+            width: 100%;
+            height: 90px;
+            /* background-color: red; */
+            font-size: 25px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        main a:link:not(.sat,.sun), main a:visited:not(.sat,.sun){
+            color: #222;
+        }
+        .sat:link, .sat:visited{
+            color: rgb(84, 84, 226);
+        }
+        .sun:link, .sun:visited{
+            color: rgb(241, 69, 69);
+        }
+        .img{
+            float: left;
+            width: 25px;
+            padding-top: 33px;
+        }
+        .cal{
+            width: 30px;
+            padding-top: 30px;
+            margin-left: 30px;
+        }
+        #number ul li{
+            text-align: center;
+            float: left;
+            width: 18px;
+            padding: 12px 20px;
+            margin: 0 25px;
+        }
+        #country{
+            width: 90%;
+            margin: 20px 0px;
+        }
+        #country span{
+            margin: 20px 0px;
+            padding: 0px 30px;
+            font-size: 20px;
+            font-family: 'S-CoreDream-3Light';
+            border: 1px solid #ccc;
+        }
+        #country span:hover{
+            background-color: rgb(179, 177, 177);
+        }
+        .country_text{
+            width: 100%;
+            height: 60px;
+            padding-top: 5px;
+            margin-top: 20px;
+            color: #362FD9;
+        }
+            .country_text span{
+                font-size: 22px;
+                font-weight: 550;
+                padding: 0px 20px;
+            }
+        .seat{
+            width: 100%;
+            height: 120px;
+            border-top: 1px solid #ccc;
+            /* background-color: red; */
+        }
+        .last{
+            border-bottom: 1px solid #ccc;
+        }
+            .tNum{
+                font-size: 20px;
+                padding: 30px 25px;
+                float: left;
+            }
+            .d2{
+                width: 120px;
+                height: 90px;
+                margin-top: 14px;
+                float: left;
+                background-color: #e6e4e4;
+                text-align: center;
+                font-size: 25px;
+                font-family: 'LINESeedKR-Bd';
+                padding-top: 30px;
+                margin-left: 90px;
+            }
+            .seat_text{
+                width: 120px;
+                height: 90px;
+                float: left;
+                text-align: center;
+                font-size: 22px;
+                padding-top: 14px;
+                border: 1px solid #ccc;
+                margin: 14px 0 0 20px;
+            }
+            .seat_text:hover{
+                background-color: #eee;
+            }
+        /* #main_button a{
+            position: absolute;
+            top: 800px;
+            right: 45%;
+            width: 130px;
+            height: 50px;
+            background-color: #362FD9;
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 12px;
+        } */
+    /* ----------푸터------------------------- */
+.footer {
+    width: 100%;
+    height: 250px;
+    background-color: #f2f2f2;
+    padding: 50px 50px;
+    }
+      
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-list li {
+        display: inline-block;
+        margin-right: 10px;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      
+      .footer-content {
+        text-align: right;
+      }
+      
+      .footer-line {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+      
+      .footer p {
+        margin: 10px 0px;
+        font-size: 15px;
+      }
+      a:link, a:visited{
+        color: black;
+      }
