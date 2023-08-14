@@ -6,7 +6,7 @@
 	<typeAliases>
  		<typeAlias type="com.movie24.happy.member.domain.Member" alias="Member"/>
  		<typeAlias type="com.movie24.happy.notice.domain.Notice" alias="Notice"/>
- 		<typeAlias type="com.movie24.happy.event.domain.EventSRC" alias="Event"/>
+ 		<typeAlias type="com.movie24.happy.event.domain.EventSRC" alias="EventSRC"/>
  		<typeAlias type="com.movie24.happy.info.domain.MovieInfo" alias="Info"/>
  	</typeAliases>
 	<mappers>

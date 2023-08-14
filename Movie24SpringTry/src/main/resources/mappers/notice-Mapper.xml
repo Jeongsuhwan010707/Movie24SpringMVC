@@ -16,7 +16,7 @@
 		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICENO.NEXTVAL, #{noticeSubject}, #{noticeContent}, #{noticeWriter} ,DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	<update id="updateNotice">
-		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent} WHERE NOTICE_NO = #{noticeNo}
+		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent}, UPDATE_DATE = SYSDATE WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	<delete id="deleteNotice">
 		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}

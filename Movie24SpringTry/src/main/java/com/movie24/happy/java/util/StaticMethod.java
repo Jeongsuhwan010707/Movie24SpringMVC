@@ -1,4 +1,4 @@
-package com.movie24.happy.member.controller;
+package com.movie24.happy.java.util;
 
 import java.io.PrintWriter;
 
@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class AlertMethodController {
-	
+public class StaticMethod {
 	public static void alertAndBack(HttpServletResponse response, String msg) {
 	    try {
 	        response.setContentType("text/html; charset=utf-8");
@@ -42,5 +41,4 @@ public class AlertMethodController {
 			e.printStackTrace();
 	    }
 	}
-	
 }

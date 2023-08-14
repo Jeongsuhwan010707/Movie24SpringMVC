@@ -25,13 +25,13 @@
                     <ul>
                         <li><a href="#">문의하기</a></li>
                         <c:if test="${sessionScope.memberId ne null }">
-	                        <li><a href="/movie24/myPage.do">문의내역보기</a></li>
+	                        <li><a href="/member/myPage.do">문의내역보기</a></li>
 						</c:if>
                         <li><a href="#">약관 확인</a></li>
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="/movie24/post.do">공지사항목록</a></li>
+                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -53,7 +53,7 @@
                     <ul>
                         <li><a href="#">환불문의하기</a></li>
                         <c:if test="${sessionScope.memberId ne null }">
-	                        <li><a href="/movie24/myPage.do">환불문의 내역보기</a></li>
+	                        <li><a href="/member/myPage.do">환불문의 내역보기</a></li>
 						</c:if>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@
             <input type="text" placeholder="검색할 내용을 입력해주세요.">
             <button id="searchPost">검색하기</button>
             <c:if test="${memberId ne null}">
-        	<a href="/movie24/postInsert.do?memberNickname=${memberNickname }" id="postInsert">글쓰기</a>
+        	<a href="/notice/postInsert.do?memberNickname=${memberNickname }" id="postInsert">글쓰기</a>
             </c:if>
         </div>
         <div id="table">
@@ -91,7 +91,7 @@
             	<tr id="postMain">
 					<td class="tr">공지</td>
 					<td class="tr">관리자</td>
-					<td id="tr"><a href="/movie24/postInfo.do?noticeNo=${notice0.noticeNo}">${notice0.noticeSubject}</a></td>
+					<td id="tr"><a href="/notice/postInfo.do?noticeNo=${notice0.noticeNo}">${notice0.noticeSubject}</a></td>
 					<td class="tr">${notice0.noticeDate }</td>
 					<td class="tr">${notice0.viewCount }</td>
 				</tr>
@@ -100,7 +100,7 @@
 					<tr id="postList">
 						<td class="tr">${notice.noticeNo }</td>
 						<td class="tr">${notice.noticeWriter }</td>
-						<td id="tr"><a href="/movie24/postInfo.do?noticeNo=${notice.noticeNo}">${notice.noticeSubject}</a></td>
+						<td id="tr"><a href="/notice/postInfo.do?noticeNo=${notice.noticeNo}">${notice.noticeSubject}</a></td>
 						<td class="tr">${notice.noticeDate }</td>
 						<td class="tr">${notice.viewCount }</td>
 					</tr>
@@ -159,7 +159,7 @@
         }
         function outCheck(){
         	if(confirm("로그아웃 하시겠습니까?")){
-        		location.href="/movie24/logout.do";
+        		location.href="/member/logout.do";
         	}
         }
     </script>

@@ -24,13 +24,13 @@
                     <ul>
                         <li><a href="#">문의하기</a></li>
                         <c:if test="${sessionScope.memberId ne null }">
-	                        <li><a href="/movie24/myPage.do">문의내역보기</a></li>
+	                        <li><a href="/member/myPage.do">문의내역보기</a></li>
 						</c:if>
                         <li><a href="#">약관 확인</a></li>
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="/movie24/post.do">공지사항목록</a></li>
+                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -52,7 +52,7 @@
                     <ul>
                         <li><a href="#">환불문의하기</a></li>
                         <c:if test="${sessionScope.memberId ne null }">
-	                        <li><a href="/movie24/myPage.do">환불문의 내역보기</a></li>
+	                        <li><a href="/member/myPage.do">환불문의 내역보기</a></li>
 						</c:if>
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
         <div id="back">
             <p class="b1"><strong>이전글 ▲</strong></p> 
             <c:if test="${notice.noticeNo ne totalNum}">
-	            <p id="b2"><a href="/movie24/postInfo.do?noticeNo=${noticeB.noticeNo}"><strong>${noticeB.noticeSubject }</strong></a></p>
+	            <p id="b2"><a href="/notice/postInfo.do?noticeNo=${noticeB.noticeNo}"><strong>${noticeB.noticeSubject }</strong></a></p>
 	            <p class="b3">등록일 : ${noticeB.noticeDate }</p>
             </c:if>
             <c:if test="${notice.noticeNo eq totalNum}">
@@ -88,7 +88,7 @@
         <div id="next">
             <p class="b1"><strong>다음글 ▼</strong></p> 
             <c:if test="${noticeN.noticeNo ne null}">
-	            <p id="b2"><a href="/movie24/postInfo.do?noticeNo=${noticeN.noticeNo}"><strong>${noticeN.noticeSubject}</strong></a></p>
+	            <p id="b2"><a href="/notice/postInfo.do?noticeNo=${noticeN.noticeNo}"><strong>${noticeN.noticeSubject}</strong></a></p>
     	        <p class="b3">등록일 : ${noticeN.noticeDate }</p>
             </c:if>
             <c:if test="${noticeN.noticeNo eq null}">
@@ -96,7 +96,7 @@
             </c:if>
         </div>
         <div id="main_button">
-            <a href="/movie24/post.do?currentPage=1" id="before">목록으로</a>
+            <a href="/notice/post.do?currentPage=1" id="before">목록으로</a>
             <c:if test="${memberId eq 'khuser01'}">
             <a href="/notice/modify.do?noticeNo=${notice.noticeNo}" id="modify">수정하기</a>
             <a href="javascript:void(0)" onclick="deleteCheck();" id="delete">삭제하기</a>
@@ -148,13 +148,13 @@
         }
         function outCheck(){
         	if(confirm("로그아웃 하시겠습니까?")){
-        		location.href="/movie24/logout.do";
+        		location.href="/member/logout.do";
         	}
         }
         const deleteCheck = () => {
 			const noticeNo = '${notice.noticeNo}';
 			if(confirm("정말 삭제하시겠습니까?")){
-				location.href = "/movie24/postDelete.do?noticeNo="+noticeNo;
+				location.href = "/notice/postDelete.do?noticeNo="+noticeNo;
 			}
 		}
     </script>

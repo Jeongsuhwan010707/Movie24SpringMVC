@@ -26,13 +26,13 @@
                     <ul>
                         <li><a href="#">문의하기</a></li>
                         <c:if test="${sessionScope.memberId ne null }">
-	                        <li><a href="/movie24/myPage.do">문의내역보기</a></li>
+	                        <li><a href="/member/myPage.do">문의내역보기</a></li>
 						</c:if>
                         <li><a href="#">약관 확인</a></li>
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="../help/Movie24_post.html">공지사항목록</a></li>
+                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -54,7 +54,7 @@
                     <ul>
                         <li><a href="#">환불문의하기</a></li>
                         <c:if test="${sessionScope.memberId ne null }">
-	                        <li><a href="/movie24/myPage.do">환불문의 내역보기</a></li>
+	                        <li><a href="/member/myPage.do">환불문의 내역보기</a></li>
 						</c:if>
                     </ul>
                 </div>
@@ -74,7 +74,7 @@
         <div id="contentArea">
             <textarea cols="139.5" rows="30" name="noticeContent" id="postContent" placeholder=" 내용을 입력해주세요.">${notice.noticeContent}</textarea>
         </div>
-         <a href="/movie24/post.do?currentPage=1" id="smbtn">목록으로</a>
+         <a href="/notice/post.do?currentPage=1" id="smbtn">목록으로</a>
        <div id="postLast"><p></p></div>
        
         <div id="main_button">
@@ -127,7 +127,7 @@
         }
         function outCheck(){
         	if(confirm("로그아웃 하시겠습니까?")){
-        		location.href="/movie24/logout.do";
+        		location.href="/member/logout.do";
         	}
         }
         function checkInsert(){

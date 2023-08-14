@@ -52,7 +52,7 @@
                 <div id="member">
                     <h3>회원 정보</h3>
                     <ul>
-                        <li><a href="/member/myUpdate.do?member-id=${member.memberId}">가입정보 수정/삭제하기</a></li>
+                        <li><a href="/member/updateInfo.do?member-id=${member.memberId}">가입정보 수정/삭제하기</a></li>
                         <li><a href="#">닉네임 변경하기</a></li>
                         <li><a href="#">약관 확인</a></li>
                     </ul>

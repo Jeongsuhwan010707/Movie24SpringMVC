@@ -37,7 +37,7 @@
             <img src="/resources/images/아이핀인증.png" alt="">
             <div id="main_image2_text"><p>아이핀 인증</p></div>
         </div>
-        <a href="/member/agree.do">다음 단계</a>
+        <a href="/member/register.do">다음 단계</a>
     </div>
 </main>
          <!-- --------------------푸터---------------------------------- -->

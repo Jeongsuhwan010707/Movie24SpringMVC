@@ -295,7 +295,7 @@
             }
             function outCheck(){
             	if(confirm("로그아웃 하시겠습니까?")){
-            		location.href="/movie24/logout.do";
+            		location.href="/member/logout.do";
             	}
             }
         </script>
