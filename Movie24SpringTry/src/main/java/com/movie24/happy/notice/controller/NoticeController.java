@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.movie24.happy.java.util.StaticMethod;
 import com.movie24.happy.notice.domain.Notice;
 import com.movie24.happy.notice.domain.PageData;
 import com.movie24.happy.notice.service.NoticeService;
@@ -33,18 +34,17 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/notice/postInsert.do", method=RequestMethod.POST)
-	public String postInsert(HttpServletRequest request
+	public void postInsert(HttpServletRequest request
 			, @RequestParam("noticeSubject") String noticeSubject
 			, @RequestParam("noticeContent") String noticeContent
 			, @RequestParam("memberNickname") String memberNickname
-			, Model model){
+			, HttpServletResponse response){
 		Notice notice = new Notice(noticeSubject, noticeContent, memberNickname);
 		int result = service.insertNotice(notice);
 		if(result > 0) {
-			return "redirect:/notice/post.do?currentPage=1";
+			StaticMethod.alertAndGo(response, "ê³µì§€ ë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.", "/notice/post.do?currentPage=1");
 		}else {
-			model.addAttribute("msg", "°øÁö»çÇ× µî·ÏÀÌ ¿Ï·áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
-			return "successOrFail/serviceFailed";
+			StaticMethod.alertAndBack(response, "ê³µì§€ì‚¬í•­ ë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}
 	}
 	
@@ -58,33 +58,32 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/notice/modify.do", method=RequestMethod.POST)
-	public String postModify(HttpServletRequest request
+	public void postModify(HttpServletRequest request
 			, @RequestParam("noticeSubject") String noticeSubject
 			, @RequestParam("noticeContent") String noticeContent
 			, @RequestParam("noticeNo") int noticeNo
+			, HttpServletResponse response
 			, Model model){
 		Notice notice = new Notice(noticeNo ,noticeSubject, noticeContent);
 		int result = service.updateNotice(notice);
 		if(result > 0) {
 			notice = service.selectOneByNo(noticeNo);
 			model.addAttribute("notice", notice);
-			return "redirect:/notice/postInfo.do?noticeNo="+notice.getNoticeNo();
+			StaticMethod.alertAndGo(response, "ê³µì§€ì‚¬í•­ ìˆ˜ì •ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.", "/notice/postInfo.do?noticeNo="+notice.getNoticeNo());
 		}else {
-			model.addAttribute("msg", "°øÁö»çÇ× ¼öÁ¤ÀÌ ¿Ï·áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
-			return "successOrFail/serviceFailed";
+			StaticMethod.alertAndBack(response, "ê³µì§€ì‚¬í•­ ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}
 	}
 	
 	@RequestMapping(value="/notice/postDelete.do", method=RequestMethod.GET)
-	public String postDelete(HttpServletRequest request
+	public void postDelete(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo
-			, Model model){
+			, HttpServletResponse response){
 		int result = service.deleteNoticeByNo(noticeNo);
 		if(result > 0) {
-			return "redirect:/notice/post.do?currentPage=1";
+			StaticMethod.alertAndGo(response, "ê³µì§€ì‚¬í•­ì„ ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤.", "/notice/post.do?currentPage=1");
 		}else {
-			model.addAttribute("msg", "°øÁö»çÇ× »èÁ¦°¡ ¿Ï·áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
-			return "successOrFail/serviceFailed";
+			StaticMethod.alertAndBack(response, "ê³µì§€ì‚¬í•­ ì‚­ì œì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}
 	}
 	
@@ -106,7 +105,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="/notice/postInfo.do", method=RequestMethod.GET)
-	public String doGet(HttpServletRequest request
+	public String postDetail(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo
 			, Model model){
 		int noticeBack = noticeNo+1;
@@ -129,7 +128,7 @@ public class NoticeController {
 			model.addAttribute("totalNum", totalNum);
 			return "help/Movie24_post_info";
 		}else {
-			model.addAttribute("msg", "µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			model.addAttribute("msg", "ìƒì„¸ë³´ê¸°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			return "successOrFail/serviceFailed";
 		}
 	}

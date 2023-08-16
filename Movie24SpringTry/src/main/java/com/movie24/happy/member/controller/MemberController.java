@@ -44,12 +44,12 @@ public class MemberController {
 		
 		Member movieMember = service.selectOneById(memberId);
 		if(memberId == null) {
-			StaticMethod.alertAndBack(response, "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			StaticMethod.alertAndBack(response, "ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		}else {			
 			if(movieMember == null) {		
-				StaticMethod.alertAndBack(response, "»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµğ ÀÔ´Ï´Ù.");
+				StaticMethod.alertAndBack(response, "ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´ë”” ì…ë‹ˆë‹¤.");
 			}else {
-				model.addAttribute("msg", "Áßº¹µÈ ¾ÆÀÌµğ´Â »ç¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+				model.addAttribute("msg", "ì¤‘ë³µëœ ì•„ì´ë””ëŠ” ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				model.addAttribute("url", "/member/register.do");
 				return "successOrFail/serviceSuccess";
 			}
@@ -73,16 +73,16 @@ public class MemberController {
 		
 		if(memberId == null || memberPw == null || memberName == null || memberNickname == null || memberAddress == null ||
 				memberPhone == null || memberEmail == null) {
-			StaticMethod.alertAndBack(response, "ÀÔ·ÂÇÏÁö ¾ÊÀº Á¤º¸°¡ ÀÖ½À´Ï´Ù");
+			StaticMethod.alertAndBack(response, "ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 		}
-		if(memberNickname.equals("°ü¸®ÀÚ")) {
-			StaticMethod.alertAndBack(response, "»ç¿ëÇÒ ¼ö ¾ø´Â ´Ğ³×ÀÓÀÔ´Ï´Ù.");
+		if(memberNickname.equals("ê´€ë¦¬ì")) {
+			StaticMethod.alertAndBack(response, "ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ë‹‰ë„¤ì„ì…ë‹ˆë‹¤.");
 		}
 		if(result > 0) {
-			StaticMethod.alertAndGo(response,"È¸¿ø°¡ÀÔÀ» ¼º°øÇÏ¿´½À´Ï´Ù","/member/signDone.do");
+			StaticMethod.alertAndGo(response,"íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.","/member/signDone.do");
 		}
 		else {
-			StaticMethod.alertAndBack(response, "È¸¿ø°¡ÀÔÀ» ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+			StaticMethod.alertAndBack(response, "íšŒì›ê°€ì…ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}
 	}
 	
@@ -103,14 +103,14 @@ public class MemberController {
 			, @RequestParam("member-phone") String memberPhone
 			, @RequestParam("member-email") String memberEmail) {
 		if(memberName == null || memberPhone == null || memberEmail == null) {
-			StaticMethod.alertAndBack(response, "¸ğµç Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			StaticMethod.alertAndBack(response, "ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		}
 		Member member = new Member(memberName, memberPhone, memberEmail);
 		Member mOne = service.searchId(member);
 		if(mOne != null) {
-			StaticMethod.alertAndGo(response, "È¸¿ø´ÔÀÇ ¾ÆÀÌµğ´Â "+mOne.getMemberId()+"ÀÔ´Ï´Ù.", "/member/searchPw.do");
+			StaticMethod.alertAndGo(response, "íšŒì›ë‹˜ì˜ ì•„ì´ë””ëŠ” "+mOne.getMemberId()+"ì…ë‹ˆë‹¤.", "/member/searchPw.do");
 		}else {
-			StaticMethod.alertAndBack(response, "È¸¿ø´ÔÀÇ Á¤º¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			StaticMethod.alertAndBack(response, "ì•„ì´ë”” ì¡°íšŒì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 	
@@ -137,13 +137,13 @@ public class MemberController {
 				HttpSession session = request.getSession();
 				session.setAttribute("memberId", mOne.getMemberId());
 				session.setAttribute("memberNickname", mOne.getMemberNickname());
-				StaticMethod.alertAndGo(response, memberId+"´Ô È¯¿µÇÕ´Ï´Ù.", "/");
+				StaticMethod.alertAndGo(response, memberId+"ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.", "/");
 			}else {
-				StaticMethod.alertAndBack(response, "¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÇÑ ¹ø È®ÀÎÇØÁÖ¼¼¿ä.");
+				StaticMethod.alertAndBack(response, "ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í•œ ë²ˆ í™•ì¸í•´ì£¼ì„¸ìš”.");
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace(); // ÄÜ¼ÖÃ¢¿¡ »¡°£»öÀ¸·Î ¶ß°Ô ÇÔ
+			e.printStackTrace();
 		}
 		
 	}
@@ -192,9 +192,9 @@ public class MemberController {
 		Member member = new Member(memberId, memberPw, memberName, memberNickname, memberAddress, memberPhone, memberEmail, memberEmailYN);
 		int result = service.updateMember(member);
 		if(result > 0) {
-			StaticMethod.alertAndGo(response, "Á¤º¸¼öÁ¤À» ¿Ï·áÇß½À´Ï´Ù.", "/");
+			StaticMethod.alertAndGo(response, "ì •ë³´ìˆ˜ì •ì„ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.", "/");
 		}else {
-			StaticMethod.alertAndBack(response, "Á¤º¸¼öÁ¤¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+			StaticMethod.alertAndBack(response, "ì •ë³´ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}
 	}
 	
@@ -203,9 +203,9 @@ public class MemberController {
 			,@RequestParam("memberId") String memberId){
 		int result = service.deleteMember(memberId);
 		if(result > 0) {
-			StaticMethod.alertAndGo(response, "È¸¿ø Å»Åğ¸¦ ¿Ï·áÇÏ¿´½À´Ï´Ù.", "/member/logout.do");
+			StaticMethod.alertAndGo(response, "íšŒì›íƒˆí‡´ë¥¼ ì™„ë£Œí•˜ì˜€ìŠµë‹ˆë‹¤.", "/member/logout.do");
 		}else {
-			StaticMethod.alertAndBack(response, "È¸¿ø Å»Åğ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+			StaticMethod.alertAndBack(response, "íšŒì›íƒˆí‡´ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}
 		
 	}
