@@ -69,4 +69,12 @@ public class NoticeServiceImpl implements NoticeService{
 		return pd;
 	}
 
+	@Override
+	public PageData searchNoticeList(int currentPage, PageData pdNum) {
+		List<Notice> nList = nStore.searchNoticeList(sqlSession, pdNum);
+		String pageNavi = nStore.generatePageNavi(sqlSession, currentPage);
+		PageData pd = new PageData(nList, pageNavi);
+		return pd;
+	}
+
 }

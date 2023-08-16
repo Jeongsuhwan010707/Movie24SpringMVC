@@ -24,6 +24,10 @@
 	<select id="selectNoticeList" resultMap="noticeResultMap">
 		SELECT * FROM( SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) ROW_NUM, NOTICE_TBL. * FROM NOTICE_TBL) WHERE ROW_NUM BETWEEN #{start} AND #{end}
 	</select>
+	<select id="searchNoticeList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+<!-- 		<bind name="seacrchValue" value="'%'+_parameter.getSearchValue()+'%'"/> -->
+		SELECT * FROM NOTICE_TBL WHERE NOTICE_CONTENT LIKE CONCAT('%',#{searchValue},'%') OR NOTICE_SUBJECT LIKE CONCAT('%',#{searchValue},'%');
+	</select>
 	<select id="selectOneByNo" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
 	</select>

@@ -25,7 +25,7 @@ public class NoticeStoreLogic implements NoticeStore{
 		int naviCountPerPage = 5; ///////////
 		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
 		int endNavi = startNavi + naviCountPerPage - 1;
-		// endNavi°ªÀÌ ÃÑ ¹üÀ§ÀÇ °¹¼öº¸´Ù Ä¿Áö´Â °ÍÀ» ¸·¾ÆÁÖ´Â ÄÚµå
+		// endNaviï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Úµï¿½
 		if (endNavi > naviTotalCount) {
 			endNavi = naviTotalCount;
 		}
@@ -86,6 +86,12 @@ public class NoticeStoreLogic implements NoticeStore{
 	public int deleteNoticeByNo(SqlSession session, int noticeNo) {
 		int result = session.delete("NoticeMapper.deleteNotice", noticeNo);
 		return result;
+	}
+
+	@Override
+	public List<Notice> searchNoticeList(SqlSession session, PageData pdNum) {
+		List<Notice> nList = session.selectList("NoticeMapper.searchNoticeList", pdNum);
+		return nList;
 	}
 	
 }

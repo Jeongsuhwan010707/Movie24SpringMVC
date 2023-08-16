@@ -7,6 +7,7 @@ public class PageData {
 	private String pageNavi;
 	private int start;
 	private int end;
+	private String searchValue;
 	
 	public PageData() {}
 	
@@ -19,6 +20,20 @@ public class PageData {
 		super();
 		this.start = start;
 		this.end = end;
+	}
+
+	public PageData(int start, int end, String searchValue) {
+		super();
+		this.start = start;
+		this.end = end;
+		this.searchValue = searchValue;
+	}
+
+	public PageData(List<Notice> nList, String pageNavi, String searchValue) {
+		super();
+		this.nList = nList;
+		this.pageNavi = pageNavi;
+		this.searchValue = searchValue;
 	}
 
 	public List<Notice> getnList() {
@@ -49,6 +64,14 @@ public class PageData {
 
 	public void setEnd(int end) {
 		this.end = end;
+	}
+
+	public String getSearchValue() {
+		return searchValue;
+	}
+
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
 	}
 	
 }

@@ -16,4 +16,5 @@ public interface NoticeService {
 	public int updateNotice(Notice notice);
 	public int deleteNoticeByNo(int noticeNo);
 	public PageData selectNoticeList(int currentPage, PageData pdNum);
+	public PageData searchNoticeList(int currentPage, PageData pdNum);
 }

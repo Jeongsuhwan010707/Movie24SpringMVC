@@ -104,6 +104,24 @@ public class NoticeController {
 		return "help/Movie24_post";
 	}
 	
+	@RequestMapping(value="/notice/search.do", method=RequestMethod.POST)
+	public String goSearchPost(HttpServletRequest request
+			, @RequestParam("currentPage") int currentPage
+			, @RequestParam("searchValue") String searchValue
+			, Model model){
+		
+		int start = 1+ (currentPage-1)*14; 
+		int end = (currentPage*14);
+		PageData pdNum = new PageData(start, end, searchValue);
+		PageData pd = service.searchNoticeList(currentPage, pdNum);
+		Notice notice0 = service.selectOneByNo(0);
+		List<Notice> nList = pd.getnList();
+		model.addAttribute("nList", nList);
+		model.addAttribute("notice0", notice0);
+		model.addAttribute("pageNavi", pd.getPageNavi());
+		return "help/Movie24_postSearch";
+	}
+	
 	@RequestMapping(value="/notice/postInfo.do", method=RequestMethod.GET)
 	public String postDetail(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo

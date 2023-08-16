@@ -16,4 +16,5 @@ public interface NoticeStore {
 	public int insertNotice(SqlSession session, Notice notice);
 	public int updateNotice(SqlSession session, Notice notice);
 	public int deleteNoticeByNo(SqlSession session, int noticeNo);
+	public List<Notice> searchNoticeList(SqlSession sqlSession, PageData pdNum);
 }

@@ -257,7 +257,7 @@ nav{
             width: 1000px;
             height: 70px;
             float: left;
-            padding-top: 13px;
+            padding-top: 19px;
         }
         #post-text input{
             width: 300px;
@@ -277,7 +277,7 @@ nav{
             font-family: 'LINESeedKR-Bd';
             color: white;
             background-color: #222;
-			padding-top: 4px;        
+			padding-top: 2px;        
 /*             position: absolute; */
 /*             top: 168px; */
 /*             left: 53.6%; */
