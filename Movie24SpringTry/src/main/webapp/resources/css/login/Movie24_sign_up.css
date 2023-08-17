@@ -293,12 +293,29 @@ main{
         bottom: 140px;
         left: 46%
     }
-    #content_area button{
+    #checkIdBtn{
+        width: 100px;
+	    height: 40px;
+	    position: absolute;
+	    top: 277.5px;
+	    right: 23%
+	    font-size: 15px;
+    }
+    #checkIdBtn{
         width: 80px;
         height: 30px;
         position: absolute;
         top: 283px;
-        right:25%
+        right:20.2%
+        font-size: 15px;
+    }
+    #searchAddrBtn{
+    	width: 100px;
+	    height: 40px;
+	    position: absolute;
+	    bottom: 312.5px;
+	    right: 20%;
+	    font-size: 15px;
     }
     #sm{
         position: absolute;

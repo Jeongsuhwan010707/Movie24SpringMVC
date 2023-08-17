@@ -24,9 +24,8 @@
 	<select id="selectNoticeList" resultMap="noticeResultMap">
 		SELECT * FROM( SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) ROW_NUM, NOTICE_TBL. * FROM NOTICE_TBL) WHERE ROW_NUM BETWEEN #{start} AND #{end}
 	</select>
-	<select id="searchNoticeList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
-<!-- 		<bind name="seacrchValue" value="'%'+_parameter.getSearchValue()+'%'"/> -->
-		SELECT * FROM NOTICE_TBL WHERE NOTICE_CONTENT LIKE CONCAT('%',#{searchValue},'%') OR NOTICE_SUBJECT LIKE CONCAT('%',#{searchValue},'%');
+	<select id="searchNoticeList" resultMap="noticeResultMap">
+		SELECT * FROM( SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) ROW_NUM, NOTICE_TBL. * FROM NOTICE_TBL) WHERE NOTICE_CONTENT LIKE '%'||#{searchValue}||'%' AND ROW_NUM BETWEEN #{start} AND #{end}  
 	</select>
 	<select id="selectOneByNo" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
@@ -34,5 +33,8 @@
 <!-- 	result map total로 하나 만들기 -->
 	<select id="selectTotal" resultType="Integer"> 
 		SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE_TBL
+	</select>
+	<select id="selectSearchTotal" resultType="Integer"> 
+		SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE_TBL WHERE NOTICE_CONTENT LIKE '%'||#{searchValue}||'%'
 	</select>
 </mapper>

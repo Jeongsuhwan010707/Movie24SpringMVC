@@ -14,24 +14,24 @@
 		<result property="memberEmailYN" column="MEMBER_EMAILYN" />
 		<result property="memberDate" column="MEMBER_DATE" />
 		<result property="updateDate" column="UPDATE_DATE" />
-	
+		<result property="memberYN" column="MEMBER_YN" />
 	</resultMap>
 	<insert id="insertMember" parameterType="movie24.member.model.vo.MovieMember">
-		INSERT INTO MOVIEMEMBER_TBL VALUES(#{memberId},#{memberPw},#{memberName},#{memberNickname},#{memberAddress},#{memberPhone},#{memberEmail},#{memberEmailYN},DEFAULT,DEFAULT)
+		INSERT INTO MOVIEMEMBER_TBL VALUES(#{memberId},#{memberPw},#{memberName},#{memberNickname},#{memberAddress},#{memberPhone},#{memberEmail},#{memberEmailYN},DEFAULT,DEFAULT,'Y')
 	</insert>
 	<update id="updateMember">
-		UPDATE MOVIEMEMBER_TBL SET MEMBER_PW = #{memberPw}, MEMBER_NAME = #{memberName}, MEMBER_NICKNAME = #{memberNickname}, MEMBER_ADDRESS = #{memberAddress}, MEMBER_PHONE = #{memberPhone}, MEMBER_EMAIL = #{memberEmail}, MEMBER_EMAILYN = #{memberEmailYN}, UPDATE_DATE = DEFAULT WHERE MEMBER_ID = #{memberId}
+		UPDATE MOVIEMEMBER_TBL SET MEMBER_PW = #{memberPw}, MEMBER_NAME = #{memberName}, MEMBER_NICKNAME = #{memberNickname}, MEMBER_ADDRESS = #{memberAddress}, MEMBER_PHONE = #{memberPhone}, MEMBER_EMAIL = #{memberEmail}, MEMBER_EMAILYN = #{memberEmailYN}, UPDATE_DATE = DEFAULT WHERE MEMBER_ID = #{memberId} AND MEMBER_YN = 'Y'
 	</update>
 	<delete id="deleteMember">
-		DELETE FROM MOVIEMEMBER_TBL WHERE MEMBER_ID = #{memberId}
+		UPDATE MOVIEMEMBER_TBL SET MEMBER_YN = 'N' WHERE MEMBER_ID = #{memberId} AND MEMBER_YN = 'Y'
 	</delete>
 	<select id="selectCheckLogin" resultMap="memberResultMap">
-		SELECT * FROM MOVIEMEMBER_TBL WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw}
+		SELECT * FROM MOVIEMEMBER_TBL WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw} AND MEMBER_YN = 'Y'
 	</select>
 	<select id="selectOneById" resultMap="memberResultMap">
-		SELECT * FROM MOVIEMEMBER_TBL WHERE MEMBER_ID = #{memberId}
+		SELECT * FROM MOVIEMEMBER_TBL WHERE MEMBER_ID = #{memberId} AND MEMBER_YN = 'Y'
 	</select>
 	<select id="searchId" resultMap="memberResultMap">
-		SELECT * FROM MOVIEMEMBER_TBL WHERE MEMBER_NAME = #{memberName} AND MEMBER_PHONE = #{memberPhone} AND MEMBER_EMAIL = #{memberEmail}
+		SELECT * FROM MOVIEMEMBER_TBL WHERE MEMBER_NAME = #{memberName} AND MEMBER_PHONE = #{memberPhone} AND MEMBER_EMAIL = #{memberEmail} AND MEMBER_YN = 'Y'
 	</select>
 </mapper>

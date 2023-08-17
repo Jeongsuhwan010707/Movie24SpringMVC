@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -104,14 +105,15 @@ public class NoticeController {
 		return "help/Movie24_post";
 	}
 	
-	@RequestMapping(value="/notice/search.do", method=RequestMethod.POST)
+	@RequestMapping(value="/notice/search.do", method=RequestMethod.GET)
 	public String goSearchPost(HttpServletRequest request
 			, @RequestParam("currentPage") int currentPage
 			, @RequestParam("searchValue") String searchValue
+			, HttpSession session
 			, Model model){
-		
 		int start = 1+ (currentPage-1)*14; 
 		int end = (currentPage*14);
+		session.setAttribute("searchValue", searchValue);
 		PageData pdNum = new PageData(start, end, searchValue);
 		PageData pd = service.searchNoticeList(currentPage, pdNum);
 		Notice notice0 = service.selectOneByNo(0);
@@ -119,6 +121,7 @@ public class NoticeController {
 		model.addAttribute("nList", nList);
 		model.addAttribute("notice0", notice0);
 		model.addAttribute("pageNavi", pd.getPageNavi());
+		model.addAttribute("searchValue", searchValue);
 		return "help/Movie24_postSearch";
 	}
 	

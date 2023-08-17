@@ -260,9 +260,10 @@ nav{
             padding-top: 19px;
         }
         #post-text input{
-            width: 300px;
+            width: 400px;
             height: 40px;
             font-size: 18px;
+            line-height: 40px;
         }
         #post-text select{
             width: 100px;
@@ -277,7 +278,7 @@ nav{
             font-family: 'LINESeedKR-Bd';
             color: white;
             background-color: #222;
-			padding-top: 2px;        
+			padding-top: 5px;        
 /*             position: absolute; */
 /*             top: 168px; */
 /*             left: 53.6%; */

@@ -10,6 +10,7 @@ import com.movie24.happy.notice.domain.PageData;
 public interface NoticeStore {
 	
 	public String generatePageNavi(SqlSession session, int currentPage);
+	public String generateSearchPageNavi(SqlSession session, int currentPage, String searchValue);
 	public List<Notice> selectNoticeList(SqlSession session, PageData pdNum);
 	public int selectTotal(SqlSession session);
 	public Notice selectOneByNo(SqlSession session, int noticeNo);

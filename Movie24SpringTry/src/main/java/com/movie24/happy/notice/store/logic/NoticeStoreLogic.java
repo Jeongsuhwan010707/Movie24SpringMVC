@@ -40,22 +40,57 @@ public class NoticeStoreLogic implements NoticeStore{
 		StringBuilder result = new StringBuilder();
 		result.append("<div id='number'>");
 		if (needPrev) {
-			result.append("<a id='postNum' href='/movie24/post.do?currentPage=" + (startNavi - 1) + "'><<a>");
+			result.append("<a href='/notice/post.do?currentPage=" + (startNavi - 1) + "'><<a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
 			result.append("<a href='/notice/post.do?currentPage=" + i + "'>" + i + " </a>");
 		}
 		if (needNext) {
-			result.append("<a id='postNum' href='/movie24/post.do?currentPage=" + (endNavi + 1) + "'>><a>");
+			result.append("<a id='postNum' href='/notice/post.do?currentPage=" + (endNavi + 1) + "'>><a>");
 		}
 		result.append("</div>");
 		return result.toString();
 	}
-
+	
 	@Override
-	public List<Notice> selectNoticeList(SqlSession session, PageData pdNum) {
-		List<Notice> nList = session.selectList("NoticeMapper.selectNoticeList", pdNum);
-		return nList;
+	public String generateSearchPageNavi(SqlSession session, int currentPage, String searchValue) {
+		
+		int totalCount = session.selectOne("NoticeMapper.selectSearchTotal", searchValue);
+		int recordCountPerPage = 15;
+		int naviTotalCount = 0;
+		if (totalCount % recordCountPerPage > 0) {
+			naviTotalCount = totalCount / recordCountPerPage + 1;
+		} else {
+			naviTotalCount = totalCount / recordCountPerPage;
+		}
+		int naviCountPerPage = 5; ///////////
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+		int endNavi = startNavi + naviCountPerPage - 1;
+		// endNavi���� �� ������ �������� Ŀ���� ���� �����ִ� �ڵ�
+		if (endNavi > naviTotalCount) {
+			endNavi = naviTotalCount;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if (startNavi == 1) {
+			needPrev = false;
+		}
+		if (endNavi == naviTotalCount) {
+			needNext = false;
+		}
+		StringBuilder result = new StringBuilder();
+		result.append("<div id='number'>");
+		if (needPrev) {
+			result.append("<a onclick='noticeSearch();' href='/notice/search.do?currentPage=" + (startNavi - 1) + "'><<a>");
+		}
+		for (int i = startNavi; i <= endNavi; i++) {
+			result.append("<a onclick='noticeSearch();' href='/notice/search.do?currentPage=" + i + "'>" + i + " </a>");
+		}
+		if (needNext) {
+			result.append("<a onclick='noticeSearch();' id='postNum' href='/notice/search.do?currentPage=" + (endNavi + 1) + "'>><a>");
+		}
+		result.append("</div>");
+		return result.toString();
 	}
 
 	@Override
@@ -88,6 +123,12 @@ public class NoticeStoreLogic implements NoticeStore{
 		return result;
 	}
 
+	@Override
+	public List<Notice> selectNoticeList(SqlSession session, PageData pdNum) {
+		List<Notice> nList = session.selectList("NoticeMapper.selectNoticeList", pdNum);
+		return nList;
+	}
+	
 	@Override
 	public List<Notice> searchNoticeList(SqlSession session, PageData pdNum) {
 		List<Notice> nList = session.selectList("NoticeMapper.searchNoticeList", pdNum);

@@ -13,6 +13,7 @@ public class Member {
 	private String memberEmailYN;
 	private Timestamp memberDate;
 	private Timestamp updateDate;
+	private String memberYN;
 	
 	public Member() {}
 	
@@ -136,12 +137,22 @@ public class Member {
 	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
+	
+	public String getMemberYN() {
+		return memberYN;
+	}
+
+	public void setMemberYN(String memberYN) {
+		this.memberYN = memberYN;
+	}
 
 	@Override
 	public String toString() {
-		return "회원 [아이디=" + memberId + ", 비밀번호=" + memberPw + ", 이름=" + memberName
-				+ ", 닉네임=" + memberNickname + ", 주소=" + memberAddress + ", 휴대폰="
-				+ memberPhone + ", 이메일=" + memberEmail + ", 이메일 수신여부=" + memberEmailYN + ", 가입날짜="
-				+ memberDate + ", 수정날짜=" + updateDate + "]";
+		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
+				+ ", memberNickname=" + memberNickname + ", memberAddress=" + memberAddress + ", memberPhone="
+				+ memberPhone + ", memberEmail=" + memberEmail + ", memberEmailYN=" + memberEmailYN + ", memberDate="
+				+ memberDate + ", updateDate=" + updateDate + ", memberYN=" + memberYN + "]";
 	}
+
+	
 }

@@ -34,7 +34,7 @@
 						<ul>
 							<li><label for="member-id">아이디</label> 
 							<input type="text" name="member-id" id="member-id" placeholder=" 아이디를 입력해주세요."></li>
-							<button type="button" onclick="checkId();">중복확인</button>
+							<button type="button" onclick="checkId();" id="checkIdBtn">중복확인</button>
 							<li><label for="pw">비밀번호</label> <input
 								type="password" id="pw" onchange="check_pw()" name="member-pw"
 								placeholder=" 비밀번호를 입력해주세요."></li>
@@ -47,7 +47,9 @@
 							<li><label for="member-nickName">닉네임</label> <input
 								type="text" id="member-nickName" name="member-nickName" placeholder=" ex) cuty11, ..."></li>
 							<li><label for="member-address">주소</label> <input type="text"
-								name="member-address" id="member-address" placeholder=" 주소 입력"></li>
+								name="member-address" id="memberAddress" placeholder=" 주소 입력">
+								<input id="searchAddrBtn" type="button" value="주소검색" onclick="sample4_exeDaumPostcode();">
+								</li>
 							<li><label for="member-phone">전화번호</label> <input type="tel"
 								name="member-phone" id="member-phone" placeholder=" 010-XXXX-XXXX"></li>
 							<li><label for="member-email">이메일</label> <input type="email"
@@ -61,6 +63,16 @@
 		</div>
 		
 	</main>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script type="text/javascript">
+			function sample4_exeDaumPostcode(){
+				new daum.Postcode({
+					oncomplete : function(data){
+						document.querySelector("#memberAddress").value = data.roadAddress; 
+					}
+				}).open();
+			}
+	</script>
 	<!-- --------------------푸터---------------------------------- -->
 	<footer class="footer">
 		<div class="footer-container">
