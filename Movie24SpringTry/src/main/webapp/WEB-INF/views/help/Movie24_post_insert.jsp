@@ -32,7 +32,7 @@
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
+                        <li><a href="/notice/post.do">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -63,7 +63,8 @@
         <div id="h2">
             <h2>공지사항</h2>
         </div>
-         <form name="insertForm" action="/notice/postInsert.do?memberNickname=${memberNickname }" method="post">
+         <form name="insertForm" action="/notice/postInsert.do" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="noticeWriter" value="${memberNickname}">
          <input type="hidden" name="noticeNo" value="${notice.noticeNo }">
         <div id="titleArea">
             <input type="text" id="postTitle" placeholder=" (작성글) 제목을 입력해주세요." name="noticeSubject">
@@ -71,10 +72,14 @@
         <div id="imgArea">
             <img src="/resources/images/postInsert.png" id="postImg" alt="">
         </div>
+        <div id="fileArea">
+	        <label>&nbsp;첨부파일&nbsp;</label>
+			<input type="file" name="uploadFile">
+        </div>
         <div id="contentArea">
             <textarea cols="139.5" rows="30" name="noticeContent" id="postContent" placeholder=" 내용을 입력해주세요."></textarea>
         </div>
-         <a href="/notice/post.do?currentPage=1" id="smbtn">목록으로</a>
+         <a href="/notice/post.do" id="smbtn">목록으로</a>
        <div id="postLast"></div>
        
         <div id="main_button">

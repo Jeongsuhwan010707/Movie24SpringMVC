@@ -30,7 +30,7 @@
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
+                        <li><a href="/notice/post.do">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -96,7 +96,7 @@
             </c:if>
         </div>
         <div id="main_button">
-            <a href="/notice/post.do?currentPage=1" id="before">목록으로</a>
+            <a href="/notice/post.do" id="before">목록으로</a>
             <c:if test="${memberId eq 'khuser01'}">
             <a href="/notice/modify.do?noticeNo=${notice.noticeNo}" id="modify">수정하기</a>
             <a href="javascript:void(0)" onclick="deleteCheck();" id="delete">삭제하기</a>

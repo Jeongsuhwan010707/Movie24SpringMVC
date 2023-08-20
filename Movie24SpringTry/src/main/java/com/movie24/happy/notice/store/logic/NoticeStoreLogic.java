@@ -1,103 +1,18 @@
 package com.movie24.happy.notice.store.logic;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.movie24.happy.notice.domain.Notice;
-import com.movie24.happy.notice.domain.PageData;
+import com.movie24.happy.notice.domain.PageInfo;
 import com.movie24.happy.notice.store.NoticeStore;
 
 @Repository
 public class NoticeStoreLogic implements NoticeStore{
-
-	@Override
-	public String generatePageNavi(SqlSession session, int currentPage) {
-		int totalCount = session.selectOne("NoticeMapper.selectTotal");
-		int recordCountPerPage = 15;
-		int naviTotalCount = 0;
-		if (totalCount % recordCountPerPage > 0) {
-			naviTotalCount = totalCount / recordCountPerPage + 1;
-		} else {
-			naviTotalCount = totalCount / recordCountPerPage;
-		}
-		int naviCountPerPage = 5; ///////////
-		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
-		int endNavi = startNavi + naviCountPerPage - 1;
-		// endNavi���� �� ������ �������� Ŀ���� ���� �����ִ� �ڵ�
-		if (endNavi > naviTotalCount) {
-			endNavi = naviTotalCount;
-		}
-		boolean needPrev = true;
-		boolean needNext = true;
-		if (startNavi == 1) {
-			needPrev = false;
-		}
-		if (endNavi == naviTotalCount) {
-			needNext = false;
-		}
-		StringBuilder result = new StringBuilder();
-		result.append("<div id='number'>");
-		if (needPrev) {
-			result.append("<a href='/notice/post.do?currentPage=" + (startNavi - 1) + "'><<a>");
-		}
-		for (int i = startNavi; i <= endNavi; i++) {
-			result.append("<a href='/notice/post.do?currentPage=" + i + "'>" + i + " </a>");
-		}
-		if (needNext) {
-			result.append("<a id='postNum' href='/notice/post.do?currentPage=" + (endNavi + 1) + "'>><a>");
-		}
-		result.append("</div>");
-		return result.toString();
-	}
-	
-	@Override
-	public String generateSearchPageNavi(SqlSession session, int currentPage, String searchValue) {
-		
-		int totalCount = session.selectOne("NoticeMapper.selectSearchTotal", searchValue);
-		int recordCountPerPage = 15;
-		int naviTotalCount = 0;
-		if (totalCount % recordCountPerPage > 0) {
-			naviTotalCount = totalCount / recordCountPerPage + 1;
-		} else {
-			naviTotalCount = totalCount / recordCountPerPage;
-		}
-		int naviCountPerPage = 5; ///////////
-		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
-		int endNavi = startNavi + naviCountPerPage - 1;
-		// endNavi���� �� ������ �������� Ŀ���� ���� �����ִ� �ڵ�
-		if (endNavi > naviTotalCount) {
-			endNavi = naviTotalCount;
-		}
-		boolean needPrev = true;
-		boolean needNext = true;
-		if (startNavi == 1) {
-			needPrev = false;
-		}
-		if (endNavi == naviTotalCount) {
-			needNext = false;
-		}
-		StringBuilder result = new StringBuilder();
-		result.append("<div id='number'>");
-		if (needPrev) {
-			result.append("<a onclick='noticeSearch();' href='/notice/search.do?currentPage=" + (startNavi - 1) + "'><<a>");
-		}
-		for (int i = startNavi; i <= endNavi; i++) {
-			result.append("<a onclick='noticeSearch();' href='/notice/search.do?currentPage=" + i + "'>" + i + " </a>");
-		}
-		if (needNext) {
-			result.append("<a onclick='noticeSearch();' id='postNum' href='/notice/search.do?currentPage=" + (endNavi + 1) + "'>><a>");
-		}
-		result.append("</div>");
-		return result.toString();
-	}
-
-	@Override
-	public int selectTotal(SqlSession session) {
-		int totalCount = session.selectOne("NoticeMapper.selectTotal");
-		return totalCount;
-	}
 
 	@Override
 	public Notice selectOneByNo(SqlSession session, int noticeNo) {
@@ -123,16 +38,53 @@ public class NoticeStoreLogic implements NoticeStore{
 		return result;
 	}
 
-	@Override
-	public List<Notice> selectNoticeList(SqlSession session, PageData pdNum) {
-		List<Notice> nList = session.selectList("NoticeMapper.selectNoticeList", pdNum);
-		return nList;
-	}
-	
-	@Override
-	public List<Notice> searchNoticeList(SqlSession session, PageData pdNum) {
-		List<Notice> nList = session.selectList("NoticeMapper.searchNoticeList", pdNum);
-		return nList;
-	}
+	//리스트 출력
+		@Override
+		public List<Notice> selectNoticeList(SqlSession session,PageInfo pInfo) {
+
+			//limit 은 행의 개수 제어하는거임 10개씩 가져오고싶으면 10
+			int limit = pInfo.getRecordCountPerPage();
+			
+			// offset 은 변하는 default 값이라고 보면 됨
+			// 시작하는 값을 세팅해줌 (1,2,3,4,5)
+			//1페이지 볼때는 1~10을 봐야함
+			//2페이지 볼때는 11~20 봐야함
+			// 계속해서 값이 바껴야함
+			// 그렇기때문에 curruntPage를 매개변수로 넘겨주고 -1 한 값에 limit을 곱해준다
+			int offset = (pInfo.getCurruntPage() - 1) * limit;
+			
+			RowBounds rowBounds = new RowBounds(offset, limit);
+			
+			//rowBounds 는 3번째 자리에 넣어야함, 가운데에는 아무것도 없을때 Null 넣어줌
+			// 넘겨주는 값이 있으면 null 말고 매개변수 넣어주는거임, 여기는 매개변수가 없음
+			List<Notice> nList = session.selectList("NoticeMapper.noticeAllSelect",null,rowBounds);
+			return nList;
+		}
+		
+		@Override
+		public int getListCount(SqlSession session) {
+			int result = session.selectOne("NoticeMapper.selectNoticeCount");
+			return result;
+		}
+
+		@Override
+		public List<Notice> searchNoticeByKeyword(SqlSession session,PageInfo pInfo, Map<String,String> paraMap) {
+		
+			//2개의 값을 포함해서 총 세가지 쿼리를 주지 못하기 때문에 해결할 수 있는 방법
+			// 1. VO 클래스를 만들어서 넘겨주기
+			// 2. HashMap 사용하기
+			
+			int limit = pInfo.getRecordCountPerPage();
+			int offset = (pInfo.getCurruntPage()-1)*limit;
+			RowBounds rowbounds = new RowBounds(offset, limit);
+			List<Notice> nList = session.selectList("NoticeMapper.selectNoticeByKeyword",paraMap,rowbounds);
+			return nList;
+		}
+
+		@Override
+		public int searchListCount(SqlSession session, Map<String, String> paramMap) {
+				int result = session.selectOne("NoticeMapper.searchListByKeywordCount",paramMap);
+			return result;
+		}
 	
 }

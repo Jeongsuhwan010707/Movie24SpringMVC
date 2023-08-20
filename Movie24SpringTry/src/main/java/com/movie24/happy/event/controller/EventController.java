@@ -27,4 +27,9 @@ public class EventController {
 			model.addAttribute("src", src);
 			return "event/Movie24_event_info";
 	}
+	
+	@RequestMapping(value="/movie24/eventList.do", method=RequestMethod.GET)
+	public String goEventList(){
+		return "event/Movie24_eventList";
+	}
 }

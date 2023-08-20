@@ -17,6 +17,7 @@
     font-weight: 700;
     font-style: normal;
 }
+
 *{
     margin: 0;
     padding: 0;
@@ -276,9 +277,14 @@ nav{
                 float: left;
             }
             /*-------- -------인기차트--------------- */
+	main span{
+        	font-family: 'PyeongChangPeace-Bold';
+        	color: #2922b9;
+        	font-style: italic;
+    		font-size: 30px;
+        }     
         .popular{
             width: 1300px;
-            height: 550px;
             /* background-color: blue; */
             margin: 0 auto;
             /* padding: 0px 45px; */
@@ -287,7 +293,6 @@ nav{
         }
         .popular2{
             width: 1300px;
-            height: 550px;
             margin: 0 auto;
             display: none;
             position: relative;
@@ -313,11 +318,40 @@ nav{
                 float: right;
                 margin: 30px 30px;
             }
-        .popular_image img{
+        .popularPoster{
             width: 210px;
             border-radius: 20px;
         }
-        
+        .age1{
+        	position: absolute;
+		    top: 120px;
+		    left: 35px;
+		    width: 30px;
+		}
+        .age2{
+        	position: absolute;
+		    top: 120px;
+		    left: 295px;
+		    width: 30px;
+		}
+		.age3{
+        	position: absolute;
+		    top: 120px;
+		    left: 555px;
+		    width: 30px;
+		}
+		.age4{
+        	position: absolute;
+		    top: 120px;
+		    left: 815px;
+		    width: 30px;
+		}
+		.age5{
+        	position: absolute;
+		    top: 120px;
+		    left: 1075px;
+		    width: 30px;
+		}
         .lookDetail{
             position: absolute;
             width: 150px;

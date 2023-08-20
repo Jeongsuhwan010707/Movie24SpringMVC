@@ -199,7 +199,7 @@ nav{
    main{
         margin: 0 auto;
         width: 1300px;
-        height: 1100px;
+        height: 1150px;
         /* background-color: red; */
         position: relative;
         margin-top: 20px auto;
@@ -329,6 +329,19 @@ nav{
             height: 20px;
             margin-top: 70px;
             border-top: 1px solid #222;
+        }
+         #fileArea{
+        	width: 1000px;
+		    height: 30px;
+		    border: 1px solid #d5d5d5;
+		    float: left;
+		    margin: 5px 0px;
+		    margin-bottom: 8px;
+		    font-family: 'S-CoreDream-3Light';
+        }
+        #fileArea input{
+        	font-family: 'S-CoreDream-3Light';
+        	padding-top: 2px;
         }
     /* ----------푸터------------------------- */
 .footer {

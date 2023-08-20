@@ -97,7 +97,7 @@ header{
             margin-right: 3px;
             margin-top: 20px;
         }
-   
+    
 /* -----------------네비게이터-------------------------- */
 nav{
     width: 100%;
@@ -196,55 +196,123 @@ nav{
                 transition: opacity 0.7s ease;
             }
 /* -----------------------------------메인-------------------- */
-    main{
+     main{
         margin: 0 auto;
         width: 1300px;
+/*         height: 2500px; */
         /* background-color: red; */
         position: relative;
     }
         #main_logo{
             width: 100%;
-            height: 170px;
+            height: 150px;
             /* background-color: green; */
             border-bottom: 1px solid #ccc;
         }
             #main_logo h1{
-                text-align: center;
                 font-family: 'S-CoreDream-3Light';
                 font-size: 35px;
                 font-weight: 700;
                 padding-top: 50px;
+                padding-left: 25px;
             }
-            #img_area{
-                width: 100%;
-                height: 100%;
-                margin: 0 auto;
-                text-align: center;
-                margin-top: 100px;
-            }
-        #main_button{
-            	width: 100%;
-                height: 200px;
-                margin: 0 auto;
-                text-align: center;
-            }
-        #main_button a{
-            position: absolute;
-            bottom: 80px;
-            right: 45%;
-            width: 130px;
-            height: 50px;
-            background-color: #362FD9;
-            text-align: center;
-            color: white;
-            border-radius: 15px;
-            font-family: 'LINESeedKR-Bd';
-            font-size: 20px;
-            padding-top: 12px;
+       .popular_title{
+            width: 100%;
+            height: 100px;
+       	}
+     .popular{
+            width: 100%;
+/*             height: 550px; */
+            /* background-color: blue; */
+            margin: 0 auto;
+            /* padding: 0px 45px; */
+            display: block;
         }
-        #main_button a:hover{
-            opacity: 0.7;
-            transition: opacity 0.4s ease;
+        .popular2{
+            width: 100%;
+/*             height: 550px; */
+            margin: 0 auto;
+            display: none;
+        }
+	        .popular_image{
+	            width: 100%;
+	            height: 450px;
+	        }
+            .popular_title button{
+                margin-top: 28px;
+                margin-left: 25px;
+                border: 1px soild #ccc;
+                float: left;
+                width: 150px;
+                height: 50px;
+                font-size: 20px;
+                background-color: transparent;
+                font-family: 'S-CoreDream-3Light';
+                border-radius: 5px;
+            }
+            .popular_title img{
+                width: 40px;
+                float: right;
+                margin: 30px 30px;
+            }
+        .popularPoster1{
+            width: 210px;
+            border: 1px solid #ccc;
+        }
+        .age{
+        	width: 20px;
+        }
+        .lookDetail{
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: #FF6666;
+            border: 3px solid #f04343;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 18px;
+            color: white;
+            display: none;
+        }
+        #lookDetail1, #lookDetail6{
+            top: 140px;
+            left: 55px;
+        }
+        #lookDetail2, #lookDetail7{
+            top: 140px;
+            left: 315px;
+        }
+        #lookDetail3, #lookDetail8{
+            top: 140px;
+            left: 575px;
+        }
+        #lookDetail4, #lookDetail9{
+            top: 140px;
+            left: 835px;
+        }
+        #lookDetail5, #lookDetail10{
+            top: 140px;
+            left: 1095px;
+        }
+        .popular_image ul li{
+            float: left;
+            margin: 10px 25px;
+        }
+        .popular_image h4{
+            font-size: 22px;
+            text-align: center;
+            font-family: 'S-CoreDream-3Light';
+            font-weight: 600;
+            margin: 15px 0px;
+        }
+        .popular_image p{
+            font-family: 'S-CoreDream-3Light';
+            text-align: center;
+            font-weight: 300;
+            margin: 15px 0px;
+        }
+        .active1{
+            display: block;
         }
     /* ----------푸터------------------------- */
 .footer {

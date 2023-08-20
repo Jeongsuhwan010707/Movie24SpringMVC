@@ -10,10 +10,13 @@
 		<result property="noticeWriter" column="NOTICE_WRITER" />
 		<result property="noticeDate" column="NOTICE_DATE" />
 		<result property="updateDate" column="UPDATE_DATE" />
+		<result property="noticeFilename" column="NOTICE_FILENAME" />
+		<result property="noticeFilepath" column="NOTICE_FILEPATH" />
+		<result property="noticeFilelength" column="NOTICE_FILELENGTH" />
 		<result property="viewCount" column="VIEW_COUNT" />
 	</resultMap>
 	<insert id="insertNotice">
-		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICENO.NEXTVAL, #{noticeSubject}, #{noticeContent}, #{noticeWriter} ,DEFAULT,DEFAULT,DEFAULT)
+		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,#{noticeFilename},#{noticeFilepath},#{noticeFilelength},DEFAULT)
 	</insert>
 	<update id="updateNotice">
 		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent}, UPDATE_DATE = SYSDATE WHERE NOTICE_NO = #{noticeNo}
@@ -21,20 +24,52 @@
 	<delete id="deleteNotice">
 		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
 	</delete>
-	<select id="selectNoticeList" resultMap="noticeResultMap">
-		SELECT * FROM( SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) ROW_NUM, NOTICE_TBL. * FROM NOTICE_TBL) WHERE ROW_NUM BETWEEN #{start} AND #{end}
-	</select>
-	<select id="searchNoticeList" resultMap="noticeResultMap">
-		SELECT * FROM( SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) ROW_NUM, NOTICE_TBL. * FROM NOTICE_TBL) WHERE NOTICE_CONTENT LIKE '%'||#{searchValue}||'%' AND ROW_NUM BETWEEN #{start} AND #{end}  
-	</select>
 	<select id="selectOneByNo" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
 	</select>
-<!-- 	result map total로 하나 만들기 -->
-	<select id="selectTotal" resultType="Integer"> 
-		SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE_TBL
+	
+	<select id="noticeAllSelect" resultMap="noticeResultMap">
+		SELECT * FROM NOTICE_TBL
 	</select>
-	<select id="selectSearchTotal" resultType="Integer"> 
-		SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE_TBL WHERE NOTICE_CONTENT LIKE '%'||#{searchValue}||'%'
+
+	<select id="selectNoticeCount" resultType="_int">
+		SELECT COUNT(*) FROM NOTICE_TBL
 	</select>
+
+	<select id="selectNoticeByKeyword" resultMap="noticeResultMap">
+		SELECT * FROM NOTICE_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
+
+	<select id="searchListByKeywordCount" resultType="_int">
+	
+		SELECT COUNT(*) FROM NOTICE_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		
+	</select>
+
 </mapper>

@@ -31,7 +31,7 @@
 					</ul>
 					<h3>공지사항</h3>
 					<ul>
-						<li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
+						<li><a href="/notice/post.do">공지사항목록</a></li>
 					</ul>
 					<h3>자주 찾는 질문</h3>
 					<ul>
@@ -63,58 +63,75 @@
 				<h2>공지사항</h2>
 			</div>
 			<form name="searchForm" action="/notice/search.do" method="get">
-				<input type="hidden" value="1" name=currentPage>
 				<div id="post-text">
-					<select name="searchOption" id="searchOption">
+					<select name="searchCondition" id="searchOption">
 						<option value="all">전체</option>
-						<option value="subject">제목</option>
+						<option value="writer">작성자</option>
+						<option value="title">제목</option>
 						<option value="content">내용</option>
-					</select> 
-					<input type="text" placeholder="검색할 내용을 입력해주세요." name="searchValue">
+					</select>
+					<input type="text" placeholder="검색할 내용을 입력해주세요." name="searchKeyword">
 					<button type="button" id="searchPost" onclick="noticeSearch();">검색하기</button>
 					<c:if test="${memberId ne null}">
 						<a href="/notice/postInsert.do?memberNickname=${memberNickname }"
 							id="postInsert">글쓰기</a>
 					</c:if>
 				</div>
-			<div id="table">
-				<table>
-					<tr id="tr1">
-						<th class="tr">번호</th>
-						<th class="tr">글쓴이</th>
-						<th id="tr">제목</th>
-						<th class="tr">등록일</th>
-						<th class="tr">조회수</th>
-					</tr>
-				</table>
-			</div>
-			<div id="table-1">
-				<table>
-					<tr id="postMain">
-						<td class="tr">공지</td>
-						<td class="tr">관리자</td>
-						<td id="tr"><a
-							href="/notice/postInfo.do?noticeNo=${notice0.noticeNo}">${notice0.noticeSubject}</a></td>
-						<td class="tr">${notice0.noticeDate }</td>
-						<td class="tr">${notice0.viewCount }</td>
-					</tr>
-					<c:forEach var="notice" items="${nList}">
-						<c:if test="${notice.noticeNo ne '0' }">
-							<tr id="postList">
-								<td class="tr">${notice.noticeNo }</td>
-								<td class="tr">${notice.noticeWriter }</td>
-								<td id="tr"><a
-									href="/notice/postInfo.do?noticeNo=${notice.noticeNo}">${notice.noticeSubject}</a></td>
-								<td class="tr">${notice.noticeDate }</td>
-								<td class="tr">${notice.viewCount }</td>
-							</tr>
-						</c:if>
+				<div id="table">
+					<table>
+						<tr id="tr1">
+							<th class="tr">번호</th>
+							<th class="tr">글쓴이</th>
+							<th id="tr">제목</th>
+							<th class="tr">등록일</th>
+							<th class="tr">조회수</th>
+						</tr>
+					</table>
+				</div>
+				<div id="table-1">
+					<table>
+						<tr id="postMain">
+							<td class="tr">공지</td>
+							<td class="tr">관리자</td>
+							<td id="tr"><a
+								href="/notice/postInfo.do?noticeNo=${notice0.noticeNo}">${notice0.noticeSubject}</a></td>
+							<td class="tr">${notice0.noticeDate }</td>
+							<td class="tr">${notice0.viewCount }</td>
+						</tr>
+						<c:forEach var="notice" items="${nList}">
+							<c:if test="${notice.noticeNo ne '0' }">
+								<tr id="postList">
+									<td class="tr">${notice.noticeNo }</td>
+									<td class="tr">${notice.noticeWriter }</td>
+									<td id="tr"><a
+										href="/notice/postInfo.do?noticeNo=${notice.noticeNo}">${notice.noticeSubject}</a></td>
+									<td class="tr">${notice.noticeDate }</td>
+									<td class="tr">${notice.viewCount }</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</table>
+				</div>
+				<div id="number">
+					<c:if test="${pInfo.startNavi ne 1}">
+						<c:url var="pageUrl" value="/notice/post.do">
+							<c:param name="page" value="${pInfo.startNavi-1}"></c:param>
+						</c:url>
+						<a id="postNum" href="${pageUrl}"><</a> &nbsp;
+					</c:if>
+					<c:forEach begin="${pInfo.startNavi}" end="${pInfo.endNavi}" var="p">
+						<c:url var="pageUrl" value="/notice/post.do">
+							<c:param name="page" value="${p}"></c:param>
+						</c:url>
+						<a href="${pageUrl}">${p}</a>
 					</c:forEach>
-				</table>
-			</div>
-			<tr>
-				<td colspan="5" align="center">${pageNavi }</td>
-			</tr>
+					<c:if test="${pInfo.endNavi ne pInfo.naviTotalCount}">
+						<c:url var="pageUrl" value="/notice/post.do">
+							<c:param name="page" value="${pInfo.endNavi+1}"></c:param>
+						</c:url>
+						<a id="postNum" href="${pageUrl}">></a> &nbsp;
+					</c:if>
+				</div>
 			</form>
 		</main>
 		<!-- --------------------푸터---------------------------------- -->
@@ -171,7 +188,6 @@
         	if(searchValue != null){
         		const form = document.searchForm;
 				form.submit();
-// 				location.href = "/notice/search.do";
         	}else{
         		alert("검색할 내용을 입력해주세요.");
         	}

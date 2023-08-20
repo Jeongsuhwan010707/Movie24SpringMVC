@@ -32,7 +32,7 @@
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
+                        <li><a href="/notice/post.do">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -74,7 +74,7 @@
         <div id="contentArea">
             <textarea cols="139.5" rows="30" name="noticeContent" id="postContent" placeholder=" 내용을 입력해주세요.">${notice.noticeContent}</textarea>
         </div>
-         <a href="/notice/post.do?currentPage=1" id="smbtn">목록으로</a>
+         <a href="/notice/post.do" id="smbtn">목록으로</a>
        <div id="postLast"><p></p></div>
        
         <div id="main_button">

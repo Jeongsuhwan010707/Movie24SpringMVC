@@ -31,7 +31,7 @@
                     </ul>
                     <h3>공지사항</h3>
                     <ul>
-                        <li><a href="/notice/post.do?currentPage=1">공지사항목록</a></li>
+                        <li><a href="/notice/post.do">공지사항목록</a></li>
                     </ul>
                     <h3>자주 찾는 질문</h3>
                     <ul>
@@ -66,8 +66,8 @@
                         <h3>1:1 문의사항</h3>
                     </div>
                     <div class="area1_2">
-                        <a href="/notice/post.do?currentPage=1"><img src="/resources/images/notice.png" alt=""></a>
-                        <h3><a href="/notice/post.do?currentPage=1">공지사항</a></h3>
+                        <a href="/notice/post.do"><img src="/resources/images/notice.png" alt=""></a>
+                        <h3><a href="/notice/post.do">공지사항</a></h3>
                     </div>
                     <div class="area1_3">
                         <img src="/resources/images/list.png" alt="">

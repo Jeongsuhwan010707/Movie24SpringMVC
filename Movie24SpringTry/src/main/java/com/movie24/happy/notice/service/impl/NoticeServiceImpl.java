@@ -1,13 +1,14 @@
 package com.movie24.happy.notice.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie24.happy.notice.domain.Notice;
-import com.movie24.happy.notice.domain.PageData;
+import com.movie24.happy.notice.domain.PageInfo;
 import com.movie24.happy.notice.service.NoticeService;
 import com.movie24.happy.notice.store.NoticeStore;
 
@@ -15,66 +16,57 @@ import com.movie24.happy.notice.store.NoticeStore;
 public class NoticeServiceImpl implements NoticeService{
 	
 	@Autowired
-	private SqlSession sqlSession;
+	private SqlSession session;
 	@Autowired
 	private NoticeStore nStore;
 	
 	@Override
-	public String generatePageNavi(int currentPage) {
-		String pNavi = nStore.generatePageNavi(sqlSession, currentPage);
-		return pNavi;
-	}
-
-	@Override
-	public List<Notice> selectNoticeList(PageData pdNum) {
-		List<Notice> nList = nStore.selectNoticeList(sqlSession, pdNum);
-		return nList;
-	}
-
-	@Override
-	public int selectTotal() {
-		int result = nStore.selectTotal(sqlSession);
-		return result;
-	}
-
-	@Override
 	public Notice selectOneByNo(int noticeNo) {
-		Notice notice = nStore.selectOneByNo(sqlSession, noticeNo);
+		Notice notice = nStore.selectOneByNo(session, noticeNo);
 		return notice;
 	}
 
 	@Override
 	public int insertNotice(Notice notice) {
-		int result = nStore.insertNotice(sqlSession, notice);
+		int result = nStore.insertNotice(session, notice);
 		return result;
 	}
 
 	@Override
 	public int updateNotice(Notice notice) {
-		int result = nStore.updateNotice(sqlSession, notice);
+		int result = nStore.updateNotice(session, notice);
 		return result;
 	}
 
 	@Override
 	public int deleteNoticeByNo(int noticeNo) {
-		int result = nStore.deleteNoticeByNo(sqlSession, noticeNo);
+		int result = nStore.deleteNoticeByNo(session, noticeNo);
 		return result;
 	}
 
 	@Override
-	public PageData selectNoticeList(int currentPage, PageData pdNum){
-		List<Notice> nList = nStore.selectNoticeList(sqlSession, pdNum);
-		String pageNavi = nStore.generatePageNavi(sqlSession, currentPage);
-		PageData pd = new PageData(nList, pageNavi);
-		return pd;
+	public List<Notice> selectNoticeList(PageInfo pInfo) {
+		List<Notice> nList = nStore.selectNoticeList(session ,pInfo);
+		return nList;
 	}
 
 	@Override
-	public PageData searchNoticeList(int currentPage, PageData pdNum) {
-		List<Notice> nList = nStore.searchNoticeList(sqlSession, pdNum);
-		String pageNavi = nStore.generateSearchPageNavi(sqlSession, currentPage, pdNum.getSearchValue());
-		PageData pd = new PageData(nList, pageNavi);
-		return pd;
+	public int getListCount() {
+		int result = nStore.getListCount(session);
+		return result;
 	}
+
+	@Override
+	public List<Notice> searchNoticeByKeyword(PageInfo pInfo,Map<String,String> paraMap) {
+		List<Notice> nList = nStore.searchNoticeByKeyword(session,pInfo,paraMap);
+		return nList;
+	}
+
+	@Override
+	public int getListCount(Map<String, String> paramMap) {
+		int result = nStore.searchListCount(session,paramMap);
+		return result;
+	}
+
 
 }

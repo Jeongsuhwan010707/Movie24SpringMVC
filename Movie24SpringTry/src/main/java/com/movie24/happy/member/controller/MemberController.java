@@ -137,7 +137,7 @@ public class MemberController {
 				HttpSession session = request.getSession();
 				session.setAttribute("memberId", mOne.getMemberId());
 				session.setAttribute("memberNickname", mOne.getMemberNickname());
-				StaticMethod.alertAndGo(response, memberId+"님 환영합니다.", "redirect:/index.jsp");
+				StaticMethod.alertAndGo(response, memberId+"님 환영합니다.", "/index.jsp");
 			}else {
 				StaticMethod.alertAndBack(response, "아이디/비밀번호를 다시 한 번 확인해주세요.");
 			}
@@ -192,7 +192,7 @@ public class MemberController {
 		Member member = new Member(memberId, memberPw, memberName, memberNickname, memberAddress, memberPhone, memberEmail, memberEmailYN);
 		int result = service.updateMember(member);
 		if(result > 0) {
-			StaticMethod.alertAndGo(response, "정보수정을 완료했습니다.", "redirect:/index.jsp");
+			StaticMethod.alertAndGo(response, "정보수정을 완료했습니다.", "/index.jsp");
 		}else {
 			StaticMethod.alertAndBack(response, "정보수정에 실패하였습니다.");
 		}

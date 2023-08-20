@@ -1,21 +1,40 @@
 package com.movie24.happy.notice.store;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.movie24.happy.notice.domain.Notice;
-import com.movie24.happy.notice.domain.PageData;
+import com.movie24.happy.notice.domain.PageInfo;
+
 
 public interface NoticeStore {
 	
-	public String generatePageNavi(SqlSession session, int currentPage);
-	public String generateSearchPageNavi(SqlSession session, int currentPage, String searchValue);
-	public List<Notice> selectNoticeList(SqlSession session, PageData pdNum);
-	public int selectTotal(SqlSession session);
-	public Notice selectOneByNo(SqlSession session, int noticeNo);
 	public int insertNotice(SqlSession session, Notice notice);
 	public int updateNotice(SqlSession session, Notice notice);
 	public int deleteNoticeByNo(SqlSession session, int noticeNo);
-	public List<Notice> searchNoticeList(SqlSession sqlSession, PageData pdNum);
+	public Notice selectOneByNo(SqlSession session, int noticeNo);
+	
+	List<Notice> selectNoticeList(SqlSession session,PageInfo pInfo);
+
+	/**
+	 * 
+	 * 공지사항 개수 조회
+	 * @param session
+	 * @return
+	 */
+	
+	int getListCount(SqlSession session);
+
+	/**
+	 * 공지사항 조건에 따라 키워드로 조회 
+	 * @param session
+	 * @param searchCondiition
+	 * @param searchKeyword
+	 * @return
+	 */
+	List<Notice> searchNoticeByKeyword(SqlSession session,PageInfo pInfo, Map<String,String> paraMap);
+
+	int searchListCount(SqlSession session, Map<String, String> paramMap);
 }

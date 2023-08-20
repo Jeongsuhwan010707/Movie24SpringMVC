@@ -36,6 +36,11 @@ public class InfoController {
 	
 	@RequestMapping(value="/movie/review.do", method=RequestMethod.GET)
 	public String goMovieReview(){
-			return "info/reviewModal";
+		return "info/reviewModal";
+	}
+	
+	@RequestMapping(value="/movie24/movieList.do", method=RequestMethod.GET)
+	public String goMovieList() {
+		return "info/Movie24_movieList";
 	}
 }

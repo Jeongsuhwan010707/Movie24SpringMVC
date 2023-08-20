@@ -18,7 +18,7 @@
                     <li><a href="">혜택</a></li>
                 </ul>
 
-                <input type="text" placeholder="영화 제목을 검색해보세요.">
+                <input type="text" placeholder=" 영화 제목을 검색해보세요.">
                 <button><img src="/resources/images/돋보기.png" alt=""></button>
             </div>
             <div id="menu_text">
