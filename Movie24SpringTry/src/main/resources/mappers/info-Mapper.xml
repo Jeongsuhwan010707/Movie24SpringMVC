@@ -12,6 +12,7 @@
 		<result property="actor" column="ACTOR" />
 		<result property="genre" column="GENRE" />
 		<result property="basicInfo" column="BASIC_INFO" />
+		<result property="ageImage" column="AGE_IMAGE" />
 		<result property="openDate" column="OPEN_DATE" />
 		<result property="contentInfo" column="CONTENT_INFO" />
 		<result property="video" column="VIDEO" />

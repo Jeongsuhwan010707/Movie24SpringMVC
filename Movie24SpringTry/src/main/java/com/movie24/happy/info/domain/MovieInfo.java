@@ -11,6 +11,7 @@ public class MovieInfo {
 	private String actor;
 	private String genre;
 	private String basicInfo;
+	private String ageImage;
 	private String openDate;
 	private String contentInfo;
 	private String video;
@@ -79,6 +80,14 @@ public class MovieInfo {
 
 	public void setBasicInfo(String basicInfo) {
 		this.basicInfo = basicInfo;
+	}
+
+	public String getAgeImage() {
+		return ageImage;
+	}
+
+	public void setAgeImage(String ageImage) {
+		this.ageImage = ageImage;
 	}
 
 	public String getOpenDate() {

@@ -17,186 +17,25 @@
     font-weight: 700;
     font-style: normal;
 }
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
 }
-a{
-    text-decoration: none;
-    
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-a:hover{
-    text-decoration: 1px solid black;
-}
-ul li{
-    list-style: none;
-}
-/* ----------------------헤더--------------------------- */
-header{
-    width: 1300px;
-    height: 150px;
-    /* background-color: aqua; */
-    margin: 0 auto;
-    /* background-color: red; */
-}
-    header a:visited{
-        color: black;
-    }
-    
-    #title{
-        width: 180px;
-        height: 150px;
-        float: left;
-        padding-top: 45px;
-        padding-right: 0;
-        /* background-color: red; */
-        font-family: 'PyeongChangPeace-Bold';
-        font-size: 45px;
-        text-align: center;
-    }
-        #title_num{
-            width: 70px;
-            color: #362FD9;
-            font-family: 'PyeongChangPeace-Bold';
-            padding-top: 45px;
-            font-size: 45px;
-            float: left;
-        }
-    #small_title{
-        width: 300px;
-        height: 150px;
-        float: left;
-        font-family: 'S-CoreDream-3Light';
-        padding: 70px 25px;
-        /* background-color: blue; */
-        font-size: 20px;
-        font-weight: 200;
-        color: grey;
-        line-height: 30px;
-    }
-    caption{
-        caption-side: bottom;
-    }
-    #title_right{
-        float: right;
-        width: 500px;
-        height: 100px;
-        /* background-color: yellow; */
-        
-    }
-        header ul img{
-            float: left;
-            width: 40px;
-            height: 40px;
-            margin-top: 30px;
-        }
-        #title_right ul li{
-            float: right;
-            padding: 30px 30px;
-            margin-right: 3px;
-            margin-top: 20px;
-        }
-            
-/* -----------------네비게이터-------------------------- */
-nav{
-    width: 100%;
-    height: 65px;
-    background: linear-gradient(to right, #362FD9, #85CDFD);
-    font-family: 'LINESeedKR-Bd';
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
-    padding-left: 308px;
-    margin: 0 auto;
-    position : relative;
-}  
-#navigator_tag{
-    width: 1300px;
-    height: 65px;
-    margin: 0 auto;
+    font-style: normal;
 }
-    nav input{
-        border: 0px;
-        margin: 12px 10px;
-        margin-left: 145px;
-        width: 300px;
-        height: 40px;
-        float: left;
-        font-size: 15px;
-        
-    }
-    nav button{
-        border: 0px solid black;
-        width: 40px;
-        height: 40px;
-        margin: 12px 0px;
-        background-color: transparent;
-    }
-    nav img{
-        width: 40px;
-        height: 40px;
-        float: left;
-        margin: auto;
-    }
-    #nav_ul li{
-        margin-top: 6px;
-        margin-right: 30px;
-        padding: 16px;
-        font-size: 20px;
-        float: left;
-        font-weight: 400;
-    }
-    #nav_ul a:link{
-        color: white;
-    }
-    #nav_ul a:visited{
-        color: white;
-    }
-    
-        #menu_text{
-            position: absolute;
-            transform: translateX(-50%);
-            left: 50%;
-            --top: 340px;
-            border: 0px solid black;
-            background-color: white;
-            float: left;
-            width: 1300px;
-            height: 250px;
-            font-size: 20px;
-            z-index: 1500;
-            max-height : 0px;
-            opacity: 0;
-            transition: opacity 0.7s ease, max-height 0.7s ease-out;
-            text-align: center;
-        }
-        #menu_text.active {
-            max-height: 250px;
-            opacity: 1;
-          }
-        
-        #menu_text a:link, #menu_text a:visited{
-            color: grey;
-        }
-            #movie, #theater, #reservation, #store, #event{
-                float: left;
-                border-right: 2px solid gainsboro;
-                width: 215px;
-                /* padding: 10px 40px; */
-                line-height: 50px;
-                height: 220px;
-                margin-top: 5px;
-                transition: opacity 0.7s ease;
-            }
-            #benefit{
-                float: left;
-                width: 215px;
-                /* padding: 10px 15px; */
-                line-height: 50px;
-                margin-top: 5px;
-                height: 220px;
-                transition: opacity 0.7s ease;
-            }
+
     /* ---------메인---------------------------------- */
     /* -------------------------------------------------- */
          #h1-2{
@@ -277,7 +116,7 @@ nav{
                 float: left;
             }
             /*-------- -------인기차트--------------- */
-	main span{
+		.popularSpan{
         	font-family: 'PyeongChangPeace-Bold';
         	color: #2922b9;
         	font-style: italic;
@@ -298,8 +137,9 @@ nav{
             position: relative;
         }
             .popular_title{
-            width: 100%;
-            height: 100px;
+            	width: 1300px;
+			    height: 100px;
+			    margin: 0 auto;
         }
             .popular_title button{
                 margin-top: 28px;
@@ -324,31 +164,31 @@ nav{
         }
         .age1{
         	position: absolute;
-		    top: 120px;
+		    top: 20px;
 		    left: 35px;
 		    width: 30px;
 		}
         .age2{
         	position: absolute;
-		    top: 120px;
+		    top: 20px;
 		    left: 295px;
 		    width: 30px;
 		}
 		.age3{
         	position: absolute;
-		    top: 120px;
+		    top: 20px;
 		    left: 555px;
 		    width: 30px;
 		}
 		.age4{
         	position: absolute;
-		    top: 120px;
+		    top: 20px;
 		    left: 815px;
 		    width: 30px;
 		}
 		.age5{
         	position: absolute;
-		    top: 120px;
+		    top: 20px;
 		    left: 1075px;
 		    width: 30px;
 		}
@@ -365,23 +205,23 @@ nav{
             display: none;
         }
         #lookDetail1, #lookDetail6{
-            top: 240px;
+            top: 140px;
             left: 55px;
         }
         #lookDetail2, #lookDetail7{
-            top: 240px;
+            top: 140px;
             left: 315px;
         }
         #lookDetail3, #lookDetail8{
-            top: 240px;
+            top: 140px;
             left: 575px;
         }
         #lookDetail4, #lookDetail9{
-            top: 240px;
+            top: 140px;
             left: 835px;
         }
         #lookDetail5, #lookDetail10{
-            top: 240px;
+            top: 140px;
             left: 1095px;
         }
         
@@ -412,7 +252,7 @@ nav{
 /* ----------------------------이벤트 영역---------------- */
 #event_area{
     width: 1300px;
-    height: 755px;
+    height: 1025px;
     /* background-color: blue; */
     margin: 0 auto;
     /* padding: 0px 45px; */
@@ -502,20 +342,16 @@ nav{
         transition: 0.4s ease;
     }
 /* --------------------빠른메뉴 영역--------------------- */
-/* #blue_area{
-    width: 100%;
-    height: 450px;
-    background-color: #362FD9;
-} */
-    
 #blue_area {
     width: 100%;
-    height: 450px;
+    height: 490px;
     background-color: #362FD9;
 }
     #blue_image {
         text-align: center;
-        padding-top: 50px;
+	    width: 1300px;
+	    padding-top: 50px;
+	    margin: 0 auto;
     }
       
     #blue_image img {
@@ -564,50 +400,4 @@ nav{
         float: left;
         font-size: 20px;
         font-family: 'LINESeedKR-Bd';
-    }
-    /* ----------푸터------------------------- */
-    .footer {
-        width: 100%;
-        height: 250px;
-        background-color: #f2f2f2;
-        padding: 50px 50px;
-      }
-      
-      .footer-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .footer-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      
-      .footer-list li {
-        display: inline-block;
-        margin-right: 10px;
-        border-right: 1px solid #ccc;
-        padding-right: 10px;
-        font-size: 15px;
-        font-weight: 700;
-      }
-      
-      .footer-content {
-        text-align: right;
-      }
-      
-      .footer-line {
-        border: none;
-        border-top: 1px solid #ccc;
-        margin: 20px 0;
-      }
-      
-      .footer p {
-        margin: 10px 0px;
-        font-size: 15px;
-      }
-      a:link, a:visited{
-        color: black;
     }

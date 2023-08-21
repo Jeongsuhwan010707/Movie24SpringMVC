@@ -8,6 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>메인 페이지</title>
+        <link rel="stylesheet" href="/resources/css/include/header.css">
+        <link rel="stylesheet" href="/resources/css/include/nav.css">
+        <link rel="stylesheet" href="/resources/css/include/footer.css">
         <link rel="stylesheet" href="/resources/css/main/Movie24.css">
     </head>
     <body>
@@ -31,12 +34,12 @@
                     <div id="next1"><a href="#" onclick="nextVideo();"><img src="/resources/images/next1.png" alt=""></a></div>
                     <div class="dot"></div>
                     <!-- 테스트--------------------------------------------------- -->
+                  <div class="popular_title">
+                      <button class="popularBtn" onclick="showPopular();" style="cursor:pointer">인기차트</button>
+                      <button class="trailerMovieBtn" onclick="showComing();" style="cursor:pointer">상영예정작</button>
+                      <a href="/movie24/movieList.do" style="cursor:pointer"><img src="/resources/images/더하기.png" alt=""></a>
+                  </div>
                   <div class="popular">
-                    <div class="popular_title">
-                        <button class="popularBtn" onclick="showPopular();" style="cursor:pointer">인기차트</button>
-                        <button onclick="showComing();" style="cursor:pointer">상영예정작</button>
-                        <a href="/movie24/movieList.do" style="cursor:pointer"><img src="/resources/images/더하기.png" alt=""></a>
-                    </div>
                     <div class="popular_image">
                         <ul>
                             <li>
@@ -44,7 +47,7 @@
                                 	<img id="mainImg1" class="popularPoster"  src="/resources/images/87090_320.jpg" alt="">
                                 	<button id="lookDetail1" class="lookDetail" style="cursor:pointer">상세보기</button>
                                	</a>
-                                <h4><span>1) </span><img class="age1" src="/resources/images/12세.png" alt=""> 플래시</h4>
+                                <h4><span class="popularSpan">1) </span><img class="age1" src="/resources/images/12세.png" alt=""> 플래시</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                                 
                             </li>
@@ -53,7 +56,7 @@
                                 	<img id="mainImg2" class="popularPoster" src="/resources/images/범죄도시.png" alt="" >
 	                                <button id="lookDetail2" class="lookDetail" style="cursor:pointer">상세보기</button>
                                	</a>
-                                <h4><span>2) </span><img class="age2" src="/resources/images/15세.png" alt=""> 범죄도시3</h4>
+                                <h4><span class="popularSpan">2) </span><img class="age2" src="/resources/images/15세.png" alt=""> 범죄도시3</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
@@ -61,7 +64,7 @@
                                 	<img id="mainImg3" class="popularPoster" src="/resources/images/분노의질주.png" alt="" >
 	                                <button id="lookDetail3" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
-                                <h4><span>3)<img class="age3" src="/resources/images/15세.png" alt=""> </span> 분노의 질주</h4>
+                                <h4><span class="popularSpan">3)<img class="age3" src="/resources/images/15세.png" alt=""> </span> 분노의 질주</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
@@ -69,7 +72,7 @@
                                 	<img id="mainImg4" class="popularPoster" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
                             		<button id="lookDetail4" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
-                                <h4><span>4) </span><img class="age4" src="/resources/images/12세.png" alt=""> 가디언즈 오브 ...</h4>
+                                <h4><span class="popularSpan">4) </span><img class="age4" src="/resources/images/12세.png" alt=""> 가디언즈 오브 ...</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
@@ -77,18 +80,13 @@
 	                                <img id="mainImg5" class="popularPoster" src="/resources/images/위대한쇼맨.jpg" alt="" >
 	                                <button id="lookDetail5" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
-                                <h4><span>5) </span><img class="age5" src="/resources/images/12세.png" alt=""> 위대한쇼맨</h4>
+                                <h4><span class="popularSpan">5) </span><img class="age5" src="/resources/images/12세.png" alt=""> 위대한쇼맨</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="popular2">
-                    <div class="popular_title">
-                        <button onclick="showPopular();" style="cursor:pointer">인기차트</button>
-                        <button class="trailerMovieBtn" onclick="showComing();" style="cursor:pointer">상영예정작</button>
-                        <a href="/movie24/movieList.do" style="cursor:pointer"><img src="/resources/images/더하기.png" alt=""></a>
-                    </div>
                     <div class="popular_image">
                         <ul>
                             <li>
@@ -96,7 +94,7 @@
                                 	<img id="mainImg6" class="popularPoster" src="/resources/images/엘리멘탈.jpg" alt="">
                                 	<button id="lookDetail6" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
-                                <h4><span>1) </span><img class="age1" src="/resources/images/전체이용가.png" alt=""> 엘리멘탈</h4>
+                                <h4><span class="popularSpan">1) </span><img class="age1" src="/resources/images/전체이용가.png" alt=""> 엘리멘탈</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                            <li>
@@ -104,7 +102,7 @@
                                 	<img id="mainImg7" class="popularPoster" src="/resources/images/바비.jpg" alt="">
 	                                <button id="lookDetail7" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 	</a>
-                                <h4><span>2) </span><img class="age2" src="/resources/images/12세.png" alt=""> 바비</h4>
+                                <h4><span class="popularSpan">2) </span><img class="age2" src="/resources/images/12세.png" alt=""> 바비</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
@@ -112,7 +110,7 @@
 	                                <img id="mainImg8" class="popularPoster" src="/resources/images/콘크리트 유토피아.jpg" alt="">
 	                                <button id="lookDetail8" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
-                                <h4><span>3) </span><img class="age3" src="/resources/images/15세.png" alt=""> 콘크리트 유토...</h4>
+                                <h4><span class="popularSpan">3) </span><img class="age3" src="/resources/images/15세.png" alt=""> 콘크리트 유토...</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
@@ -120,7 +118,7 @@
                                 	<img id="mainImg9" class="popularPoster" src="/resources/images/밀수.jpg" alt="">
                                 	<button id="lookDetail9" class="lookDetail" style="cursor:pointer">상세보기</button>
                                	</a>
-                                <h4><span>4) </span><img class="age4" src="/resources/images/15세.png" alt=""> 밀수</h4>
+                                <h4><span class="popularSpan">4) </span><img class="age4" src="/resources/images/15세.png" alt=""> 밀수</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
@@ -128,7 +126,7 @@
     	                            <img id="mainImg10" class="popularPoster" src="/resources/images/인어공주.png" alt="">
 	                                <button id="lookDetail10" class="lookDetail" style="cursor:pointer">상세보기</button>
    	                            </a>
-                                <h4><span>5) </span><img class="age5" src="/resources/images/전체이용가.png" alt=""> 인어공주</h4>
+                                <h4><span class="popularSpan">5) </span><img class="age5" src="/resources/images/전체이용가.png" alt=""> 인어공주</h4>
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                         </ul>
@@ -200,6 +198,7 @@
             var ulElement = document.getElementById('nav_ul');
             var liElements = ulElement.querySelectorAll('li');
             var menuText = document.getElementById('menu_text');
+            var menuArea = document.getElementById('menuArea');
             
 			document.querySelectorAll(".popularPoster").forEach(function(item,index) {
 				item.addEventListener("mouseenter", () => {
@@ -220,19 +219,23 @@
 				item.addEventListener("mouseenter", () => {
 					item.style.display="block";
 		            document.getElementById('mainImg'+(index+1)).style.opacity = 0.4;
-		            document.getElementById('mainImg'+(index+1)).style.border = "2px solid #999797";
+		            document.getElementById('mainImg'+(index+1)).style.border = "3px solid #999797";
 				})
 			});
 			
             liElements.forEach(li => {
 		        li.addEventListener('mouseenter', () => {
 	                menuText.classList.add('active');
+	                menuArea.classList.add('active');
 	                menuText.style.zIndex= 5000;
+	                menuArea.style.zIndex= 5000;
 	            });
 	        });
 	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
 	            menuText.classList.remove('active');
+	            menuArea.classList.remove('active');
 	            menuText.style.zIndex= -1;
+	            menuArea.style.zIndex= -1;
 	        });
         /////////////////////
         
@@ -281,17 +284,21 @@
             var p1 = document.getElementsByClassName("popular");
             var p2 = document.getElementsByClassName("popular2");
             function showPopular(){
-            	document.querySelector(".popularBtn").style.fontWeight = "900";
-            	document.querySelector(".popularBtn").style.textDecoration = "underline";
-                document.querySelector(".popular2").style.display = "none";
-                document.querySelector(".popular").style.display = "block";
-            };
-            function showComing(){
-            	document.querySelector(".trailerMovieBtn").style.fontWeight = "900";
-            	document.querySelector(".trailerMovieBtn").style.textDecoration = "underline";
-                document.querySelector(".popular2").style.display = "block";
-                document.querySelector(".popular").style.display = "none";
-            };
+	        	document.querySelector(".popularBtn").style.fontWeight = "900";
+	        	document.querySelector(".popularBtn").style.textDecoration = "underline";
+	        	document.querySelector(".trailerMovieBtn").style.fontWeight = "500";
+	        	document.querySelector(".trailerMovieBtn").style.textDecoration = "none";
+	            document.querySelector(".popular2").style.display = "none";
+	            document.querySelector(".popular").style.display = "block";
+	        };
+	        function showComing(){
+	        	document.querySelector(".trailerMovieBtn").style.fontWeight = "900";
+	        	document.querySelector(".trailerMovieBtn").style.textDecoration = "underline";
+	        	document.querySelector(".popularBtn").style.fontWeight = "500";
+	        	document.querySelector(".popularBtn").style.textDecoration = "none";
+	            document.querySelector(".popular").style.display = "none";
+	            document.querySelector(".popular2").style.display = "block";
+	        };
             function myCheck(){
             	alert("로그인이 되어있지 않습니다.");
             }

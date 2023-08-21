@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="noticeAllSelect" resultMap="noticeResultMap">
-		SELECT * FROM NOTICE_TBL
+		SELECT * FROM NOTICE_TBL ORDER BY NOTICE_NO DESC
 	</select>
 
 	<select id="selectNoticeCount" resultType="_int">
@@ -40,16 +40,16 @@
 		SELECT * FROM NOTICE_TBL
 		<if test="searchCondition == 'all'">
 			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
-			'%'||#{searchKeyword}||'%'
+			'%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
 		</if>
 		<if test="searchCondition == 'writer'">
-			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
 		</if>
 		<if test="searchCondition == 'content'">
-			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
 		</if>
 		<if test="searchCondition == 'title'">
-			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
 		</if>
 	</select>
 

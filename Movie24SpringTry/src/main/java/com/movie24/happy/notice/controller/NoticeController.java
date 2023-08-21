@@ -7,8 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.tagext.PageData;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +33,36 @@ public class NoticeController {
 		return "help/Movie24_help";
 	}
 	
+	@RequestMapping(value="/notice/postInfo.do", method=RequestMethod.GET)
+	public String doGet(HttpServletRequest request
+			, @RequestParam("noticeNo") int noticeNo
+			, Model model){
+		int noticeBack = noticeNo+1;
+		int noticeNext = noticeNo-1;
+		Notice notice = service.selectOneByNo(noticeNo);
+		Notice noticeB = service.selectOneByNo(noticeBack);
+		Notice noticeN = service.selectOneByNo(noticeNext);
+		int totalNum = service.getListCount();
+
+		if(notice != null) {
+
+			model.addAttribute("notice", notice);
+
+			if(noticeB != null) {				
+				model.addAttribute("noticeB", noticeB);
+			}
+			if(noticeN != null) {				
+				model.addAttribute("noticeN", noticeN);
+			}
+			model.addAttribute("totalNum", totalNum);
+			return "help/Movie24_post_info";
+		}else {
+			model.addAttribute("msg", "데이터가 존재하지 않습니다.");
+			return "successOrFail/serviceFailed";
+		}
+	
+	}
+	
 	@RequestMapping(value="/notice/postInsert.do", method=RequestMethod.GET)
 	public String goPostInsert(){
 		return "help/Movie24_post_insert";
@@ -45,7 +73,6 @@ public class NoticeController {
 			, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile
 			, HttpServletRequest request
 			, Model model
-			, @RequestParam("memberNickname") String memberNickname
 			, HttpServletResponse response){
 		
 		try {
@@ -86,7 +113,7 @@ public class NoticeController {
 				StaticMethod.alertAndBack(response, "공지사항 등록에 실패하였습니다.");
 			} 
 		}catch (Exception e) {
-				e.getMessage();
+				System.out.println(e.getMessage());
 			}
 	}
 	
