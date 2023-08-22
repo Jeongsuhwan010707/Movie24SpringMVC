@@ -155,10 +155,10 @@
                         <div id="event_down">
                             <ul>
                                 <li>
-                                    <a href="/movie24/event.do?eventSrcNum=4"><img id="downImg1" src="/resources/images/이벤트2열1번.jpg" alt=""></a>
+                                    <a href="/movie24/event.do?eventSrcNum=5"><img id="downImg1" src="/resources/images/이벤트2열1번.jpg" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="/movie24/event.do?eventSrcNum=5"><img id="downImg2" src="/resources/images/이벤트2열2번.jpg" alt=""></a>
+                                    <a href="/movie24/event.do?eventSrcNum=6"><img id="downImg2" src="/resources/images/이벤트2열2번.jpg" alt=""></a>
                                 </li>
                             </ul>
                         </div>
@@ -166,7 +166,7 @@
                     <div id="event_right">
                         <ul>
                             <li>
-                                <a href="/movie24/event.do?eventSrcNum=6"><img src="/resources/images/이벤트맨끝.jpg" alt=""></a>
+                                <a href="/movie24/event.do?eventSrcNum=4"><img src="/resources/images/이벤트맨끝.jpg" alt=""></a>
                             </li>
                         </ul>
                     </div>
@@ -226,17 +226,38 @@
             liElements.forEach(li => {
 		        li.addEventListener('mouseenter', () => {
 	                menuText.classList.add('active');
-	                menuArea.classList.add('active');
 	                menuText.style.zIndex= 5000;
-	                menuArea.style.zIndex= 5000;
 	            });
 	        });
 	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
 	            menuText.classList.remove('active');
-	            menuArea.classList.remove('active');
 	            menuText.style.zIndex= -1;
-	            menuArea.style.zIndex= -1;
+	            
+// 	            liElements.forEach(li => {
+// 			        li.addEventListener('mouseleave', () => {
+// 		                menuText.classList.remove('active');
+// 		                menuText.style.zIndex= 5000;
+// 		            });
+// 		        });
 	        });
+	        
+// 	        $(document).ready(function () {
+// 	            $('.nav_menu > li > h2 > a').on({
+// 	                mouseenter: function (e) {
+// 	                    var target = e.target;
+// 	                    $(target).parents('.nav_menu').find('.nav_overMenu').slideDown(function () {
+// 	                        $('.nav').addClass('active');
+// 	                    });
+// 	                },
+// 	                click: function (e) {
+// 	                    var target = e.target;
+// 	                    if (!$('.nav').hasClass('active')) {
+// 	                        $(this).trigger('mouseenter');
+// 	                    } else {
+// 	                        $('.nav').trigger('mouseleave');
+// 	                    }
+// 	                }
+// 	            });
         /////////////////////
         
 // -----------------------test

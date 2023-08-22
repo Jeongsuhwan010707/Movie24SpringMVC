@@ -27,16 +27,28 @@
 			    	<div><h2>영화</h2></div>
 			        <ul>
 			        	<li>
-				        	<img alt="" src="/resources/images/밀수event.jpg">
-				        	<div>2023.08.18 ~ 2023.08.24</div>
+			        		<div class="event-img">
+					        	<a href="/movie24/event.do?eventSrcNum=7">				        	
+						        	<img alt="" src="/resources/images/밀수event.jpg">
+					        	</a>
+			        		</div>
+				        	<div class="event-text">2023.08.18 ~ 2023.08.24</div>
 			        	</li>
 			        	<li class="centerEvent">
-				        	<img alt="" src="/resources/images/오펜하이머event.jpg">
-				        	<div>2023.08.15 ~ 2023.08.21</div>
+			        		<div class="event-img"> 
+				        		<a href="/movie24/event.do?eventSrcNum=8">				        	
+						        	<img alt="" src="/resources/images/오펜하이머event.jpg">
+					        	</a>
+			        		</div>
+				        	<div class="event-text">2023.08.15 ~ 2023.08.21</div>
 			        	</li>
 			        	<li>
-				        	<a href="#"><img alt="" src="/resources/images/치킨의비밀event.jpg"></a>
-				        	<div>2023.08.08 ~ 2023.08.22</div>
+			        		<div class="event-img"> 
+				        		<a href="/movie24/event.do?eventSrcNum=9">				        	
+					        		<img alt="" src="/resources/images/치킨의비밀event.jpg">
+					        	</a>
+			        		</div>
+				        	<div class="event-text">2023.08.08 ~ 2023.08.22</div>
 			        	</li>
 			        </ul>
 		    	</div>
@@ -44,16 +56,28 @@
 			    	<div><h2>HOT</h2></div>
 			        <ul>
 			        	<li>
-				        	<img alt="" src="/resources/images/eventHot1.jpg">
-				        	<div>2023.08.17 ~ 2023.09.13</div>
+			        		<div class="event-img"> 
+				        		<a href="/movie24/event.do?eventSrcNum=10">				        	
+						        	<img alt="" src="/resources/images/eventHot1.jpg">
+					        	</a>
+			        		</div>
+				        	<div class="event-text">2023.08.17 ~ 2023.09.13</div>
 			        	</li>
 			        	<li class="centerEvent">
-				        	<img alt="" src="/resources/images/eventHot2.jpg">
-				        	<div>2023.08.07 ~ 2023.08.31</div>
+			        		<div class="event-img">
+				        		<a href="/movie24/event.do?eventSrcNum=11">				        	
+						        	<img alt="" src="/resources/images/eventHot2.jpg">
+					        	</a>
+							</div>					        	
+				        	<div class="event-text">2023.08.07 ~ 2023.08.31</div>
 			        	</li>
 			        	<li>
-				        	<a href="#"><img alt="" src="/resources/images/eventHot3.jpg"></a>
-				        	<div>2023.08.03 ~ 2023.09.15</div>
+			        		<div class="event-img">
+				        		<a href="/movie24/event.do?eventSrcNum=12">				        	
+					        		<img alt="" src="/resources/images/eventHot3.jpg">
+					        	</a>
+				        	</div>
+				        	<div class="event-text">2023.08.03 ~ 2023.09.15</div>
 			        	</li>
 			        </ul>
 		    	</div>
@@ -61,16 +85,28 @@
 			    	<div><h2>제휴할인</h2></div>
 			        <ul>
 			        	<li>
-				        	<img alt="" src="/resources/images/eventSale1.jpg">
-				        	<div>2023.08.08 ~ 2023.08.31</div>
+			        		<div class="event-img">
+				        		<a href="/movie24/event.do?eventSrcNum=13">				        	
+						        	<img alt="" src="/resources/images/eventSale1.jpg">
+					        	</a>
+							</div>					        	
+				        	<div class="event-text">2023.08.08 ~ 2023.08.31</div>
 			        	</li>
 			        	<li class="centerEvent">
-				        	<img alt="" src="/resources/images/eventSale2.jpg">
-				        	<div>2023.08.01 ~ 2023.08.31</div>
+			        		<div class="event-img">
+				        		<a href="/movie24/event.do?eventSrcNum=14">				        	
+						        	<img alt="" src="/resources/images/eventSale2.jpg">
+					        	</a>
+				        	</div>
+				        	<div class="event-text">2023.08.01 ~ 2023.08.31</div>
 			        	</li>
 			        	<li>
-				        	<a href="#"><img alt="" src="/resources/images/eventSale3.jpg"></a>
-				        	<div>2023.07.01 ~ 2023.09.30</div>
+			        		<div class="event-img">
+				        		<a href="/movie24/event.do?eventSrcNum=15">				        	
+						        	<img alt="" src="/resources/images/eventSale3.jpg">
+					        	</a>
+					       	</div>
+				        	<div class="event-text">2023.07.01 ~ 2023.09.30</div>
 			        	</li>
 			        </ul>
 		    	</div>

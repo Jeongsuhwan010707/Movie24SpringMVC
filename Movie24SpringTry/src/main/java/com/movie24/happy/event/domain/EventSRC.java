@@ -4,6 +4,7 @@ public class EventSRC {
 	
 	private String imageSRC;
 	private int eventImgNum;
+	private String category;
 
 	public EventSRC() {}
 	
@@ -20,7 +21,6 @@ public class EventSRC {
 		super();
 		this.eventImgNum = eventImgNum;
 	}
-
 	public void setImageSRC(String imageSRC) {
 		this.imageSRC = imageSRC;
 	}
@@ -31,6 +31,14 @@ public class EventSRC {
 
 	public void setEventImgNum(int eventImgNum) {
 		this.eventImgNum = eventImgNum;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 }

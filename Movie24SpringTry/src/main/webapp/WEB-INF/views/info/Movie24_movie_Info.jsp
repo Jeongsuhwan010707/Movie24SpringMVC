@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/resources/css/include/nav.css">
         <link rel="stylesheet" href="/resources/css/include/footer.css">
         <link rel="stylesheet" href="/resources/css/main/Movie24_movie_info.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     </head>
     <body>
         <div>
@@ -44,14 +44,14 @@
 		    </section>
 		    <div id="main_menu">
 		        <ul>
-		            <li><a href="">주요정보</a></li>
-		            <li><a href="">예고편</a></li>
+		            <li><a href="#movie-info">주요정보</a></li>
+		            <li><a href="#movie-trailer">예고편</a></li>
 		<!--             <li><a href="">스틸컷</a></li> -->
-		            <li><a href="">평점/리뷰</a></li>
+		            <li><a href="#movie-review">평점/리뷰</a></li>
 		            <li><a href="/movieReservation/Movie24_time.html">상영시간표</a></li>
 		        </ul>
 		    </div>
-		    <div class="title_movie">
+		    <div class="title_movie" id="movie-info">
 		        <p>주요정보</p>
 		    </div>
 		    <div id="title_text">
@@ -62,60 +62,37 @@
 		        <div id="img_area2">
 		            <img id="status" src="/resources/images/표.png" alt="">
 		        </div>
-		        <a id="next" href="/movieReservation/Movie24_time.html">예매하기</a>
-		        <div class="title_movie">
-		            <p>예고편</p>
-		        </div>
-		        <div id="video_area">
-		            <video src="${mInfo.video }" controls></video>
-		        </div>
-		<!--         <div class="title_movie"> -->
-		<!--             <p>스틸컷</p> -->
-		<!--         </div> -->
-		        <div class="title_movie">
-		            <p>관람평</p>
-		        </div>
-		        <div id="review">
-		            <h2>등록된 감상평이 아직 없습니다.</h2>
-		            <h1>첫 번째 감상평을 남겨주세요!</h1>
-		        </div>
-		        <div>
-			        <!-- Button trigger modal -->
-				    <button id="review_btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-				      리뷰 작성
-				    </button>
-				
-				    <!-- Modal -->
-				    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				      <div class="modal-dialog">
-				        <div class="modal-content">
-				          <div class="modal-header">
-				            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-				            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				          </div>
-				          <div class="modal-body">
-				            <input type="text" placeholder=" 리뷰를 남겨보세요.">
-				          </div>
-				          <div class="modal-footer">
-				            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-				            <button type="button" class="btn btn-primary">등록하기</button>
-				          </div>
-				        </div>
-				      </div>
-				    </div>
-		<!--             <button onclick="goReview()">리뷰 작성</button> -->
-		        </div>
-		        <div id="img_area3">
-		            <img src="/resources/images/review2.png" alt="">
-		        </div>
-		        <div id="bottomBlank"></div>
-		    </main>
+	        <a id="next" href="/movieReservation/Movie24_time.html">예매하기</a>
+	        <div class="title_movie" id="movie-trailer">
+	            <p>예고편</p>
+	        </div>
+	        <div id="video_area">
+	            <video src="${mInfo.video }" controls></video>
+	        </div>
+	<!--         <div class="title_movie"> -->
+	<!--             <p>스틸컷</p> -->
+	<!--         </div> -->
+	        <div class="title_movie" id="movie-review">
+	            <p>관람평</p>
+	        </div>
+	        <div id="review">
+	            <h2>등록된 감상평이 아직 없습니다.</h2>
+	            <h1>첫 번째 감상평을 남겨주세요!</h1>
+	        </div>
+	        <div>
+	            <button id="review_btn" onclick="goReview()">리뷰 작성</button>
+	        </div>
+	        <div id="img_area3">
+	            <img src="/resources/images/review2.png" alt="">
+	        </div>
+	        <div id="bottomBlank"></div>
+	    </main>
          <!-- --------------------푸터---------------------------------- -->
 	         <!-- <footer> ----------------------------</footer> -->
             <jsp:include page="/include/footer.jsp"></jsp:include>
 	    </div>
 	    <!-- 스크립트 -->
-	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> -->
 	    <script>
 	        var ulElement = document.getElementById('nav_ul');
 	        var liElements = ulElement.querySelectorAll('li');

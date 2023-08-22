@@ -228,16 +228,28 @@
 	        	document.querySelector(".popularBtn").style.textDecoration = "underline";
 	        	document.querySelector(".trailerMovieBtn").style.fontWeight = "500";
 	        	document.querySelector(".trailerMovieBtn").style.textDecoration = "none";
-	            document.getElementsByClassName("popular2").style.display = "none";
-	            document.getElementsByClassName("popular").style.display = "block";
+	        	document.querySelectorAll(".popular2").forEach(function (item, index) {
+	                item.style.display = "none";
+	            });
+	        	document.querySelectorAll(".popular").forEach(function (item, index) {
+	        		item.style.display = "block";
+	            });
+// 	            document.querySelectorAll("popular2").style.display = "none";
+// 	            document.querySelectorAll("popular").style.display = "block";
 	        };
 	        function showComing(){
 	        	document.querySelector(".trailerMovieBtn").style.fontWeight = "900";
 	        	document.querySelector(".trailerMovieBtn").style.textDecoration = "underline";
 	        	document.querySelector(".popularBtn").style.fontWeight = "500";
 	        	document.querySelector(".popularBtn").style.textDecoration = "none";
-	            document.getElementsByClassName("popular").style.display = "none";
-	            document.getElementsByClassName("popular2").style.display = "block";
+	        	document.querySelectorAll(".popular2").forEach(function (item, index) {
+	                item.style.display = "block";
+	            });
+	        	document.querySelectorAll(".popular").forEach(function (item, index) {
+	        		item.style.display = "none";
+	            });
+// 	            document.querySelectorAll("popular").style.display = "none";
+// 	            document.querySelectorAll("popular2").style.display = "block";
 	        };
 	    </script>
 	</body>

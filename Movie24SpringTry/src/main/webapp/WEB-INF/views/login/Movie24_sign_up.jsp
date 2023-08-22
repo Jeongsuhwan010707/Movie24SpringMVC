@@ -36,35 +36,37 @@
 								<ul>
 									<li>
 										<label for="member-id">아이디</label> 
-										<input type="text" name="member-id" id="member-id" placeholder=" 아이디를 입력해주세요.">
+										<input type="text" class="inputs" name="member-id" id="member-id" placeholder=" 아이디를 입력해주세요.">
 									</li>
 									<button type="button" onclick="checkId();" id="checkIdBtn">중복확인</button>
 									<li>
 										<label for="pw">비밀번호</label> 
-										<input type="password" id="pw" onchange="check_pw()" name="member-pw" placeholder=" 비밀번호를 입력해주세요.">
+										<input class="inputs" type="password" id="pw" onchange="check_pw()" name="member-pw" placeholder=" 비밀번호를 입력해주세요.">
 									</li>
 									<li>
 										<label for="pw2">비밀번호 확인</label> 
-										<input type="password" id="pw2" onchange="check_pw()" name="member-pwCheck" placeholder=" 비밀번호를 다시 한 번 입력해주세요."><span id="check"></span>
+										<input class="inputs" type="password" id="pw2" onchange="check_pw()" name="member-pwCheck" placeholder=" 비밀번호를 다시 한 번 입력해주세요."><span id="check"></span>
 									</li>
 									<li>
-										<label for="member-name">이름</label> <input type="text" id="member-name" name="member-name" placeholder=" ex) 홍길동">
+										<label for="member-name">이름</label> 
+										<input class="inputs" type="text" id="member-name" name="member-name" placeholder=" ex) 홍길동">
 									</li>
 									<li>
 										<label for="member-nickName">닉네임</label> 
-										<input type="text" id="member-nickName" name="member-nickName" placeholder=" ex) cuty11, ...">
+										<input class="inputs" type="text" id="member-nickName" name="member-nickName" placeholder=" ex) cuty11, ...">
 									</li>
 									<li>
 										<label for="member-address">주소</label> 
-										<input type="text" name="member-address" id="memberAddress" placeholder=" 주소 입력">
+										<input class="inputs" type="text" name="member-address" id="memberAddress" placeholder=" 주소 입력">
 										<input id="searchAddrBtn" type="button" value="주소검색" onclick="sample4_exeDaumPostcode();">
 									</li>
 									<li>
 										<label for="member-phone">전화번호</label> 
-										<input type="tel" name="member-phone" id="member-phone" placeholder=" 010-XXXX-XXXX">
+										<input class="inputs" type="tel" name="member-phone" id="member-phone" placeholder=" 010-XXXX-XXXX">
 									</li>
 									<li>
-										<label for="member-email">이메일</label> <input type="email" name="member-email" id="member-email" placeholder=" 이메일을 입력해주세요.">
+										<label for="member-email">이메일</label> 
+										<input class="inputs" type="email" name="member-email" id="member-email" placeholder=" 이메일을 입력해주세요.">
 									</li>
 									<li>
 										<input type="checkbox" name="member-emailYN" value="Y">

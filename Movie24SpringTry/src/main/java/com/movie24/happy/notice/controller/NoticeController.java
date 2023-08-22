@@ -75,32 +75,35 @@ public class NoticeController {
 			, Model model
 			, HttpServletResponse response){
 		
+		if(notice.getNoticeSubject() == null) {
+			StaticMethod.alertAndBack(response, "공지사항 제목을 입력해주세요.");
+		}
+		if(notice.getNoticeContent() == null) {
+			StaticMethod.alertAndBack(response, "공지사항 내용을 입력해주세요.");
+		}
+		
 		try {
-			if (!uploadFile.getOriginalFilename().equals("")) {
-				// **********************파일 이름*************************
+			if(!uploadFile.getOriginalFilename().equals("")) {
+				// =============== 파일 이름 ===============
 				String fileName = uploadFile.getOriginalFilename();
-				// 파일 경로 ( 내가 저장한 후 그 경로를 DB에 저장하도록 준비하는 것)
-
-				// 파일 경로는 request 통해서 가져옴, HttpServletRequest 씀
-				// resources 폴더의 경로를 알 수 있음 = /IngSpringMVC/src/main/webapp/resources
+				// (내가 저장한 후 그 경로를 DB에 저장하도록 준비하는것)
 				String root = request.getSession().getServletContext().getRealPath("resources");
-
-				// 폴더가 없을 경우 자동 생성 (내가 업로드 한 파일을 저장할 폴더)
-				String saveFolder = root + "\\myuploadFiles";
-//				String saveFolder = root + File.separator + "nuploadFiles";
+				// 폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
+				String saveFolder = root + "\\uploadFiles";
 				File folder = new File(saveFolder);
-				if (!folder.exists()) {
+				if(!folder.exists()) {
 					folder.mkdir();
 				}
-//				*************** 파일 경로 **********************
+				// =============== 파일 경로 ===============
 				String savePath = saveFolder + "\\" + fileName;
 				File file = new File(savePath);
-				// *************파일 저장 ******************
+				// *************** 파일 저장 ***************
 				uploadFile.transferTo(file);
-				// ********************파일 크기 **********************
+				
+				// =============== 파일 크기 ===============
 				long fileLength = uploadFile.getSize();
-
-//				************** DB에 저장하기 위해 notice에 데이터를 Set 하는 부분임.
+				
+				// DB에 저장하기 위해 notice에 데이터를 Set하는 부분
 				notice.setNoticeFilename(fileName);
 				notice.setNoticeFilepath(savePath);
 				notice.setNoticeFilelength(fileLength);
@@ -128,19 +131,49 @@ public class NoticeController {
 
 	@RequestMapping(value="/notice/modify.do", method=RequestMethod.POST)
 	public void postModify(HttpServletRequest request
-			, @RequestParam("noticeSubject") String noticeSubject
-			, @RequestParam("noticeContent") String noticeContent
-			, @RequestParam("noticeNo") int noticeNo
+			, @ModelAttribute Notice notice
+			, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile
 			, HttpServletResponse response
 			, Model model){
-		Notice notice = new Notice(noticeNo ,noticeSubject, noticeContent);
-		int result = service.updateNotice(notice);
-		if(result > 0) {
-			notice = service.selectOneByNo(noticeNo);
-			model.addAttribute("notice", notice);
-			StaticMethod.alertAndGo(response, "공지사항 수정에 성공하였습니다.", "/notice/postInfo.do?noticeNo="+notice.getNoticeNo());
-		}else {
-			StaticMethod.alertAndBack(response, "공지사항 수정에 실패하였습니다.");
+		try {
+			
+			if(!uploadFile.getOriginalFilename().equals("")) {
+				// =============== 파일 이름 ===============
+				String fileName = uploadFile.getOriginalFilename();
+				// (내가 저장한 후 그 경로를 DB에 저장하도록 준비하는것)
+				String root = request.getSession().getServletContext().getRealPath("resources");
+				// 폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
+				String saveFolder = root + "\\uploadFiles";
+				File folder = new File(saveFolder);
+				if(!folder.exists()) {
+					folder.mkdir();
+				}
+				// =============== 파일 경로 ===============
+				String savePath = saveFolder + "\\" + fileName;
+				File file = new File(savePath);
+				// *************** 파일 저장 ***************
+				uploadFile.transferTo(file);
+				
+				// =============== 파일 크기 ===============
+				long fileLength = uploadFile.getSize();
+				
+				// DB에 저장하기 위해 notice에 데이터를 Set하는 부분
+				notice.setNoticeFilename(fileName);
+				notice.setNoticeFilepath(savePath);
+				notice.setNoticeFilelength(fileLength);
+			}else {
+				
+				StaticMethod.alertAndBack(response, "파일을 찾지 못합니다.");
+			}
+			int result = service.updateNotice(notice);
+			if(result > 0) {
+				model.addAttribute("notice", notice);
+				StaticMethod.alertAndGo(response, "공지사항 수정에 성공하였습니다.", "/notice/postInfo.do?noticeNo="+notice.getNoticeNo());
+			}else {
+				StaticMethod.alertAndBack(response, "공지사항 수정에 실패하였습니다.");
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

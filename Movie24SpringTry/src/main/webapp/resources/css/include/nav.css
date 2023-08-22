@@ -29,7 +29,7 @@ nav{
     background: linear-gradient(to right, #362FD9, #85CDFD);
     font-family: 'LINESeedKR-Bd';
     font-weight: 400;
-    padding-left: 308px;
+    padding-left: 106px;
     margin: 0 auto;
     position : relative;
 }
@@ -42,7 +42,7 @@ nav{
         border: 0px;
         margin: 12px 10px;
         margin-left: 145px;
-        width: 300px;
+        width: 400px;
         height: 40px;
         float: left;
         font-size: 17px;
@@ -61,9 +61,6 @@ nav{
         float: left;
         margin: auto;
     }
-    ul li{
-    	list-style: none;
-	}
 /*     nav ul{ */
 /*     	margin: 0 auto; */
 /*     } */
@@ -97,41 +94,25 @@ nav{
             transition: max-height 0.5s ease-out;
             opacity: 0;
             text-align: center;
+            font-family: 'LINESeedKR-Bd';
+            font-weight: 400;
         }
-        #menuArea{        
-            max-height : 0px;
-            height: 250px;
-            opacity: 0;
-            transition: max-height 0.5s ease-out;
-        }
-        #menuArea.active {
-            max-height: 250px;
-            opacity: 1;
-          }
         #menu_text.active {
             max-height: 250px;
             opacity: 1;
           }
-        
         #menu_text a:link, #menu_text a:visited{
             color: grey;
         }
-            #movie, #theater, #reservation, #store, #event{
+            .nav_menu{
                 float: left;
                 border-right: 2px solid gainsboro;
                 width: 215px;
-                /* padding: 10px 40px; */
                 line-height: 50px;
                 height: 220px;
                 margin-top: 5px;
                 transition: opacity 0.7s ease;
             }
             #benefit{
-                float: left;
-                width: 215px;
-                /* padding: 10px 15px; */
-                line-height: 50px;
-                margin-top: 5px;
-                height: 220px;
-                transition: opacity 0.7s ease;
+                border: 0px;
             }

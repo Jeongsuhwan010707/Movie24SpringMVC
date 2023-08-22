@@ -58,13 +58,22 @@
        		float: left;
        }
        .eventArea img{
-       		width: 400px;
-       		border-radius: 7px;
+       		width: 100%;
        }    
+       .eventAreaForm img:hover{
+	        transform: scale(1.1);
+	        transition: 0.4s ease;
+    	}
+    	.eventAreaForm .event-img{
+    		width: 400px;
+    		height: 234.38px;
+    		overflow: hidden;
+    		border-radius: 7px;
+    	}
 	       .centerEvent{
 	       		margin: 0px 50px;
 	       }
-	       .eventArea li div{
+	       .eventArea li .event-text{
 	       		padding: 10px 0px 10px 20px;
 	       }
        #advertise img{

@@ -126,11 +126,25 @@
         #blank{
             width: 1000px;
             float: left;
-            height: 540px;
             border-bottom: 1px solid #ccc;
             padding: 30px 30px;
         }
-       
+       	#blankmsg{
+       		margin-bottom: 30px;
+      	}
+      	#back-btn{
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 20px;
+            padding-top: 9px;
+            background-color: #362FD9;
+            float: right;
+    		margin: 30px 20px;
+   	   	}
         #main_button a{
             position: absolute;
             width: 100px;
@@ -141,11 +155,6 @@
             font-family: 'LINESeedKR-Bd';
             font-size: 20px;
             padding-top: 9px;
-        }
-        #main_button #before{
-            top: 760px;
-            right: 2%;
-            background-color: #362FD9;
         }
         #main_button #modify{
             top: 90px;
@@ -167,7 +176,6 @@
             border-top: 1px solid #adacac;
             border-bottom: 1px solid #d8d5d5;
             float: left;
-            margin-top: 80px;
         }
         #back a:link, #back a:visited{
             color: black;
@@ -198,5 +206,13 @@
         	float: right;
             padding: 20px 20px;
         }
-        
+        #blank-img{
+        	height: 30px;
+        }
+        #blankblank{
+        	height: 360px;
+        }
+        #noticeConImg{
+        	max-width: 1000px;
+        }
     /* ----------푸터------------------------- */

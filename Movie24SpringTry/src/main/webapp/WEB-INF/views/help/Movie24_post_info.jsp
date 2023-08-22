@@ -73,16 +73,26 @@
 	                    <td class="tr1">등록일 : ${notice.noticeDate}</td>
 	                    <td class="tr">조회수 : ${notice.viewCount}</td>
 	                </tr>
-	                </table>
+                </table>
 	            </div>
 	        <div id="blank">
-	            <p>${notice.noticeContent}</p>
+	        	<c:if test="${notice.noticeFilename ne null}">
+	        		<img id="noticeConImg" alt="" src="/resources/uploadFiles/${notice.noticeFilename }">
+	        		<p id="blank-img"></p>
+	        	</c:if>
+	            <p id="blankmsg">${notice.noticeContent}</p>
+	        	<c:if test="${notice.noticeFilename eq null}">
+	        		<p id="blankblank"></p>
+	        	</c:if>
 	        </div>
+            <a id="back-btn" href="/notice/post.do">목록으로</a>
 	        <div id="back">
 	            <p class="b1"><strong>이전글 ▲</strong></p> 
 	            <c:if test="${notice.noticeNo ne totalNum}">
-		            <p id="b2"><a href="/notice/postInfo.do?noticeNo=${noticeB.noticeNo}"><strong>${noticeB.noticeSubject }</strong></a></p>
-		            <p class="b3">등록일 : ${noticeB.noticeDate }</p>
+	            	<c:if test="${noticeB.noticeSubject ne null}"> 
+			            <p id="b2"><a href="/notice/postInfo.do?noticeNo=${noticeB.noticeNo}"><strong>${noticeB.noticeSubject }</strong></a></p>
+			            <p class="b3">등록일 : ${noticeB.noticeDate }</p>
+	            	</c:if>
 	            </c:if>
 	            <c:if test="${notice.noticeNo eq totalNum}">
 		            <p id="b2">이전 글이 존재하지 않습니다.</p>
@@ -99,10 +109,9 @@
 	            </c:if>
 	        </div>
 	        <div id="main_button">
-	            <a href="/notice/post.do" id="before">목록으로</a>
 	            <c:if test="${memberId eq 'khuser01'}">
-	            <a href="/notice/modify.do?noticeNo=${notice.noticeNo}" id="modify">수정하기</a>
-	            <a href="javascript:void(0)" onclick="deleteCheck();" id="delete">삭제하기</a>
+		            <a href="/notice/modify.do?noticeNo=${notice.noticeNo}" id="modify">수정하기</a>
+		            <a href="javascript:void(0)" onclick="deleteCheck();" id="delete">삭제하기</a>
 	            </c:if>
 	        </div>
 		</main>
@@ -137,7 +146,7 @@
 	        }
 	        const deleteCheck = () => {
 				const noticeNo = '${notice.noticeNo}';
-				if(confirm("정말 삭제하시겠습니까?")){
+				if(confirm("공지사항을 삭제하시겠습니까?")){
 					location.href = "/notice/postDelete.do?noticeNo="+noticeNo;
 				}
 			}

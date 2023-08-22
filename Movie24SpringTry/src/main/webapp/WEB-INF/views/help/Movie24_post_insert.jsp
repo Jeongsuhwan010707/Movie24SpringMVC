@@ -64,7 +64,7 @@
 	        <div id="h2">
 	            <h2>공지사항</h2>
 	        </div>
-	         <form name="insertForm" action="/notice/postInsert.do" method="post" enctype="multipart/form-data">
+	        <form name="insertForm" action="/notice/postInsert.do" method="post" enctype="multipart/form-data">
 		        <input type="hidden" name="noticeWriter" value="${memberNickname}">
 		        <div id="titleArea">
 		            <input type="text" id="postTitle" placeholder=" (작성글) 제목을 입력해주세요." name="noticeSubject">
@@ -85,7 +85,7 @@
 		        <div id="main_button">
 		        	<button type="button" onclick="checkInsert();">등록하기</button>
 		        </div>
-         	</form>
+        	</form>
 		</main>
          <!-- --------------------푸터---------------------------------- -->
          <!-- <footer> ----------------------------</footer> -->

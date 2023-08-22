@@ -65,22 +65,26 @@
 	            <h2>공지사항</h2>
 	        </div>
 	        <form name="modifyForm" action="/notice/modify.do?noticeNo=${notice.noticeNo }" method="post">
-	        <input type="hidden" name="noticeNo" value="${notice.noticeNo }">
-	        <div id="titleArea">
-	            <input type="text" id="postTitle" placeholder=" (작성글) 제목을 입력해주세요." name="noticeSubject" value="${notice.noticeSubject}">
-	        </div>
-	        <div id="imgArea">
-	            <img src="/resources/images/postInsert.png" id="postImg" alt="">
-	        </div>
-	        <div id="contentArea">
-	            <textarea cols="139.5" rows="30" name="noticeContent" id="postContent" placeholder=" 내용을 입력해주세요.">${notice.noticeContent}</textarea>
-	        </div>
-	         <a href="/notice/post.do" id="smbtn">목록으로</a>
-	       <div id="postLast"><p></p></div>
-	       
-	        <div id="main_button">
-	        	<button type="button" onclick="checkInsert();">수정하기</button>
-	        </div>
+		        <input type="hidden" name="noticeNo" value="${notice.noticeNo }">
+		        <div id="titleArea">
+		            <input type="text" id="postTitle" placeholder=" (작성글) 제목을 입력해주세요." name="noticeSubject" value="${notice.noticeSubject}">
+		        </div>
+		        <div id="imgArea">
+		            <img src="/resources/images/postInsert.png" id="postImg" alt="">
+		        </div>
+		        <div id="fileArea">
+			        <label>&nbsp;첨부파일&nbsp;</label>
+					<input type="file" name="uploadFile">
+		        </div>
+		        <div id="contentArea">
+		            <textarea cols="139.5" rows="30" name="noticeContent" id="postContent" placeholder=" 내용을 입력해주세요.">${notice.noticeContent}</textarea>
+		        </div>
+		         <a href="/notice/post.do" id="smbtn">목록으로</a>
+		       <div id="postLast"><p></p></div>
+		       
+		        <div id="main_button">
+		        	<button type="button" onclick="checkInsert();">수정하기</button>
+		        </div>
 	        </form>
 		</main>
          <!-- --------------------푸터---------------------------------- -->
