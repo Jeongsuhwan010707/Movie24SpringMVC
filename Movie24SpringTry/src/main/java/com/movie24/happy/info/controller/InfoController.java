@@ -27,17 +27,17 @@ public class InfoController {
 	InfoService service;
 	
 	@RequestMapping(value="/movie/info.do", method=RequestMethod.GET)
-	public String goMovieInfoPage(@RequestParam("movieNum") int MovieNum
+	public String goMovieInfoPage(@RequestParam("movieName") String movieName
 			, HttpSession session
 			, HttpServletResponse response
 			, Model model){
 		
-		MovieInfo mInfo = service.selectOnebyNo(MovieNum);
+		MovieInfo mInfo = service.selectOnebyName(movieName);
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("", "");
-		map.put("", "");
 		String memberId = (String) session.getAttribute("memberId");
-		MovieHeart mHeart = service.selectOneById(memberId);
+		map.put("movieName", movieName);
+		map.put("memberId", memberId);
+		MovieHeart mHeart = service.selectOneByMap(map);
 		if(mInfo != null) {
 			model.addAttribute("mInfo", mInfo);
 			if(mHeart != null) {
@@ -63,7 +63,6 @@ public class InfoController {
 	@RequestMapping(value="/movie/heartInsert.do", method=RequestMethod.GET)
 	public String goMovieHeart(HttpSession session
 			, @RequestParam("movieName") String movieName
-			, @RequestParam("movieNum") Integer movieNum
 			, HttpServletResponse response
 			, Model model) {
 			
@@ -74,7 +73,7 @@ public class InfoController {
 			paramMap.put("movieName", movieName);
 			int result = service.insertHeart(movieName, paramMap);
 			if(result > 0) {
-				return "redirect:/movie/info.do?movieNum="+movieNum;
+				return "redirect:/movie/info.do?movieName"+movieName;
 			}else {
 				model.addAttribute("msg", "찜 누르기를 실패하였습니다.");
 				model.addAttribute("error", "찜 누르기 실패");
@@ -87,7 +86,6 @@ public class InfoController {
 	@RequestMapping(value="/movie/heartDelete.do", method=RequestMethod.GET)
 	public String goMovieHeartDestroy(HttpSession session
 			, @RequestParam("movieName") String movieName
-			, @RequestParam("movieNum") Integer movieNum
 			, HttpServletResponse response
 			, Model model) {
 		
@@ -97,7 +95,7 @@ public class InfoController {
 		paramMap.put("movieName", movieName);
 		int result = service.deleteHeart(movieName, paramMap);
 		if(result > 0) {
-			return "redirect:/movie/info.do?movieNum="+movieNum;
+			return "redirect:/movie/info.do?movieNum="+movieName;
 		}else {
 			model.addAttribute("msg", "찜 취소를 실패하였습니다.");
 			model.addAttribute("error", "찜 취소 실패");

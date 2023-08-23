@@ -11,6 +11,7 @@ public class Notice {
 	private Date noticeDate;
 	private Timestamp updateDate;
 	private String noticeFilename;
+	private String noticeFileRename;
 	private String noticeFilepath;
 	private long noticeFilelength;
 	private int viewCount;
@@ -107,6 +108,14 @@ public class Notice {
 	public void setNoticeFilename(String noticeFilename) {
 		this.noticeFilename = noticeFilename;
 	}
+	
+	public String getNoticeFileRename() {
+		return noticeFileRename;
+	}
+
+	public void setNoticeFileRename(String noticeFileRename) {
+		this.noticeFileRename = noticeFileRename;
+	}
 
 	public String getNoticeFilepath() {
 		return noticeFilepath;
@@ -130,6 +139,9 @@ public class Notice {
 
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
+	}
+	public void setViewCountPlus(int viewCount) {
+		this.viewCount += 1;
 	}
 
 	@Override

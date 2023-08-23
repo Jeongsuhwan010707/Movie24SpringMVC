@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -98,7 +99,10 @@
 								<td class="tr">관리자</td>
 								<td id="tr"><a
 									href="/notice/postInfo.do?noticeNo=${notice0.noticeNo}">${notice0.noticeSubject}</a></td>
-								<td class="tr">${notice0.noticeDate }</td>
+								<td class="tr">
+									<fmt:formatDate pattern="yyyy-MM-dd" value="${notice0.noticeDate }"/>
+								</td>
+<%-- 								<td class="tr">${notice0.noticeDate }</td> --%>
 								<td class="tr">${notice0.viewCount }</td>
 							</tr>
 							<c:forEach var="notice" items="${nList}">
@@ -106,10 +110,15 @@
 									<tr id="postList">
 										<td class="tr">${notice.noticeNo }</td>
 										<td class="tr">${notice.noticeWriter }</td>
-										<td id="tr"><a
-											href="/notice/postInfo.do?noticeNo=${notice.noticeNo}">${notice.noticeSubject}</a></td>
+										<c:url var="detailUrl" value="/notice/postInfo.do">
+											<c:param name="noticeNo" value="${notice.noticeNo }"></c:param>
+										</c:url>
+										<td id="tr">
+											<a href="${detailUrl}">${notice.noticeSubject}</a></td>
 										<td class="tr">${notice.noticeDate }</td>
-										<td class="tr">${notice.viewCount }</td>
+										<td class="tr"> 
+											<fmt:formatNumber pattern="##,###,###" value="${notice.viewCount }"></fmt:formatNumber>
+										</td>
 									</tr>
 								</c:if>
 							</c:forEach>

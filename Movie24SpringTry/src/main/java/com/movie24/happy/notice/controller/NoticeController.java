@@ -1,6 +1,9 @@
 package com.movie24.happy.notice.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +45,12 @@ public class NoticeController {
 		Notice notice = service.selectOneByNo(noticeNo);
 		Notice noticeB = service.selectOneByNo(noticeBack);
 		Notice noticeN = service.selectOneByNo(noticeNext);
+		
+		Map<String, Object> view = new HashMap<String, Object>();
+		int viewCountPlus = notice.getViewCount() + 1;
+		view.put("viewCountPlus", viewCountPlus);
+		view.put("noticeNo", noticeNo);
+		int result = service.viewPointPlus(view);
 		int totalNum = service.getListCount();
 
 		if(notice != null) {
@@ -83,30 +92,19 @@ public class NoticeController {
 		}
 		
 		try {
-			if(!uploadFile.getOriginalFilename().equals("")) {
-				// =============== 파일 이름 ===============
-				String fileName = uploadFile.getOriginalFilename();
-				// (내가 저장한 후 그 경로를 DB에 저장하도록 준비하는것)
-				String root = request.getSession().getServletContext().getRealPath("resources");
-				// 폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
-				String saveFolder = root + "\\uploadFiles";
-				File folder = new File(saveFolder);
-				if(!folder.exists()) {
-					folder.mkdir();
-				}
-				// =============== 파일 경로 ===============
-				String savePath = saveFolder + "\\" + fileName;
-				File file = new File(savePath);
-				// *************** 파일 저장 ***************
-				uploadFile.transferTo(file);
-				
-				// =============== 파일 크기 ===============
-				long fileLength = uploadFile.getSize();
+			if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+				// 수정
+				// 1. 대체 2. 삭제 후 등록
+				// 기존 업로드 된 파일 존재 엽 체크 후
+				String fileName = notice.getNoticeFilename();
+				// 없으면 새로 업로드 하려는 파일 저장
+				Map<String, Object> infoMap= this.saveFile(uploadFile, request);
 				
 				// DB에 저장하기 위해 notice에 데이터를 Set하는 부분
-				notice.setNoticeFilename(fileName);
-				notice.setNoticeFilepath(savePath);
-				notice.setNoticeFilelength(fileLength);
+				notice.setNoticeFilename((String)infoMap.get("fileName"));
+				notice.setNoticeFilepath((String)infoMap.get("savePath"));
+				notice.setNoticeFileRename((String)infoMap.get("fileRename"));
+				notice.setNoticeFilelength((Long)infoMap.get("fileLength"));
 			}
 			int result = service.insertNotice(notice);
 
@@ -137,32 +135,25 @@ public class NoticeController {
 			, Model model){
 		try {
 			
-			if(!uploadFile.getOriginalFilename().equals("")) {
-				// =============== 파일 이름 ===============
-				String fileName = uploadFile.getOriginalFilename();
-				// (내가 저장한 후 그 경로를 DB에 저장하도록 준비하는것)
-				String root = request.getSession().getServletContext().getRealPath("resources");
-				// 폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
-				String saveFolder = root + "\\uploadFiles";
-				File folder = new File(saveFolder);
-				if(!folder.exists()) {
-					folder.mkdir();
+			if(uploadFile != null && !uploadFile.isEmpty()) {
+							
+				// 수정
+				// 1. 대체 2. 삭제 후 등록
+				// 기존 업로드 된 파일 존재 엽 체크 후
+				String fileName = notice.getNoticeFileRename();
+				if(notice.getNoticeFilename() != null) {
+					// 있으면 기존 파일 삭제
+					this.deleteFile(request, fileName);
 				}
-				// =============== 파일 경로 ===============
-				String savePath = saveFolder + "\\" + fileName;
-				File file = new File(savePath);
-				// *************** 파일 저장 ***************
-				uploadFile.transferTo(file);
-				
-				// =============== 파일 크기 ===============
-				long fileLength = uploadFile.getSize();
-				
+				// 없으면 새로 업로드 하려는 파일 저장
+				Map<String, Object> infoMap= this.saveFile(uploadFile, request);
 				// DB에 저장하기 위해 notice에 데이터를 Set하는 부분
-				notice.setNoticeFilename(fileName);
-				notice.setNoticeFilepath(savePath);
-				notice.setNoticeFilelength(fileLength);
+				notice.setNoticeFilename((String)infoMap.get("fileName"));
+				notice.setNoticeFilepath((String)infoMap.get("savePath"));
+				notice.setNoticeFileRename((String)infoMap.get("fileRename"));
+				notice.setNoticeFilelength((Long)infoMap.get("fileLength"));
+				model.addAttribute("notice", notice);
 			}else {
-				
 				StaticMethod.alertAndBack(response, "파일을 찾지 못합니다.");
 			}
 			int result = service.updateNotice(notice);
@@ -292,5 +283,44 @@ public class NoticeController {
 			return "help/Movie24_post";
 		}
 		
+	}
+	
+	public Map<String, Object> saveFile(MultipartFile uploadFile, HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		String fileName = uploadFile.getOriginalFilename(); //파일 이름
+		String root = request.getSession().getServletContext().getRealPath("resources"); //저장할 파일 경로 찾기
+		String saveFolder = root + "\\nuploadFiles"; //폴더 저장할 주소
+		File folder = new File(saveFolder); // 그 폴더를 선언
+		if(!folder.exists()) {
+			folder.mkdir(); // 폴더 없으면 만들기
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMDDHHmmss"); 
+		
+		String strResult = sdf.format(new Date(System.currentTimeMillis()));
+		String ext = fileName.substring(fileName.lastIndexOf(".")+1);
+		String fileRename = "N"+strResult + "."+ext;
+		String savePath = saveFolder + "\\" +fileRename;
+		File file = new File(savePath);
+		// *************** 파일 저장 ***************
+		uploadFile.transferTo(file);
+		
+		// =============== 파일 크기 ===============
+		long fileLength = uploadFile.getSize();
+		// 파일 이름, 경로, 크기를 넘겨주기 위해 Map에 정보를 저장 한 후 return 함
+		Map<String, Object> infoMap = new HashMap<String, Object>();
+		infoMap.put("fileName", fileName);
+		infoMap.put("fileRename", fileRename);
+		infoMap.put("savePath", savePath);
+		infoMap.put("fileLength", fileLength);
+		return infoMap;
+	}
+	
+	public void deleteFile(HttpServletRequest request, String fileName) {
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String delFilepath = root+"\\nuploagFiles\\"+fileName;
+		File file = new File(delFilepath);
+		if(file.exists()) {
+			file.delete();
+		}
 	}
 }

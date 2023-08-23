@@ -39,8 +39,8 @@
 		                    <br>개봉 : 
 		                    ${mInfo.openDate }</p>
 		            </div>
-		            <c:if test="${mHeart.movieName eq null }"> 
-		            	<c:if test="${memberId ne null }"> 
+	            	<c:if test="${memberId ne null }"> 
+			            <c:if test="${mHeart.movieName eq null }"> 
 			            	<button id="btn1" onclick="heartInsert();">❤ 찜하기</button>
 		            	</c:if>
 		            </c:if>
@@ -130,10 +130,10 @@
             	}
             }
             function heartInsert(){
-            	location.href = "/movie/heartInsert.do?movieName=${mInfo.movieName}&movieNum=${mInfo.movieNum}";
+            	location.href = "/movie/heartInsert.do?movieName=${mInfo.movieName}";
             }
             function heartDelete(){
-            	location.href = "/movie/heartDelete.do?movieName=${mInfo.movieName}&movieNum=${mInfo.movieNum}";
+            	location.href = "/movie/heartDelete.do?movieName=${mInfo.movieName}";
             }
 	    </script>
 	</body>

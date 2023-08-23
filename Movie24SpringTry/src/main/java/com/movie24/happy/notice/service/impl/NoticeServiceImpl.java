@@ -68,5 +68,11 @@ public class NoticeServiceImpl implements NoticeService{
 		return result;
 	}
 
+	@Override
+	public int viewPointPlus(Map<String, Object> view) {
+		int result = nStore.viewPointPlus(session, view);
+		return result;
+	}
+
 
 }

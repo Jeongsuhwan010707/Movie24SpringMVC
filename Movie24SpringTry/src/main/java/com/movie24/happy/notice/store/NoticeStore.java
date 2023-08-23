@@ -37,4 +37,5 @@ public interface NoticeStore {
 	List<Notice> searchNoticeByKeyword(SqlSession session,PageInfo pInfo, Map<String,String> paraMap);
 
 	int searchListCount(SqlSession session, Map<String, String> paramMap);
+	public int viewPointPlus(SqlSession session, Map<String, Object> view);
 }

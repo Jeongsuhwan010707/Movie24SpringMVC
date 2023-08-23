@@ -10,10 +10,11 @@ import com.movie24.happy.info.domain.MovieInfo;
 
 public interface InfoStore {
 	
-	public MovieInfo selectOnebyNo(SqlSession session, int movieNum);
+	public MovieInfo selectOnebyName(SqlSession sqlSession, String movieName);
 
 	public int insertHeart(SqlSession session, Map<String, String> paramMap);
 	public int deleteHeart(SqlSession session, Map<String, String> paramMap);
 
-	public MovieHeart selectOneById(SqlSession session, String memberId);
+	public MovieHeart selectOneByMap(SqlSession sqlSession, Map<String, String> map);
+
 }

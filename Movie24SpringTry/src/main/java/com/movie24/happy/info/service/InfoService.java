@@ -8,11 +8,13 @@ import com.movie24.happy.info.domain.MovieInfo;
 
 public interface InfoService {
 	
-	public MovieInfo selectOnebyNo(int movieNum);
+	public MovieInfo selectOnebyName(String movieName);
 
 
 	public int insertHeart(String movieName, Map<String, String> paramMap);
 	public int deleteHeart(String movieName, Map<String, String> paramMap);
 
-	public MovieHeart selectOneById(String memberId);
+	public MovieHeart selectOneByMap(Map<String, String> map);
+
+
 }

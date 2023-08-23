@@ -83,7 +83,13 @@ public class NoticeStoreLogic implements NoticeStore{
 
 		@Override
 		public int searchListCount(SqlSession session, Map<String, String> paramMap) {
-				int result = session.selectOne("NoticeMapper.searchListByKeywordCount",paramMap);
+			int result = session.selectOne("NoticeMapper.searchListByKeywordCount",paramMap);
+			return result;
+		}
+
+		@Override
+		public int viewPointPlus(SqlSession session, Map<String, Object> view) {
+			int result = session.update("NoticeMapper.viewPointPlus",view);
 			return result;
 		}
 	

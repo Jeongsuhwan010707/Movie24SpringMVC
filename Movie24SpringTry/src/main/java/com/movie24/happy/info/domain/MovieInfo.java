@@ -5,6 +5,7 @@ import java.sql.Date;
 public class MovieInfo {
 	private int movieNum;
 	private String movieName;
+	private String movieEnName;
 	private String movieSrc;
 	private String reservationYN;
 	private String director;
@@ -32,6 +33,14 @@ public class MovieInfo {
 
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
+	}
+
+	public String getMovieEnName() {
+		return movieEnName;
+	}
+
+	public void setMovieEnName(String movieEnName) {
+		this.movieEnName = movieEnName;
 	}
 
 	public String getMovieSrc() {

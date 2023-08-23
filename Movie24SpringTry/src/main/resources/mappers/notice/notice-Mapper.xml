@@ -11,15 +11,16 @@
 		<result property="noticeDate" column="NOTICE_DATE" />
 		<result property="updateDate" column="UPDATE_DATE" />
 		<result property="noticeFilename" column="NOTICE_FILENAME" />
+		<result property="noticeFileRename" column="NOTICE_FILERENAME"/>
 		<result property="noticeFilepath" column="NOTICE_FILEPATH" />
 		<result property="noticeFilelength" column="NOTICE_FILELENGTH" />
 		<result property="viewCount" column="VIEW_COUNT" />
 	</resultMap>
 	<insert id="insertNotice">
-		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,#{noticeFilename},#{noticeFilepath},#{noticeFilelength},DEFAULT)
+		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,#{noticeFilename},#{noticeFileRename},#{noticeFilepath},#{noticeFilelength},DEFAULT)
 	</insert>
 	<update id="updateNotice">
-		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent}, UPDATE_DATE = SYSDATE, NOTICE_FILENAME = ${noticeFilename}, NOTICE_FILEPATH = #{noticeFilepath}, NOTICE_FILELENGTH = #{noticeFilelength} WHERE NOTICE_NO = #{noticeNo}
+		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent}, UPDATE_DATE = SYSDATE, NOTICE_FILENAME = ${noticeFilename}, NOTICE_FILERENAME = #{noticeFileRename}, NOTICE_FILEPATH = #{noticeFilepath}, NOTICE_FILELENGTH = #{noticeFilelength} WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	<delete id="deleteNotice">
 		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
@@ -73,4 +74,7 @@
 <!-- 	<select id="selectHeartList" resultMap="heartResultMap"> -->
 <!-- 		SELECT * FROM MOVIE_HEART_TBL -->
 <!-- 	</select> -->
+	<update id="viewPointPlus">
+		UPDATE NOTICE_TBL SET VIEW_COUNT = #{viewPointPlus} WHERE NOTICE_NO = #{noticeNo}
+	</update>
 </mapper>

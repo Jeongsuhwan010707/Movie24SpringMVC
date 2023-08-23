@@ -20,8 +20,9 @@ public class InfoServiceImpl implements InfoService{
 	@Autowired
 	private InfoStore iStore;
 	
-	public MovieInfo selectOnebyNo(int movieNum) {
-		MovieInfo mInfo = iStore.selectOnebyNo(sqlSession, movieNum);
+	@Override
+	public MovieInfo selectOnebyName(String movieName) {
+		MovieInfo mInfo = iStore.selectOnebyName(sqlSession, movieName);
 		return mInfo;
 	}
 
@@ -38,9 +39,11 @@ public class InfoServiceImpl implements InfoService{
 	}
 
 	@Override
-	public MovieHeart selectOneById(String memberId) {
-		MovieHeart mHeart = iStore.selectOneById(sqlSession, memberId);
+	public MovieHeart selectOneByMap(Map<String, String> map) {
+		MovieHeart mHeart = iStore.selectOneByMap(sqlSession, map);
 		return mHeart;
 	}
+
+	
 
 }

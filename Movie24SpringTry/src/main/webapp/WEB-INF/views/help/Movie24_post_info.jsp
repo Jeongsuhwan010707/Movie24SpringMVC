@@ -78,6 +78,7 @@
 	        <div id="blank">
 	        	<c:if test="${notice.noticeFilename ne null}">
 	        		<img id="noticeConImg" alt="" src="/resources/uploadFiles/${notice.noticeFilename }">
+	        		<a href="/resources/uploadFiles/${notice.noticeFilename }" download>${notice.noticeFilename }</a>
 	        		<p id="blank-img"></p>
 	        	</c:if>
 	            <p id="blankmsg">${notice.noticeContent}</p>

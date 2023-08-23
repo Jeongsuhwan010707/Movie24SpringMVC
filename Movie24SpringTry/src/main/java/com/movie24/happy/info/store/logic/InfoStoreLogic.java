@@ -14,8 +14,8 @@ import com.movie24.happy.info.store.InfoStore;
 public class InfoStoreLogic implements InfoStore{
 
 	@Override
-	public MovieInfo selectOnebyNo(SqlSession session, int movieNum) {
-		MovieInfo mInfo = session.selectOne("InfoMapper.selectOnebyNo", movieNum);
+	public MovieInfo selectOnebyName(SqlSession session, String movieName) {
+		MovieInfo mInfo = session.selectOne("InfoMapper.selectOnebyName", movieName);
 		return mInfo;
 	}
 
@@ -31,9 +31,11 @@ public class InfoStoreLogic implements InfoStore{
 	}
 
 	@Override
-	public MovieHeart selectOneById(SqlSession session, String memberId) {
-		MovieHeart mheart = session.selectOne("InfoMapper.selectHOnebyId", memberId);
+	public MovieHeart selectOneByMap(SqlSession session, Map<String, String> map) {
+		MovieHeart mheart = session.selectOne("InfoMapper.selectOneByMap", map);
 		return mheart;
 	}
+
+	
 
 }

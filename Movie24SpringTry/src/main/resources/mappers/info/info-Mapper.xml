@@ -22,8 +22,8 @@
 		<result property="memberId" column="MEMBER_ID" />
 		<result property="heartYN" column="HEART_YN" />
 	</resultMap>
-	<select id="selectOnebyNo" resultMap="infoResultMap">
-		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NUM = ${movieNum}
+	<select id="selectOnebyName" resultMap="infoResultMap">
+		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NAME = ${movieName}
 	</select>
 	<insert id="insertHeart">
 		INSERT INTO MOVIE_HEART_TBL VALUES(#{movieName}, #{memberId} ,DEFAULT)
