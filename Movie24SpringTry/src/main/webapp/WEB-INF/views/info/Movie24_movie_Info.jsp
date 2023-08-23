@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,7 +39,14 @@
 		                    <br>개봉 : 
 		                    ${mInfo.openDate }</p>
 		            </div>
-		            <button id="btn1">❤ 찜하기</button>
+		            <c:if test="${mHeart.movieName eq null }"> 
+		            	<c:if test="${memberId ne null }"> 
+			            	<button id="btn1" onclick="heartInsert();">❤ 찜하기</button>
+		            	</c:if>
+		            </c:if>
+		            <c:if test="${mHeart.movieName eq mInfo.movieName}"> 
+			            <button id="btn1-1" onclick="heartDelete();">❤ 찜하기</button>
+		            </c:if>
 		            <button id="btn2">⭐ 평점보기</button>
 		        </div>
 		    </section>
@@ -110,26 +118,23 @@
 	            menuText.style.zIndex= -1;
 	        });
 			
-	        var btn1 = document.getElementById("btn1");
-	        document.getElementById("btn1").style.backgroundColor = 'white';
-			document.getElementById("btn1").style.border = '3px solid #FF9292';
-			document.getElementById("btn1").style.color = '#f44a4a';
-			
-	        document.getElementById("btn1").addEventListener('click', () => {
-	       		if(document.getElementById("btn1").style.color == 'rgb(244, 74, 74)'){
-	       			document.getElementById("btn1").style.backgroundColor = "rgb(244, 74, 74)";
-	       			document.getElementById("btn1").style.color = "white";
-	       			document.getElementById("btn1").style.border = '3px solid rgb(244, 74, 74)';
-	        	}else if(document.getElementById("btn1").style.color == 'white'){
-	       			document.getElementById("btn1").style.backgroundColor = 'white';
-	       			document.getElementById("btn1").style.border = '3px solid rgb(255, 146, 146)';
-	       			document.getElementById("btn1").style.color = 'rgb(244, 74, 74)';
-	        	} 
-	        })
-	        
 	        function goReview(){
 	        	location.href="/movie/review.do";
 	        }
+	        function myCheck(){
+            	alert("로그인이 되어있지 않습니다.");
+            }
+            function outCheck(){
+            	if(confirm("로그아웃 하시겠습니까?")){
+            		location.href="/member/logout.do";
+            	}
+            }
+            function heartInsert(){
+            	location.href = "/movie/heartInsert.do?movieName=${mInfo.movieName}&movieNum=${mInfo.movieNum}";
+            }
+            function heartDelete(){
+            	location.href = "/movie/heartDelete.do?movieName=${mInfo.movieName}&movieNum=${mInfo.movieNum}";
+            }
 	    </script>
 	</body>
 </html>    

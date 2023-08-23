@@ -17,7 +17,21 @@
 		<result property="contentInfo" column="CONTENT_INFO" />
 		<result property="video" column="VIDEO" />
 	</resultMap>
+	<resultMap type="com.movie24.happy.info.domain.MovieHeart" id="heartResultMap">
+		<result property="movieName" column="MOVIE_NAME" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="heartYN" column="HEART_YN" />
+	</resultMap>
 	<select id="selectOnebyNo" resultMap="infoResultMap">
 		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NUM = ${movieNum}
+	</select>
+	<insert id="insertHeart">
+		INSERT INTO MOVIE_HEART_TBL VALUES(#{movieName}, #{memberId} ,DEFAULT)
+	</insert>
+	<delete id="deleteHeart">
+		DELETE FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName} AND MEMBER_ID = #{memberId}
+	</delete>
+	<select id="selectHOnebyMap" resultMap="heartResultMap">
+		SELECT * FROM MOVIE_HEART_TBL WHERE MEMBER_ID = #{memberId} AND MOVIE_NAME = #{movieName}
 	</select>
 </mapper>

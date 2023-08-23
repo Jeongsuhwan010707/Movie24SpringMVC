@@ -69,7 +69,8 @@
 		<if test="searchCondition == 'title'">
 			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
 		</if>
-		
 	</select>
-
+<!-- 	<select id="selectHeartList" resultMap="heartResultMap"> -->
+<!-- 		SELECT * FROM MOVIE_HEART_TBL -->
+<!-- 	</select> -->
 </mapper>

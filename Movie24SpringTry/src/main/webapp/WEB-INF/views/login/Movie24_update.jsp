@@ -123,6 +123,9 @@
 	        		location.href="/member/logout.do";
 	        	}
 	        }
+	        function myCheck(){
+            	alert("로그인이 되어있지 않습니다.");
+            }
 	    </script>
 	 </body>
   </html>

@@ -251,6 +251,14 @@
 // 	            document.querySelectorAll("popular").style.display = "none";
 // 	            document.querySelectorAll("popular2").style.display = "block";
 	        };
+	        function myCheck(){
+            	alert("로그인이 되어있지 않습니다.");
+            }
+            function outCheck(){
+            	if(confirm("로그아웃 하시겠습니까?")){
+            		location.href="/member/logout.do";
+            	}
+            }
 	    </script>
 	</body>
 </html>    

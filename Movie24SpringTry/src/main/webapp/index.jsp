@@ -37,7 +37,7 @@
                   <div class="popular_title">
                       <button class="popularBtn" onclick="showPopular();" style="cursor:pointer">인기차트</button>
                       <button class="trailerMovieBtn" onclick="showComing();" style="cursor:pointer">상영예정작</button>
-                      <a href="/movie24/movieList.do" style="cursor:pointer"><img src="/resources/images/더하기.png" alt=""></a>
+                      <a href="/movie/List.do" style="cursor:pointer"><img src="/resources/images/더하기.png" alt=""></a>
                   </div>
                   <div class="popular">
                     <div class="popular_image">
