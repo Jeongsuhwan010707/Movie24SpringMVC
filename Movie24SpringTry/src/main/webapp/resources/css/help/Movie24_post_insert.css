@@ -121,6 +121,7 @@
         #titleArea #contentarea, #imgArea{
             float: left;
         }
+        
         #postTitle{
             width: 1000px;
             height: 50px;
@@ -129,6 +130,7 @@
             font-size: 20px;
             font-family: 'S-CoreDream-3Light';
             border: 1px solid #d5d5d5;
+            padding-left: 10px;
         }
         #postImg{
             width: 1000px;
@@ -147,10 +149,11 @@
             width: 1000px;
             text-align: left;
             height: 600px;
-            /* margin-bottom: 20px; */
             font-size: 17px;
             font-family: 'S-CoreDream-3Light';
             border: 1px solid #d5d5d5;
+            resize: none;
+            padding: 10px;
         }
         #postLast{
             float: left;
@@ -167,8 +170,9 @@
 		    margin: 5px 0px;
 		    margin-bottom: 8px;
 		    font-family: 'S-CoreDream-3Light';
+		    padding-left: 5px;
         }
         #fileArea input{
         	font-family: 'S-CoreDream-3Light';
-        	padding-top: 2px;
+        	padding-top: 3.3px;
         }

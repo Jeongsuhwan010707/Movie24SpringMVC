@@ -289,7 +289,7 @@ public class NoticeController {
 		
 		String fileName = uploadFile.getOriginalFilename(); //파일 이름
 		String root = request.getSession().getServletContext().getRealPath("resources"); //저장할 파일 경로 찾기
-		String saveFolder = root + "\\nuploadFiles"; //폴더 저장할 주소
+		String saveFolder = root + "\\uploadFiles"; //폴더 저장할 주소
 		File folder = new File(saveFolder); // 그 폴더를 선언
 		if(!folder.exists()) {
 			folder.mkdir(); // 폴더 없으면 만들기

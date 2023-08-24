@@ -6,6 +6,7 @@
 	<resultMap type="com.movie24.happy.info.domain.MovieInfo" id="infoResultMap">
 		<id property="movieNum" column="MOVIE_NUM"/>
 		<result property="movieName" column="MOVIE_NAME" />
+		<result property="movieEnName" column="MOVIE_ENNAME" />
 		<result property="movieSrc" column="MOVIE_SRC" />
 		<result property="reservationYN" column="RESERVATION_YN" />
 		<result property="director" column="DIRECTOR" />
@@ -17,21 +18,21 @@
 		<result property="contentInfo" column="CONTENT_INFO" />
 		<result property="video" column="VIDEO" />
 	</resultMap>
+	<select id="selectOnebyName" resultMap="infoResultMap">
+		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NAME = #{movieName}
+	</select>
 	<resultMap type="com.movie24.happy.info.domain.MovieHeart" id="heartResultMap">
 		<result property="movieName" column="MOVIE_NAME" />
 		<result property="memberId" column="MEMBER_ID" />
 		<result property="heartYN" column="HEART_YN" />
 	</resultMap>
-	<select id="selectOnebyName" resultMap="infoResultMap">
-		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NAME = ${movieName}
-	</select>
 	<insert id="insertHeart">
 		INSERT INTO MOVIE_HEART_TBL VALUES(#{movieName}, #{memberId} ,DEFAULT)
 	</insert>
 	<delete id="deleteHeart">
 		DELETE FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName} AND MEMBER_ID = #{memberId}
 	</delete>
-	<select id="selectHOnebyMap" resultMap="heartResultMap">
-		SELECT * FROM MOVIE_HEART_TBL WHERE MEMBER_ID = #{memberId} AND MOVIE_NAME = #{movieName}
+	<select id="selectOneByMap" resultMap="heartResultMap">
+		SELECT * FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName} AND MEMBER_ID = #{memberId}
 	</select>
 </mapper>

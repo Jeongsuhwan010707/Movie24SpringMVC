@@ -3,6 +3,7 @@ package com.movie24.happy.event.domain;
 public class EventSRC {
 	
 	private String imageSRC;
+	private String eventName;
 	private int eventImgNum;
 	private String category;
 
@@ -15,6 +16,14 @@ public class EventSRC {
 	
 	public String getImageSRC() {
 		return imageSRC;
+	}
+	
+	public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
 
 	public EventSRC(int eventImgNum) {

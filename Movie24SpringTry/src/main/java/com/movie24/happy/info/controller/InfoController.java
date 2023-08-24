@@ -1,5 +1,7 @@
 package com.movie24.happy.info.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +38,12 @@ public class InfoController {
 		Map<String, String> map = new HashMap<String, String>();
 		String memberId = (String) session.getAttribute("memberId");
 		map.put("movieName", movieName);
-		map.put("memberId", memberId);
-		MovieHeart mHeart = service.selectOneByMap(map);
+		MovieHeart mHeart = null;
+		if(memberId != null && memberId != "") {
+			map.put("memberId", memberId);
+			mHeart = service.selectOneByMap(map);
+		}
+		
 		if(mInfo != null) {
 			model.addAttribute("mInfo", mInfo);
 			if(mHeart != null) {
@@ -66,19 +72,26 @@ public class InfoController {
 			, HttpServletResponse response
 			, Model model) {
 			
-			
-			String memberId = (String) session.getAttribute("memberId");
-			Map<String,String> paramMap = new HashMap<String,String>();
-			paramMap.put("memberId", memberId);
-			paramMap.put("movieName", movieName);
-			int result = service.insertHeart(movieName, paramMap);
-			if(result > 0) {
-				return "redirect:/movie/info.do?movieName"+movieName;
-			}else {
-				model.addAttribute("msg", "찜 누르기를 실패하였습니다.");
-				model.addAttribute("error", "찜 누르기 실패");
-				model.addAttribute("url", "/index.jsp");
-				return "successOrFail/serviceFailed";
+			try {
+				String memberId = (String) session.getAttribute("memberId");
+				Map<String,String> paramMap = new HashMap<String,String>();
+				paramMap.put("memberId", memberId);
+				paramMap.put("movieName", movieName);
+				String encodedMovieName = URLEncoder.encode(movieName, "UTF-8");
+				int result = service.insertHeart(movieName, paramMap);
+				if(result > 0) {
+					return "redirect:/movie/info.do?movieName="+encodedMovieName;
+				}else {
+					model.addAttribute("msg", "찜 누르기를 실패하였습니다.");
+					model.addAttribute("error", "찜 누르기 실패");
+					model.addAttribute("url", "/index.jsp");
+					return "successOrFail/serviceFailed";
+				}
+			} catch (UnsupportedEncodingException e) {
+				model.addAttribute("msg", "게시글 등록이 완료되지 않았습니다.");
+				model.addAttribute("error", e.getMessage());
+				model.addAttribute("url", "/board.write.kh");
+				return "common/errorPage";
 			}
 			
 		}
@@ -88,19 +101,27 @@ public class InfoController {
 			, @RequestParam("movieName") String movieName
 			, HttpServletResponse response
 			, Model model) {
+		try {
 		
-		String memberId = (String) session.getAttribute("memberId");
-		Map<String,String> paramMap = new HashMap<String,String>();
-		paramMap.put("memberId", memberId);
-		paramMap.put("movieName", movieName);
-		int result = service.deleteHeart(movieName, paramMap);
-		if(result > 0) {
-			return "redirect:/movie/info.do?movieNum="+movieName;
-		}else {
-			model.addAttribute("msg", "찜 취소를 실패하였습니다.");
-			model.addAttribute("error", "찜 취소 실패");
-			model.addAttribute("url", "/index.jsp");
-			return "successOrFail/serviceFailed";
+			String memberId = (String) session.getAttribute("memberId");
+			Map<String,String> paramMap = new HashMap<String,String>();
+			paramMap.put("memberId", memberId);
+			paramMap.put("movieName", movieName);
+			String encodedMovieName = URLEncoder.encode(movieName, "UTF-8");
+			int result = service.deleteHeart(movieName, paramMap);
+			if(result > 0) {
+				return "redirect:/movie/info.do?movieName="+encodedMovieName;
+			}else {
+				model.addAttribute("msg", "찜 취소를 실패하였습니다.");
+				model.addAttribute("error", "찜 취소 실패");
+				model.addAttribute("url", "/index.jsp");
+				return "successOrFail/serviceFailed";
+			}
+		} catch (UnsupportedEncodingException e) {
+			model.addAttribute("msg", "게시글 등록이 완료되지 않았습니다.");
+			model.addAttribute("error", e.getMessage());
+			model.addAttribute("url", "/board.write.kh");
+			return "common/errorPage";
 		}
 	}
 }

@@ -60,7 +60,7 @@
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=분노의질주">
+                                <a href="/movie/info.do?movieName=분노의 질주-라이드 오어 다이">
                                 	<img id="mainImg3" class="popularPoster" src="/resources/images/분노의질주.png" alt="" >
 	                                <button id="lookDetail3" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
@@ -68,7 +68,7 @@
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=가디언즈오브갤럭시">
+                                <a href="/movie/info.do?movieName=가디언즈 오브 갤럭시-Volume 3">
                                 	<img id="mainImg4" class="popularPoster" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
                             		<button id="lookDetail4" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>
@@ -76,7 +76,7 @@
                                 <p>예매율 : 99% | 평점 4.5</p>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=위대한쇼맨">
+                                <a href="/movie/info.do?movieName=위대한 쇼맨">
 	                                <img id="mainImg5" class="popularPoster" src="/resources/images/위대한쇼맨.jpg" alt="" >
 	                                <button id="lookDetail5" class="lookDetail" style="cursor:pointer">상세보기</button>
                                 </a>

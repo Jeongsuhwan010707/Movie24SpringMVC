@@ -88,12 +88,38 @@
 	            <h1>첫 번째 감상평을 남겨주세요!</h1>
 	        </div>
 	        <div>
-	            <button id="review_btn" onclick="goReview()">리뷰 작성</button>
+	            <button id="review_btn">리뷰 작성</button>
 	        </div>
 	        <div id="img_area3">
 	            <img src="/resources/images/review2.png" alt="">
 	        </div>
 	        <div id="bottomBlank"></div>
+	        <!-- 모달 -->
+<!-- 	        모오오오오오다아아알 -->
+			<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <span class="close-btn" id="closeModalBtn">&times;</span>
+<!-- 			    ㅁ -->
+				<h2>리뷰 등록하기!</h2>
+				<p>[별점]</p>
+				
+			  	<div class="stars" id="starContainer">
+			  		<div class="starBlank"></div>
+				    <span class="star" star-count="1">&#9733;</span>
+				    <span class="star" star-count="2">&#9733;</span>
+				    <span class="star" star-count="3">&#9733;</span>
+				    <span class="star" star-count="4">&#9733;</span>
+				    <span class="star" star-count="5">&#9733;</span>
+				    <div class="starBlank"></div>
+				  	</div>
+					<p>[리뷰 댓글]</p>
+				  	<textarea id="comment" placeholder="리뷰를 남겨주세요!"></textarea>
+				  	<button id="submitBtn">등록하기</button>
+				  	<button id="reviewBackBtn">취소하기</button>
+				</div>				
+<!-- 			    ㅁ -->
+			  </div>
+			</div>
 	    </main>
          <!-- --------------------푸터---------------------------------- -->
 	         <!-- <footer> ----------------------------</footer> -->
@@ -135,6 +161,67 @@
             function heartDelete(){
             	location.href = "/movie/heartDelete.do?movieName=${mInfo.movieName}";
             }
+         	// 버튼과 모달 요소 가져오기
+			var reviewBtn = document.getElementById("review_btn");
+			var closeModalBtn = document.getElementById("closeModalBtn");
+			var backModalBtn = document.getElementById("reviewBackBtn");
+			var modal = document.getElementById("myModal");
+			
+			// 모달 열기 함수
+			reviewBtn.onclick = function() {
+			  modal.style.display = "block";
+			}
+			
+			// 모달 닫기 함수
+			closeModalBtn.onclick = function() {
+			  modal.style.display = "none";
+			}
+			backModalBtn.onclick = function() {
+			  modal.style.display = "none";
+			}
+			
+			// 모달 외부 클릭 시 닫기
+// 			window.onclick = function(event) {
+// 			  if (event.target == modal) {
+// 			    modal.style.display = "none";
+// 			  }
+// 			}
+			// 별점 관련
+			var stars = document.querySelectorAll(".star");
+			var starContainer = document.getElementById("starContainer");
+			var rating = 0;
+			
+			// 별점 선택 시 처리
+			stars.forEach(function(star) {
+			  star.addEventListener("click", function() {
+			    rating = parseInt(star.getAttribute("star-count"));
+			    updateStars(rating);
+			  });
+			});
+			
+			// 별점 갱신
+			function updateStars(selectedRating) {
+			  stars.forEach(function(star) {
+			    var starRating = parseInt(star.getAttribute("star-count"));
+			    if (starRating <= selectedRating) {
+			      star.classList.add("active");
+			    } else {
+			      star.classList.remove("active");
+			    }
+			  });
+			}
+			
+			// 댓글 작성 버튼 클릭 시 처리
+			var submitBtn = document.getElementById("submitBtn");
+			submitBtn.addEventListener("click", function() {
+			  var comment = document.getElementById("comment").value;
+			  if (rating > 0 && comment.trim() !== "") {
+			    alert("별점: " + rating + "\n댓글: " + comment);
+			    // 여기에 댓글 전송 등의 로직을 추가할 수 있습니다.
+			  } else {
+			    alert("별점과 댓글을 모두 입력하세요.");
+			  }
+			});
 	    </script>
 	</body>
 </html>    

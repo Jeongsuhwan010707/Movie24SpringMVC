@@ -70,7 +70,7 @@
 		            <input type="text" id="postTitle" placeholder=" (작성글) 제목을 입력해주세요." name="noticeSubject" value="${notice.noticeSubject}">
 <!-- 					기존 업로드 파일 체크할 때 사용 -->
 					<input type="hidden" name="noticeFilename" value="${notice.noticeFilename }">
-					<input type="hidden" name="noticeFilerename" value="${notice.noticeFilerename }">
+					<input type="hidden" name="noticeFileRename" value="${notice.noticeFileRename }">
 					<input type="hidden" name="noticeFilelength" value="${notice.noticeFilelength }">
 					<input type="hidden" name="noticeFilepath" value="${notice.noticeFilepath }">		        
 		        </div>

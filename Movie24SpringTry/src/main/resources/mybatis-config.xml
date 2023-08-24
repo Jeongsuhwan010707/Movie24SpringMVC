@@ -13,9 +13,9 @@
  		<typeAlias type="com.movie24.happy.info.domain.MovieInfo" alias="Info"/>
  	</typeAliases>
 	<mappers>
-		<mapper resource="mappers/member-Mapper.xml" />
-		<mapper resource="mappers/notice-Mapper.xml" />
-		<mapper resource="mappers/event-Mapper.xml" />
-		<mapper resource="mappers/info-Mapper.xml" />
+		<mapper resource="mappers/member/member-Mapper.xml" />
+		<mapper resource="mappers/notice/notice-Mapper.xml" />
+		<mapper resource="mappers/event/event-Mapper.xml" />
+		<mapper resource="mappers/info/info-Mapper.xml" />
 	</mappers>
 </configuration>
