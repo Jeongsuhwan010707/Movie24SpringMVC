@@ -17,4 +17,6 @@ public interface InfoStore {
 
 	public MovieHeart selectOneByMap(SqlSession sqlSession, Map<String, String> map);
 
+	public int selectHeartCount(SqlSession sqlSession, String movieName);
+
 }

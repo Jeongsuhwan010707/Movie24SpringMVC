@@ -77,7 +77,7 @@
 	            </div>
 	        <div id="blank">
 	        	<c:if test="${notice.noticeFilename ne null}">
-	        		<img id="noticeConImg" alt="" src="/resources/uploadFiles/${notice.noticeFilename }">
+	        		<img id="noticeConImg" alt="" src="/resources/uploadFiles/${notice.noticeFileRename }">
 <%-- 	        		<a href="/resources/uploadFiles/${notice.noticeFilename }" download>${notice.noticeFilename }</a> --%>
 	        		<p id="blank-img"></p>
 	        	</c:if>

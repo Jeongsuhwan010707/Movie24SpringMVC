@@ -195,8 +195,6 @@
         </div>
         <!-- 스크립트 -->
         <script>
-            var ulElement = document.getElementById('nav_ul');
-            var liElements = ulElement.querySelectorAll('li');
             var menuText = document.getElementById('menu_text');
             var menuArea = document.getElementById('menuArea');
             
@@ -222,44 +220,46 @@
 		            document.getElementById('mainImg'+(index+1)).style.border = "3px solid #999797";
 				})
 			});
-			
-            liElements.forEach(li => {
+			////////네비게이터 수정중
+			document.addEventListener("DOMContentLoaded", function() {
+		    const liElements = document.querySelectorAll('#nav_ul li');
+		    const menuText = document.getElementById('menu_text');
+		
+		    let hoverIntent = false;
+		
+		    liElements.forEach(li => {
 		        li.addEventListener('mouseenter', () => {
-	                menuText.classList.add('active');
-	                menuText.style.zIndex= 5000;
-	            });
-	        });
-	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
-	            menuText.classList.remove('active');
-	            menuText.style.zIndex= -1;
-	            
-// 	            liElements.forEach(li => {
-// 			        li.addEventListener('mouseleave', () => {
-// 		                menuText.classList.remove('active');
-// 		                menuText.style.zIndex= 5000;
-// 		            });
-// 		        });
-	        });
+		            hoverIntent = true;
+		            menuText.classList.add('active');
+		            menuText.style.zIndex = 5000;
+		        });
+		
+		        li.addEventListener('mouseleave', () => {
+		            hoverIntent = false;
+		            setTimeout(() => {
+		                if (!hoverIntent) {
+		                    menuText.classList.remove('active');
+		                    menuText.style.zIndex = -1;
+			                }
+			            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			        });
+			    });
+		
+		    menuText.addEventListener('mouseenter', () => {
+		        hoverIntent = true;
+		    });
+		
+		    menuText.addEventListener('mouseleave', () => {
+		        hoverIntent = false;
+		        setTimeout(() => {
+		            if (!hoverIntent) {
+		                menuText.classList.remove('active');
+		                menuText.style.zIndex = -1;
+			            }
+			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			    });
+			});
 	        
-// 	        $(document).ready(function () {
-// 	            $('.nav_menu > li > h2 > a').on({
-// 	                mouseenter: function (e) {
-// 	                    var target = e.target;
-// 	                    $(target).parents('.nav_menu').find('.nav_overMenu').slideDown(function () {
-// 	                        $('.nav').addClass('active');
-// 	                    });
-// 	                },
-// 	                click: function (e) {
-// 	                    var target = e.target;
-// 	                    if (!$('.nav').hasClass('active')) {
-// 	                        $(this).trigger('mouseenter');
-// 	                    } else {
-// 	                        $('.nav').trigger('mouseleave');
-// 	                    }
-// 	                }
-// 	            });
-        /////////////////////
-        
 // -----------------------test
         var video1 = document.querySelector("#trailer-video1");
         var video2 = document.querySelector("#trailer-video2");

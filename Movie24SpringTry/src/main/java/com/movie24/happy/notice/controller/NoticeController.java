@@ -317,7 +317,7 @@ public class NoticeController {
 	
 	public void deleteFile(HttpServletRequest request, String fileName) {
 		String root = request.getSession().getServletContext().getRealPath("resources");
-		String delFilepath = root+"\\nuploagFiles\\"+fileName;
+		String delFilepath = root+"\\uploagFiles\\"+fileName;
 		File file = new File(delFilepath);
 		if(file.exists()) {
 			file.delete();

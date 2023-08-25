@@ -36,6 +36,12 @@ public class InfoStoreLogic implements InfoStore{
 		return mheart;
 	}
 
+	@Override
+	public int selectHeartCount(SqlSession session, String movieName) {
+		int result = session.selectOne("InfoMapper.selectHeartCount", movieName);
+		return result;
+	}
+
 	
 
 }

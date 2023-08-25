@@ -41,11 +41,11 @@
 		            </div>
 	            	<c:if test="${memberId ne null }"> 
 			            <c:if test="${mHeart.movieName eq null }"> 
-			            	<button id="btn1" onclick="heartInsert();">❤ 찜하기</button>
+			            	<button id="btn1" onclick="heartInsert();">❤ 찜하기 ${heartCount}</button>
 		            	</c:if>
 		            </c:if>
 		            <c:if test="${mHeart.movieName eq mInfo.movieName}"> 
-			            <button id="btn1-1" onclick="heartDelete();">❤ 찜하기</button>
+			            <button id="btn1-1" onclick="heartDelete();">❤ 찜하기 ${heartCount}</button>
 		            </c:if>
 		            <button id="btn2">⭐ 평점보기</button>
 		        </div>

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.graalvm.compiler.nodes.NodeView.Default;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,7 +67,7 @@ public class MemberController {
 			, @RequestParam("member-address") String memberAddress
 			, @RequestParam("member-phone") String memberPhone
 			, @RequestParam("member-email") String memberEmail
-			, @RequestParam("member-emailYN") String memberEmailYN) {
+			, @RequestParam(value="member-emailYN", required = false, defaultValue="N") String memberEmailYN) {
 		
 		Member member = new Member(memberId, memberPw, memberName, memberNickname, memberAddress, memberPhone, memberEmail, memberEmailYN); 
 		int result = service.insertMember(member);

@@ -35,4 +35,7 @@
 	<select id="selectOneByMap" resultMap="heartResultMap">
 		SELECT * FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName} AND MEMBER_ID = #{memberId}
 	</select>
+	<select id="selectHeartCount" resultType="_int">
+		SELECT COUNT(*) FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName}
+	</select>
 </mapper>

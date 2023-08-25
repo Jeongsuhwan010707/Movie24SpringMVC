@@ -44,6 +44,12 @@ public class InfoServiceImpl implements InfoService{
 		return mHeart;
 	}
 
+	@Override
+	public int selectHeartCount(String movieName) {
+		int result = iStore.selectHeartCount(sqlSession, movieName);
+		return result;
+	}
+
 	
 
 }

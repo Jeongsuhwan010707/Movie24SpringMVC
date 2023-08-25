@@ -46,6 +46,8 @@ public class InfoController {
 		
 		if(mInfo != null) {
 			model.addAttribute("mInfo", mInfo);
+			int heartCount = service.selectHeartCount(movieName);
+			model.addAttribute("heartCount", heartCount);
 			if(mHeart != null) {
 				model.addAttribute("mHeart", mHeart);
 			}

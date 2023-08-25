@@ -17,4 +17,7 @@ public interface InfoService {
 	public MovieHeart selectOneByMap(Map<String, String> map);
 
 
+	public int selectHeartCount(String movieName);
+
+
 }
