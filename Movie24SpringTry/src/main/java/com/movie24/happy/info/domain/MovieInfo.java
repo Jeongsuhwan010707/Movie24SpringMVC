@@ -11,7 +11,9 @@ public class MovieInfo {
 	private String director;
 	private String actor;
 	private String genre;
-	private String basicInfo;
+	private String filmRating;
+	private String runningTime;
+	private String country;
 	private String ageImage;
 	private String openDate;
 	private String contentInfo;
@@ -83,12 +85,28 @@ public class MovieInfo {
 		this.genre = genre;
 	}
 
-	public String getBasicInfo() {
-		return basicInfo;
+	public String getFilmRating() {
+		return filmRating;
 	}
 
-	public void setBasicInfo(String basicInfo) {
-		this.basicInfo = basicInfo;
+	public void setFilmRating(String filmRating) {
+		this.filmRating = filmRating;
+	}
+
+	public String getRunningTime() {
+		return runningTime;
+	}
+
+	public void setRunningTime(String runningTime) {
+		this.runningTime = runningTime;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getAgeImage() {
@@ -121,6 +139,15 @@ public class MovieInfo {
 
 	public void setVideo(String video) {
 		this.video = video;
+	}
+
+	@Override
+	public String toString() {
+		return "영화정보 [영화번호=" + movieNum + ", 영화이름=" + movieName + ", 영화영어이름=" + movieEnName
+				+ ", 영화포스터주소=" + movieSrc + ", 상영중여부=" + reservationYN + ", 감독=" + director + ", 배우="
+				+ actor + ", 장르=" + genre + ", 관람가등급=" + filmRating + ", 런타임=" + runningTime
+				+ ", 국가=" + country + ", 관람가등급사진주소=" + ageImage + ", 상영시작날짜=" + openDate + ", 영화내용="
+				+ contentInfo + ", 예고편=" + video + "]";
 	}
 	
 	

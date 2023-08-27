@@ -50,6 +50,12 @@ public class InfoServiceImpl implements InfoService{
 		return result;
 	}
 
+	@Override
+	public List<MovieInfo> selectYNMovieList(String str) {
+		List<MovieInfo> miList = iStore.selectYNMovieList(sqlSession, str);
+		return miList;
+	}
+
 	
 
 }

@@ -213,7 +213,7 @@
         line-height: 1.6;
         float: left;
     }
-    #review_btn{
+    .review_btn{
         width: 10%;
         height: 150px;
         float: left;
@@ -300,6 +300,55 @@
 			  cursor: pointer;
 			  font-size: 20px;
 			}
+/* 			댓글 폼 */
+			.reviewForm {
+			  display: flex;
+			  border-top: 2px solid #b3b2b2;
+			}
+			
+			.reviewOne,
+			.reviewTwo {
+			  flex: 1;
+			  display: flex;
+			  padding: 35px;
+			  border-bottom: 1px solid #ccc;
+			}
+			
+			.reviewOne {
+			  border-right: 1px solid #ccc;
+			}
+			
+			.replyImg img {
+			  width: 100px;
+			  max-height: 200px;
+			}
+			
+			.reply {
+			  padding: 15px;
+			  padding-left: 20px;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: space-between;
+			}
+			
+			.reply p {
+			  height: 100px;
+			  overflow: hidden;
+			  margin: 0;
+			}
+			.reply.blank {
+			  width: 100%;
+			  height: 100px;
+			  float: left;
+			}
+			#replyTitle{
+				width: 100%;
+			    height: 100px;
+			    font-size: 27px;
+			    font-family: 'S-CoreDream-3Light';
+			    font-weight: 400;
+			    padding-top: 30px;
+			}
 			/* 별점 스타일 */
   .modal h2{
   	font-family: 'LINESeedKR-Bd';
@@ -376,3 +425,6 @@
   	background-color: #eee;
   }
     /* ----------푸터------------------------- */
+    footer{
+    	float: left;
+    }

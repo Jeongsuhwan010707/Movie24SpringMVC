@@ -103,12 +103,12 @@
 									<fmt:formatDate pattern="yyyy-MM-dd" value="${notice0.noticeDate }"/>
 								</td>
 <%-- 								<td class="tr">${notice0.noticeDate }</td> --%>
-								<td class="tr">${notice0.viewCount }</td>
+								<td class="tr">0</td>
 							</tr>
-							<c:forEach var="notice" items="${nList}">
+							<c:forEach var="notice" items="${nList}" varStatus="i">
 								<c:if test="${notice.noticeNo ne '0' }">
 									<tr id="postList">
-										<td class="tr">${notice.noticeNo }</td>
+										<td class="tr">${i.count }</td>
 										<td class="tr">${notice.noticeWriter }</td>
 										<c:url var="detailUrl" value="/notice/postInfo.do">
 											<c:param name="noticeNo" value="${notice.noticeNo }"></c:param>
@@ -117,7 +117,7 @@
 											<a href="${detailUrl}">${notice.noticeSubject}</a></td>
 										<td class="tr">${notice.noticeDate }</td>
 										<td class="tr"> 
-											<fmt:formatNumber pattern="##,###,###" value="${notice.viewCount }"></fmt:formatNumber>
+											<fmt:formatNumber pattern="##,###,###" value="0"></fmt:formatNumber>
 										</td>
 									</tr>
 								</c:if>

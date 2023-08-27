@@ -71,7 +71,7 @@
 	                    <th id="tr">제목 : ${notice.noticeSubject}</th>
 	                    <td class="tr2">작성자 : ${notice.noticeWriter}</td>
 	                    <td class="tr1">등록일 : ${notice.noticeDate}</td>
-	                    <td class="tr">조회수 : ${notice.viewCount}</td>
+	                    <td class="tr">조회수 : 0</td>
 	                </tr>
                 </table>
 	            </div>

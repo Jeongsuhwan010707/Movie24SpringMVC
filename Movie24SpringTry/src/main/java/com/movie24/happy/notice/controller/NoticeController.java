@@ -47,8 +47,6 @@ public class NoticeController {
 		Notice noticeN = service.selectOneByNo(noticeNext);
 		
 		Map<String, Object> view = new HashMap<String, Object>();
-		int viewCountPlus = notice.getViewCount() + 1;
-		view.put("viewCountPlus", viewCountPlus);
 		view.put("noticeNo", noticeNo);
 		int result = service.viewPointPlus(view);
 		int totalNum = service.getListCount();

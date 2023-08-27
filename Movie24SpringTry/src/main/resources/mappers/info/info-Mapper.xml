@@ -12,7 +12,9 @@
 		<result property="director" column="DIRECTOR" />
 		<result property="actor" column="ACTOR" />
 		<result property="genre" column="GENRE" />
-		<result property="basicInfo" column="BASIC_INFO" />
+		<result property="filmRating" column="FILM_RATIONG" />
+		<result property="runningTime" column="RUNNING_TIME" />
+		<result property="country" column="COUNTRY" />
 		<result property="ageImage" column="AGE_IMAGE" />
 		<result property="openDate" column="OPEN_DATE" />
 		<result property="contentInfo" column="CONTENT_INFO" />
@@ -20,6 +22,9 @@
 	</resultMap>
 	<select id="selectOnebyName" resultMap="infoResultMap">
 		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NAME = #{movieName}
+	</select>
+	<select id="selectYNMovieList" resultMap="infoResultMap">
+		SELECT * FROM MOVIE_INFO_TBL WHERE RESERVATION_YN = #{value}
 	</select>
 	<resultMap type="com.movie24.happy.info.domain.MovieHeart" id="heartResultMap">
 		<result property="movieName" column="MOVIE_NAME" />

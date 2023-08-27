@@ -19,4 +19,12 @@ public interface InfoStore {
 
 	public int selectHeartCount(SqlSession sqlSession, String movieName);
 
+	/**
+	 * 영화정보 리스트 가져오기 Store
+	 * @param sqlSession
+	 * @param str
+	 * @return List
+	 */
+	public List<MovieInfo> selectYNMovieList(SqlSession sqlSession, String str);
+
 }

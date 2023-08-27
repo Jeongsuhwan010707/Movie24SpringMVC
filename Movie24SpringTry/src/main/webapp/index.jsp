@@ -43,45 +43,54 @@
                     <div class="popular_image">
                         <ul>
                             <li>
-                                <a href="/movie/info.do?movieName=플래시">
-                                	<img id="mainImg1" class="popularPoster"  src="/resources/images/플래시.jpg" alt="">
-                                	<button id="lookDetail1" class="lookDetail" style="cursor:pointer">상세보기</button>
-                               	</a>
-                                <h4><span class="popularSpan">1) </span><img class="age1" src="/resources/images/12세.png" alt=""> 플래시</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
-                                
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=플래시">
+	                                	<img id="mainImg1" class="popularPoster"  src="/resources/images/플래시.jpg" alt="">
+	                                	<button id="lookDetail1" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                               	</a>
+	                                <h4><span class="popularSpan">1) </span><img class="age" src="/resources/images/12세이상관람가.png" alt=""> 플래시</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=범죄도시3">
-                                	<img id="mainImg2" class="popularPoster" src="/resources/images/범죄도시3.png" alt="" >
-	                                <button id="lookDetail2" class="lookDetail" style="cursor:pointer">상세보기</button>
-                               	</a>
-                                <h4><span class="popularSpan">2) </span><img class="age2" src="/resources/images/15세.png" alt=""> 범죄도시3</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=범죄도시3">
+	                                	<img id="mainImg2" class="popularPoster" src="/resources/images/범죄도시3.png" alt="" >
+		                                <button id="lookDetail2" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                               	</a>
+	                                <h4><span class="popularSpan">2) </span><img class="age" src="/resources/images/15세이상관람가.png" alt=""> 범죄도시3</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=분노의 질주-라이드 오어 다이">
-                                	<img id="mainImg3" class="popularPoster" src="/resources/images/분노의질주.png" alt="" >
-	                                <button id="lookDetail3" class="lookDetail" style="cursor:pointer">상세보기</button>
-                                </a>
-                                <h4><span class="popularSpan">3)<img class="age3" src="/resources/images/15세.png" alt=""> </span> 분노의 질주</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=분노의 질주-라이드 오어 다이">
+	                                	<img id="mainImg3" class="popularPoster" src="/resources/images/분노의질주.png" alt="" >
+		                                <button id="lookDetail3" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                                </a>
+	                                <h4><span class="popularSpan">3)<img class="age" src="/resources/images/15세이상관람가.png" alt=""> </span> 분노의 질주</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=가디언즈 오브 갤럭시-Volume 3">
-                                	<img id="mainImg4" class="popularPoster" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
-                            		<button id="lookDetail4" class="lookDetail" style="cursor:pointer">상세보기</button>
-                                </a>
-                                <h4><span class="popularSpan">4) </span><img class="age4" src="/resources/images/12세.png" alt=""> 가디언즈 오브 ...</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=가디언즈 오브 갤럭시-Volume 3">
+	                                	<img id="mainImg4" class="popularPoster" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
+	                            		<button id="lookDetail4" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                                </a>
+	                                <h4><span class="popularSpan">4) </span><img class="age" src="/resources/images/12세이상관람가.png" alt=""> 가디언즈 오브 ...</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=위대한 쇼맨">
-	                                <img id="mainImg5" class="popularPoster" src="/resources/images/위대한쇼맨.jpg" alt="" >
-	                                <button id="lookDetail5" class="lookDetail" style="cursor:pointer">상세보기</button>
-                                </a>
-                                <h4><span class="popularSpan">5) </span><img class="age5" src="/resources/images/12세.png" alt=""> 위대한쇼맨</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=위대한 쇼맨">
+		                                <img id="mainImg5" class="popularPoster" src="/resources/images/위대한쇼맨.jpg" alt="" >
+		                                <button id="lookDetail5" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                                </a>
+	                                <h4><span class="popularSpan">5) </span><img class="age" src="/resources/images/12세이상관람가.png" alt=""> 위대한쇼맨</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                         </ul>
                     </div>
@@ -90,44 +99,54 @@
                     <div class="popular_image">
                         <ul>
                             <li>
-                                <a href="/movie/info.do?movieName=엘리멘탈">
-                                	<img id="mainImg6" class="popularPoster" src="/resources/images/엘리멘탈.jpg" alt="">
-                                	<button id="lookDetail6" class="lookDetail" style="cursor:pointer">상세보기</button>
-                                </a>
-                                <h4><span class="popularSpan">1) </span><img class="age1" src="/resources/images/전체이용가.png" alt=""> 엘리멘탈</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=엘리멘탈">
+	                                	<img id="mainImg6" class="popularPoster" src="/resources/images/엘리멘탈.jpg" alt="">
+	                                	<button id="lookDetail6" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                                </a>
+	                                <h4><span class="popularSpan">1) </span><img class="age" src="/resources/images/전체관람가.png" alt=""> 엘리멘탈</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                            <li>
-                                <a href="/movie/info.do?movieName=바비">
-                                	<img id="mainImg7" class="popularPoster" src="/resources/images/바비.jpg" alt="">
-	                                <button id="lookDetail7" class="lookDetail" style="cursor:pointer">상세보기</button>
-                                	</a>
-                                <h4><span class="popularSpan">2) </span><img class="age2" src="/resources/images/12세.png" alt=""> 바비</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                           		<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=바비">
+	                                	<img id="mainImg7" class="popularPoster" src="/resources/images/바비.jpg" alt="">
+		                                <button id="lookDetail7" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                                	</a>
+	                                <h4><span class="popularSpan">2) </span><img class="age" src="/resources/images/12세이상관람가.png" alt=""> 바비</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                           		</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=콘크리트 유토피아">
-	                                <img id="mainImg8" class="popularPoster" src="/resources/images/콘크리트 유토피아.jpg" alt="">
-	                                <button id="lookDetail8" class="lookDetail" style="cursor:pointer">상세보기</button>
-                                </a>
-                                <h4><span class="popularSpan">3) </span><img class="age3" src="/resources/images/15세.png" alt=""> 콘크리트 유토...</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=콘크리트 유토피아">
+		                                <img id="mainImg8" class="popularPoster" src="/resources/images/콘크리트 유토피아.jpg" alt="">
+		                                <button id="lookDetail8" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                                </a>
+	                                <h4><span class="popularSpan">3) </span><img class="age" src="/resources/images/15세이상관람가.png" alt=""> 콘크리트 유토...</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=밀수">
-                                	<img id="mainImg9" class="popularPoster" src="/resources/images/밀수.jpg" alt="">
-                                	<button id="lookDetail9" class="lookDetail" style="cursor:pointer">상세보기</button>
-                               	</a>
-                                <h4><span class="popularSpan">4) </span><img class="age4" src="/resources/images/15세.png" alt=""> 밀수</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=밀수">
+	                                	<img id="mainImg9" class="popularPoster" src="/resources/images/밀수.jpg" alt="">
+	                                	<button id="lookDetail9" class="lookDetail" style="cursor:pointer">상세보기</button>
+	                               	</a>
+	                                <h4><span class="popularSpan">4) </span><img class="age" src="/resources/images/15세이상관람가.png" alt=""> 밀수</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                             <li>
-                                <a href="/movie/info.do?movieName=인어공주">
-    	                            <img id="mainImg10" class="popularPoster" src="/resources/images/인어공주.png" alt="">
-	                                <button id="lookDetail10" class="lookDetail" style="cursor:pointer">상세보기</button>
-   	                            </a>
-                                <h4><span class="popularSpan">5) </span><img class="age5" src="/resources/images/전체이용가.png" alt=""> 인어공주</h4>
-                                <p>예매율 : 99% | 평점 4.5</p>
+                            	<div class="movieImgs"> 
+	                                <a href="/movie/info.do?movieName=인어공주">
+	    	                            <img id="mainImg10" class="popularPoster" src="/resources/images/인어공주.png" alt="">
+		                                <button id="lookDetail10" class="lookDetail" style="cursor:pointer">상세보기</button>
+	   	                            </a>
+	                                <h4><span class="popularSpan">5) </span><img class="age" src="/resources/images/전체관람가.png" alt=""> 인어공주</h4>
+	                                <p>예매율 : 99% | 평점 4.5</p>
+                            	</div>
                             </li>
                         </ul>
                     </div>
@@ -195,8 +214,6 @@
         </div>
         <!-- 스크립트 -->
         <script>
-            var menuText = document.getElementById('menu_text');
-            var menuArea = document.getElementById('menuArea');
             
 			document.querySelectorAll(".popularPoster").forEach(function(item,index) {
 				item.addEventListener("mouseenter", () => {
@@ -221,6 +238,8 @@
 				})
 			});
 			////////네비게이터 수정중
+			var menuText = document.getElementById('menu_text');
+			
 			document.addEventListener("DOMContentLoaded", function() {
 		    const liElements = document.querySelectorAll('#nav_ul li');
 		    const menuText = document.getElementById('menu_text');

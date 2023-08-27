@@ -91,6 +91,7 @@ nav{
 		    font-family: 'LINESeedKR-Bd';
 		    font-weight: 400;
 		    margin: 0 auto;
+		    border-bottom: 2px solid #ccc;
 		}
 		#menu_text #menuP{
 			width: 1300px;

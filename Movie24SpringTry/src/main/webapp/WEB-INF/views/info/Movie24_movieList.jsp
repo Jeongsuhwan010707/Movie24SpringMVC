@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -29,141 +30,45 @@
 		    <div class="popular">
 		         <div class="popular_image">
 		             <ul>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=1">
-		                     	<img id="mainImg1" class="popularPoster1"  src="/resources/images/87090_320.jpg" alt="">
-		                     	<button id="lookDetail1" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                    	</a>
-		                     <h4><img class="age" alt="" src="/resources/images/12세.png"> 플래시</h4>
-		                     <p>🕒 130분</p>
-		                     
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=2">
-		                     	<img id="mainImg2" class="popularPoster1" src="/resources/images/범죄도시.png" alt="" >
-		                      <button id="lookDetail2" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                    	</a>
-		                     <h4><img class="age" alt="" src="/resources/images/15세.png"> 범죄도시3</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=3">
-		                     	<img id="mainImg3" class="popularPoster1" src="/resources/images/분노의질주.png" alt="" >
-		                      <button id="lookDetail3" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     </a>
-		                     <h4><img class="age" alt="" src="/resources/images/15세.png"> 분노의 질주</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=4">
-		                     	<img id="mainImg4" class="popularPoster1" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
-		                 		<button id="lookDetail4" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     </a>
-		                     <h4><img class="age" alt="" src="/resources/images/12세.png"> 가디언즈 ...</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=5">
-		                      <img id="mainImg5" class="popularPoster1" src="/resources/images/위대한쇼맨.jpg" alt="" >
-		                      <button id="lookDetail5" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     </a>
-		                     <h4><img class="age" alt="" src="/resources/images/12세.png"> 위대한쇼맨</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
+		             	<c:forEach var="movies" items="${miYList}" varStatus="i"> 
+							<li>
+								<div class="movieImgs"> 
+	                            	<a href="/movie/info.do?movieName=${movies.movieName }">
+			                            <img id="mainImg${i.count }" class="popularPoster1" src="${movies.movieSrc }" alt="">
+			                            <button id="LookDetail${i.count }" class="lookDetail" style="cursor:pointer">상세보기</button>
+		                            </a>
+		                            <h4>
+		                            	<img class="age" src="${mInfo.ageImage }" alt="">
+		                            	${movies.movieEnName }
+	                            	</h4>
+		                            <p>🕒${movies.runningTime}</p>
+	                         	</div> 
+							</li>
+						</c:forEach>	
 		             </ul>
 		         </div>
 			</div>
-			<div class="popular">
-			    <div class="popular_image">
-			        <ul>
-			            <li>
-			                <a href="/movie/info.do?movieNum=1">
-			                	<img id="mainImg6" class="popularPoster1"  src="/resources/images/87090_320.jpg" alt="">
-			                	<button id="lookDetail6" class="lookDetail" style="cursor:pointer">상세보기</button>
-			               	</a>
-			                <h4><img class="age" alt="" src="/resources/images/12세.png"> 플래시</h4>
-			                <p>예매율 : 99% | 평점 4.5</p>
-			                
-			            </li>
-			            <li>
-			                <a href="/movie/info.do?movieNum=2">
-			                	<img id="mainImg7" class="popularPoster1" src="/resources/images/범죄도시.png" alt="" >
-			                 <button id="lookDetail7" class="lookDetail" style="cursor:pointer">상세보기</button>
-			               	</a>
-			                <h4><img class="age" alt="" src="/resources/images/15세.png"> 범죄도시3</h4>
-			                <p>예매율 : 99% | 평점 4.5</p>
-			            </li>
-			            <li>
-			                <a href="/movie/info.do?movieNum=3">
-			                	<img id="mainImg8" class="popularPoster1" src="/resources/images/분노의질주.png" alt="" >
-			                 <button id="lookDetail8" class="lookDetail" style="cursor:pointer">상세보기</button>
-			                </a>
-			                <h4><img class="age" alt="" src="/resources/images/15세.png"> 분노의 질주</h4>
-			                <p>예매율 : 99% | 평점 4.5</p>
-			            </li>
-			            <li>
-			                <a href="/movie/info.do?movieNum=4">
-			                	<img id="mainImg9" class="popularPoster1" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
-			            		<button id="lookDetail9" class="lookDetail" style="cursor:pointer">상세보기</button>
-			                </a>
-			                <h4><img class="age" alt="" src="/resources/images/12세.png"> 가디언즈 ...</h4>
-			                <p>예매율 : 99% | 평점 4.5</p>
-			            </li>
-			            <li>
-			                <a href="/movie/info.do?movieNum=5">
-			                 <img id="mainImg10" class="popularPoster1" src="/resources/images/위대한쇼맨.jpg" alt="" >
-			                 <button id="lookDetail10" class="lookDetail" style="cursor:pointer">상세보기</button>
-			                </a>
-			                <h4><img class="age" alt="" src="/resources/images/12세.png"> 위대한쇼맨</h4>
-			                <p>예매율 : 99% | 평점 4.5</p>
-			            </li>
-			        </ul>
-			    </div>
-			</div>
+			
 <!--          /////////////////////////////////////////////////////////////상영예정작 -->
 		     <div class="popular2">
 		         <div class="popular_image">
 		             <ul>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=6">
-		                     	<img id="mainImg6" class="popularPoster1" src="/resources/images/엘리멘탈.jpg" alt="">
-		                     	<button id="lookDetail6" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     </a>
-		                     <h4>1) 엘리멘탈</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                <li>
-		                     <a href="/movie/info.do?movieNum=7">
-		                     	<img id="mainImg7" class="popularPoster1" src="/resources/images/바비.jpg" alt="">
-		                      <button id="lookDetail7" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     	</a>
-		                     <h4>2) 바비</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=8">
-		                      <img id="mainImg8" class="popularPoster1" src="/resources/images/콘크리트 유토피아.jpg" alt="">
-		                      <button id="lookDetail8" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     </a>
-		                     <h4>3) 콘크리트 유토피아</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=9">
-		                     	<img id="mainImg9" class="popularPoster1" src="/resources/images/밀수.jpg" alt="">
-		                     	<button id="lookDetail9" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                    	</a>
-		                     <h4>4) 밀수</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
-		                 <li>
-		                     <a href="/movie/info.do?movieNum=10">
-		                      <img id="mainImg10" class="popularPoster1" src="/resources/images/인어공주.png" alt="">
-		                      <button id="lookDetail10" class="lookDetail" style="cursor:pointer">상세보기</button>
-		                     </a>
-		                     <h4>5) 인어공주</h4>
-		                     <p>예매율 : 99% | 평점 4.5</p>
-		                 </li>
+						<c:forEach var="movies" items="${miNList}" varStatus="i"> 
+							<li>
+								<div class="movieImgs"> 
+	                            	<a href="/movie/info.do?movieName=${movies.movieName }">
+			                            <img id="preImg${i.count }" class="popularPoster2" src="${movies.movieSrc }" alt="">
+			                            <button id="preLookDetail${i.count }" class="preLookDetail" style="cursor:pointer">상세보기</button>
+		                            </a>
+		                            <h4>
+		                            	<img class="age" src="${mInfo.ageImage }" alt="">
+<%-- 		                            	${movies.movieName } --%>
+										${movies.movieEnName }
+	                            	</h4>
+		                            <p>🕒${movies.runningTime}</p>
+	                         	</div> 
+							</li>
+						</c:forEach>						
 		             </ul>
 	         	</div>
 		     </div>
@@ -173,54 +78,87 @@
 		</div>
 	    <!-- 스크립트 -->
 	    <script>
-	        var ulElement = document.getElementById('nav_ul');
-	        var liElements = ulElement.querySelectorAll('li');
-	        var menuText = document.getElementById('menu_text');
-	
-	        liElements.forEach(li => {
-	        li.addEventListener('mouseenter', () => {
-	                menuText.classList.add('active');
-	                menuText.style.zIndex= 5000;
-	            });
-	
-	        });
-	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
-	            menuText.classList.remove('active');
-	            menuText.style.zIndex= -1;
-	        });
-	        document.querySelectorAll(".popularPoster1").forEach(function(item,index) {
+		    var menuText = document.getElementById('menu_text');
+			
+			document.addEventListener("DOMContentLoaded", function() {
+		    const liElements = document.querySelectorAll('#nav_ul li');
+		    const menuText = document.getElementById('menu_text');
+		
+		    let hoverIntent = false;
+		
+		    liElements.forEach(li => {
+		        li.addEventListener('mouseenter', () => {
+		            hoverIntent = true;
+		            menuText.classList.add('active');
+		            menuText.style.zIndex = 5000;
+		        });
+		
+		        li.addEventListener('mouseleave', () => {
+		            hoverIntent = false;
+		            setTimeout(() => {
+		                if (!hoverIntent) {
+		                    menuText.classList.remove('active');
+		                    menuText.style.zIndex = -1;
+			                }
+			            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			        });
+			    });
+		
+		    menuText.addEventListener('mouseenter', () => {
+		        hoverIntent = true;
+		    });
+		
+		    menuText.addEventListener('mouseleave', () => {
+		        hoverIntent = false;
+		        setTimeout(() => {
+		            if (!hoverIntent) {
+		                menuText.classList.remove('active');
+		                menuText.style.zIndex = -1;
+			            }
+			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			    });
+			});
+			
+			//// 인기 차트
+			document.querySelectorAll(".popularPoster1").forEach(function(item,index) {
 				item.addEventListener("mouseenter", () => {
-	//					item.nextElementSilbing.style.display = "block";
-					document.querySelector("#lookDetail"+(index+1)).style.display="block";
+					document.querySelector("#LookDetail"+(index+1)).style.display="block";
 		            item.style.opacity = 0.4;
-		            item.style.border = "2px solid #999797";
 				})
 			});
 			document.querySelectorAll(".popularPoster1").forEach(function(item, index) {
 				item.addEventListener("mouseleave", () => {
-					document.querySelector("#lookDetail"+(index+1)).style.display="none";
+					document.querySelector("#LookDetail"+(index+1)).style.display="none";
 		            item.style.opacity = 1;
-		            item.style.border = "1px solid #ccc";
 				})
 			});
 			document.querySelectorAll(".lookDetail").forEach(function(item,index) {
 				item.addEventListener("mouseenter", () => {
 					item.style.display="block";
 		            document.getElementById('mainImg'+(index+1)).style.opacity = 0.4;
-		            document.getElementById('mainImg'+(index+1)).style.border = "3px solid #999797";
 				})
 			});
-			
-	        liElements.forEach(li => {
-		        li.addEventListener('mouseenter', () => {
-	                menuText.classList.add('active');
-	                menuText.style.zIndex= 5000;
-	            });
-	        });
-	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
-	            menuText.classList.remove('active');
-	            menuText.style.zIndex= -1;
-	        });
+			/////// 상영 예정작
+			document.querySelectorAll(".popularPoster2").forEach(function(item,index) {
+				item.addEventListener("mouseenter", () => {
+					document.querySelector("#preLookDetail"+(index+1)).style.display="block";
+		            item.style.opacity = 0.4;
+				})
+			});
+			document.querySelectorAll(".popularPoster2").forEach(function(item, index) {
+				item.addEventListener("mouseleave", () => {
+					document.querySelector("#preLookDetail"+(index+1)).style.display="none";
+		            item.style.opacity = 1;
+				})
+			});
+			document.querySelectorAll(".preLookDetail").forEach(function(item,index) {
+				item.addEventListener("mouseenter", () => {
+					item.style.display="block";
+		            document.getElementById('preImg'+(index+1)).style.opacity = 0.4;
+				})
+			});
+	        
+	        // 상영예정작 인기차트 구분 JS
 	        var p1 = document.getElementsByClassName("popular");
 	        var p2 = document.getElementsByClassName("popular2");
 	        function showPopular(){
@@ -234,8 +172,6 @@
 	        	document.querySelectorAll(".popular").forEach(function (item, index) {
 	        		item.style.display = "block";
 	            });
-// 	            document.querySelectorAll("popular2").style.display = "none";
-// 	            document.querySelectorAll("popular").style.display = "block";
 	        };
 	        function showComing(){
 	        	document.querySelector(".trailerMovieBtn").style.fontWeight = "900";
@@ -248,8 +184,6 @@
 	        	document.querySelectorAll(".popular").forEach(function (item, index) {
 	        		item.style.display = "none";
 	            });
-// 	            document.querySelectorAll("popular").style.display = "none";
-// 	            document.querySelectorAll("popular2").style.display = "block";
 	        };
 	        function myCheck(){
             	alert("로그인이 되어있지 않습니다.");

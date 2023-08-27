@@ -97,7 +97,7 @@
 								<td class="tr">관리자</td>
 								<td id="tr"><a href="/notice/postInfo.do?noticeNo=${notice0.noticeNo}">${notice0.noticeSubject}</a></td>
 								<td class="tr">${notice0.noticeDate }</td>
-								<td class="tr">${notice0.viewCount }</td>
+								<td class="tr">0</td>
 							</tr>
 							<c:forEach var="notice" items="${sList}">
 								<c:if test="${notice.noticeNo ne '0' }">
@@ -107,7 +107,7 @@
 										<td id="tr"><a
 											href="/notice/postInfo.do?noticeNo=${notice.noticeNo}">${notice.noticeSubject}</a></td>
 										<td class="tr">${notice.noticeDate }</td>
-										<td class="tr">${notice.viewCount }</td>
+										<td class="tr">0</td>
 									</tr>
 								</c:if>
 							</c:forEach>

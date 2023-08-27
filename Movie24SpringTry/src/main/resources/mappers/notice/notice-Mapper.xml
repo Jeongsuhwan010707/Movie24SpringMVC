@@ -14,43 +14,43 @@
 		<result property="noticeFileRename" column="NOTICE_FILERENAME"/>
 		<result property="noticeFilepath" column="NOTICE_FILEPATH" />
 		<result property="noticeFilelength" column="NOTICE_FILELENGTH" />
-		<result property="viewCount" column="VIEW_COUNT" />
+		<result property="nStatus" column="N_STATUS" />
 	</resultMap>
 	<insert id="insertNotice">
-		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,#{noticeFilename},#{noticeFileRename},#{noticeFilepath},#{noticeFilelength},DEFAULT)
+		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,#{noticeFilename},#{noticeFileRename},#{noticeFilepath},#{noticeFilelength}, DEFAULT)
 	</insert>
 	<update id="updateNotice">
 		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent}, UPDATE_DATE = SYSDATE, NOTICE_FILENAME = #{noticeFilename}, NOTICE_FILERENAME = #{noticeFileRename}, NOTICE_FILEPATH = #{noticeFilepath}, NOTICE_FILELENGTH = #{noticeFilelength} WHERE NOTICE_NO = #{noticeNo}
 	</update>
-	<delete id="deleteNotice">
-		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
-	</delete>
+	<update id="deleteNotice">
+		UPDATE NOTICE_TBL SET N_STATUS = 'N' WHERE NOTICE_NO = #{noticeNo}
+	</update>
 	<select id="selectOneByNo" resultMap="noticeResultMap">
-		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
+		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo} WHERE N_STATUS = 'Y'
 	</select>
 	
 	<select id="noticeAllSelect" resultMap="noticeResultMap">
-		SELECT * FROM NOTICE_TBL ORDER BY NOTICE_NO DESC
+		SELECT * FROM NOTICE_TBL WHERE N_STATUS = 'Y' ORDER BY NOTICE_NO DESC 
 	</select>
 
 	<select id="selectNoticeCount" resultType="_int">
-		SELECT COUNT(*) FROM NOTICE_TBL
+		SELECT COUNT(*) FROM NOTICE_TBL WHERE N_STATUS = 'Y'
 	</select>
 
 	<select id="selectNoticeByKeyword" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL
 		<if test="searchCondition == 'all'">
 			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
-			'%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
+			'%'||#{searchKeyword}||'%' AND N_STATUS = 'Y' ORDER BY NOTICE_NO DESC
 		</if>
 		<if test="searchCondition == 'writer'">
-			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%' AND N_STATUS = 'Y' ORDER BY NOTICE_NO DESC
 		</if>
 		<if test="searchCondition == 'content'">
-			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%' AND N_STATUS = 'Y' ORDER BY NOTICE_NO DESC
 		</if>
 		<if test="searchCondition == 'title'">
-			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%' ORDER BY NOTICE_NO DESC
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%' AND N_STATUS = 'Y' ORDER BY NOTICE_NO DESC
 		</if>
 	</select>
 
@@ -59,22 +59,22 @@
 		SELECT COUNT(*) FROM NOTICE_TBL
 		<if test="searchCondition == 'all'">
 			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
-			'%'||#{searchKeyword}||'%'
+			'%'||#{searchKeyword}||'%' AND N_STATUS = 'Y'
 		</if>
-		<if test="searchCondition == 'writer'">
-			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		<if test="searchCondition == 'writer'"> 
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%' AND N_STATUS = 'Y'
 		</if>
 		<if test="searchCondition == 'content'">
-			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%' AND N_STATUS = 'Y'
 		</if>
 		<if test="searchCondition == 'title'">
-			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%' AND N_STATUS = 'Y'
 		</if>
 	</select>
 <!-- 	<select id="selectHeartList" resultMap="heartResultMap"> -->
 <!-- 		SELECT * FROM MOVIE_HEART_TBL -->
 <!-- 	</select> -->
 	<update id="viewPointPlus">
-		UPDATE NOTICE_TBL SET VIEW_COUNT = #{viewPointPlus} WHERE NOTICE_NO = #{noticeNo}
+		UPDATE NOTICE_TBL SET VIEW_COUNT = #{viewPointPlus} WHERE NOTICE_NO = #{noticeNo} AND N_STATUS = 'Y'
 	</update>
 </mapper>

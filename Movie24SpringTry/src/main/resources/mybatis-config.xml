@@ -11,11 +11,13 @@
  		<typeAlias type="com.movie24.happy.notice.domain.Notice" alias="Notice"/>
  		<typeAlias type="com.movie24.happy.event.domain.EventSRC" alias="EventSRC"/>
  		<typeAlias type="com.movie24.happy.info.domain.MovieInfo" alias="Info"/>
+ 		<typeAlias type="com.movie24.happy.reply.domain.Reply" alias="Reply"/>
  	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member/member-Mapper.xml" />
 		<mapper resource="mappers/notice/notice-Mapper.xml" />
 		<mapper resource="mappers/event/event-Mapper.xml" />
 		<mapper resource="mappers/info/info-Mapper.xml" />
+		<mapper resource="mappers/reply/reply-Mapper.xml" />
 	</mappers>
 </configuration>

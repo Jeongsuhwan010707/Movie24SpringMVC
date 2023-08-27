@@ -162,36 +162,12 @@
             width: 210px;
             border-radius: 20px;
         }
-        .age1{
+        .age{
         	position: absolute;
-		    top: 20px;
-		    left: 35px;
+		    top: 10px;
+		    left: 10px;
 		    width: 30px;
-		}
-        .age2{
-        	position: absolute;
-		    top: 20px;
-		    left: 295px;
-		    width: 30px;
-		}
-		.age3{
-        	position: absolute;
-		    top: 20px;
-		    left: 555px;
-		    width: 30px;
-		}
-		.age4{
-        	position: absolute;
-		    top: 20px;
-		    left: 815px;
-		    width: 30px;
-		}
-		.age5{
-        	position: absolute;
-		    top: 20px;
-		    left: 1075px;
-		    width: 30px;
-		}
+        }
         .lookDetail{
             position: absolute;
             width: 150px;
@@ -203,26 +179,8 @@
             font-size: 18px;
             color: white;
             display: none;
-        }
-        #lookDetail1, #lookDetail6{
-            top: 140px;
-            left: 55px;
-        }
-        #lookDetail2, #lookDetail7{
-            top: 140px;
-            left: 315px;
-        }
-        #lookDetail3, #lookDetail8{
-            top: 140px;
-            left: 575px;
-        }
-        #lookDetail4, #lookDetail9{
-            top: 140px;
-            left: 835px;
-        }
-        #lookDetail5, #lookDetail10{
-            top: 140px;
-            left: 1095px;
+            top: 125px;
+    		left: 30px;
         }
         
         .popular ul li{
@@ -248,6 +206,9 @@
         }
         .active1{
             display: block;
+        }
+        .movieImgs{
+        	position: relative;
         }
 /* ----------------------------이벤트 영역---------------- */
 #event_area{

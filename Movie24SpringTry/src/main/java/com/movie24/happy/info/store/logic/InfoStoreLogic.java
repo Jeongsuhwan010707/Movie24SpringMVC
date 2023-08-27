@@ -42,6 +42,12 @@ public class InfoStoreLogic implements InfoStore{
 		return result;
 	}
 
+	@Override
+	public List<MovieInfo> selectYNMovieList(SqlSession session, String str) {
+		List<MovieInfo> miList = session.selectList("InfoMapper.selectYNMovieList", str);
+		return miList;
+	}
+
 	
 
 }

@@ -26,7 +26,7 @@ import com.movie24.happy.java.util.StaticMethod;
 public class InfoController {
 	
 	@Autowired
-	InfoService service;
+	private InfoService service;
 	
 	@RequestMapping(value="/movie/info.do", method=RequestMethod.GET)
 	public String goMovieInfoPage(@RequestParam("movieName") String movieName
@@ -39,11 +39,10 @@ public class InfoController {
 		String memberId = (String) session.getAttribute("memberId");
 		map.put("movieName", movieName);
 		MovieHeart mHeart = null;
-		if(memberId != null && memberId != "") {
+		if(memberId != null || memberId != "") {
 			map.put("memberId", memberId);
 			mHeart = service.selectOneByMap(map);
 		}
-		
 		if(mInfo != null) {
 			model.addAttribute("mInfo", mInfo);
 			int heartCount = service.selectHeartCount(movieName);
@@ -64,7 +63,29 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="/movie/List.do", method=RequestMethod.GET)
-	public String goMovieList() {
+	public String goMovieList(Model model) {
+		
+		List<MovieInfo> miNList = service.selectYNMovieList("N");
+		List<MovieInfo> miYList = service.selectYNMovieList("Y");
+		int maxTitleLength = 9;
+
+        for (MovieInfo movie : miNList) {
+            String originalTitle = movie.getMovieName();
+            String shortenedTitle = originalTitle.length() > maxTitleLength ?
+                                    originalTitle.substring(0, maxTitleLength) + "..." :
+                                    originalTitle;
+            movie.setMovieEnName(shortenedTitle);
+        }
+        for (MovieInfo movie : miYList) {
+            String originalTitle = movie.getMovieName();
+            String shortenedTitle = originalTitle.length() > maxTitleLength ?
+                                    originalTitle.substring(0, maxTitleLength) + "..." :
+                                    originalTitle;
+            movie.setMovieEnName(shortenedTitle);
+        }
+
+		model.addAttribute("miNList", miNList);
+		model.addAttribute("miYList", miYList);
 		return "info/Movie24_movieList";
 	}
 	

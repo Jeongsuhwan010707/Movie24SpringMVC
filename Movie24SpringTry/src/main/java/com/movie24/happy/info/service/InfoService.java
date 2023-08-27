@@ -19,5 +19,12 @@ public interface InfoService {
 
 	public int selectHeartCount(String movieName);
 
+	/**
+	 * 영화정보 리스트 가져오기 Service
+	 * @param str
+	 * @return
+	 */
+	public List<MovieInfo> selectYNMovieList(String str);
+
 
 }
