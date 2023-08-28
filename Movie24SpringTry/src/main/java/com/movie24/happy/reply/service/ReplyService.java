@@ -24,4 +24,17 @@ public interface ReplyService {
 	 * @return List<Reply>
 	 */
 	List<Reply> selectReplyList(int refBoardNo);
+	/**
+	 * 댓글번호로 댓글하나 불러오기 Service
+	 * @param replyNo
+	 * @return Reply
+	 */
+	Reply selectOneByRefNo(int replyNo);
+
+	/**
+	 * 댓글 삭제하기 Service
+	 * @param replyNo
+	 * @return int
+	 */
+	int deleteReply(int replyNo);
 }

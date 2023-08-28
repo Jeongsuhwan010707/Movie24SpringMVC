@@ -28,5 +28,16 @@ public class ReplyStoreLogic implements ReplyStore{
 		List<Reply> rList = session.selectList("ReplyMapper.selectReplyList", refBoardNo);
 		return rList;
 	}
+	
+	@Override
+	public Reply selectOneByRefNo(SqlSession session, int replyNo) {
+		Reply reply = session.selectOne("ReplyMapper.selectOneByRefNo", replyNo);
+		return reply;
+	}
 
+	@Override
+	public int deleteReply(SqlSession session, int replyNo) {
+		int result = session.update("ReplyMapper.deleteReply", replyNo);
+		return result;
+	}
 }

@@ -333,7 +333,7 @@
 			.reply p {
 			  height: 60px; 
 			  overflow: hidden;
-			  margin: 0;
+			  margin-top: 5px;
 			}
 			.reply a{
 				font-family: 'LINESeedKR-Bd';
@@ -347,7 +347,6 @@
 			}
 			.reply h4{
 				font-family: 'LINESeedKR-Bd';
-				margin-bottom: 10px;
 			}
 
 			#replyTitle {

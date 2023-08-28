@@ -70,15 +70,41 @@ public class ReplyController {
 			url = "/movie/info.do?movieName="+MovieName;
 			int result = rService.updateReply(reply);
 			if(result > 0) {
-				mv.setViewName("redirect:"+url);
+				StaticMethod.alertAndGo(response, "리뷰 수정에 성공하였습니다.", url);
 			}else {
-				StaticMethod.alertAndBack(response, "댓글 등록이 완료되지 않았습니다.");
+				StaticMethod.alertAndBack(response, "리뷰 수정이 완료되지 않았습니다.");
 				mv.setViewName("successOrFail/serviceFailed");	
 			}
 		} catch (Exception e) {
 			StaticMethod.alertAndBack(response, "관리자에게 문의 바랍니다.");
 			mv.setViewName("successOrFail/serviceFailed");	 
 		}
+		return mv;
+	}
+	
+	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteReply(ModelAndView mv
+			, @RequestParam("replyNo") int replyNo
+			, @RequestParam("movieName") String movieName
+			, HttpServletResponse response) {
+		String url = "";
+		try {
+			Reply reply = rService.selectOneByRefNo(replyNo);
+			url = "/movie/info.do?movieName="+movieName;
+			int result = rService.deleteReply(replyNo);
+			if(result > 0) {		
+				StaticMethod.alertAndGo(response, "리뷰 삭제에 성공하였습니다.", url);
+				mv.setViewName("redirect:"+url);
+			}else {
+				StaticMethod.alertAndBack(response, "리뷰 삭제가 완료되지 않았습니다.");
+				mv.setViewName("successOrFail/serviceFailed");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			StaticMethod.alertAndBack(response, "관리자에게 문의바랍니다.");
+			mv.setViewName("successOrFail/serviceFailed");
+		}
+		
 		return mv;
 	}
 }

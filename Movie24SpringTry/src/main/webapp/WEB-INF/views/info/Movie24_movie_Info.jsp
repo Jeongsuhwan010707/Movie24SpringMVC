@@ -145,22 +145,25 @@
 			          <p>${reply.replyContent}</p>
 			          <span>
 			            <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${reply.rCreateDate}" />&nbsp;
-			            <a href="javascript:void(0);" onclick="showModifyForm(this);">수정하기</a>&nbsp;
-						<a href="/reply/delete.kh?replyNo=${reply.replyNo }">삭제하기</a>
+			            <c:if test="${memberId eq reply.replyWriter}">
+				            <a href="javascript:void(0);" onclick="showModifyForm(this);">수정하기</a>&nbsp;
+							<a href="javascript:void(0);" onclick="deleteReview();" data-reply-no="${reply.replyNo}" data-movie-name="${mInfo.movieName}">삭제하기</a>
+			            </c:if>
 			          </span>
 			        </div>
 			      </td>
 			    </tr>
 <!-- 			    수정폼 -->
-				<tr class="reviewRow">
+				<tr id="replyModifyForm" class="reviewRow" style="display:none;">
 				    <td class="reviewCell">
 				        <div class="replyImg">
 				          <img src="/resources/images/account (2).png" alt="">
 				        </div>
 				        <div class="reply">
 				          <h4>${reply.replyWriter}</h4>
-				          <textarea class="contentTextarea">${reply.replyContent}</textarea>
-			              <a href="javascript:void(0);" onclick="showModifyForm(this);" class="modifyReply">수정하기</a>
+				          <textarea id="replyContent" class="contentTextarea">${reply.replyContent}</textarea>
+			              <a href="javascript:void(0);" onclick="replyModify(this, '${reply.replyNo}', '${reply.refMovieNo }');" class="modifyReply">수정하기</a>
+						  <a href="javascript:void(0);" onclick="modifyback();" class="modifyReply">뒤로가기</a>
 				        </div>
 				    </td>
 				</tr>
@@ -280,6 +283,52 @@
 				  }
 			  }
 			});
+			// 댓글 수정
+			function showModifyForm(obj){
+					obj.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display="";
+				}
+			function modifyback(){
+				document.getElementById("replyModifyForm").style.display = "none";
+			}
+			function replyModify(obj, replyNo, refMovieNo){
+				const form = document.createElement("form");
+				const movieName = "${mInfo.movieName}";
+				form.action = "/reply/update.do?movieName="+movieName;
+				form.method = "post";
+				const input = document.createElement("input");
+				input.type="hidden";
+				input.value= replyNo;
+				input.name="replyNo";
+				const input2 = document.createElement("input");
+				input2.type = "hidden";
+				input2.value = refMovieNo;
+				input2.name = "refMovieNo";
+				const input3 = document.createElement("input");
+				input3.type = "text";
+				// 여기를 this를 이용하여 수정해주세요
+//					input3.value = obj.parentElement.previousElementSibling.childNodes[1].value
+				input3.value = obj.parentElement.children[1].value
+				// children도 사용 가능함.
+				input3.name = "replyContent";
+				form.appendChild(input);
+				form.appendChild(input2);
+				form.appendChild(input3);
+				
+				
+				form.appendChild(input);
+				
+				document.body.appendChild(form);
+				form.submit();
+			}
+			function deleteReview() {
+			    var button = event.target; // 클릭된 버튼 요소
+			    var replyNo = button.getAttribute("data-reply-no");
+			    var movieName = button.getAttribute("data-movie-name");
+
+			    if (confirm("리뷰를 삭제하시겠습니까?")) {
+			        location.href = "/reply/delete.do?replyNo=" + replyNo + "&movieName=" + movieName;
+			    }
+			}
 	    </script>
 	</body>
 </html>    

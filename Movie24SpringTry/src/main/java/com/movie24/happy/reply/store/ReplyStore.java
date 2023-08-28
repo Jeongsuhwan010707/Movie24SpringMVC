@@ -30,5 +30,19 @@ public interface ReplyStore {
 	 * @return List<Reply>
 	 */
 	List<Reply> selectReplyList(SqlSession session, int refBoardNo);
+	/**
+	 * 댓글번호로 댓글하나 불러오기 Store
+	 * @param session
+	 * @param replyNo
+	 * @return Reply
+	 */
+	Reply selectOneByRefNo(SqlSession session, int replyNo);
 
+	/**
+	 * 댓글 삭제하기 Store
+	 * @param session
+	 * @param replyNo
+	 * @return int
+	 */
+	int deleteReply(SqlSession session, int replyNo);
 }
