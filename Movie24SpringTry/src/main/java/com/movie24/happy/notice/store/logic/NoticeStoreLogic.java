@@ -87,10 +87,4 @@ public class NoticeStoreLogic implements NoticeStore{
 			return result;
 		}
 
-		@Override
-		public int viewPointPlus(SqlSession session, Map<String, Object> view) {
-			int result = session.update("NoticeMapper.viewPointPlus",view);
-			return result;
-		}
-	
 }

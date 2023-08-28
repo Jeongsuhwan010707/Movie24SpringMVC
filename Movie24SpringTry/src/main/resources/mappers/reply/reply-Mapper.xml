@@ -19,6 +19,6 @@
 		UPDATE REPLY_TBL SET REPLY_CONTENT = #{replyContent}, STAR_RATING = #{starRating}, R_UPDATE_DATE = DEFAULT WHERE REPLY_NO = #{replyNo}
 	</update>
 	<select id="selectReplyList" resultMap="replyResultMap">
-		SELECT * FROM REPLY_TBL WHERE REF_BOARD_NO = #{refMovieNo} AND R_STATUS = 'Y'
+		SELECT * FROM REPLY_TBL WHERE REF_MOIVE_NO = #{refMovieNo} AND R_STATUS = 'Y'
 	</select>
 </mapper>

@@ -40,7 +40,7 @@ public class ReplyController {
 			reply.setReplyWriter(replyWriter);
 			String starRating = "";
 			for(int i = 0; i < starNo; i++) {
-				starRating += "⭐";
+				starRating += "★";
 			}
 			reply.setStarRating(starRating);
 			int result = rService.insertReply(reply);

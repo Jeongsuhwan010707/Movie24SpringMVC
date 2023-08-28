@@ -1,5 +1,6 @@
 package com.movie24.happy.reply.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Reply {
@@ -8,8 +9,8 @@ public class Reply {
 	private int refMovieNo;
 	private String replyContent;
 	private String replyWriter;
-	private Date rCreateDate;
-	private Date rUpdateDate;
+	private Timestamp rCreateDate;
+	private Timestamp rUpdateDate;
 	private char updateYn;
 	private char rStatus;
 		
@@ -57,7 +58,7 @@ public class Reply {
 		return rCreateDate;
 	}
 
-	public void setrCreateDate(Date rCreateDate) {
+	public void setrCreateDate(Timestamp rCreateDate) {
 		this.rCreateDate = rCreateDate;
 	}
 
@@ -65,7 +66,7 @@ public class Reply {
 		return rUpdateDate;
 	}
 
-	public void setrUpdateDate(Date rUpdateDate) {
+	public void setrUpdateDate(Timestamp rUpdateDate) {
 		this.rUpdateDate = rUpdateDate;
 	}
 

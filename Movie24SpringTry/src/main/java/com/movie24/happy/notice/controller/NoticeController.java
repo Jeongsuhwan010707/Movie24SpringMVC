@@ -48,7 +48,6 @@ public class NoticeController {
 		
 		Map<String, Object> view = new HashMap<String, Object>();
 		view.put("noticeNo", noticeNo);
-		int result = service.viewPointPlus(view);
 		int totalNum = service.getListCount();
 
 		if(notice != null) {
@@ -151,9 +150,10 @@ public class NoticeController {
 				notice.setNoticeFileRename((String)infoMap.get("fileRename"));
 				notice.setNoticeFilelength((Long)infoMap.get("fileLength"));
 				model.addAttribute("notice", notice);
-			}else {
-				StaticMethod.alertAndBack(response, "파일을 찾지 못합니다.");
 			}
+//			else {
+//				StaticMethod.alertAndBack(response, "파일을 찾지 못합니다.");
+//			}
 			int result = service.updateNotice(notice);
 			if(result > 0) {
 				model.addAttribute("notice", notice);

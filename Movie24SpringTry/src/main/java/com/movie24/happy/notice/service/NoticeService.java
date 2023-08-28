@@ -24,5 +24,4 @@ public interface NoticeService {
 	 * @return
 	 */
 	public List<Notice> searchNoticeByKeyword(PageInfo pInfo, Map<String, String> paramMap);
-	public int viewPointPlus(Map<String, Object> view);
 }

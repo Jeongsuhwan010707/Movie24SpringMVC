@@ -26,7 +26,7 @@
 		UPDATE NOTICE_TBL SET N_STATUS = 'N' WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	<select id="selectOneByNo" resultMap="noticeResultMap">
-		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo} WHERE N_STATUS = 'Y'
+		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo} AND N_STATUS = 'Y'
 	</select>
 	
 	<select id="noticeAllSelect" resultMap="noticeResultMap">
@@ -74,7 +74,4 @@
 <!-- 	<select id="selectHeartList" resultMap="heartResultMap"> -->
 <!-- 		SELECT * FROM MOVIE_HEART_TBL -->
 <!-- 	</select> -->
-	<update id="viewPointPlus">
-		UPDATE NOTICE_TBL SET VIEW_COUNT = #{viewPointPlus} WHERE NOTICE_NO = #{noticeNo} AND N_STATUS = 'Y'
-	</update>
 </mapper>

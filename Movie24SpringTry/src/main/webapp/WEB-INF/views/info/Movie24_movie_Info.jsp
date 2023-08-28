@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -87,7 +88,7 @@
 			<form name="replyForm" action="/reply/add.do" method="post">
 				<div>
 					<c:if test="${memberId ne null}">
-					    <button type="button" id="review_btn" class="review_btn">리뷰 작성</button>
+					    <button type="button" id="review_btn" class="review_btn" onclick="myCheck();">리뷰 작성</button>
 					</c:if>
 					<c:if test="${memberId eq null}">
 					    <button type="button" class="review_btn" onclick="myCheck();" style="cursor:pointer;">리뷰 작성</button>
@@ -123,29 +124,49 @@
 				</div>
 			</form>
 			<h2 id="replyTitle">리뷰</h2>
-			<div class="reviewForm">
-			  <div class="reviewOne">
-			    <div class="replyImg">
-			      <img src="/resources/images/account (2).png" alt="">
-			    </div>
-			    <div class="reply">
-			      <h4>닉네임</h4>
-			      <p>댓글</p>
-			      <span>2001.07.02</span>
-			    </div>
-			  </div>
-			  <div class="reviewTwo">
-			    <div class="replyImg">
-			      <img src="/resources/images/account (2).png" alt="">
-			    </div>
-			    <div class="reply">
-			      <h4>닉네임</h4>
-			      <p>댓글</p>
-			      <span>2001.07.02</span>
-			    </div>
-			  </div>
-			</div>
-			<div class="reply blank"></div>
+			<table class="reviewTable">
+			  <c:forEach var="reply" items="${rList}" varStatus="i">
+			    <tr class="reviewRow">
+			      <td class="reviewCell">
+			        <div class="replyImg">
+			          <img src="/resources/images/account (2).png" alt="">
+			        </div>
+			        <div class="reply">
+			          <h4>${reply.replyWriter}</h4>
+			          <div class="starArea">
+			          	<c:choose>
+			              <c:when test="${reply.starRating eq '★'}">⭐</c:when>
+			              <c:when test="${reply.starRating eq '★★'}">⭐⭐</c:when>
+			              <c:when test="${reply.starRating eq '★★★'}">⭐⭐⭐</c:when>
+			              <c:when test="${reply.starRating eq '★★★★'}">⭐⭐⭐⭐</c:when>
+			              <c:when test="${reply.starRating eq '★★★★★'}">⭐⭐⭐⭐⭐</c:when>
+			            </c:choose>
+			          </div>
+			          <p>${reply.replyContent}</p>
+			          <span>
+			            <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${reply.rCreateDate}" />&nbsp;
+			            <a href="javascript:void(0);" onclick="showModifyForm(this);">수정하기</a>&nbsp;
+						<a href="/reply/delete.kh?replyNo=${reply.replyNo }">삭제하기</a>
+			          </span>
+			        </div>
+			      </td>
+			    </tr>
+<!-- 			    수정폼 -->
+				<tr class="reviewRow">
+				    <td class="reviewCell">
+				        <div class="replyImg">
+				          <img src="/resources/images/account (2).png" alt="">
+				        </div>
+				        <div class="reply">
+				          <h4>${reply.replyWriter}</h4>
+				          <textarea class="contentTextarea">${reply.replyContent}</textarea>
+			              <a href="javascript:void(0);" onclick="showModifyForm(this);" class="modifyReply">수정하기</a>
+				        </div>
+				    </td>
+				</tr>
+			  </c:forEach>
+			</table>
+			<div class="reply_blank"></div>
 	  	</main>
          <!-- --------------------푸터---------------------------------- -->
 	         <!-- <footer> ----------------------------</footer> -->
@@ -172,10 +193,15 @@
 	        	location.href="/movie/review.do";
 	        }
 	        function myCheck(){
-            	alert("로그인 후 이용가능한 기능입니다.");
-            	if(confirm("로그인 페이지로 이동하시겠습니까?")){
-            		location.href="/member/login.do";
-            	}
+	        	const memberId = "${memberId}";
+				if(memberId === ""){
+					alert("로그인 후 이용가능한 기능입니다.");
+	            	if(confirm("로그인 페이지로 이동하시겠습니까?")){
+	            		location.href="/member/login.do";
+	            	}
+				}else{
+ 				    modal.style.display = "block";
+				}
             }
             function outCheck(){
             	if(confirm("로그아웃 하시겠습니까?")){
@@ -189,15 +215,15 @@
             	location.href = "/movie/heartDelete.do?movieName=${mInfo.movieName}";
             }
          	// 버튼과 모달 요소 가져오기
-			var reviewBtn = document.getElementById("review_btn");
+// 			var reviewBtn = document.getElementById("review_btn");
 			var closeModalBtn = document.getElementById("closeModalBtn");
 			var backModalBtn = document.getElementById("reviewBackBtn");
 			var modal = document.getElementById("myModal");
 			
 			// 모달 열기 함수
-			reviewBtn.onclick = function() {
-			  modal.style.display = "block";
-			}
+// 			reviewBtn.onclick = function() {
+				
+// 			}
 			
 			// 모달 닫기 함수
 			closeModalBtn.onclick = function() {

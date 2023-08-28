@@ -21,12 +21,16 @@ import com.movie24.happy.info.domain.MovieHeart;
 import com.movie24.happy.info.domain.MovieInfo;
 import com.movie24.happy.info.service.InfoService;
 import com.movie24.happy.java.util.StaticMethod;
+import com.movie24.happy.reply.domain.Reply;
+import com.movie24.happy.reply.service.ReplyService;
 
 @Controller
 public class InfoController {
 	
 	@Autowired
 	private InfoService service;
+	@Autowired
+	private ReplyService rService;
 	
 	@RequestMapping(value="/movie/info.do", method=RequestMethod.GET)
 	public String goMovieInfoPage(@RequestParam("movieName") String movieName
@@ -35,6 +39,8 @@ public class InfoController {
 			, Model model){
 		
 		MovieInfo mInfo = service.selectOnebyName(movieName);
+		List<Reply> rList = rService.selectReplyList(mInfo.getMovieNum());
+		model.addAttribute("rList", rList);
 		Map<String, String> map = new HashMap<String, String>();
 		String memberId = (String) session.getAttribute("memberId");
 		map.put("movieName", movieName);
