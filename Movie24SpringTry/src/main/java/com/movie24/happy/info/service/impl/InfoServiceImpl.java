@@ -19,41 +19,41 @@ public class InfoServiceImpl implements InfoService{
 	private SqlSession sqlSession;
 	@Autowired
 	private InfoStore iStore;
-	
-	@Override
-	public MovieInfo selectOnebyName(String movieName) {
-		MovieInfo mInfo = iStore.selectOnebyName(sqlSession, movieName);
-		return mInfo;
-	}
-
-	@Override
-	public int insertHeart(String movieName, Map<String, String> paramMap) {
-		int result = iStore.insertHeart(sqlSession, paramMap);
-		return result;
-	}
-
-	@Override
-	public int deleteHeart(String movieName, Map<String, String> paramMap) {
-		int result = iStore.deleteHeart(sqlSession, paramMap);
-		return result;
-	}
-
-	@Override
-	public MovieHeart selectOneByMap(Map<String, String> map) {
-		MovieHeart mHeart = iStore.selectOneByMap(sqlSession, map);
-		return mHeart;
-	}
-
-	@Override
-	public int selectHeartCount(String movieName) {
-		int result = iStore.selectHeartCount(sqlSession, movieName);
-		return result;
-	}
 
 	@Override
 	public List<MovieInfo> selectYNMovieList(String str) {
 		List<MovieInfo> miList = iStore.selectYNMovieList(sqlSession, str);
 		return miList;
+	}
+
+	@Override
+	public int insertHeart(Map<String, Object> paramMap) {
+		int result = iStore.insertHeart(sqlSession, paramMap);
+		return result;
+	}
+
+	@Override
+	public int deleteHeart(Map<String, Object> paramMap) {
+		int result = iStore.deleteHeart(sqlSession, paramMap);
+		return result;
+	}
+
+	@Override
+	public MovieHeart selectOneByMap(Map<String, Object> map) {
+		MovieHeart mHeart = iStore.selectOneByMap(sqlSession, map);
+		return mHeart;
+	}
+
+	@Override
+	public int selectHeartCount(int movieNo) {
+		int result = iStore.selectHeartCount(sqlSession, movieNo);
+		return result;
+	}
+
+	@Override
+	public MovieInfo selectOnebyNo(int movieNo) {
+		MovieInfo mInfo = iStore.selectOnebyNo(sqlSession, movieNo);
+		return mInfo;
 	}
 
 	

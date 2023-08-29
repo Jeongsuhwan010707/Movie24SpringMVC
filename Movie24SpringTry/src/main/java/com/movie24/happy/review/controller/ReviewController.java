@@ -1,4 +1,4 @@
-package com.movie24.happy.reply.controller;
+package com.movie24.happy.review.controller;
 
 import java.net.URLEncoder;
 
@@ -13,39 +13,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.movie24.happy.info.domain.MovieInfo;
 import com.movie24.happy.info.service.InfoService;
 import com.movie24.happy.java.util.StaticMethod;
-import com.movie24.happy.reply.domain.Reply;
-import com.movie24.happy.reply.service.ReplyService;
+import com.movie24.happy.review.domain.Review;
+import com.movie24.happy.review.service.ReviewService;
 
 @Controller
-@RequestMapping("/reply")
-public class ReplyController {
+@RequestMapping("/review")
+public class ReviewController {
 	
 	@Autowired
-	private ReplyService rService;
+	private ReviewService rService;
 	@Autowired
 	private InfoService iService;
 	
 	@RequestMapping(value="/add.do", method=RequestMethod.POST)
-	public void insertReply(@ModelAttribute Reply reply
+	public void insertReview(@ModelAttribute Review review
 			, @RequestParam("starNo") int starNo
-			, @RequestParam("movieName") String movieName
+			, @RequestParam("movieNo") int movieNo
 			, HttpSession session
 			, HttpServletResponse response) {
 		try {
 			String url = "";
-			String replyWriter = (String)session.getAttribute("memberId");
-			reply.setReplyWriter(replyWriter);
+			String reviewWriter = (String)session.getAttribute("memberId");
+			review.setReviewWriter(reviewWriter);
 			String starRating = "";
 			for(int i = 0; i < starNo; i++) {
 				starRating += "★";
 			}
-			reply.setStarRating(starRating);
-			int result = rService.insertReply(reply);
-			String MovieName = URLEncoder.encode(movieName, "UTF-8");
-			url = "/movie/info.do?movieName="+MovieName;
+			review.setStarRating(starRating);
+			int result = rService.insertReview(review);
+//			String MovieName = URLEncoder.encode(movieNo, "UTF-8");
+			url = "/movie/info.do?movieNo="+movieNo;
 			if(result > 0) {
 				StaticMethod.alertAndGo(response, "리뷰 등록에 성공하였습니다.", url);
 			}else {
@@ -57,18 +56,18 @@ public class ReplyController {
 	}
 	
 	@RequestMapping(value="/update.do", method=RequestMethod.POST)
-	public ModelAndView updateReply(ModelAndView mv
-			, @ModelAttribute Reply reply
-			, @RequestParam("movieName") String movieName
+	public ModelAndView updateReview(ModelAndView mv
+			, @ModelAttribute Review review
+			, @RequestParam("movieNo") int movieNo
 			, HttpSession session
 			, HttpServletResponse response) {
 		String url = "";
 		try {
-			String replyWriter = (String)session.getAttribute("memberId");
-			reply.setReplyWriter(replyWriter);
-			String MovieName = URLEncoder.encode(movieName, "UTF-8");
-			url = "/movie/info.do?movieName="+MovieName;
-			int result = rService.updateReply(reply);
+			String reviewWriter = (String)session.getAttribute("memberId");
+			review.setReviewWriter(reviewWriter);
+//			String MovieName = URLEncoder.encode(movieName, "UTF-8");
+			url = "/movie/info.do?movieNo="+movieNo;
+			int result = rService.updateReview(review);
 			if(result > 0) {
 				StaticMethod.alertAndGo(response, "리뷰 수정에 성공하였습니다.", url);
 			}else {
@@ -83,15 +82,15 @@ public class ReplyController {
 	}
 	
 	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
-	public ModelAndView deleteReply(ModelAndView mv
-			, @RequestParam("replyNo") int replyNo
-			, @RequestParam("movieName") String movieName
+	public ModelAndView deleteReview(ModelAndView mv
+			, @RequestParam("reviewNo") int reviewNo
+			, @RequestParam("movieNo") int movieNo
 			, HttpServletResponse response) {
 		String url = "";
 		try {
-			Reply reply = rService.selectOneByRefNo(replyNo);
-			url = "/movie/info.do?movieName="+movieName;
-			int result = rService.deleteReply(replyNo);
+			Review review = rService.selectOneByReviewNo(reviewNo);
+			url = "/movie/info.do?movieNo="+movieNo;
+			int result = rService.deleteReview(reviewNo);
 			if(result > 0) {		
 				StaticMethod.alertAndGo(response, "리뷰 삭제에 성공하였습니다.", url);
 				mv.setViewName("redirect:"+url);

@@ -3,7 +3,7 @@ package com.movie24.happy.info.domain;
 import java.sql.Date;
 
 public class MovieInfo {
-	private int movieNum;
+	private int movieNo;
 	private String movieName;
 	private String movieEnName;
 	private String movieSrc;
@@ -21,12 +21,12 @@ public class MovieInfo {
 	
 	public MovieInfo() {}
 
-	public int getMovieNum() {
-		return movieNum;
+	public int getMovieNo() {
+		return movieNo;
 	}
 
-	public void setMovieNum(int movieNum) {
-		this.movieNum = movieNum;
+	public void setMovieNo(int movieNo) {
+		this.movieNo = movieNo;
 	}
 
 	public String getMovieName() {
@@ -143,7 +143,7 @@ public class MovieInfo {
 
 	@Override
 	public String toString() {
-		return "영화정보 [영화번호=" + movieNum + ", 영화이름=" + movieName + ", 영화영어이름=" + movieEnName
+		return "영화정보 [영화번호=" + movieNo + ", 영화이름=" + movieName + ", 영화영어이름=" + movieEnName
 				+ ", 영화포스터주소=" + movieSrc + ", 상영중여부=" + reservationYN + ", 감독=" + director + ", 배우="
 				+ actor + ", 장르=" + genre + ", 관람가등급=" + filmRating + ", 런타임=" + runningTime
 				+ ", 국가=" + country + ", 관람가등급사진주소=" + ageImage + ", 상영시작날짜=" + openDate + ", 영화내용="

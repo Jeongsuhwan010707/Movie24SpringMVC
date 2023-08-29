@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReviewMapper">
+	<resultMap type="Review" id="reviewResultMap">
+		<id property="reviewNo" column="REVIEW_NO"/>
+		<result property="starRating" column="STAR_RATING"/>
+		<result property="movieNo" column="MOIVE_NO"/>
+		<result property="reviewContent" column="REVIEW_CONTENT"/>
+		<result property="reviewWriter" column="REVIEW_WRITER"/>
+		<result property="rCreateDate" column="R_CREATE_DATE"/>
+		<result property="rUpdateDate" column="R_UPDATE_DATE"/>
+		<result property="updateYn" column="UPDATE_YN"/>
+		<result property="rStatus" column="R_STATUS"/>
+	</resultMap>
+	<insert id="insertReview">
+		INSERT INTO REVIEW_TBL VALUES(SEQ_REVIEW_NO.NEXTVAL, #{starRating}, #{movieNo}, #{reviewContent}, #{reviewWriter}, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	<update id="updateReview">
+		UPDATE REVIEW_TBL SET REVIEW_CONTENT = #{reviewContent}, R_UPDATE_DATE = DEFAULT, UPDATE_YN = 'Y' WHERE REVIEW_NO = #{reviewNo}
+	</update>
+	<update id="deleteReview">
+		UPDATE REVIEW_TBL SET R_STATUS = 'N' WHERE REVIEW_NO = #{reviewNo}
+	</update>
+	<select id="selectReviewList" resultMap="reviewResultMap">
+		SELECT * FROM REVIEW_TBL WHERE MOIVE_NO = #{movieNo} AND R_STATUS = 'Y'
+	</select>
+	<select id="selectOneByReviewNo" resultMap="reviewResultMap">
+		SELECT * FROM REVIEW_TBL WHERE REVIEW_NO = #{reviewNo} AND R_STATUS = 'Y'
+	</select>
+</mapper>

@@ -315,41 +315,41 @@
 			  padding: 20px;
 			}
 			
-			.replyImg img {
+			.reviewImg img {
 			  width: 100px;
 			  max-height: 200px;
 			}
-			.replyImg{
+			.reviewImg{
 				float: left;
 				height: 100%;
 			}
-			.reply {
+			.review {
 			  padding: 15px;
 			  padding-left: 20px;
 			  float: left;
 			  width: 70%;
 			}
 			
-			.reply p {
+			.review p {
 			  height: 60px; 
 			  overflow: hidden;
 			  margin-top: 5px;
 			}
-			.reply a{
+			.review a{
 				font-family: 'LINESeedKR-Bd';
 				color : #362FD9;
 			}
-			.reply .modifyReply{
+			.review .modifyReview{
 				margin-left: 10px;
 			}
 			.starArea{
 				padding-bottom: 8px;
 			}
-			.reply h4{
+			.review h4{
 				font-family: 'LINESeedKR-Bd';
 			}
 
-			#replyTitle {
+			#reviewTitle {
 			  width: 100%;
 			  height: 100px;
 			  font-size: 27px;
@@ -358,10 +358,33 @@
 			  padding-top: 30px;
 			  border-bottom: 3px solid #b3b2b2;
 			}
-			.reply_blank{
+			.review_blank{
 				width: 100%;
 				height: 150px;
 			}
+/* 			좋아요 기능 */
+			/* Add this to your existing CSS */
+.likeArea {
+  float: right;
+  text-align: right;
+  padding-top: 15px;
+}
+
+.likeArea img {
+  width: 45px;
+  margin-right: 5px;
+}
+
+.likeCount {
+  	font-size: 20px;
+    float: right;
+    font-family: 'PyeongChangPeace-Bold';
+    color: #362FD9;
+    padding-left: 5px;
+    padding-top: 18px;
+}
+			
+			
 			/* 기존 CSS 코드 */
 
 			.contentTextarea {

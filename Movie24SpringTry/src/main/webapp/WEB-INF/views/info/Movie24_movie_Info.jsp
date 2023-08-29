@@ -38,11 +38,11 @@
 						<br>개봉 : ${mInfo.openDate }</p>
 					</div>
 					<c:if test="${memberId ne null }"> 
-						<c:if test="${mHeart.movieName eq null }"> 
+						<c:if test="${mHeart.memberId eq null }"> 
 							<button id="btn1" onclick="heartInsert();">❤ 찜하기 ${heartCount}</button>
 						</c:if>
 					</c:if>
-					<c:if test="${mHeart.movieName eq mInfo.movieName}"> 
+					<c:if test="${mHeart.movieNo eq mInfo.movieNo}"> 
 						<button id="btn1-1" onclick="heartDelete();">❤ 찜하기 ${heartCount}</button>
 					</c:if>
 			        <button id="btn2">⭐ 평점보기</button>
@@ -85,7 +85,7 @@
 			    <h2>등록된 감상평이 아직 없습니다.</h2>
 			    <h1>첫 번째 감상평을 남겨주세요!</h1>
 			</div>
-			<form name="replyForm" action="/reply/add.do" method="post">
+			<form name="reviewForm" action="/review/add.do" method="post">
 				<div>
 					<c:if test="${memberId ne null}">
 					    <button type="button" id="review_btn" class="review_btn" onclick="myCheck();">리뷰 작성</button>
@@ -104,7 +104,7 @@
 					    <span class="close-btn" id="closeModalBtn">&times;</span>
 						<h2>리뷰 등록하기!</h2>
 						<p>[별점]</p>
-							<input type="hidden" name="refMovieNo" value="${mInfo.movieNum}">
+							<input type="hidden" name="movieNo" value="${mInfo.movieNo}">
 						  	<div class="stars" id="starContainer">
 						  		<div class="starBlank"></div>
 							    <span class="star" star-count="1">&#9733;</span>
@@ -113,63 +113,75 @@
 							    <span class="star" star-count="4">&#9733;</span>
 							    <span class="star" star-count="5">&#9733;</span>
 							    <input type="hidden" name="starNo" id="starNo" value="">
-							    <input type="hidden" name="movieName" value="${mInfo.movieName}">
+							    <input type="hidden" name="movieNo" value="${mInfo.movieNo}">
 							    <div class="starBlank"></div>
 						  	</div>
 							<p>[리뷰 댓글]</p>
-						  	<textarea id="comment" placeholder="리뷰를 남겨주세요!" name="replyContent"></textarea>
+						  	<textarea id="comment" placeholder="리뷰를 남겨주세요!" name="reviewContent"></textarea>
 						  	<button id="submitBtn" type="button">등록하기</button>
 						  	<button id="reviewBackBtn">취소하기</button>
 					</div>				
 				</div>
 			</form>
-			<h2 id="replyTitle">리뷰</h2>
+			<h2 id="reviewTitle">리뷰</h2>
 			<table class="reviewTable">
-			  <c:forEach var="reply" items="${rList}" varStatus="i">
+			  <c:forEach var="review" items="${rList}" varStatus="i">
 			    <tr class="reviewRow">
 			      <td class="reviewCell">
-			        <div class="replyImg">
+			        <div class="reviewImg">
 			          <img src="/resources/images/account (2).png" alt="">
 			        </div>
-			        <div class="reply">
-			          <h4>${reply.replyWriter}</h4>
+			        <div class="review">
+			          <h4>${review.reviewWriter}</h4>
 			          <div class="starArea">
 			          	<c:choose>
-			              <c:when test="${reply.starRating eq '★'}">⭐</c:when>
-			              <c:when test="${reply.starRating eq '★★'}">⭐⭐</c:when>
-			              <c:when test="${reply.starRating eq '★★★'}">⭐⭐⭐</c:when>
-			              <c:when test="${reply.starRating eq '★★★★'}">⭐⭐⭐⭐</c:when>
-			              <c:when test="${reply.starRating eq '★★★★★'}">⭐⭐⭐⭐⭐</c:when>
+			              <c:when test="${review.starRating eq '★'}">⭐</c:when>
+			              <c:when test="${review.starRating eq '★★'}">⭐⭐</c:when>
+			              <c:when test="${review.starRating eq '★★★'}">⭐⭐⭐</c:when>
+			              <c:when test="${review.starRating eq '★★★★'}">⭐⭐⭐⭐</c:when>
+			              <c:when test="${review.starRating eq '★★★★★'}">⭐⭐⭐⭐⭐</c:when>
 			            </c:choose>
 			          </div>
-			          <p>${reply.replyContent}</p>
+			          <p>${review.reviewContent}</p>
 			          <span>
-			            <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${reply.rCreateDate}" />&nbsp;
-			            <c:if test="${memberId eq reply.replyWriter}">
+			            <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.rCreateDate}" />&nbsp;
+			            <c:if test="${memberId eq review.reviewWriter}">
 				            <a href="javascript:void(0);" onclick="showModifyForm(this);">수정하기</a>&nbsp;
-							<a href="javascript:void(0);" onclick="deleteReview();" data-reply-no="${reply.replyNo}" data-movie-name="${mInfo.movieName}">삭제하기</a>
+							<a href="javascript:void(0);" onclick="deleteReview();" data-review-no="${review.reviewNo}" data-movie-no="${mInfo.movieNo}">삭제하기</a>
 			            </c:if>
 			          </span>
 			        </div>
+			        <div class="likeArea">
+			        	<img src="/resources/images/likebefore.png" alt="좋아요"> -->
+					    <span class="likeCount">1</span>
+<%-- 			        	<c:if test="${ }">  --%>
+<!-- 					      <img src="/resources/images/likebefore.png" alt="좋아요"> -->
+<!-- 					      <span class="likeCount">{likecount}</span> -->
+<%-- 			        	</c:if> --%>
+<%-- 			        	<c:if test="${ }"> --%>
+<!-- 			        	  <img src="/resources/images/likeafter.png" alt="좋아요">  -->
+<!-- 					      <span class="likeCount">{likecount}</span> -->
+<%-- 			        	</c:if> --%>
+				    </div>
 			      </td>
 			    </tr>
 <!-- 			    수정폼 -->
-				<tr id="replyModifyForm" class="reviewRow" style="display:none;">
+				<tr id="reviewModifyForm" class="reviewRow" style="display:none;">
 				    <td class="reviewCell">
-				        <div class="replyImg">
+				        <div class="reviewImg">
 				          <img src="/resources/images/account (2).png" alt="">
 				        </div>
-				        <div class="reply">
-				          <h4>${reply.replyWriter}</h4>
-				          <textarea id="replyContent" class="contentTextarea">${reply.replyContent}</textarea>
-			              <a href="javascript:void(0);" onclick="replyModify(this, '${reply.replyNo}', '${reply.refMovieNo }');" class="modifyReply">수정하기</a>
-						  <a href="javascript:void(0);" onclick="modifyback();" class="modifyReply">뒤로가기</a>
+				        <div class="review">
+				          <h4>${review.reviewWriter}</h4>
+				          <textarea class="contentTextarea">${review.reviewContent}</textarea>
+			              <a href="javascript:void(0);" onclick="reviewModify(this, '${review.reviewNo}', '${review.movieNo }');" class="modifyReview">수정하기</a>
+						  <a href="javascript:void(0);" onclick="modifyback();" class="modifyReview">뒤로가기</a>
 				        </div>
 				    </td>
 				</tr>
 			  </c:forEach>
 			</table>
-			<div class="reply_blank"></div>
+			<div class="review_blank"></div>
 	  	</main>
          <!-- --------------------푸터---------------------------------- -->
 	         <!-- <footer> ----------------------------</footer> -->
@@ -192,9 +204,6 @@
 	            menuText.style.zIndex= -1;
 	        });
 			
-	        function goReview(){
-	        	location.href="/movie/review.do";
-	        }
 	        function myCheck(){
 	        	const memberId = "${memberId}";
 				if(memberId === ""){
@@ -212,21 +221,16 @@
             	}
             }
             function heartInsert(){
-            	location.href = "/movie/heartInsert.do?movieName=${mInfo.movieName}";
+            	location.href = "/movie/heartInsert.do?movieNo=${mInfo.movieNo}";
             }
             function heartDelete(){
-            	location.href = "/movie/heartDelete.do?movieName=${mInfo.movieName}";
+            	location.href = "/movie/heartDelete.do?movieNo=${mInfo.movieNo}";
             }
          	// 버튼과 모달 요소 가져오기
 // 			var reviewBtn = document.getElementById("review_btn");
 			var closeModalBtn = document.getElementById("closeModalBtn");
 			var backModalBtn = document.getElementById("reviewBackBtn");
 			var modal = document.getElementById("myModal");
-			
-			// 모달 열기 함수
-// 			reviewBtn.onclick = function() {
-				
-// 			}
 			
 			// 모달 닫기 함수
 			closeModalBtn.onclick = function() {
@@ -274,8 +278,7 @@
 			  if(confirm("리뷰작성을 완료하시겠습니까?")){
 				  if (rating > 0 && comment.trim() !== "") {
 			          document.getElementById('starNo').value = rating;
-				      alert("별점: " + rating + "\n댓글: " + comment);
-				      const form = document.replyForm;
+				      const form = document.reviewForm;
 					  form.submit();
 				    // 여기에 댓글 전송 등의 로직을 추가할 수 있습니다.
 				  } else {
@@ -288,28 +291,28 @@
 					obj.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display="";
 				}
 			function modifyback(){
-				document.getElementById("replyModifyForm").style.display = "none";
+				document.getElementById("reviewModifyForm").style.display = "none";
 			}
-			function replyModify(obj, replyNo, refMovieNo){
+			function reviewModify(obj, reviewNo, movieNo){
 				const form = document.createElement("form");
-				const movieName = "${mInfo.movieName}";
-				form.action = "/reply/update.do?movieName="+movieName;
+				var movieNo = "${mInfo.movieNo}";
+				form.action = "/review/update.do?movieNo="+movieNo;
 				form.method = "post";
 				const input = document.createElement("input");
 				input.type="hidden";
-				input.value= replyNo;
-				input.name="replyNo";
+				input.value= reviewNo;
+				input.name="reviewNo";
 				const input2 = document.createElement("input");
 				input2.type = "hidden";
-				input2.value = refMovieNo;
-				input2.name = "refMovieNo";
+				input2.value = movieNo;
+				input2.name = "movieNo";
 				const input3 = document.createElement("input");
 				input3.type = "text";
 				// 여기를 this를 이용하여 수정해주세요
 //					input3.value = obj.parentElement.previousElementSibling.childNodes[1].value
 				input3.value = obj.parentElement.children[1].value
 				// children도 사용 가능함.
-				input3.name = "replyContent";
+				input3.name = "reviewContent";
 				form.appendChild(input);
 				form.appendChild(input2);
 				form.appendChild(input3);
@@ -322,11 +325,11 @@
 			}
 			function deleteReview() {
 			    var button = event.target; // 클릭된 버튼 요소
-			    var replyNo = button.getAttribute("data-reply-no");
-			    var movieName = button.getAttribute("data-movie-name");
+			    var reviewNo = button.getAttribute("data-review-no");
+			    var movieNum = button.getAttribute("data-movie-no");
 
 			    if (confirm("리뷰를 삭제하시겠습니까?")) {
-			        location.href = "/reply/delete.do?replyNo=" + replyNo + "&movieName=" + movieName;
+			        location.href = "/review/delete.do?reviewNo=" + reviewNo + "&movieNo=" + movieNum;
 			    }
 			}
 	    </script>

@@ -44,7 +44,7 @@
                         <ul>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=플래시">
+	                                <a href="/movie/info.do?movieNo=1">
 	                                	<img id="mainImg1" class="popularPoster"  src="/resources/images/플래시.jpg" alt="">
 	                                	<button id="lookDetail1" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                               	</a>
@@ -54,7 +54,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=범죄도시3">
+	                                <a href="/movie/info.do?movieNo=2">
 	                                	<img id="mainImg2" class="popularPoster" src="/resources/images/범죄도시3.png" alt="" >
 		                                <button id="lookDetail2" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                               	</a>
@@ -64,7 +64,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=분노의 질주-라이드 오어 다이">
+	                                <a href="/movie/info.do?movieNo=3">
 	                                	<img id="mainImg3" class="popularPoster" src="/resources/images/분노의질주.png" alt="" >
 		                                <button id="lookDetail3" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                                </a>
@@ -74,7 +74,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=가디언즈 오브 갤럭시-Volume 3">
+	                                <a href="/movie/info.do?movieNo=4">
 	                                	<img id="mainImg4" class="popularPoster" src="/resources/images/가디언즈오브갤럭시.png" alt="" >
 	                            		<button id="lookDetail4" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                                </a>
@@ -84,7 +84,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=위대한 쇼맨">
+	                                <a href="/movie/info.do?movieNo=5">
 		                                <img id="mainImg5" class="popularPoster" src="/resources/images/위대한쇼맨.jpg" alt="" >
 		                                <button id="lookDetail5" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                                </a>
@@ -100,7 +100,7 @@
                         <ul>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=엘리멘탈">
+	                                <a href="/movie/info.do?movieNo=6">
 	                                	<img id="mainImg6" class="popularPoster" src="/resources/images/엘리멘탈.jpg" alt="">
 	                                	<button id="lookDetail6" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                                </a>
@@ -110,7 +110,7 @@
                             </li>
                            <li>
                            		<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=바비">
+	                                <a href="/movie/info.do?movieNo=7">
 	                                	<img id="mainImg7" class="popularPoster" src="/resources/images/바비.jpg" alt="">
 		                                <button id="lookDetail7" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                                	</a>
@@ -120,7 +120,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=콘크리트 유토피아">
+	                                <a href="/movie/info.do?movieNo=8">
 		                                <img id="mainImg8" class="popularPoster" src="/resources/images/콘크리트 유토피아.jpg" alt="">
 		                                <button id="lookDetail8" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                                </a>
@@ -130,7 +130,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=밀수">
+	                                <a href="/movie/info.do?movieNo=9">
 	                                	<img id="mainImg9" class="popularPoster" src="/resources/images/밀수.jpg" alt="">
 	                                	<button id="lookDetail9" class="lookDetail" style="cursor:pointer">상세보기</button>
 	                               	</a>
@@ -140,7 +140,7 @@
                             </li>
                             <li>
                             	<div class="movieImgs"> 
-	                                <a href="/movie/info.do?movieName=인어공주">
+	                                <a href="/movie/info.do?movieNo=10">
 	    	                            <img id="mainImg10" class="popularPoster" src="/resources/images/인어공주.png" alt="">
 		                                <button id="lookDetail10" class="lookDetail" style="cursor:pointer">상세보기</button>
 	   	                            </a>

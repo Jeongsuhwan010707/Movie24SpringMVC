@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,9 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.movie24.happy.info.domain.MovieHeart;
 import com.movie24.happy.info.domain.MovieInfo;
 import com.movie24.happy.info.service.InfoService;
-import com.movie24.happy.java.util.StaticMethod;
-import com.movie24.happy.reply.domain.Reply;
-import com.movie24.happy.reply.service.ReplyService;
+import com.movie24.happy.review.domain.Review;
+import com.movie24.happy.review.service.ReviewService;
 
 @Controller
 public class InfoController {
@@ -30,20 +28,20 @@ public class InfoController {
 	@Autowired
 	private InfoService service;
 	@Autowired
-	private ReplyService rService;
+	private ReviewService rService;
 	
 	@RequestMapping(value="/movie/info.do", method=RequestMethod.GET)
-	public String goMovieInfoPage(@RequestParam("movieName") String movieName
+	public String goMovieInfoPage(@RequestParam("movieNo") int movieNo
 			, HttpSession session
 			, HttpServletResponse response
 			, Model model){
 		
-		MovieInfo mInfo = service.selectOnebyName(movieName);
-		List<Reply> rList = rService.selectReplyList(mInfo.getMovieNum());
+		MovieInfo mInfo = service.selectOnebyNo(movieNo);
+		List<Review> rList = rService.selectReviewList(mInfo.getMovieNo());
 		model.addAttribute("rList", rList);
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		String memberId = (String) session.getAttribute("memberId");
-		map.put("movieName", movieName);
+		map.put("movieNo", movieNo);
 		MovieHeart mHeart = null;
 		if(memberId != null || memberId != "") {
 			map.put("memberId", memberId);
@@ -51,21 +49,15 @@ public class InfoController {
 		}
 		if(mInfo != null) {
 			model.addAttribute("mInfo", mInfo);
-			int heartCount = service.selectHeartCount(movieName);
+			int heartCount = service.selectHeartCount(movieNo);
 			model.addAttribute("heartCount", heartCount);
 			if(mHeart != null) {
 				model.addAttribute("mHeart", mHeart);
+			}else {
+				}
 			}
 			return "info/Movie24_movie_Info";
-		}else {
-			StaticMethod.alertAndBack(response, "불러오기에 실패했습니다.");
-			return "/";
-		}
-	}
-	
-	@RequestMapping(value="/movie/review.do", method=RequestMethod.GET)
-	public String goMovieReview(){
-		return "info/reviewModal";
+		
 	}
 	
 	@RequestMapping(value="/movie/List.do", method=RequestMethod.GET)
@@ -97,60 +89,60 @@ public class InfoController {
 	
 	@RequestMapping(value="/movie/heartInsert.do", method=RequestMethod.GET)
 	public String goMovieHeart(HttpSession session
-			, @RequestParam("movieName") String movieName
+			, @RequestParam("movieNo") int movieNo
 			, HttpServletResponse response
 			, Model model) {
 			
 			try {
 				String memberId = (String) session.getAttribute("memberId");
-				Map<String,String> paramMap = new HashMap<String,String>();
+				Map<String,Object> paramMap = new HashMap<String,Object>();
 				paramMap.put("memberId", memberId);
-				paramMap.put("movieName", movieName);
-				String encodedMovieName = URLEncoder.encode(movieName, "UTF-8");
-				int result = service.insertHeart(movieName, paramMap);
+				paramMap.put("movieNo", movieNo);
+//				String encodedMovieNo = URLEncoder.encode(movieNo, "UTF-8");
+				int result = service.insertHeart(paramMap);
 				if(result > 0) {
-					return "redirect:/movie/info.do?movieName="+encodedMovieName;
+					return "redirect:/movie/info.do?movieNo="+movieNo;
 				}else {
 					model.addAttribute("msg", "찜 누르기를 실패하였습니다.");
 					model.addAttribute("error", "찜 누르기 실패");
 					model.addAttribute("url", "/index.jsp");
 					return "successOrFail/serviceFailed";
 				}
-			} catch (UnsupportedEncodingException e) {
+			} catch (Exception e) {
 				model.addAttribute("msg", "게시글 등록이 완료되지 않았습니다.");
 				model.addAttribute("error", e.getMessage());
 				model.addAttribute("url", "/board.write.kh");
-				return "common/errorPage";
+				return "successOrFail/serviceFailed";
 			}
 			
 		}
 	
 	@RequestMapping(value="/movie/heartDelete.do", method=RequestMethod.GET)
 	public String goMovieHeartDestroy(HttpSession session
-			, @RequestParam("movieName") String movieName
+			, @RequestParam("movieNo") int movieNo
 			, HttpServletResponse response
 			, Model model) {
 		try {
 		
 			String memberId = (String) session.getAttribute("memberId");
-			Map<String,String> paramMap = new HashMap<String,String>();
+			Map<String,Object> paramMap = new HashMap<String,Object>();
 			paramMap.put("memberId", memberId);
-			paramMap.put("movieName", movieName);
-			String encodedMovieName = URLEncoder.encode(movieName, "UTF-8");
-			int result = service.deleteHeart(movieName, paramMap);
+			paramMap.put("movieNo", movieNo);
+//			String encodedMovieNo = URLEncoder.encode(movieNo, "UTF-8");
+			int result = service.deleteHeart(paramMap);
 			if(result > 0) {
-				return "redirect:/movie/info.do?movieName="+encodedMovieName;
+				return "redirect:/movie/info.do?movieNo="+movieNo;
 			}else {
 				model.addAttribute("msg", "찜 취소를 실패하였습니다.");
 				model.addAttribute("error", "찜 취소 실패");
 				model.addAttribute("url", "/index.jsp");
 				return "successOrFail/serviceFailed";
 			}
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			model.addAttribute("msg", "게시글 등록이 완료되지 않았습니다.");
 			model.addAttribute("error", e.getMessage());
 			model.addAttribute("url", "/board.write.kh");
-			return "common/errorPage";
+			return "successOrFail/serviceFailed";
 		}
 	}
 }

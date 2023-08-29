@@ -2,27 +2,20 @@ package com.movie24.happy.info.domain;
 
 public class MovieHeart {
 	
-	 private String movieName;
+	 private int movieNO;
 	 private String memberId;
-	 private String heartYN;
 	 
-	public String getMovieName() {
-		return movieName;
+	public int getMovieNo() {
+		return movieNO;
 	}
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
+	public void setMovieNo(int movieNO) {
+		this.movieNO = movieNO;
 	}
 	public String getMemberId() {
 		return memberId;
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
-	}
-	public String getHeartYN() {
-		return heartYN;
-	}
-	public void setHeartYN(String heartYN) {
-		this.heartYN = heartYN;
 	}
 	 
 	 

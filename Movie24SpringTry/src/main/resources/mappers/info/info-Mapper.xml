@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="InfoMapper">
 	<resultMap type="com.movie24.happy.info.domain.MovieInfo" id="infoResultMap">
-		<id property="movieNum" column="MOVIE_NUM"/>
+		<id property="movieNo" column="MOVIE_NO"/>
 		<result property="movieName" column="MOVIE_NAME" />
 		<result property="movieEnName" column="MOVIE_ENNAME" />
 		<result property="movieSrc" column="MOVIE_SRC" />
@@ -20,27 +20,26 @@
 		<result property="contentInfo" column="CONTENT_INFO" />
 		<result property="video" column="VIDEO" />
 	</resultMap>
-	<select id="selectOnebyName" resultMap="infoResultMap">
-		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NAME = #{movieName}
+	<select id="selectOnebyNo" resultMap="infoResultMap">
+		SELECT * FROM MOVIE_INFO_TBL WHERE MOVIE_NO = #{movieNo}
 	</select>
 	<select id="selectYNMovieList" resultMap="infoResultMap">
 		SELECT * FROM MOVIE_INFO_TBL WHERE RESERVATION_YN = #{value}
 	</select>
 	<resultMap type="com.movie24.happy.info.domain.MovieHeart" id="heartResultMap">
-		<result property="movieName" column="MOVIE_NAME" />
+		<result property="movieNo" column="MOVIE_NO" />
 		<result property="memberId" column="MEMBER_ID" />
-		<result property="heartYN" column="HEART_YN" />
 	</resultMap>
 	<insert id="insertHeart">
-		INSERT INTO MOVIE_HEART_TBL VALUES(#{movieName}, #{memberId} ,DEFAULT)
+		INSERT INTO MOVIE_HEART_TBL VALUES(#{movieNo}, #{memberId})
 	</insert>
 	<delete id="deleteHeart">
-		DELETE FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName} AND MEMBER_ID = #{memberId}
+		DELETE FROM MOVIE_HEART_TBL WHERE MOVIE_NO = #{movieNo} AND MEMBER_ID = #{memberId}
 	</delete>
 	<select id="selectOneByMap" resultMap="heartResultMap">
-		SELECT * FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName} AND MEMBER_ID = #{memberId}
+		SELECT * FROM MOVIE_HEART_TBL WHERE MOVIE_NO = #{movieNo} AND MEMBER_ID = #{memberId}
 	</select>
 	<select id="selectHeartCount" resultType="_int">
-		SELECT COUNT(*) FROM MOVIE_HEART_TBL WHERE MOVIE_NAME = #{movieName}
+		SELECT COUNT(*) FROM MOVIE_HEART_TBL WHERE MOVIE_NO = #{movieNo}
 	</select>
 </mapper>

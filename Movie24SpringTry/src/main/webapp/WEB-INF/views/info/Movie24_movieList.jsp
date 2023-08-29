@@ -33,7 +33,7 @@
 		             	<c:forEach var="movies" items="${miYList}" varStatus="i"> 
 							<li>
 								<div class="movieImgs"> 
-	                            	<a href="/movie/info.do?movieName=${movies.movieName }">
+	                            	<a href="/movie/info.do?movieNo=${movies.movieNo }">
 			                            <img id="mainImg${i.count }" class="popularPoster1" src="${movies.movieSrc }" alt="">
 			                            <button id="LookDetail${i.count }" class="lookDetail" style="cursor:pointer">상세보기</button>
 		                            </a>
@@ -56,7 +56,7 @@
 						<c:forEach var="movies" items="${miNList}" varStatus="i"> 
 							<li>
 								<div class="movieImgs"> 
-	                            	<a href="/movie/info.do?movieName=${movies.movieName }">
+	                            	<a href="/movie/info.do?movieNo=${movies.movieNo }">
 			                            <img id="preImg${i.count }" class="popularPoster2" src="${movies.movieSrc }" alt="">
 			                            <button id="preLookDetail${i.count }" class="preLookDetail" style="cursor:pointer">상세보기</button>
 		                            </a>
