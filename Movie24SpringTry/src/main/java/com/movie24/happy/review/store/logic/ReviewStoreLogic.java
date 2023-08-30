@@ -1,11 +1,14 @@
 package com.movie24.happy.review.store.logic;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.movie24.happy.review.domain.Review;
+import com.movie24.happy.review.domain.ReviewLike;
+import com.movie24.happy.review.domain.ReviewReport;
 import com.movie24.happy.review.store.ReviewStore;
 
 
@@ -41,4 +44,29 @@ public class ReviewStoreLogic implements ReviewStore{
 		int result = session.update("ReviewMapper.deleteReview", reviewNo);
 		return result;
 	}
+
+	@Override
+	public int insertLike(SqlSession session, Map<String, Object> likeMap) {
+		int result = session.insert("ReviewMapper.insertLike", likeMap);
+		return result;
+	}
+	
+	@Override
+	public int deleteLike(SqlSession session, int likeNo) {
+		int result = session.delete("ReviewMapper.deleteLike", likeNo);
+		return result;
+	}
+
+	@Override
+	public int countLikeByMap(SqlSession session, Map<String, Integer> paramMap) {
+		int result = session.selectOne("ReviewMapper.countLikeByMap", paramMap);
+		return result;
+	}
+
+	@Override
+	public int insertReport(SqlSession session, ReviewReport reviewReport) {
+		int result = session.selectOne("ReviewMapper.insertReport", reviewReport);
+		return result;
+	}
+
 }

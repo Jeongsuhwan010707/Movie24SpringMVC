@@ -20,6 +20,7 @@ import com.movie24.happy.info.domain.MovieHeart;
 import com.movie24.happy.info.domain.MovieInfo;
 import com.movie24.happy.info.service.InfoService;
 import com.movie24.happy.review.domain.Review;
+import com.movie24.happy.review.domain.ReviewLike;
 import com.movie24.happy.review.service.ReviewService;
 
 @Controller
@@ -36,24 +37,38 @@ public class InfoController {
 			, HttpServletResponse response
 			, Model model){
 		
-		MovieInfo mInfo = service.selectOnebyNo(movieNo);
-		List<Review> rList = rService.selectReviewList(mInfo.getMovieNo());
-		model.addAttribute("rList", rList);
-		Map<String, Object> map = new HashMap<String, Object>();
-		String memberId = (String) session.getAttribute("memberId");
-		map.put("movieNo", movieNo);
-		MovieHeart mHeart = null;
-		if(memberId != null || memberId != "") {
-			map.put("memberId", memberId);
-			mHeart = service.selectOneByMap(map);
-		}
-		if(mInfo != null) {
-			model.addAttribute("mInfo", mInfo);
-			int heartCount = service.selectHeartCount(movieNo);
-			model.addAttribute("heartCount", heartCount);
-			if(mHeart != null) {
-				model.addAttribute("mHeart", mHeart);
-			}else {
+			MovieInfo mInfo = service.selectOnebyNo(movieNo);
+			String memberId = (String) session.getAttribute("memberId");
+			List<Review> rList = rService.selectReviewList(movieNo);
+			int countResult = 0;
+			Map<String, Integer> paramMap = new HashMap<String, Integer>(); 
+			paramMap.put("movieNo", movieNo);
+			for(int i = 0; i < rList.size(); i++) {
+				Review review = rList.get(i);
+				if(memberId != null && memberId.equals(review.getMemberId())) {
+					review.setLikeYn("YES");
+				}else if(memberId != null && !memberId.equals(review.getMemberId())){
+					review.setLikeYn("NO");
+				}
+				paramMap.put("reviewNo", review.getReviewNo());
+				countResult = rService.countLikeByMap(paramMap);
+				review.setLikeCount(countResult);
+			}
+			model.addAttribute("rList", rList);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("movieNo", movieNo);
+			MovieHeart mHeart = null;
+			if(memberId != null || memberId != "") {
+				map.put("memberId", memberId);
+				mHeart = service.selectOneByMap(map);
+			}
+			if(mInfo != null) {
+				model.addAttribute("mInfo", mInfo);
+				int heartCount = service.selectHeartCount(movieNo);
+				model.addAttribute("heartCount", heartCount);
+				if(mHeart != null) {
+					model.addAttribute("mHeart", mHeart);
+				}else {
 				}
 			}
 			return "info/Movie24_movie_Info";

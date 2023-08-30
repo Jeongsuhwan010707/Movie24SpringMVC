@@ -12,6 +12,8 @@
  		<typeAlias type="com.movie24.happy.event.domain.EventSRC" alias="EventSRC"/>
  		<typeAlias type="com.movie24.happy.info.domain.MovieInfo" alias="Info"/>
  		<typeAlias type="com.movie24.happy.review.domain.Review" alias="Review"/>
+ 		<typeAlias type="com.movie24.happy.review.domain.ReviewLike" alias="ReviewLike"/>
+ 		<typeAlias type="com.movie24.happy.review.domain.ReviewReport" alias="ReviewReport"/>
  	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member/member-Mapper.xml" />

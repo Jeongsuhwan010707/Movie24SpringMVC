@@ -4,13 +4,26 @@
 	<resultMap type="Review" id="reviewResultMap">
 		<id property="reviewNo" column="REVIEW_NO"/>
 		<result property="starRating" column="STAR_RATING"/>
-		<result property="movieNo" column="MOIVE_NO"/>
+		<result property="movieNo" column="MOVIE_NO"/>
 		<result property="reviewContent" column="REVIEW_CONTENT"/>
 		<result property="reviewWriter" column="REVIEW_WRITER"/>
 		<result property="rCreateDate" column="R_CREATE_DATE"/>
 		<result property="rUpdateDate" column="R_UPDATE_DATE"/>
 		<result property="updateYn" column="UPDATE_YN"/>
 		<result property="rStatus" column="R_STATUS"/>
+	</resultMap>
+	<resultMap type="Review" id="reviewLikeResultMap">
+		<id property="reviewNo" column="REVIEW_NO"/>
+		<result property="starRating" column="STAR_RATING"/>
+		<result property="movieNo" column="MOVIE_NO"/>
+		<result property="reviewContent" column="REVIEW_CONTENT"/>
+		<result property="reviewWriter" column="REVIEW_WRITER"/>
+		<result property="rCreateDate" column="R_CREATE_DATE"/>
+		<result property="rUpdateDate" column="R_UPDATE_DATE"/>
+		<result property="updateYn" column="UPDATE_YN"/>
+		<result property="rStatus" column="R_STATUS"/>
+		<result property="likeNo" column="LIKE_NO"/>
+		<result property="memberId" column="MEMBER_ID"/>
 	</resultMap>
 	<insert id="insertReview">
 		INSERT INTO REVIEW_TBL VALUES(SEQ_REVIEW_NO.NEXTVAL, #{starRating}, #{movieNo}, #{reviewContent}, #{reviewWriter}, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
@@ -21,10 +34,26 @@
 	<update id="deleteReview">
 		UPDATE REVIEW_TBL SET R_STATUS = 'N' WHERE REVIEW_NO = #{reviewNo}
 	</update>
-	<select id="selectReviewList" resultMap="reviewResultMap">
-		SELECT * FROM REVIEW_TBL WHERE MOIVE_NO = #{movieNo} AND R_STATUS = 'Y'
-	</select>
+	<insert id="insertLike">
+		INSERT INTO REVIEW_LIKE_TBL VALUES(SEQ_LIKE_NO.NEXTVAL, #{movieNo}, #{reviewNo}, #{memberId})
+	</insert>
+	<delete id="deleteLike">
+		DELETE FROM REVIEW_LIKE_TBL WHERE LIKE_NO = #{likeNo}
+	</delete>
 	<select id="selectOneByReviewNo" resultMap="reviewResultMap">
 		SELECT * FROM REVIEW_TBL WHERE REVIEW_NO = #{reviewNo} AND R_STATUS = 'Y'
 	</select>
+	<select id="selectReviewList" resultMap="reviewLikeResultMap">
+		SELECT R1.REVIEW_NO, R1.STAR_RATING, R1.MOVIE_NO, R1.REVIEW_CONTENT, R1.REVIEW_WRITER,
+   		R1.R_CREATE_DATE, R1.R_UPDATE_DATE, R1.UPDATE_YN, R1.R_STATUS, 
+       	R2.LIKE_NO, R2.MEMBER_ID
+		FROM REVIEW_TBL R1 LEFT JOIN REVIEW_LIKE_TBL R2 ON R1.MOVIE_NO = R2.MOVIE_NO AND R1.REVIEW_NO = R2.REVIEW_NO
+		WHERE R1.MOVIE_NO = #{movieNo} AND R1.R_STATUS = 'Y' ORDER BY R1.REVIEW_NO
+	</select>
+	<select id="countLikeByMap" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW_LIKE_TBL WHERE MOVIE_NO = #{movieNo} AND REVIEW_NO = #{reviewNo}
+	</select>
+	<insert id="insertReport">
+		INSERT INTO REVIEW_REPORT_TBL VALUES(SEQ_REPORT_NO.NEXTVAL, #{movieNo}, #{reviewNo}, #{memberId})
+	</insert>
 </mapper>

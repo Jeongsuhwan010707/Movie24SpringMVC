@@ -1,10 +1,13 @@
 package com.movie24.happy.review.store;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.movie24.happy.review.domain.Review;
+import com.movie24.happy.review.domain.ReviewLike;
+import com.movie24.happy.review.domain.ReviewReport;
 
 
 public interface ReviewStore {
@@ -25,7 +28,7 @@ public interface ReviewStore {
 	int updateReview(SqlSession session, Review review);
 	
 	/**
-	 * 댓글 리스트 불러오기
+	 * 댓글 리스트 불러오기 Store
 	 * @param session
 	 * @param movieNo
 	 * @return List<review>
@@ -46,4 +49,38 @@ public interface ReviewStore {
 	 * @return int
 	 */
 	int deleteReview(SqlSession session, int reviewNo);
+
+	/**
+	 * 좋아요 찍기 Store
+	 * @param session
+	 * @param likeMap
+	 * @return
+	 */
+	int insertLike(SqlSession session, Map<String, Object> likeMap);
+	
+	/**
+	 * 좋아요 삭제하기 Store
+	 * @param session
+	 * @param likeNo
+	 * @return
+	 */
+	int deleteLike(SqlSession session, int likeNo);
+
+	/**
+	 * 리뷰 당 좋아요 총 갯수 불러오기 Store
+	 * @param session
+	 * @param paramMap
+	 * @return
+	 */
+	int countLikeByMap(SqlSession session, Map<String, Integer> paramMap);
+
+	/**
+	 * 부적절한 리뷰 신고하기
+	 * @param session
+	 * @param reviewReport
+	 * @return
+	 */
+	int insertReport(SqlSession session, ReviewReport reviewReport);
+
+
 }

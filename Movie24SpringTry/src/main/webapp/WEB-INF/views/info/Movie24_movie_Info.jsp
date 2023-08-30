@@ -37,6 +37,9 @@
 						<br>장르 : ${mInfo.genre } / 기본 정보 : ${mInfo.filmRating }, ${mInfo.runningTime }, ${mInfo.country }
 						<br>개봉 : ${mInfo.openDate }</p>
 					</div>
+					<c:if test="${memberId eq null }">
+						<button id="btn1" onclick="myCheck();">❤ 찜하기 ${heartCount}</button>
+					</c:if>
 					<c:if test="${memberId ne null }"> 
 						<c:if test="${mHeart.memberId eq null }"> 
 							<button id="btn1" onclick="heartInsert();">❤ 찜하기 ${heartCount}</button>
@@ -149,19 +152,59 @@
 				            <a href="javascript:void(0);" onclick="showModifyForm(this);">수정하기</a>&nbsp;
 							<a href="javascript:void(0);" onclick="deleteReview();" data-review-no="${review.reviewNo}" data-movie-no="${mInfo.movieNo}">삭제하기</a>
 			            </c:if>
+			            <c:if test="${memberId eq null}">
+			            	<button onclick="myCheck();" style="background-color: #f2f2f2;border: 1px solid #ccc;padding: 0px 4px;color: #878585;cursor: pointer;">신고하기</button>
+			            </c:if>
+			            <c:if test="${memberId ne null}">
+				            <button class="open-report-modal" style="background-color: #f2f2f2;border: 1px solid #ccc;padding: 0px 4px;color: #878585;cursor: pointer;">신고하기</button>
+			            </c:if>
 			          </span>
 			        </div>
+<!-- 			        리뷰 신고 jsp -->
+			        <div class="report-modal-background">
+					  <div class="report-modal">
+					    <h2 style="padding-bottom: 10px;">신고하기</h2>
+					    <form action="/review/report.do" method="post">
+					    	<input type="hidden" name="reviewNo" value="${review.reviewNo }">
+					    	<input type="hidden" name="movieNo" value="${review.movieNo }">
+						    <select name="reportOption" style="width: 400px;height: 30px;font-size: 14px;">
+							  <option value="spoiler">스포일러 메세지</option>
+							  <option value="profanity">욕설 및 비속어</option>
+							  <option value="inappropriate">성의없는 리뷰</option>
+							</select>
+						    <p style="padding: 10px 0px;">신고 내용을 입력하세요.</p>
+						    <textarea name="reportContent" style="width: 400px;height: 130px;resize: none;"></textarea>
+						    <button class="close-report-modal" type="button">X</button>
+						    <button class="report-modal-btn" type="submit">완료</button>
+					    </form>
+					  </div>
+					</div>
 			        <div class="likeArea">
-			        	<img src="/resources/images/likebefore.png" alt="좋아요"> -->
-					    <span class="likeCount">1</span>
-<%-- 			        	<c:if test="${ }">  --%>
-<!-- 					      <img src="/resources/images/likebefore.png" alt="좋아요"> -->
-<!-- 					      <span class="likeCount">{likecount}</span> -->
-<%-- 			        	</c:if> --%>
-<%-- 			        	<c:if test="${ }"> --%>
-<!-- 			        	  <img src="/resources/images/likeafter.png" alt="좋아요">  -->
-<!-- 					      <span class="likeCount">{likecount}</span> -->
-<%-- 			        	</c:if> --%>
+			        	<c:if test="${memberId eq null}">
+			        		<img src="/resources/images/likebefore.png" onclick="myCheck();" style="cursor:pointer;" alt="좋아요">
+			        	</c:if>
+			        	<c:if test="${memberId ne null }">
+				        	<c:if test="${review.likeYn eq 'NO' }">
+				        		<c:url var="LikeUrl" value="/review/like.do">
+									<c:param name="movieNo" value="${review.movieNo }"></c:param>
+									<c:param name="reviewNo" value="${review.reviewNo }"></c:param>
+									<c:param name="memberId" value="${memberId }"></c:param>
+								</c:url> 
+				        		<a href="${LikeUrl }">
+							      <img src="/resources/images/likebefore.png" alt="좋아요">
+				        		</a>
+				        	</c:if>
+				        	<c:if test="${review.likeYn eq 'YES' }">
+				        		<c:url var="LikeDeleteUrl" value="/review/likedelete.do">
+									<c:param name="likeNo" value="${review.likeNo }"></c:param>
+									<c:param name="movieNo" value="${review.movieNo }"></c:param>
+								</c:url>
+				        		<a href="${LikeDeleteUrl }">
+					        	  <img src="/resources/images/likeafter.png" alt="좋아요"> 
+				        		</a>
+				        	</c:if>
+			        	</c:if>
+			        	<span class="likeCount">${review.likeCount}</span>
 				    </div>
 			      </td>
 			    </tr>
@@ -173,6 +216,7 @@
 				        </div>
 				        <div class="review">
 				          <h4>${review.reviewWriter}</h4>
+<!-- 				          수정폼은 다 고쳐야겟다 -->
 				          <textarea class="contentTextarea">${review.reviewContent}</textarea>
 			              <a href="javascript:void(0);" onclick="reviewModify(this, '${review.reviewNo}', '${review.movieNo }');" class="modifyReview">수정하기</a>
 						  <a href="javascript:void(0);" onclick="modifyback();" class="modifyReview">뒤로가기</a>
@@ -285,6 +329,18 @@
 				      alert("별점과 댓글을 모두 입력해주세요.");
 				  }
 			  }
+			});
+			// 모달 신고기능
+			const openReportModalButton = document.querySelector('.open-report-modal');
+			const closeReportModalButton = document.querySelector('.close-report-modal');
+			const modalReportBackground = document.querySelector('.report-modal-background');
+			
+			openReportModalButton.addEventListener('click', () => {
+				modalReportBackground.style.display = 'flex';
+			});
+			
+			closeReportModalButton.addEventListener('click', () => {
+				modalReportBackground.style.display = 'none';
 			});
 			// 댓글 수정
 			function showModifyForm(obj){
