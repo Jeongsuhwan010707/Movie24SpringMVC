@@ -175,13 +175,25 @@ public class ReviewController {
 		
 		String url = "";
 		try {
+			if(reviewReport.getReportContent() == null) {
+				StaticMethod.alertAndBack(response, "리뷰 신고 내용을 입력해주세요.");
+			}
+			String reportCategoryValue = reviewReport.getReportCategory();
+	        if(reportCategoryValue == "spoiler") {
+	        	reviewReport.setReportCategory("스포일러가 포함된 리뷰메세지");
+	        } else if(reportCategoryValue == "profanity") {
+	        	reviewReport.setReportCategory("욕설 및 혐오발언 사용");
+	        } else if(reportCategoryValue == "separate") {
+	        	reviewReport.setReportCategory("영화와 관련없는 내용의 리뷰메세지");	        	
+	        } else if(reportCategoryValue == "inappropriate") {
+	        	reviewReport.setReportCategory("무지성 갓수환 찬양");
+	        }
 			url = "/movie/info.do?movieNo="+reviewReport.getMovieNo();
 			String memberId = (String)session.getAttribute("memberId");
 			reviewReport.setMemberId(memberId);
 			int result = rService.insertReport(reviewReport);
 			if(result > 0) {	
-				StaticMethod.alertAndBack(response, "부적절한 리뷰를 신고해주셔서 감사합니다.");
-				mv.setViewName("redirect:"+url);
+				StaticMethod.alertAndGo(response, "부적절한 리뷰를 신고해주셔서 감사합니다.", url);
 			}else {
 				StaticMethod.alertAndBack(response, "리뷰 신고가 완료되지 않았습니다.");
 				mv.setViewName("successOrFail/serviceFailed");

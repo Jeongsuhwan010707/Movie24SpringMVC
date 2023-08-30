@@ -65,7 +65,7 @@ public class ReviewStoreLogic implements ReviewStore{
 
 	@Override
 	public int insertReport(SqlSession session, ReviewReport reviewReport) {
-		int result = session.selectOne("ReviewMapper.insertReport", reviewReport);
+		int result = session.insert("ReviewMapper.insertReport", reviewReport);
 		return result;
 	}
 

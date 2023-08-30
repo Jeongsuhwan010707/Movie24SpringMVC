@@ -54,6 +54,6 @@
 		SELECT COUNT(*) FROM REVIEW_LIKE_TBL WHERE MOVIE_NO = #{movieNo} AND REVIEW_NO = #{reviewNo}
 	</select>
 	<insert id="insertReport">
-		INSERT INTO REVIEW_REPORT_TBL VALUES(SEQ_REPORT_NO.NEXTVAL, #{movieNo}, #{reviewNo}, #{memberId})
+		INSERT INTO REVIEW_REPORT_TBL VALUES(SEQ_REPORT_NO.NEXTVAL, #{reportCategory}, #{reportContent}, #{movieNo}, #{reviewNo}, #{memberId})
 	</insert>
 </mapper>

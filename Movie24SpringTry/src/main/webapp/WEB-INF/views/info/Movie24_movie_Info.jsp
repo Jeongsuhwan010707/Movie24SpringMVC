@@ -167,10 +167,11 @@
 					    <form action="/review/report.do" method="post">
 					    	<input type="hidden" name="reviewNo" value="${review.reviewNo }">
 					    	<input type="hidden" name="movieNo" value="${review.movieNo }">
-						    <select name="reportOption" style="width: 400px;height: 30px;font-size: 14px;">
-							  <option value="spoiler">스포일러 메세지</option>
-							  <option value="profanity">욕설 및 비속어</option>
-							  <option value="inappropriate">성의없는 리뷰</option>
+						    <select name="reportCategory" style="width: 400px;height: 30px;font-size: 14px;">
+							  <option value="spoiler">스포일러가 포함된 리뷰메세지</option>
+							  <option value="profanity">욕설 및 혐오발언 사용</option>
+							  <option value="seperate">영화와 관련없는 내용의 리뷰메세지</option>
+							  <option value="inappropriate">심한 갓수환 찬양</option>
 							</select>
 						    <p style="padding: 10px 0px;">신고 내용을 입력하세요.</p>
 						    <textarea name="reportContent" style="width: 400px;height: 130px;resize: none;"></textarea>
