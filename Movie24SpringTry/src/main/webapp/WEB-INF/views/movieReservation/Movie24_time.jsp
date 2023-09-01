@@ -1,0 +1,245 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie24</title>
+        <link rel="stylesheet" href="/resources/css/include/header.css">
+        <link rel="stylesheet" href="/resources/css/include/nav.css">
+        <link rel="stylesheet" href="/resources/css/include/footer.css">
+        <link rel="stylesheet" href="/resources/css/movieReservation/Movie24_time.css">
+    </head>
+    <body>
+        <div>
+            <jsp:include page="/include/header.jsp"></jsp:include>
+            <!-- -----------네비게이터 영역----------------------------------- -->
+			<jsp:include page="/include/nav.jsp"></jsp:include>
+            <!-- ---------메인 영역--------------------------- -->
+		<main>
+		    <div id="main_select">
+		        <div id="main_select_left">
+		            <div id="main_select_left1">
+		                <a href="#"><img src="/resources/images/영화별grey.png" alt="">영화별</a>
+		            </div>
+		            <div id="main_select_left2">
+		                <a href="#"><img src="/resources/images/극장별.png" alt="">극장별</a>
+		            </div>
+		        </div>
+		        <div id="main_select_right">
+		            <div id="main_select_right1">
+		                <span id="span1">상영중</span>
+		                <span id="span2">상영종료</span>
+		            </div>
+		            <div id="main_select_right2">
+		                <div class="ul"><ul>
+		                    <li><a href="#">범죄도시3</a></li>
+		                    <li><a href="#">더 마블즈</a></li>
+		                    <li><a href="#">인어공주</a></li>
+		                    <li><a href="#">트랜스포머</a></li>
+		                    <li><a href="#">슈퍼마리오</a></li>
+		                </ul></div>
+		                <div class="ul"><ul>
+		                    <li><a href="#">신세계</a></li>
+		                    <li><a href="#">라라랜드</a></li>
+		                    <li><a href="#">베테랑</a></li>
+		                    <li><a href="#">리틀 포레스트</a></li>
+		                    <li><a href="#">닥터 스트레인지</a></li>
+		                </ul></div>
+		                <div class="ul"><ul>
+		                    <li><a href="#">스파이더맨</a></li>
+		                    <li><a href="#">신데렐라</a></li>
+		                    <li><a href="#">짱구는 못말려</a></li>
+		                    <li><a href="#">스즈메의 문단속</a></li>
+		                    <li><a href="#">너의 이름은</a></li>
+		                </ul></div>
+		            </div>
+		        </div>
+		    </div>
+		    <!-------------------- 선택창 밑 메인----------------------------->
+		    <div id="banner">
+		        <span id="span_banner">영화이름</span>
+		        <span>상영시간표</span>
+		    </div>
+		    <div id="number">
+		        <img class="img" src="/resources/images/back.png" alt="">
+		        <ul id="dateList"></ul>
+		        <img class="img" src="/resources/images/next.png" alt="">
+		        <img class="cal" src="/resources/images/calendar (1).png" alt="">
+		    </div>
+		    <div id="country">
+		        <span id="seoul"><a href="#">서울</a></span>
+		        <span><a href="#">경기</a></span>
+		        <span><a href="#">인천</a></span>
+		        <span><a href="#">대전/충청/세종</a></span>
+		        <span><a href="#">부산/대구/경상</a></span>
+		        <span><a href="#">광주/전라</a></span>
+		        <span><a href="#">강원</a></span>
+		    </div>
+		    <div class="country_text">
+		        <span>강남</span>
+		    </div>
+		    <div class="seat">
+		        <div class="tNum"><h4>1관</h4>총200석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		    </div>
+		    <div class="seat">
+		        <div class="tNum"><h4>2관</h4>총220석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">21:00<br>200석</a></div>
+		    </div>
+		    <div class="seat last">
+		        <div class="tNum"><h4>3관</h4>총210석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">21:00<br>200석</a></div>
+		    </div>
+		    <div class="country_text">
+		        <span>종로</span>
+		    </div>
+		    <div class="seat">
+		        <div class="tNum"><h4>1관</h4>총200석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		    </div>
+		    <div class="seat last">
+		        <div class="tNum"><h4>2관</h4>총220석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		    </div>
+		    <div class="country_text">
+		        <span>강동</span>
+		    </div>
+		    <div class="seat">
+		        <div class="tNum"><h4>1관</h4>총200석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		    </div>
+		    <div class="seat last">
+		        <div class="tNum"><h4>2관</h4>총220석
+		        </div>
+		        <div class="d2">2D</div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		    </div>
+		        <!-- <div id="main_button">
+		            <a href="#">다음 단계</a>
+		        </div> -->
+		</main>
+         <!-- --------------------푸터---------------------------------- -->
+         <!-- <footer> ----------------------------</footer> -->
+            <jsp:include page="/include/footer.jsp"></jsp:include>
+    	</div>
+	    <!-- 스크립트 -->
+	    <script>
+		    document.addEventListener("DOMContentLoaded", function() {
+			    const liElements = document.querySelectorAll('#nav_ul li');
+			    const menuText = document.getElementById('menu_text');
+			
+			    let hoverIntent = false;
+			
+			    liElements.forEach(li => {
+			        li.addEventListener('mouseenter', () => {
+			            hoverIntent = true;
+			            menuText.classList.add('active');
+			            menuText.style.zIndex = 5000;
+			        });
+			
+			        li.addEventListener('mouseleave', () => {
+			            hoverIntent = false;
+			            setTimeout(() => {
+			                if (!hoverIntent) {
+			                    menuText.classList.remove('active');
+			                    menuText.style.zIndex = -1;
+				                }
+				            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+				        });
+				    });
+			
+			    menuText.addEventListener('mouseenter', () => {
+			        hoverIntent = true;
+			    });
+			
+			    menuText.addEventListener('mouseleave', () => {
+			        hoverIntent = false;
+			        setTimeout(() => {
+			            if (!hoverIntent) {
+			                menuText.classList.remove('active');
+			                menuText.style.zIndex = -1;
+				            }
+				        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+				    });
+			});
+		    function myCheck(){
+	        	const memberId = "${memberId}";
+				if(memberId === ""){
+					alert("로그인 후 이용가능한 기능입니다.");
+	            	if(confirm("로그인 페이지로 이동하시겠습니까?")){
+	            		location.href="/member/login.do";
+	            	}
+				}else{
+					    modal.style.display = "block";
+				}
+	        }
+            function outCheck(){
+            	if(confirm("로그아웃 하시겠습니까?")){
+            		location.href="/member/logout.do";
+            	}
+            }
+			//  날짜 출력 자바스크립트
+			var dateList = document.getElementById("dateList");
+	        var daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+	        // 현재 날짜 가져오기
+	        var currentDate = new Date();
+	        // 13일치의 날짜 출력
+	        var dateList = document.getElementById("dateList");
+			var daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+			// 현재 날짜 가져오기
+			var currentDate = new Date();
+			
+			// 13일치의 날짜 출력
+			for (var i = 0; i < 13; i++) {
+			    var date = new Date(currentDate);
+			    date.setDate(date.getDate() + i);
+			
+			    var dayOfWeek = daysOfWeek[date.getDay()];
+			    var formattedDate = date.getDate();
+			
+			    var listItem = document.createElement("li");
+			    var link = document.createElement("a");
+			
+			    // 토요일이면 class "sat", 일요일이면 class "sun" 추가
+			    if (dayOfWeek === "토") {
+			        link.className = "sat";
+			    } else if (dayOfWeek === "일") {
+			        link.className = "sun";
+			    }
+			
+			    link.href = "#";
+			    link.innerText = formattedDate + ' ' + dayOfWeek;
+			
+			    listItem.appendChild(link);
+			    dateList.appendChild(listItem);
+			}
+	    </script>
+	</body>	    
+</html>

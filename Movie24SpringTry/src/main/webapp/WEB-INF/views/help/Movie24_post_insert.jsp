@@ -93,23 +93,54 @@
     	</div>
 	    <!-- 스크립트 -->
 	    <script>
-	        var ulElement = document.getElementById('nav_ul');
-	        var liElements = ulElement.querySelectorAll('li');
-	        var menuText = document.getElementById('menu_text');
-	
-	        liElements.forEach(li => {
-	        li.addEventListener('mouseenter', () => {
-	                menuText.classList.add('active');
-	                menuText.style.zIndex= 5000;
-	            });
-	
-	        });
-	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
-	            menuText.classList.remove('active');
-	            menuText.style.zIndex= -1;
-	        });
-	        function myCheck(){
-	        	alert("로그인이 되어있지 않습니다.");
+		    document.addEventListener("DOMContentLoaded", function() {
+			    const liElements = document.querySelectorAll('#nav_ul li');
+			    const menuText = document.getElementById('menu_text');
+			
+			    let hoverIntent = false;
+			
+			    liElements.forEach(li => {
+			        li.addEventListener('mouseenter', () => {
+			            hoverIntent = true;
+			            menuText.classList.add('active');
+			            menuText.style.zIndex = 5000;
+			        });
+			
+			        li.addEventListener('mouseleave', () => {
+			            hoverIntent = false;
+			            setTimeout(() => {
+			                if (!hoverIntent) {
+			                    menuText.classList.remove('active');
+			                    menuText.style.zIndex = -1;
+				                }
+				            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+				        });
+				    });
+			
+			    menuText.addEventListener('mouseenter', () => {
+			        hoverIntent = true;
+			    });
+			
+			    menuText.addEventListener('mouseleave', () => {
+			        hoverIntent = false;
+			        setTimeout(() => {
+			            if (!hoverIntent) {
+			                menuText.classList.remove('active');
+			                menuText.style.zIndex = -1;
+			            }
+			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			    });
+			});
+		    function myCheck(){
+	        	const memberId = "${memberId}";
+				if(memberId === ""){
+					alert("로그인 후 이용가능한 기능입니다.");
+	            	if(confirm("로그인 페이지로 이동하시겠습니까?")){
+	            		location.href="/member/login.do";
+	            	}
+				}else{
+					    modal.style.display = "block";
+				}
 	        }
 	        function outCheck(){
 	        	if(confirm("로그아웃 하시겠습니까?")){

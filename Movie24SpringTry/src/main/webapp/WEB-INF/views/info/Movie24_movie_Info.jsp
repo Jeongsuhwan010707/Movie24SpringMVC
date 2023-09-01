@@ -71,7 +71,7 @@
 			    <div id="img_area2">
 			         <img id="status" src="/resources/images/표.png" alt="">
 			    </div>
-			    <a id="next" href="/movieReservation/Movie24_time.html">예매하기</a>
+			    <a id="next" href="/movie/time.do">예매하기</a>
 			    <div class="title_movie" id="movie-trailer">
 			        <p>예고편</p>
 			    </div>
@@ -156,7 +156,7 @@
 			            	<button onclick="myCheck();" style="background-color: #f2f2f2;border: 1px solid #ccc;padding: 0px 4px;color: #878585;cursor: pointer;">신고하기</button>
 			            </c:if>
 			            <c:if test="${memberId ne null}">
-				            <button class="open-report-modal" style="background-color: #f2f2f2;border: 1px solid #ccc;padding: 0px 4px;color: #878585;cursor: pointer;">신고하기</button>
+				            <button class="open-report-modal" onclick="openreportmodal(this);" style="background-color: #f2f2f2;border: 1px solid #ccc;padding: 0px 4px;color: #878585;cursor: pointer;">신고하기</button>
 			            </c:if>
 			          </span>
 			        </div>
@@ -174,8 +174,8 @@
 							  <option value="inappropriate">심한 갓수환 찬양</option>
 							</select>
 						    <p style="padding: 10px 0px;">신고 내용을 입력하세요.</p>
-						    <textarea name="reportContent" style="width: 400px;height: 130px;resize: none;"></textarea>
-						    <button class="close-report-modal" type="button">X</button>
+						    <textarea name="reportContent" style="width: 400px;height: 130px;resize: none;padding:5px;"></textarea>
+						    <button class="close-report-modal" onclick="closereportmodal(this);" type="button">X</button>
 						    <button class="report-modal-btn" type="submit">완료</button>
 					    </form>
 					  </div>
@@ -220,7 +220,7 @@
 <!-- 				          수정폼은 다 고쳐야겟다 -->
 				          <textarea class="contentTextarea">${review.reviewContent}</textarea>
 			              <a href="javascript:void(0);" onclick="reviewModify(this, '${review.reviewNo}', '${review.movieNo }');" class="modifyReview">수정하기</a>
-						  <a href="javascript:void(0);" onclick="modifyback();" class="modifyReview">뒤로가기</a>
+						  <a href="javascript:void(0);" onclick="modifyback(this);" class="modifyReview">뒤로가기</a>
 				        </div>
 				    </td>
 				</tr>
@@ -233,23 +233,45 @@
             <jsp:include page="/include/footer.jsp"></jsp:include>
 	    </div>
 	    <script>
-	        var ulElement = document.getElementById('nav_ul');
-	        var liElements = ulElement.querySelectorAll('li');
-	        var menuText = document.getElementById('menu_text');
-	
-	        liElements.forEach(li => {
-	        li.addEventListener('mouseenter', () => {
-	                menuText.classList.add('active');
-	                menuText.style.zIndex= 5000;
-	            });
-	
-	        });
-	        document.getElementById("menu_text").addEventListener('mouseleave', () => {
-	            menuText.classList.remove('active');
-	            menuText.style.zIndex= -1;
-	        });
+		    document.addEventListener("DOMContentLoaded", function() {
+			    const liElements = document.querySelectorAll('#nav_ul li');
+			    const menuText = document.getElementById('menu_text');
 			
-	        function myCheck(){
+			    let hoverIntent = false;
+			
+			    liElements.forEach(li => {
+			        li.addEventListener('mouseenter', () => {
+			            hoverIntent = true;
+			            menuText.classList.add('active');
+			            menuText.style.zIndex = 5000;
+			        });
+			
+			        li.addEventListener('mouseleave', () => {
+			            hoverIntent = false;
+			            setTimeout(() => {
+			                if (!hoverIntent) {
+			                    menuText.classList.remove('active');
+			                    menuText.style.zIndex = -1;
+				                }
+				            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+				        });
+				    });
+			
+			    menuText.addEventListener('mouseenter', () => {
+			        hoverIntent = true;
+			    });
+			
+			    menuText.addEventListener('mouseleave', () => {
+			        hoverIntent = false;
+			        setTimeout(() => {
+			            if (!hoverIntent) {
+			                menuText.classList.remove('active');
+			                menuText.style.zIndex = -1;
+			            }
+			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			    });
+			});
+		    function myCheck(){
 	        	const memberId = "${memberId}";
 				if(memberId === ""){
 					alert("로그인 후 이용가능한 기능입니다.");
@@ -257,9 +279,9 @@
 	            		location.href="/member/login.do";
 	            	}
 				}else{
- 				    modal.style.display = "block";
+					    modal.style.display = "block";
 				}
-            }
+	        }
             function outCheck(){
             	if(confirm("로그아웃 하시겠습니까?")){
             		location.href="/member/logout.do";
@@ -271,13 +293,14 @@
             function heartDelete(){
             	location.href = "/movie/heartDelete.do?movieNo=${mInfo.movieNo}";
             }
-         	// 버튼과 모달 요소 가져오기
-// 			var reviewBtn = document.getElementById("review_btn");
+//          	버튼과 모달 요소 가져오기
+			var reviewBtn = document.getElementById("review_btn");
 			var closeModalBtn = document.getElementById("closeModalBtn");
 			var backModalBtn = document.getElementById("reviewBackBtn");
 			var modal = document.getElementById("myModal");
 			
-			// 모달 닫기 함수
+			
+// 			모달 닫기 함수
 			closeModalBtn.onclick = function() {
 			  modal.style.display = "none";
 			}
@@ -332,23 +355,28 @@
 			  }
 			});
 			// 모달 신고기능
-			const openReportModalButton = document.querySelector('.open-report-modal');
-			const closeReportModalButton = document.querySelector('.close-report-modal');
-			const modalReportBackground = document.querySelector('.report-modal-background');
+// 			const openReportModalButton = document.querySelector('.open-report-modal');
+// 			const closeReportModalButton = document.querySelector('.close-report-modal');
+// 			const modalReportBackground = document.querySelector('.report-modal-background');
 			
-			openReportModalButton.addEventListener('click', () => {
-				modalReportBackground.style.display = 'flex';
-			});
-			
-			closeReportModalButton.addEventListener('click', () => {
-				modalReportBackground.style.display = 'none';
-			});
+// 			openReportModalButton.addEventListener('click', () => {
+// 				modalReportBackground.style.display = 'flex';
+// 			});
+			function openreportmodal(obj){
+				obj.parentElement.parentElement.nextElementSibling.style.display = "block";
+			}
+			function closereportmodal(obj){
+				obj.parentElement.parentElement.parentElement.style.display = "none";
+			}
+// 			closeReportModalButton.addEventListener('click', () => {
+// 				modalReportBackground.style.display = 'none';
+// 			});
 			// 댓글 수정
 			function showModifyForm(obj){
 					obj.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display="";
 				}
-			function modifyback(){
-				document.getElementById("reviewModifyForm").style.display = "none";
+			function modifyback(obj){
+				obj.parentElement.parentElement.parentElement.style.display = "none";
 			}
 			function reviewModify(obj, reviewNo, movieNo){
 				const form = document.createElement("form");

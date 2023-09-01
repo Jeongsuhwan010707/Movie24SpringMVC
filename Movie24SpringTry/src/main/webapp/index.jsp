@@ -238,8 +238,6 @@
 				})
 			});
 			////////네비게이터 수정중
-			var menuText = document.getElementById('menu_text');
-			
 			document.addEventListener("DOMContentLoaded", function() {
 		    const liElements = document.querySelectorAll('#nav_ul li');
 		    const menuText = document.getElementById('menu_text');
@@ -339,8 +337,16 @@
 	            document.querySelector(".popular").style.display = "none";
 	            document.querySelector(".popular2").style.display = "block";
 	        };
-            function myCheck(){
-            	alert("로그인이 되어있지 않습니다.");
+	        function myCheck(){
+	        	const memberId = "${memberId}";
+				if(memberId === ""){
+					alert("로그인 후 이용가능한 기능입니다.");
+	            	if(confirm("로그인 페이지로 이동하시겠습니까?")){
+	            		location.href="/member/login.do";
+	            	}
+				}else{
+ 				    modal.style.display = "block";
+				}
             }
             function outCheck(){
             	if(confirm("로그아웃 하시겠습니까?")){

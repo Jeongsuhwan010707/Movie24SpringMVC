@@ -104,7 +104,7 @@
 			            </div>
 			       </div>
 			   </div>
-			        <a id="next" href="/movie24/movieReservation/Movie24_time.html">예매하기</a>
+			        <a id="next" href="/movie/time.do">예매하기</a>
 			</main>
 		         <!-- --------------------푸터---------------------------------- -->
 	         <!-- <footer> ----------------------------</footer> -->

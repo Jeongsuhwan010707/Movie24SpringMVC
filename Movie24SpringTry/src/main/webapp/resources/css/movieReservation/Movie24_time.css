@@ -164,6 +164,7 @@
             width: 18px;
             padding: 12px 20px;
             margin: 0 25px;
+            display: flex;
         }
         #country{
             width: 90%;

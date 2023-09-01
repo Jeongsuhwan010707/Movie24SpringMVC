@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,49 +11,35 @@
         <link rel="stylesheet" href="/resources/css/include/header.css">
         <link rel="stylesheet" href="/resources/css/include/nav.css">
         <link rel="stylesheet" href="/resources/css/include/footer.css">
-        <link rel="stylesheet" href="/resources/css/store/Movie24_pay_done2.css">
+        <link rel="stylesheet" href="/resources/css/movieReservation/Movie24_pay_done.css">
     </head>
     <body>
         <div>
-           <jsp:include page="/include/header.jsp"></jsp:include>
-            <!-- -----------ë„¤ë¹„ê²Œì´í„° ì˜ì—­----------------------------------- -->
+            <jsp:include page="/include/header.jsp"></jsp:include>
+            <!-- -----------³×ºñ°ÔÀÌÅÍ ¿µ¿ª----------------------------------- -->
 			<jsp:include page="/include/nav.jsp"></jsp:include>
-        <!-- -----------------ë©”ì¸--------------------------- -->
-			<main>
-			    <div id="main_logo">
-			        <div class="logo">
-			            <img src="/resources/images/shopping-cart (1).png" alt="">
-			            <h1>ì¥ë°”êµ¬ë‹ˆ</h1>
-			        </div>
-			        <img src="/resources/images/right-arrow (2).png" alt="">
-			        <div class="logo">
-			            <img src="/resources/images/credit-card.png" alt="">
-			            <h1>ê²°ì œí•˜ê¸°</h1>
-			        </div>
-			        <img src="/resources/images/right-arrow (2).png" alt="">
-			        <div class="logo">
-			            <img src="/resources/images/popcorn.png" alt="">
-			            <h1 id="h11">êµ¬ë§¤ì™„ë£Œ</h1>
-			        </div>
-			    </div>
-			        <div id="congret">
-			            <img src="/resources/images/cinema (1).png" alt="">
-			        </div>
-			        <div id="main_text">
-			            <h1>ê°ì‚¬í•©ë‹ˆë‹¤!
-			                <br>ê²°ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
-			            </h1>
-			            <p>ë§ˆì´í˜ì´ì§€ì—ì„œ êµ¬ë§¤ë‚´ì—­ì„ í™•ì¸í•´ë³´ì„¸ìš”~</p>
-			        </div>
-			        <a href="/">Home</a>
-			</main>
-	         <!-- --------------------í‘¸í„°---------------------------------- -->
-	         <!-- <footer> ----------------------------</footer> -->
+            <!-- ---------¸ŞÀÎ ¿µ¿ª--------------------------- -->
+		<main>
+		        <div id="congret">
+		            <img src="/resources/images/cinema (1).png" alt="">
+		        </div>
+		        <div id="main_text">
+		            <h1>°¨»çÇÕ´Ï´Ù!
+		                <br>°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.
+		            </h1>
+		            <p>¸¶ÀÌÆäÀÌÁö¿¡¼­ ±¸¸Å³»¿ªÀ» È®ÀÎÇØº¸¼¼¿ä~</p>
+		        </div>
+		        <div id="button">
+		            <a href="/">Home</a>
+		        </div>
+		</main>
+         <!-- --------------------ÇªÅÍ---------------------------------- -->
+         <!-- <footer> ----------------------------</footer> -->
             <jsp:include page="/include/footer.jsp"></jsp:include>
 	    </div>
-	    <!-- ìŠ¤í¬ë¦½íŠ¸ -->
+	    <!-- ½ºÅ©¸³Æ® -->
 	    <script>
-		    document.addEventListener("DOMContentLoaded", function() {
+	    	document.addEventListener("DOMContentLoaded", function() {
 			    const liElements = document.querySelectorAll('#nav_ul li');
 			    const menuText = document.getElementById('menu_text');
 			
@@ -86,15 +73,15 @@
 			            if (!hoverIntent) {
 			                menuText.classList.remove('active');
 			                menuText.style.zIndex = -1;
-			            }
-			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
-			    });
+				            }
+				        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+				    });
 			});
 		    function myCheck(){
 	        	const memberId = "${memberId}";
 				if(memberId === ""){
-					alert("ë¡œê·¸ì¸ í›„ ì´ìš©ê°€ëŠ¥í•œ ê¸°ëŠ¥ì…ë‹ˆë‹¤.");
-	            	if(confirm("ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
+					alert("·Î±×ÀÎ ÈÄ ÀÌ¿ë°¡´ÉÇÑ ±â´ÉÀÔ´Ï´Ù.");
+	            	if(confirm("·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿ÇÏ½Ã°Ú½À´Ï±î?")){
 	            		location.href="/member/login.do";
 	            	}
 				}else{
@@ -102,10 +89,10 @@
 				}
 	        }
             function outCheck(){
-            	if(confirm("ë¡œê·¸ì•„ì›ƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
+            	if(confirm("·Î±×¾Æ¿ô ÇÏ½Ã°Ú½À´Ï±î?")){
             		location.href="/member/logout.do";
             	}
             }
 	    </script>
-	</body>	    
-</html>
+    </body>
+</html>    

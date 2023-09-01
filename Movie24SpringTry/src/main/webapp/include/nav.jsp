@@ -11,7 +11,7 @@
             <div id="navigator_tag">
                 <ul id="nav_ul">
                     <li><a href="">영화</a></li>
-                    <li><a href="/movie24/movieReservation/Movie24_time.html">예매</a></li>
+                    <li><a href="/movie/time.do">예매</a></li>
                     <li><a href="">극장</a></li>
                     <li><a href="/movie24/store/Movie24_store.html">스토어</a></li>
                     <li><a href="">이벤트</a></li>
@@ -31,8 +31,8 @@
 	            </ul>
 	            <ul class="nav_menu">
 	                <h3>예매</h3>
-	                <li><a href="/movie24/movieReservation/Movie24_time.html">빠른예매</a></li>
-	                <li><a href="/movie24/movieReservation/Movie24_time.html">상영시간표</a></li>
+	                <li><a href="/movie/time.do">빠른예매</a></li>
+	                <li><a href="/movie/time.do">상영시간표</a></li>
 	            </ul>
 	            <ul class="nav_menu">
 	                <h3>극장</h3>

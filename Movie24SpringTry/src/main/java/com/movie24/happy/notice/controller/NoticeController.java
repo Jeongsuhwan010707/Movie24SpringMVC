@@ -26,17 +26,18 @@ import com.movie24.happy.notice.domain.PageInfo;
 import com.movie24.happy.notice.service.NoticeService;
 
 @Controller
+@RequestMapping("/notice")
 public class NoticeController {
 	
 	@Autowired
 	NoticeService service;
 	
-	@RequestMapping(value="/notice/help.do", method=RequestMethod.GET)
+	@RequestMapping(value="/help.do", method=RequestMethod.GET)
 	public String goHelp(){
 		return "help/Movie24_help";
 	}
 	
-	@RequestMapping(value="/notice/postInfo.do", method=RequestMethod.GET)
+	@RequestMapping(value="/postInfo.do", method=RequestMethod.GET)
 	public String doGet(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo
 			, Model model){
@@ -63,18 +64,18 @@ public class NoticeController {
 			model.addAttribute("totalNum", totalNum);
 			return "help/Movie24_post_info";
 		}else {
-			model.addAttribute("msg", "데이터가 존재하지 않습니다.");
+			model.addAttribute("msg", "�뜲�씠�꽣媛� 議댁옱�븯吏� �븡�뒿�땲�떎.");
 			return "successOrFail/serviceFailed";
 		}
 	
 	}
 	
-	@RequestMapping(value="/notice/postInsert.do", method=RequestMethod.GET)
+	@RequestMapping(value="/postInsert.do", method=RequestMethod.GET)
 	public String goPostInsert(){
 		return "help/Movie24_post_insert";
 	}
 
-	@RequestMapping(value="/notice/postInsert.do", method=RequestMethod.POST)
+	@RequestMapping(value="/postInsert.do", method=RequestMethod.POST)
 	public void postInsert(@ModelAttribute Notice notice
 			, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile
 			, HttpServletRequest request
@@ -82,22 +83,22 @@ public class NoticeController {
 			, HttpServletResponse response){
 		
 		if(notice.getNoticeSubject() == null) {
-			StaticMethod.alertAndBack(response, "공지사항 제목을 입력해주세요.");
+			StaticMethod.alertAndBack(response, "怨듭��궗�빆 �젣紐⑹쓣 �엯�젰�빐二쇱꽭�슂.");
 		}
 		if(notice.getNoticeContent() == null) {
-			StaticMethod.alertAndBack(response, "공지사항 내용을 입력해주세요.");
+			StaticMethod.alertAndBack(response, "怨듭��궗�빆 �궡�슜�쓣 �엯�젰�빐二쇱꽭�슂.");
 		}
 		
 		try {
 			if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
-				// 수정
-				// 1. 대체 2. 삭제 후 등록
-				// 기존 업로드 된 파일 존재 엽 체크 후
+				// �닔�젙
+				// 1. ��泥� 2. �궘�젣 �썑 �벑濡�
+				// 湲곗〈 �뾽濡쒕뱶 �맂 �뙆�씪 議댁옱 �뿽 泥댄겕 �썑
 				String fileName = notice.getNoticeFilename();
-				// 없으면 새로 업로드 하려는 파일 저장
+				// �뾾�쑝硫� �깉濡� �뾽濡쒕뱶 �븯�젮�뒗 �뙆�씪 ���옣
 				Map<String, Object> infoMap= this.saveFile(uploadFile, request);
 				
-				// DB에 저장하기 위해 notice에 데이터를 Set하는 부분
+				// DB�뿉 ���옣�븯湲� �쐞�빐 notice�뿉 �뜲�씠�꽣瑜� Set�븯�뒗 遺�遺�
 				notice.setNoticeFilename((String)infoMap.get("fileName"));
 				notice.setNoticeFilepath((String)infoMap.get("savePath"));
 				notice.setNoticeFileRename((String)infoMap.get("fileRename"));
@@ -106,16 +107,16 @@ public class NoticeController {
 			int result = service.insertNotice(notice);
 
 			if (result > 0) {
-				StaticMethod.alertAndGo(response, "공지 등록에 성공하였습니다.", "/notice/post.do");
+				StaticMethod.alertAndGo(response, "怨듭� �벑濡앹뿉 �꽦怨듯븯���뒿�땲�떎.", "/notice/post.do");
 			} else {
-				StaticMethod.alertAndBack(response, "공지사항 등록에 실패하였습니다.");
+				StaticMethod.alertAndBack(response, "怨듭��궗�빆 �벑濡앹뿉 �떎�뙣�븯���뒿�땲�떎.");
 			} 
 		}catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 	}
 	
-	@RequestMapping(value="/notice/modify.do", method=RequestMethod.GET)
+	@RequestMapping(value="/modify.do", method=RequestMethod.GET)
 	public String goModifyPage(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo
 			, Model model){
@@ -124,7 +125,7 @@ public class NoticeController {
 		return "help/Movie24_post_modify";
 	}
 
-	@RequestMapping(value="/notice/modify.do", method=RequestMethod.POST)
+	@RequestMapping(value="/modify.do", method=RequestMethod.POST)
 	public void postModify(HttpServletRequest request
 			, @ModelAttribute Notice notice
 			, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile
@@ -134,17 +135,17 @@ public class NoticeController {
 			
 			if(uploadFile != null && !uploadFile.isEmpty()) {
 							
-				// 수정
-				// 1. 대체 2. 삭제 후 등록
-				// 기존 업로드 된 파일 존재 엽 체크 후
+				// �닔�젙
+				// 1. ��泥� 2. �궘�젣 �썑 �벑濡�
+				// 湲곗〈 �뾽濡쒕뱶 �맂 �뙆�씪 議댁옱 �뿽 泥댄겕 �썑
 				String fileName = notice.getNoticeFileRename();
 				if(notice.getNoticeFilename() != null) {
-					// 있으면 기존 파일 삭제
+					// �엳�쑝硫� 湲곗〈 �뙆�씪 �궘�젣
 					this.deleteFile(request, fileName);
 				}
-				// 없으면 새로 업로드 하려는 파일 저장
+				// �뾾�쑝硫� �깉濡� �뾽濡쒕뱶 �븯�젮�뒗 �뙆�씪 ���옣
 				Map<String, Object> infoMap= this.saveFile(uploadFile, request);
-				// DB에 저장하기 위해 notice에 데이터를 Set하는 부분
+				// DB�뿉 ���옣�븯湲� �쐞�빐 notice�뿉 �뜲�씠�꽣瑜� Set�븯�뒗 遺�遺�
 				notice.setNoticeFilename((String)infoMap.get("fileName"));
 				notice.setNoticeFilepath((String)infoMap.get("savePath"));
 				notice.setNoticeFileRename((String)infoMap.get("fileRename"));
@@ -152,33 +153,33 @@ public class NoticeController {
 				model.addAttribute("notice", notice);
 			}
 //			else {
-//				StaticMethod.alertAndBack(response, "파일을 찾지 못합니다.");
+//				StaticMethod.alertAndBack(response, "�뙆�씪�쓣 李얠� 紐삵빀�땲�떎.");
 //			}
 			int result = service.updateNotice(notice);
 			if(result > 0) {
 				model.addAttribute("notice", notice);
-				StaticMethod.alertAndGo(response, "공지사항 수정에 성공하였습니다.", "/notice/postInfo.do?noticeNo="+notice.getNoticeNo());
+				StaticMethod.alertAndGo(response, "怨듭��궗�빆 �닔�젙�뿉 �꽦怨듯븯���뒿�땲�떎.", "/notice/postInfo.do?noticeNo="+notice.getNoticeNo());
 			}else {
-				StaticMethod.alertAndBack(response, "공지사항 수정에 실패하였습니다.");
+				StaticMethod.alertAndBack(response, "怨듭��궗�빆 �닔�젙�뿉 �떎�뙣�븯���뒿�땲�떎.");
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	@RequestMapping(value="/notice/postDelete.do", method=RequestMethod.GET)
+	@RequestMapping(value="/postDelete.do", method=RequestMethod.GET)
 	public void postDelete(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo
 			, HttpServletResponse response){
 		int result = service.deleteNoticeByNo(noticeNo);
 		if(result > 0) {
-			StaticMethod.alertAndGo(response, "공지사항을 삭제하였습니다.", "/notice/post.do");
+			StaticMethod.alertAndGo(response, "怨듭��궗�빆�쓣 �궘�젣�븯���뒿�땲�떎.", "/notice/post.do");
 		}else {
-			StaticMethod.alertAndBack(response, "공지사항 삭제에 실패하였습니다.");
+			StaticMethod.alertAndBack(response, "怨듭��궗�빆 �궘�젣�뿉 �떎�뙣�븯���뒿�땲�떎.");
 		}
 	}
 	
-	@RequestMapping(value="/notice/post.do", method=RequestMethod.GET)
+	@RequestMapping(value="/post.do", method=RequestMethod.GET)
 	public String goPostList(HttpServletRequest request
 			, HttpServletResponse response
 			, @RequestParam(value= "page", required = false, defaultValue="1") Integer curruntPage
@@ -189,7 +190,7 @@ public class NoticeController {
 			PageInfo pInfo = this.getPageInfo(curruntPage, totalCount);
 			Notice notice0 = service.selectOneByNo(0);
 			List<Notice> nList = service.selectNoticeList(pInfo);
-			// List 데이터 요소 체크
+			// List �뜲�씠�꽣 �슂�냼 泥댄겕
 			// 1. isEmpty
 			// 2. Size()
 
@@ -199,7 +200,7 @@ public class NoticeController {
 				model.addAttribute("notice0", notice0);
 				return "help/Movie24_post";
 			} else {
-				StaticMethod.alertAndBack(response, "공지사항 불러오기를 실패하였습니다.");
+				StaticMethod.alertAndBack(response, "怨듭��궗�빆 遺덈윭�삤湲곕�� �떎�뙣�븯���뒿�땲�떎.");
 				return "redirect:/index.jsp";
 			}
 
@@ -210,53 +211,53 @@ public class NoticeController {
 		
 	}
 	
-	// 페이징 처리
+	// �럹�씠吏� 泥섎━
 		public PageInfo getPageInfo(int curruntPage, int totalCount) {
 
 			PageInfo pi = null;
 
-			// 10개씩 보여준다
+			// 10媛쒖뵫 蹂댁뿬以��떎
 			int recordCountPerPage = 14;
 			int naviCountPerPage = 5;
-			// 위에까지는 고정되는 값임
+			// �쐞�뿉源뚯��뒗 怨좎젙�릺�뒗 媛믪엫
 
-			// 100개를 10개씩 보여주면 몇페이지가 나오나요
+			// 100媛쒕�� 10媛쒖뵫 蹂댁뿬二쇰㈃ 紐뉙럹�씠吏�媛� �굹�삤�굹�슂
 			int naviTotalCount;
 
-			// start,end 구할때 curruntpage 필요함
-			// 페이지 시작값
+			// start,end 援ы븷�븣 curruntpage �븘�슂�븿
+			// �럹�씠吏� �떆�옉媛�
 			int startNavi;
 
-			// 페이지 끝값
+			// �럹�씠吏� �걹媛�
 			int endNavi;
 
-			// totalcount는 매개변수로 넘김
-			// 102/10이면 10.2 나와서 올림 1페이지(나머지가 0보다 크면 +1)
-			// 쉬운 방법은 + 0.9
-			// double 로 소수점 계산 후 떨구기 위해 int 로 형변환
-			// Math.ceil 도 가능(조금더 안정적이지만 형변환 공부 위해 int)
+			// totalcount�뒗 留ㅺ컻蹂��닔濡� �꽆源�
+			// 102/10�씠硫� 10.2 �굹���꽌 �삱由� 1�럹�씠吏�(�굹癒몄�媛� 0蹂대떎 �겕硫� +1)
+			// �돩�슫 諛⑸쾿�� + 0.9
+			// double 濡� �냼�닔�젏 怨꾩궛 �썑 �뼥援ш린 �쐞�빐 int 濡� �삎蹂��솚
+			// Math.ceil �룄 媛��뒫(議곌툑�뜑 �븞�젙�쟻�씠吏�留� �삎蹂��솚 怨듬� �쐞�빐 int)
 			naviTotalCount = (int)((double) totalCount / recordCountPerPage + 0.9);
 
-			// startNavi는 현재 페이지에서 나누고 0.9 더해줌
-			// curruntPage 값이 1~5 일때 startNavi 가 1로 고정 되도록 구해주는 식임
+			// startNavi�뒗 �쁽�옱 �럹�씠吏��뿉�꽌 �굹�늻怨� 0.9 �뜑�빐以�
+			// curruntPage 媛믪씠 1~5 �씪�븣 startNavi 媛� 1濡� 怨좎젙 �릺�룄濡� 援ы빐二쇰뒗 �떇�엫
 			startNavi = (((int) ((double) curruntPage / naviCountPerPage + 0.9)) - 1) * naviCountPerPage + 1;
 
-			// 엔드페이지구하기
+			// �뿏�뱶�럹�씠吏�援ы븯湲�
 			endNavi = startNavi + naviCountPerPage - 1;
-			// endNavi 는 startNavi 에 naviCountPerPage 를 무조건 더하기때문에
-			// 실제 최대값보다 커질 수 있음
+			// endNavi �뒗 startNavi �뿉 naviCountPerPage 瑜� 臾댁“嫄� �뜑�븯湲곕븣臾몄뿉
+			// �떎�젣 理쒕�媛믩낫�떎 而ㅼ쭏 �닔 �엳�쓬
 			if (endNavi > naviTotalCount) {
 				endNavi = naviTotalCount;
 			}
 
-			// 리턴해주기 위해서 클래스를 하나 만들어서 넣어줌
+			// 由ы꽩�빐二쇨린 �쐞�빐�꽌 �겢�옒�뒪瑜� �븯�굹 留뚮뱾�뼱�꽌 �꽔�뼱以�
 //		 return recordCountPerPage,naviCountPerPage,naviTotalCount,startNavi,endNavi
 			pi = new PageInfo(curruntPage, recordCountPerPage, naviCountPerPage, startNavi, endNavi, totalCount,
 					naviTotalCount);
 			return pi;
 		}
 	
-	@RequestMapping(value="/notice/search.do", method=RequestMethod.GET)
+	@RequestMapping(value="/search.do", method=RequestMethod.GET)
 	public String searchNoticeList(@RequestParam(value= "page", required = false, defaultValue="1") Integer curruntPage
 			, @RequestParam("searchCondition") String searchCondition
 			, @RequestParam("searchKeyword")String searchKeyword
@@ -285,12 +286,12 @@ public class NoticeController {
 	
 	public Map<String, Object> saveFile(MultipartFile uploadFile, HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		String fileName = uploadFile.getOriginalFilename(); //파일 이름
-		String root = request.getSession().getServletContext().getRealPath("resources"); //저장할 파일 경로 찾기
-		String saveFolder = root + "\\uploadFiles"; //폴더 저장할 주소
-		File folder = new File(saveFolder); // 그 폴더를 선언
+		String fileName = uploadFile.getOriginalFilename(); //�뙆�씪 �씠由�
+		String root = request.getSession().getServletContext().getRealPath("resources"); //���옣�븷 �뙆�씪 寃쎈줈 李얘린
+		String saveFolder = root + "\\uploadFiles"; //�뤃�뜑 ���옣�븷 二쇱냼
+		File folder = new File(saveFolder); // 洹� �뤃�뜑瑜� �꽑�뼵
 		if(!folder.exists()) {
-			folder.mkdir(); // 폴더 없으면 만들기
+			folder.mkdir(); // �뤃�뜑 �뾾�쑝硫� 留뚮뱾湲�
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMDDHHmmss"); 
 		
@@ -299,12 +300,12 @@ public class NoticeController {
 		String fileRename = "N"+strResult + "."+ext;
 		String savePath = saveFolder + "\\" +fileRename;
 		File file = new File(savePath);
-		// *************** 파일 저장 ***************
+		// *************** �뙆�씪 ���옣 ***************
 		uploadFile.transferTo(file);
 		
-		// =============== 파일 크기 ===============
+		// =============== �뙆�씪 �겕湲� ===============
 		long fileLength = uploadFile.getSize();
-		// 파일 이름, 경로, 크기를 넘겨주기 위해 Map에 정보를 저장 한 후 return 함
+		// �뙆�씪 �씠由�, 寃쎈줈, �겕湲곕�� �꽆寃⑥＜湲� �쐞�빐 Map�뿉 �젙蹂대�� ���옣 �븳 �썑 return �븿
 		Map<String, Object> infoMap = new HashMap<String, Object>();
 		infoMap.put("fileName", fileName);
 		infoMap.put("fileRename", fileRename);
