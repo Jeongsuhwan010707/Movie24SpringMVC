@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.movie24.happy.java.util.StaticMethod;
 import com.movie24.happy.notice.domain.Notice;
+import com.movie24.happy.notice.domain.NoticeViewCount;
 import com.movie24.happy.notice.domain.PageInfo;
 import com.movie24.happy.notice.service.NoticeService;
 
@@ -40,15 +42,29 @@ public class NoticeController {
 	@RequestMapping(value="/postInfo.do", method=RequestMethod.GET)
 	public String doGet(HttpServletRequest request
 			, @RequestParam("noticeNo") int noticeNo
+			, HttpSession session
 			, Model model){
 		int noticeBack = noticeNo+1;
 		int noticeNext = noticeNo-1;
 		Notice notice = service.selectOneByNo(noticeNo);
 		Notice noticeB = service.selectOneByNo(noticeBack);
 		Notice noticeN = service.selectOneByNo(noticeNext);
+		String memberId = (String)session.getAttribute("memberId");
+		if(memberId != null) {
+			NoticeViewCount noticeViewCount = new NoticeViewCount();
+			noticeViewCount.setMemberId(memberId);
+			noticeViewCount.setNoticeNo(noticeNo);
+			NoticeViewCount selectViewCount = service.selectViewCount(noticeViewCount);
+			if(selectViewCount == null) {
+				int result = service.insertViewCount(noticeViewCount);
+				Map<String, Integer> viewCountMap = new HashMap<String, Integer>();
+				int viewCountPlus = notice.getViewCount()+1;
+				viewCountMap.put("noticeNo", noticeNo);
+				viewCountMap.put("viewCountPlus", viewCountPlus);
+				int updateResult = service.setViewCount(viewCountMap);
+			}
+		}
 		
-		Map<String, Object> view = new HashMap<String, Object>();
-		view.put("noticeNo", noticeNo);
 		int totalNum = service.getListCount();
 
 		if(notice != null) {

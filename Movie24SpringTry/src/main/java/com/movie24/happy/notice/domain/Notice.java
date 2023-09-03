@@ -15,6 +15,7 @@ public class Notice {
 	private String noticeFilepath;
 	private long noticeFilelength;
 	private char nStatus;
+	private int viewCount;
 	
 	public Notice(){}
 	
@@ -140,13 +141,21 @@ public class Notice {
 	public void setnStatus(char nStatus) {
 		this.nStatus = nStatus;
 	}
+	
+	public int getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
 
 	@Override
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", noticeSubject=" + noticeSubject + ", noticeContent=" + noticeContent
 				+ ", noticeWriter=" + noticeWriter + ", noticeDate=" + noticeDate + ", updateDate=" + updateDate
 				+ ", noticeFilename=" + noticeFilename + ", noticeFilepath=" + noticeFilepath + ", noticeFilelength="
-				+ noticeFilelength + ", 사용여부=" + nStatus + "]";
+				+ noticeFilelength + ", 사용여부=" + nStatus + ", 조회수" + viewCount +"]";
 	}
 
 	

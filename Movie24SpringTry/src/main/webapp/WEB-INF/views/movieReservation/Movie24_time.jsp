@@ -23,39 +23,71 @@
 		    <div id="main_select">
 		        <div id="main_select_left">
 		            <div id="main_select_left1">
-		                <a href="#"><img src="/resources/images/영화별grey.png" alt="">영화별</a>
+		                <a href="javascript:void(0)" onclick="showMovieList();"><img src="/resources/images/영화별grey.png" alt="">영화별</a>
 		            </div>
 		            <div id="main_select_left2">
-		                <a href="#"><img src="/resources/images/극장별.png" alt="">극장별</a>
+		                <a href="javascript:void(0)" onclick="showTheaterList();"><img src="/resources/images/극장별.png" alt="">극장별</a>
 		            </div>
 		        </div>
 		        <div id="main_select_right">
 		            <div id="main_select_right1">
-		                <span id="span1">상영중</span>
-		                <span id="span2">상영종료</span>
+		                <span class="span1">전체 영화</span>
+		                <span class="span2" style="display:none;" onclick="showNList(this);">
+			                <c:forEach var="regions" items="${rList}" varStatus="i">
+			                	<c:if test="${i.count ne 1 }">
+				                	&nbsp;&nbsp; 
+			                	</c:if>
+				                	<a href="#">${regions.movieRegion }</a> &nbsp;&nbsp;
+			                </c:forEach>
+		                </span>
 		            </div>
 		            <div id="main_select_right2">
-		                <div class="ul"><ul>
-		                    <li><a href="#">범죄도시3</a></li>
-		                    <li><a href="#">더 마블즈</a></li>
-		                    <li><a href="#">인어공주</a></li>
-		                    <li><a href="#">트랜스포머</a></li>
-		                    <li><a href="#">슈퍼마리오</a></li>
-		                </ul></div>
-		                <div class="ul"><ul>
-		                    <li><a href="#">신세계</a></li>
-		                    <li><a href="#">라라랜드</a></li>
-		                    <li><a href="#">베테랑</a></li>
-		                    <li><a href="#">리틀 포레스트</a></li>
-		                    <li><a href="#">닥터 스트레인지</a></li>
-		                </ul></div>
-		                <div class="ul"><ul>
-		                    <li><a href="#">스파이더맨</a></li>
-		                    <li><a href="#">신데렐라</a></li>
-		                    <li><a href="#">짱구는 못말려</a></li>
-		                    <li><a href="#">스즈메의 문단속</a></li>
-		                    <li><a href="#">너의 이름은</a></li>
-		                </ul></div>
+		                <div class="ul">
+		                	<ul>
+				                <c:forEach var="movies" items="${miYList}" varStatus="i">
+				                	<c:if test="${movieNo eq movies.movieNo}">
+				                		<li style="background-color:#e6e4e4;">
+			                            <a href="/movie/time.do?movieNo=${movies.movieNo }">
+				                        	${movies.movieName }
+				                        </a>
+										</li>
+				                	</c:if> 
+				                	<c:if test="${movieNo ne movies.movieNo}">
+										<li>
+				                            <a href="/movie/time.do?movieNo=${movies.movieNo }">
+					                        	${movies.movieName }
+					                        </a>
+										</li>
+									</c:if>
+								</c:forEach>
+		                	</ul>
+		                    <ul style="display:none;">
+				                <c:forEach var="theaterName" items="${tnList}" varStatus="i"> 
+			                    	<c:url var="theaterNameUrl" value="/movie/time.do">
+										<c:param name="movieNo" value="${theaterName.movieNo }"></c:param>
+										<c:param name="movieRegion" value="${theaterName.movieRegion }"></c:param>
+										<c:param name="movieTheaterName" value="${theaterName.movieTheaterName }"></c:param>
+									</c:url>
+									<c:if test="${theaterName.movieTheaterName ne prevRegion}">
+										<c:if test="${movieTheaterName eq theaterName.movieTheaterName}">
+					                		<li style="background-color:#e6e4e4;">
+					                            <a href="${theaterNameUrl}">
+						                        	${theaterName.movieTheaterName }
+						                        </a>
+											</li>
+					                	</c:if>
+					                	<c:if test="${movieTheaterName ne theaterName.movieTheaterName}">
+											<li>
+					                            <a href="${theaterNameUrl}">
+						                        	${theaterName.movieTheaterName }
+						                        </a>
+											</li>
+										</c:if>
+							            <c:set var="prevRegion" value="${theaterName.movieTheaterName}" scope="page" />
+							        </c:if>
+								</c:forEach>
+	                		</ul>
+		                </div>
 		            </div>
 		        </div>
 		    </div>
@@ -86,24 +118,24 @@
 		        <div class="tNum"><h4>1관</h4>총200석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
 		    </div>
 		    <div class="seat">
 		        <div class="tNum"><h4>2관</h4>총220석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">21:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">21:00<br>200석</a></div>
 		    </div>
 		    <div class="seat last">
 		        <div class="tNum"><h4>3관</h4>총210석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">21:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">21:00<br>200석</a></div>
 		    </div>
 		    <div class="country_text">
 		        <span>종로</span>
@@ -112,16 +144,16 @@
 		        <div class="tNum"><h4>1관</h4>총200석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
 		    </div>
 		    <div class="seat last">
 		        <div class="tNum"><h4>2관</h4>총220석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
 		    </div>
 		    <div class="country_text">
 		        <span>강동</span>
@@ -130,16 +162,16 @@
 		        <div class="tNum"><h4>1관</h4>총200석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
 		    </div>
 		    <div class="seat last">
 		        <div class="tNum"><h4>2관</h4>총220석
 		        </div>
 		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie24/movieReservation/Movie24_seat.html">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
+		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
 		    </div>
 		        <!-- <div id="main_button">
 		            <a href="#">다음 단계</a>
@@ -227,6 +259,12 @@
 			    var listItem = document.createElement("li");
 			    var link = document.createElement("a");
 			
+// 			    if(i == 0){
+// 			    	dayOfWeek = "오늘";
+// 			    }
+// 			    if(i == 1){
+// 			    	dayOfWeek = "내일";
+// 			    }
 			    // 토요일이면 class "sat", 일요일이면 class "sun" 추가
 			    if (dayOfWeek === "토") {
 			        link.className = "sat";
@@ -239,6 +277,23 @@
 			
 			    listItem.appendChild(link);
 			    dateList.appendChild(listItem);
+			}
+			// 상영작 인지 아닌지 보기
+			function showMovieList(){
+				document.getElementById("main_select_left1").style.backgroundColor = "white";
+				document.getElementById("main_select_left2").style.backgroundColor = "#e6e4e4";
+				document.querySelector(".span1").style.display = "block";
+				document.querySelector(".span2").style.display = "none";
+				document.querySelector(".ul").children[0].style.display = "Block"
+				document.querySelector(".ul").children[1].style.display = "none";
+			}
+			function showTheaterList(){
+				document.getElementById("main_select_left2").style.backgroundColor = "white";
+ 				document.getElementById("main_select_left1").style.backgroundColor = "#e6e4e4";
+ 				document.querySelector(".span1").style.display = "none";
+				document.querySelector(".span2").style.display = "block";
+				document.querySelector(".ul").children[0].style.display = "none"
+				document.querySelector(".ul").children[1].style.display = "Block";
 			}
 	    </script>
 	</body>	    

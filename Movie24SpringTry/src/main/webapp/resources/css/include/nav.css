@@ -77,31 +77,33 @@ nav{
     }
     
         #menu_text {
-		    position: absolute;
-		    left: 50%;
-		    width: 100%;
-		    height: 0;
-		    background-color: white;
-		    font-size: 0; /* hide text initially */
-		    overflow: hidden;
-		    transform: translateX(-50%);
-		    transition: height 0.5s ease-in-out;
-		    opacity: 0;
-		    text-align: center;
-		    font-family: 'LINESeedKR-Bd';
-		    font-weight: 400;
-		    margin: 0 auto;
-		    border-bottom: 2px solid #ccc;
-		}
+            position: absolute;
+            left: 50%;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            font-size: 0; /* hide text initially */
+            overflow: hidden;
+            transform: translateX(-50%);
+            transition: height 0.5s; /* height에만 트랜지션 적용 */
+            opacity: 0;
+            text-align: center;
+            font-family: 'LINESeedKR-Bd';
+            font-weight: 400;
+            margin: 0 auto;
+            border-bottom: 2px solid #ccc;
+            z-index: -1;
+        }
+        #menu_text.active {
+            height: 250px;
+            opacity: 1;
+            font-size: 20px; restore font size when visible
+            transition: height 0.5s, opacity 0.3s;
+        }
 		#menu_text #menuP{
 			width: 1300px;
 			height: 100%;
 			margin: 0 auto;
-		}
-		#menu_text.active {
-		    height: 250px;
-		    opacity: 1;
-		    font-size: 20px; /* restore font size when visible */
 		}
         #menu_text a:link, #menu_text a:visited{
             color: grey;

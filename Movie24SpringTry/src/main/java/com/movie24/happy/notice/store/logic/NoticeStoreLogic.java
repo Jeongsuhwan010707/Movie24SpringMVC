@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.movie24.happy.notice.domain.Notice;
+import com.movie24.happy.notice.domain.NoticeViewCount;
 import com.movie24.happy.notice.domain.PageInfo;
 import com.movie24.happy.notice.store.NoticeStore;
 
@@ -84,6 +85,25 @@ public class NoticeStoreLogic implements NoticeStore{
 		@Override
 		public int searchListCount(SqlSession session, Map<String, String> paramMap) {
 			int result = session.selectOne("NoticeMapper.searchListByKeywordCount",paramMap);
+			return result;
+		}
+
+		// 조회수 관련
+		@Override
+		public NoticeViewCount selectViewCount(SqlSession session, NoticeViewCount noticeViewCount) {
+			NoticeViewCount notice = session.selectOne("NoticeMapper.selectViewCount", noticeViewCount);
+			return notice;
+		}
+
+		@Override
+		public int insertViewCount(SqlSession session, NoticeViewCount noticeViewCount) {
+			int result = session.insert("NoticeMapper.insertViewCount", noticeViewCount);
+			return result;
+		}
+
+		@Override
+		public int setViewCount(SqlSession session, Map<String, Integer> viewCountMap) {
+			int result = session.update("NoticeMapper.setViewCount", viewCountMap);
 			return result;
 		}
 

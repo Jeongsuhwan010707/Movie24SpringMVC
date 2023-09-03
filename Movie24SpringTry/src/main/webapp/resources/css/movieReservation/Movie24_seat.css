@@ -111,6 +111,29 @@
         border-right: 1px solid #ccc;
         margin-top: 20px;
     }
+/* 좌석을 감싸는 div */
+		.seatR {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 각 좌석 div의 스타일 */
+        .seat {
+            width: 30px;
+		    height: 30px;
+		    border: 1px solid #ccc;
+		    margin-bottom: 5px;
+		    margin-left: 5px;
+        }
+
+        /* A열부터 J열까지 좌석에 각각 클래스 부여 */
+        .seat.A{
+            background-color: #747474;
+        }
     #price{
         width: 350px;
         height: 600px;

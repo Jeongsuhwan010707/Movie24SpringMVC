@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.movie24.happy.notice.domain.Notice;
+import com.movie24.happy.notice.domain.NoticeViewCount;
 import com.movie24.happy.notice.domain.PageInfo;
 
 public interface NoticeService {
@@ -24,4 +25,25 @@ public interface NoticeService {
 	 * @return
 	 */
 	public List<Notice> searchNoticeByKeyword(PageInfo pInfo, Map<String, String> paramMap);
+	
+	/**
+	 * 조회한 적 있는지 확인 Service
+	 * @param noticeViewCount
+	 * @return
+	 */
+	public NoticeViewCount selectViewCount(NoticeViewCount noticeViewCount);
+	
+	/**
+	 * 조회한 적 없을 시 테이블 추가 Service
+	 * @param noticeViewCount
+	 * @return
+	 */
+	public int insertViewCount(NoticeViewCount noticeViewCount);
+	
+	/**
+	 * insert 성공 시 조회수 값 업데이트
+	 * @param Map
+	 * @return
+	 */
+	public int setViewCount(Map<String, Integer> viewCountMap);
 }

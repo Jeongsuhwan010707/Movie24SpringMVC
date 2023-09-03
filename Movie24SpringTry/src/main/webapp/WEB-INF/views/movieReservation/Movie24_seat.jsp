@@ -21,9 +21,9 @@
             <!-- ---------메인 영역--------------------------- -->
 		<main>
 	        <div id="main_button">
-	            <button>ENGLISH</button>
-	            <a href="/movie24/movieReservationMovie24_time.html"><button>상영시간표</button></a>
-	            <a href="/movie24/movieReservationMovie24_time.html"><button>취소하기</button></a>
+	            <button style="cursor:pointer;">ENGLISH</button>
+	            <a href="/movie/time.do" style="cursor:pointer;"><button>상영시간표</button></a>
+	            <a href="/" style="cursor:pointer;"><button>취소하기</button></a>
 	        </div>
 	        <h1>예매하기</h1>
 	        <div id="select">
@@ -55,12 +55,39 @@
 	                </div>
 	            </div>
 	                <div id="select_img">
-	                    <img src="/resources/images/좌석배치.png" alt="">
+	                	<div>
+		                	<img src="/resources/images/screen.png" alt="">
+	                	</div>
+	                	<div class="seat-number" style="width: 40px;height: 100%;float: left">
+	                		<a class="seatR">A</a>
+	                		<a class="seatR">B</a>
+	                		<a class="seatR">C</a>
+	                		<a class="seatR">D</a>
+	                		<a class="seatR">E</a>
+	                		<a class="seatR">F</a>
+	                		<a class="seatR">G</a>
+	                		<a class="seatR">H</a>
+	                		<a class="seatR">I</a>
+	                		<a class="seatR">J</a>
+	                	</div>
+	                	<div class="seat-container">
+	                		<div style="width: 70%;margin-top: 5px;">
+					            <c:forEach var="column" begin="1" end="100">
+					            	<c:if test="${columne eq 4 }">
+						                <div class="seat A" style="float:left;">${column}</div>
+						                <span style="width: 100px;height: 30px;"></span>
+					            	</c:if>
+					            	<c:if test="${columne ne 4 }">
+						                <div class="seat A" style="float:left;">${column}</div>
+					            	</c:if>
+					            </c:forEach>
+	                		</div>
+					    </div>
 	                </div>
 	        </div>
 	        <div id="price">
 	            <div id="price1">
-	                <img src="/resources/images/15.png" alt="">
+	                <img alt="관람가연령" src="/resources/images/15세이상관람가.png">
 	                <h3>범죄도시3(2D)</h3>
 	            </div>
 	            <div id="price2">
@@ -82,8 +109,8 @@
 	                </div>
 	            </div>
 	            <div id="price5">
-	                <div id="price5-1-1"><a id="price5-1" href="/movie24/movieReservationMovie24_time.html">이전</a></div>
-	                <div id="price5-2-2"><a id="price5-2" href="/movie24/movieReservationMovie24_pay.html">다음</a></div>
+	                <div id="price5-1-1"><a id="price5-1" href="/movie/time.do">이전</a></div>
+	                <div id="price5-2-2"><a id="price5-2" href="/movie/pay.do">다음</a></div>
 	            </div>
 	        </div>
 		</main>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie24.happy.notice.domain.Notice;
+import com.movie24.happy.notice.domain.NoticeViewCount;
 import com.movie24.happy.notice.domain.PageInfo;
 import com.movie24.happy.notice.service.NoticeService;
 import com.movie24.happy.notice.store.NoticeStore;
@@ -65,6 +66,25 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int getListCount(Map<String, String> paramMap) {
 		int result = nStore.searchListCount(session,paramMap);
+		return result;
+	}
+
+	// 조회수 관련
+	@Override
+	public NoticeViewCount selectViewCount(NoticeViewCount noticeViewCount) {
+		NoticeViewCount notice = nStore.selectViewCount(session, noticeViewCount);
+		return notice;
+	}
+
+	@Override
+	public int insertViewCount(NoticeViewCount noticeViewCount) {
+		int result = nStore.insertViewCount(session, noticeViewCount);
+		return result;
+	}
+
+	@Override
+	public int setViewCount(Map<String, Integer> viewCountMap) {
+		int result = nStore.setViewCount(session, viewCountMap);
 		return result;
 	}
 

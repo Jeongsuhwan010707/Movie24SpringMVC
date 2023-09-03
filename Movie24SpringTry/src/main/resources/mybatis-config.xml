@@ -9,11 +9,13 @@
 	<typeAliases>
  		<typeAlias type="com.movie24.happy.member.domain.Member" alias="Member"/>
  		<typeAlias type="com.movie24.happy.notice.domain.Notice" alias="Notice"/>
+ 		<typeAlias type="com.movie24.happy.notice.domain.NoticeViewCount" alias="NoticeViewCount"/>
  		<typeAlias type="com.movie24.happy.event.domain.EventSRC" alias="EventSRC"/>
  		<typeAlias type="com.movie24.happy.info.domain.MovieInfo" alias="Info"/>
  		<typeAlias type="com.movie24.happy.review.domain.Review" alias="Review"/>
  		<typeAlias type="com.movie24.happy.review.domain.ReviewLike" alias="ReviewLike"/>
  		<typeAlias type="com.movie24.happy.review.domain.ReviewReport" alias="ReviewReport"/>
+ 		<typeAlias type="com.movie24.happy.moviereservation.domain.MovieSchedule" alias="MovieSchedule"/>
  	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member/member-Mapper.xml" />
@@ -21,5 +23,6 @@
 		<mapper resource="mappers/event/event-Mapper.xml" />
 		<mapper resource="mappers/info/info-Mapper.xml" />
 		<mapper resource="mappers/review/review-Mapper.xml" />
+		<mapper resource="mappers/moviereservation/moviereservation-Mapper.xml" />
 	</mappers>
 </configuration>

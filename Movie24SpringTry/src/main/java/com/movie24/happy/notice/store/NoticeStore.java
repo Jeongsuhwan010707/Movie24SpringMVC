@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.movie24.happy.notice.domain.Notice;
+import com.movie24.happy.notice.domain.NoticeViewCount;
 import com.movie24.happy.notice.domain.PageInfo;
 
 
@@ -37,4 +38,8 @@ public interface NoticeStore {
 	List<Notice> searchNoticeByKeyword(SqlSession session,PageInfo pInfo, Map<String,String> paraMap);
 
 	int searchListCount(SqlSession session, Map<String, String> paramMap);
+	
+	public NoticeViewCount selectViewCount(SqlSession session, NoticeViewCount noticeViewCount);
+	public int insertViewCount(SqlSession session, NoticeViewCount noticeViewCount);
+	public int setViewCount(SqlSession session, Map<String, Integer> viewCountMap);
 }

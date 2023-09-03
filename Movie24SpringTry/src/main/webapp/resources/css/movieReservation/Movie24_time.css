@@ -33,12 +33,13 @@
         position: relative;
     }
     #main_select{
-        width: 1000px;
+        width: 1300px;
         height: 400px;
         /* background-color: red; */
         margin: 50px auto;
         border-radius: 13px;
         border: 5px solid grey;
+        margin-top: 100px;
     }
         #main_select_left{
             width: 20%;
@@ -69,13 +70,14 @@
                 width: 100%;
                 height: 50%;
                 padding-top: 70px;
-                background-color: #eee;
+                background-color: #e6e4e4;
             }
         #main_select_right{
-            width: 80%;
+            width: 72%;
             height: 100%;
             /* background-color: red; */
             float: left;
+            margin-left: 50px;
         }
 
             #main_select_right1{
@@ -87,32 +89,37 @@
                 font-family: 'S-CoreDream-3Light';
                 border-bottom: 1px solid #ccc;
             }
-                #span1{
-                    padding-right: 25px;
-                    border-right: 1px solid #ccc;
-                }
-                #span2{
+                .span2{
                     padding-left: 20px;
                 }
-                
+            #main_select_blank{
+            	float: left;
+            	height: 100%;
+            	width: 100px;
+            }    
             #main_select_right2{
                 width: 100%;
                 height: 80%;
+                float: left;
             }
             #main_select_right2 li:hover{
-                background-color: #eee;
+                text-decoration: underline;
             }
             .ul{
+            	width: 100%;
+            	height: 100%;
+            	padding-top: 20px;
+            }
+            .ul li{
                 float: left;
-                width: 33%;
+                width: 33.3%;
                 text-align: center;
                 height: 100%;
                 line-height: 1.9;
-                margin-top: 60px;
             }
                 .ul a:link, .ul a:visited{
                     color: #201d85d2;
-                    font-size: 20px;
+                    font-size: 19px;
                     font-family: 'S-CoreDream-3Light';
                     font-weight: 600;
                 }
@@ -231,18 +238,4 @@
             .seat_text:hover{
                 background-color: #eee;
             }
-        /* #main_button a{
-            position: absolute;
-            top: 800px;
-            right: 45%;
-            width: 130px;
-            height: 50px;
-            background-color: #362FD9;
-            text-align: center;
-            color: white;
-            border-radius: 15px;
-            font-family: 'LINESeedKR-Bd';
-            font-size: 20px;
-            padding-top: 12px;
-        } */
     /* ----------푸터------------------------- */

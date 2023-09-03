@@ -61,7 +61,7 @@
             position: absolute;
             top: 550px;
             left: 50%;
-            z-index: 1000;
+            z-index: 10;
             width: 80px;
             transform: translate(-50%, -50%);
         }
@@ -69,14 +69,14 @@
             position: absolute;
             top: 500px;
             left: 10%;
-            z-index: 1000;
+            z-index: 10;
             width: 80px;
         }
         #next2 img{
             position: absolute;
             top: 500px;
             right: 10%;
-            z-index: 1000;
+            z-index: 10;
             width: 80px;
         }
         .trailer{
@@ -100,7 +100,7 @@
           }
           .trailer h1, .trailer h2{
             position: absolute;
-            z-index: 500;
+            z-index: 5;
           }
             .trailer h1{
                 top: 250px;

@@ -8,6 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie24</title>
+        <link rel="stylesheet" href="/resources/css/include/header.css">
+        <link rel="stylesheet" href="/resources/css/include/nav.css">
+        <link rel="stylesheet" href="/resources/css/include/footer.css">
         <link rel="stylesheet" href="/resources/css/movieReservation/Movie24_pay.css">
     </head>
     <body>
@@ -21,14 +24,35 @@
 		        <div id="main_text">
 		            <p>관람권 및 포인트 할인적용</p>
 		        </div>
-		        <div class="main select1">
+		        <div class="selectsale">
 		            <p>Movie24 관람권/기프티콘</p><img src="/resources/images/down-arrow.png" alt="">
 		        </div>
-		        <div class="main select2">
+		        <div class="selectsaleContent">
+		        	<p>관람권 / 기프티콘 할인을 선택해주세요</p>
+		        	<select>
+		        		<option>관람권 할인</option>
+		        		<option>기프티콘 할인 </option>
+		        	</select>
+		        </div>
+		        <div class="selectsale">
 		            <p>Movie24 포인트/쿠폰</p><img src="/resources/images/down-arrow.png" alt="">
 		        </div>
-		        <div class="main select3"><img src="/resources/images/down-arrow.png" alt="">
-		            <p>Vip 할인</p>
+		        <div class="selectsaleContent">
+		        	<p>관람권 / 기프티콘 할인을 선택해주세요</p>
+		        	<select>
+		        		<option>관람권 할인</option>
+		        		<option>기프티콘 할인 </option>
+		        	</select>
+		        </div>
+		        <div class="selectsale">
+		        	<p>Vip 할인</p><img src="/resources/images/down-arrow.png" alt="">
+		        </div>
+		        <div class="selectsaleContent">
+		        	<p>관람권 / 기프티콘 할인을 선택해주세요</p>
+		        	<select>
+		        		<option>관람권 할인</option>
+		        		<option>기프티콘 할인 </option>
+		        	</select>
 		        </div>
 		        <div id="main_text2">
 		            <p>관람권 및 포인트 할인적용</p>
@@ -102,8 +126,8 @@
 		            <p class="price4-2 price4-3-new">신용/체크카드</p>
 		        </div>
 		        <div id="price5">
-		            <div id="price5-1-1"><a id="price5-1" href="/movie24/movieReservation/Movie24_seat.html">이전</a></div>
-		            <div id="price5-2-2"><a id="price5-2" href="/movie24/movieReservation/Movie24_pay_done.html">다음</a></div>
+		            <div id="price5-1-1"><a id="price5-1" href="/movie/seat.do">이전</a></div>
+		            <div id="price5-2-2"><a id="price5-2" href="/movie/paydone.do">다음</a></div>
 		        </div>
 		    </div>
 		</main>
@@ -113,8 +137,8 @@
 	    </div>
 	    <!-- 스크립트 -->
 	    <script>
-	    	document.addEventListener("DOMContentLoaded", function() {
-			    const liElements = document.querySelectorAll('#nav_ul li');
+		    document.addEventListener("DOMContentLoaded", function() {
+		    	const liElements = document.querySelectorAll('#nav_ul li');
 			    const menuText = document.getElementById('menu_text');
 			
 			    let hoverIntent = false;
@@ -123,7 +147,7 @@
 			        li.addEventListener('mouseenter', () => {
 			            hoverIntent = true;
 			            menuText.classList.add('active');
-			            menuText.style.zIndex = 5000;
+			            menuText.style.zIndex = 15;
 			        });
 			
 			        li.addEventListener('mouseleave', () => {
@@ -131,7 +155,6 @@
 			            setTimeout(() => {
 			                if (!hoverIntent) {
 			                    menuText.classList.remove('active');
-			                    menuText.style.zIndex = -1;
 				                }
 				            }, 200); // Add a delay before hiding to allow time for moving to menu_text
 				        });
@@ -146,11 +169,33 @@
 			        setTimeout(() => {
 			            if (!hoverIntent) {
 			                menuText.classList.remove('active');
-			                menuText.style.zIndex = -1;
-				            }
-				        }, 200); // Add a delay before hiding to allow time for moving to menu_text
-				    });
+			            }
+			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			    });
+			    
+			    const selectSales = document.querySelectorAll(".selectsale");
+
+			    selectSales.forEach((selectSale) => {
+			        const p = selectSale.querySelector("p");
+			        const img = selectSale.querySelector("img");
+			        const content = selectSale.nextElementSibling;
+
+			        img.addEventListener("click", function (event) {
+			            event.stopPropagation(); // 이미지를 클릭할 때 부모 div의 클릭 이벤트 전파를 방지
+						
+			            if(content.style.height == "200px"){
+			                content.style.height = "0";
+			                content.style.opacity = "0";
+			                content.style.zIndex = "1";
+			            }else{
+			            	content.style.opacity = "1";
+			                content.style.height = "200px";
+			                content.style.zIndex = "2";
+			            }
+			        });
+			    });
 			});
+			    // 제발 되라
 		    function myCheck(){
 	        	const memberId = "${memberId}";
 				if(memberId === ""){

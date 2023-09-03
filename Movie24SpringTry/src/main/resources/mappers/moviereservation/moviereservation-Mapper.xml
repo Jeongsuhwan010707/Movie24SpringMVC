@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="MovieReservationMapper">
+ 	<resultMap type="MovieSchedule" id="theaterNameResultMap">
+ 		<id property="movieScheduleNo" column="MOVIE_SCHEDULE_NO"/>
+ 		<result property="movieNo" column="MOVIE_NO"/>
+ 		<result property="movieRegion" column="MOVIE_REGION"/>
+ 		<result property="movieTheaterName" column="MOVIE_THEATER_NAME"/>
+ 		<result property="movieTheaterNo" column="MOVIE_THEATER_NO"/>
+ 		<result property="movieTheme" column="MOVIE_THEME"/>
+ 		<result property="movieDate" column="MOVIE_DATE"/>
+ 		<result property="movieTime" column="MOVIE_TIME"/>
+ 		<result property="movieSeat" column="MOVIE_SEAT"/>
+ 		<result property="movieLeftSeat" column="MOVIE_LEFT_SEAT"/>
+ 	</resultMap>
+ 	<resultMap type="MovieSchedule" id="theaterRegionResultMap">
+ 		<result property="movieRegion" column="MOVIE_REGION"/>
+ 	</resultMap>
+ 	<select id="selectTheaterNameList" resultMap="theaterNameResultMap">
+ 		SELECT * FROM MOVIE_SCHEDULE_TBL WHERE MOVIE_NO = #{movieNo} AND MOVIE_REGION = #{movieRegion}
+ 	</select>
+ 	<select id="selectRegionList" resultMap="theaterRegionResultMap">
+ 		SELECT * FROM MOVIE_REGION_TBL
+ 	</select>
+ </mapper>

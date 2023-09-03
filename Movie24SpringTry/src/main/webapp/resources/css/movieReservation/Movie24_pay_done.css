@@ -73,11 +73,13 @@
             height: 50px;
             background-color: #362FD9;
             text-align: center;
-            color: white;
             border-radius: 15px;
             font-family: 'LINESeedKR-Bd';
             font-size: 20px;
             padding-top: 14px;
             padding-left: 2px;
+        }
+        main a:link, main a:visited{
+        	color:white;
         }
     /* ----------푸터------------------------- */

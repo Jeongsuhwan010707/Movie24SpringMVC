@@ -239,39 +239,37 @@
 			});
 			////////네비게이터 수정중
 			document.addEventListener("DOMContentLoaded", function() {
-		    const liElements = document.querySelectorAll('#nav_ul li');
-		    const menuText = document.getElementById('menu_text');
-		
-		    let hoverIntent = false;
-		
-		    liElements.forEach(li => {
-		        li.addEventListener('mouseenter', () => {
-		            hoverIntent = true;
-		            menuText.classList.add('active');
-		            menuText.style.zIndex = 5000;
-		        });
-		
-		        li.addEventListener('mouseleave', () => {
-		            hoverIntent = false;
-		            setTimeout(() => {
-		                if (!hoverIntent) {
-		                    menuText.classList.remove('active');
-		                    menuText.style.zIndex = -1;
-			                }
-			            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+			    const liElements = document.querySelectorAll('#nav_ul li');
+			    const menuText = document.getElementById('menu_text');
+			
+			    let hoverIntent = false;
+			
+			    liElements.forEach(li => {
+			        li.addEventListener('mouseenter', () => {
+			            hoverIntent = true;
+			            menuText.classList.add('active');
+			            menuText.style.zIndex = 15;
 			        });
+			
+			        li.addEventListener('mouseleave', () => {
+			            hoverIntent = false;
+			            setTimeout(() => {
+			                if (!hoverIntent) {
+			                    menuText.classList.remove('active');
+				                }
+				            }, 200); // Add a delay before hiding to allow time for moving to menu_text
+				        });
+				    });
+			
+			    menuText.addEventListener('mouseenter', () => {
+			        hoverIntent = true;
 			    });
-		
-		    menuText.addEventListener('mouseenter', () => {
-		        hoverIntent = true;
-		    });
-		
-		    menuText.addEventListener('mouseleave', () => {
-		        hoverIntent = false;
-		        setTimeout(() => {
-		            if (!hoverIntent) {
-		                menuText.classList.remove('active');
-		                menuText.style.zIndex = -1;
+			
+			    menuText.addEventListener('mouseleave', () => {
+			        hoverIntent = false;
+			        setTimeout(() => {
+			            if (!hoverIntent) {
+			                menuText.classList.remove('active');
 			            }
 			        }, 200); // Add a delay before hiding to allow time for moving to menu_text
 			    });
