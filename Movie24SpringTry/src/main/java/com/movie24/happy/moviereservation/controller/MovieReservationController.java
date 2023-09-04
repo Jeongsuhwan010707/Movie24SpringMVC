@@ -27,16 +27,17 @@ public class MovieReservationController {
 	@RequestMapping(value="/time.do", method=RequestMethod.GET)
 	public ModelAndView goMovieTimePage(ModelAndView mv
 			, @RequestParam(value = "movieNo", required = false, defaultValue = "1") int movieNo
-			, @RequestParam(value = "movieRegion", required = false, defaultValue = "서울") String movieRegion
-			, @RequestParam(value = "movieTheaterName", required = false, defaultValue = "강남") String movieTheaterName) {
+			, @RequestParam(value = "movieEnRegion", required = false, defaultValue = "Seoul") String movieEnRegion
+			, @RequestParam(value = "movieEnTheaterName", required = false, defaultValue = "Gangnam") String movieTheaterEnName) {
 		
 		String prevRegion = "";
 		List<MovieInfo> miYList = iService.selectYNMovieList("Y");
-		MovieSchedule mRegion = new MovieSchedule(movieNo, movieRegion);
+		MovieSchedule mRegion = new MovieSchedule(movieNo, movieEnRegion);
 		List<MovieSchedule> tnList = mrService.selectTheaterNameList(mRegion);
 		List<MovieSchedule> rList = mrService.selectRegionList();
-		mv.addObject("movieNo", movieNo).addObject("movieRegion", movieRegion)
-		.addObject("movieTheaterName", movieTheaterName).addObject("tnList", tnList)
+		
+		mv.addObject("movieNo", movieNo).addObject("movieEnRegion", movieEnRegion)
+		.addObject("movieTheaterEnName", movieTheaterEnName).addObject("tnList", tnList)
 		.addObject("miYList", miYList).addObject("rList", rList).addObject("prevRegion", prevRegion);
 		mv.setViewName("movieReservation/Movie24_time");
 		return mv;

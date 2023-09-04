@@ -65,25 +65,25 @@
 				                <c:forEach var="theaterName" items="${tnList}" varStatus="i"> 
 			                    	<c:url var="theaterNameUrl" value="/movie/time.do">
 										<c:param name="movieNo" value="${theaterName.movieNo }"></c:param>
-										<c:param name="movieRegion" value="${theaterName.movieRegion }"></c:param>
-										<c:param name="movieTheaterName" value="${theaterName.movieTheaterName }"></c:param>
+										<c:param name="movieEnRegion" value="${theaterName.movieEnRegion }"></c:param>
+										<c:param name="movieTheaterEnName" value="${theaterName.movieTheaterEnName }"></c:param>
 									</c:url>
-									<c:if test="${theaterName.movieTheaterName ne prevRegion}">
-										<c:if test="${movieTheaterName eq theaterName.movieTheaterName}">
+									<c:if test="${theaterName.movieTheaterEnName ne prevRegion}">
+										<c:if test="${movieTheaterEnName eq theaterName.movieTheaterEnName}">
 					                		<li style="background-color:#e6e4e4;">
 					                            <a href="${theaterNameUrl}">
 						                        	${theaterName.movieTheaterName }
 						                        </a>
 											</li>
 					                	</c:if>
-					                	<c:if test="${movieTheaterName ne theaterName.movieTheaterName}">
+					                	<c:if test="${movieTheaterEnName ne theaterName.movieTheaterEnName}">
 											<li>
 					                            <a href="${theaterNameUrl}">
 						                        	${theaterName.movieTheaterName }
 						                        </a>
 											</li>
 										</c:if>
-							            <c:set var="prevRegion" value="${theaterName.movieTheaterName}" scope="page" />
+							            <c:set var="prevRegion" value="${theaterName.movieTheaterEnName}" scope="page" />
 							        </c:if>
 								</c:forEach>
 	                		</ul>
