@@ -62,28 +62,29 @@
 								</c:forEach>
 		                	</ul>
 		                    <ul style="display:none;">
-				                <c:forEach var="theaterName" items="${tnList}" varStatus="i"> 
+		                    	<c:set var="prevRegion" value="" scope="page" />
+				                <c:forEach var="theater" items="${tnList}" varStatus="i"> 
 			                    	<c:url var="theaterNameUrl" value="/movie/time.do">
-										<c:param name="movieNo" value="${theaterName.movieNo }"></c:param>
-										<c:param name="movieEnRegion" value="${theaterName.movieEnRegion }"></c:param>
-										<c:param name="movieTheaterEnName" value="${theaterName.movieTheaterEnName }"></c:param>
+										<c:param name="movieNo" value="${theater.movieNo }"></c:param>
+										<c:param name="movieEnRegion" value="${theater.movieEnRegion }"></c:param>
+										<c:param name="movieTheaterEnName" value="${theater.movieTheaterEnName }"></c:param>
 									</c:url>
-									<c:if test="${theaterName.movieTheaterEnName ne prevRegion}">
-										<c:if test="${movieTheaterEnName eq theaterName.movieTheaterEnName}">
+									<c:if test="${theater.movieTheaterEnName ne prevRegion}">
+										<c:if test="${movieTheaterEnName eq theater.movieTheaterEnName}">
 					                		<li style="background-color:#e6e4e4;">
 					                            <a href="${theaterNameUrl}">
-						                        	${theaterName.movieTheaterName }
+						                        	${theater.movieTheaterName }
 						                        </a>
 											</li>
 					                	</c:if>
-					                	<c:if test="${movieTheaterEnName ne theaterName.movieTheaterEnName}">
+					                	<c:if test="${movieTheaterEnName ne theater.movieTheaterEnName}">
 											<li>
 					                            <a href="${theaterNameUrl}">
-						                        	${theaterName.movieTheaterName }
+						                        	${theater.movieTheaterName }
 						                        </a>
 											</li>
 										</c:if>
-							            <c:set var="prevRegion" value="${theaterName.movieTheaterEnName}" scope="page" />
+							            <c:set var="prevRegion" value="${theater.movieTheaterEnName}" scope="page" />
 							        </c:if>
 								</c:forEach>
 	                		</ul>
@@ -111,71 +112,40 @@
 		        <span><a href="#">광주/전라</a></span>
 		        <span><a href="#">강원</a></span>
 		    </div>
-		    <div class="country_text">
-		        <span>강남</span>
-		    </div>
-		    <div class="seat">
-		        <div class="tNum"><h4>1관</h4>총200석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		    </div>
-		    <div class="seat">
-		        <div class="tNum"><h4>2관</h4>총220석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">21:00<br>200석</a></div>
-		    </div>
-		    <div class="seat last">
-		        <div class="tNum"><h4>3관</h4>총210석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">21:00<br>200석</a></div>
-		    </div>
-		    <div class="country_text">
-		        <span>종로</span>
-		    </div>
-		    <div class="seat">
-		        <div class="tNum"><h4>1관</h4>총200석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		    </div>
-		    <div class="seat last">
-		        <div class="tNum"><h4>2관</h4>총220석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		    </div>
-		    <div class="country_text">
-		        <span>강동</span>
-		    </div>
-		    <div class="seat">
-		        <div class="tNum"><h4>1관</h4>총200석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		    </div>
-		    <div class="seat last">
-		        <div class="tNum"><h4>2관</h4>총220석
-		        </div>
-		        <div class="d2">2D</div>
-		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div>
-		    </div>
-		        <!-- <div id="main_button">
-		            <a href="#">다음 단계</a>
-		        </div> -->
+		    <c:set var="printRegion" value="" scope="page" />
+		    <c:set var="seat" value="" scope="page" />
+		    <c:set var="time" value="" scope="page" />
+		    <c:forEach var="theater" items="${tnList}" varStatus="i">
+		    	<c:if test="${theater.movieTheaterEnName ne printRegion}">
+				    <div class="country_text">
+				        <span>${theater.movieTheaterName }</span>
+				    </div>
+				    <c:set var="printRegion" value="${theater.movieTheaterEnName}" scope="page" />
+			        <hr>
+		    	</c:if>
+		    	 <c:if test="${theater.movieTheaterNo ne seat}">
+			    	<div class="tNum"><h4>${theater.movieTheaterNo}</h4>총${theater.movieSeat }석</div>
+			    	<div class="d2">${theater.movieTheme}</div>
+				 </c:if>
+				 <c:if test="${theater.movieTime ne time}">
+				 	<div class="seat_text"><a href="/movie/seat.do">${theater.movieTime }<br>${theater.movieLeftSeat }석</a></div>
+				 </c:if>
+				 <c:if test="${theater.movieTheaterNo ne seat}">
+				    <c:set var="seat" value="${theater.movieTheaterNo}" scope="page" />
+			    	<hr>
+				 </c:if>
+				 <c:if test="${theater.movieTheaterEnName ne printRegion}">   	    
+			    	<div>공백용</div>
+			     </c:if>
+		    </c:forEach>
+<!-- 		    <div class="seat"> -->
+<!-- 		        <div class="tNum"><h4>1관</h4>총200석 -->
+<!-- 		        </div> -->
+<!-- 		        <div class="d2">2D</div> -->
+<!-- 		        <div class="seat_text"><a href="/movie/seat.do">17:50<br>200석</a></div> -->
+<!-- 		        <div class="seat_text"><a href="/movie/seat.do">19:00<br>200석</a></div> -->
+<!-- 		    </div> -->
+		        
 		</main>
          <!-- --------------------푸터---------------------------------- -->
          <!-- <footer> ----------------------------</footer> -->

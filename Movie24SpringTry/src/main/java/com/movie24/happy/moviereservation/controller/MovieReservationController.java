@@ -28,9 +28,8 @@ public class MovieReservationController {
 	public ModelAndView goMovieTimePage(ModelAndView mv
 			, @RequestParam(value = "movieNo", required = false, defaultValue = "1") int movieNo
 			, @RequestParam(value = "movieEnRegion", required = false, defaultValue = "Seoul") String movieEnRegion
-			, @RequestParam(value = "movieEnTheaterName", required = false, defaultValue = "Gangnam") String movieTheaterEnName) {
+			, @RequestParam(value = "movieTheaterEnName", required = false, defaultValue = "Gangnam") String movieTheaterEnName) {
 		
-		String prevRegion = "";
 		List<MovieInfo> miYList = iService.selectYNMovieList("Y");
 		MovieSchedule mRegion = new MovieSchedule(movieNo, movieEnRegion);
 		List<MovieSchedule> tnList = mrService.selectTheaterNameList(mRegion);
@@ -38,7 +37,7 @@ public class MovieReservationController {
 		
 		mv.addObject("movieNo", movieNo).addObject("movieEnRegion", movieEnRegion)
 		.addObject("movieTheaterEnName", movieTheaterEnName).addObject("tnList", tnList)
-		.addObject("miYList", miYList).addObject("rList", rList).addObject("prevRegion", prevRegion);
+		.addObject("miYList", miYList).addObject("rList", rList);
 		mv.setViewName("movieReservation/Movie24_time");
 		return mv;
 	}
