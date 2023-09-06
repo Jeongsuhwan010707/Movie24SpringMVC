@@ -32,32 +32,23 @@
 	                <div>
 	                    <p>성인</p>
 	                    <ul>
-	                        <li>1</li>
-	                        <li>2</li>
-	                        <li>3</li>
-	                        <li>4</li>
-	                        <li>5</li>
-	                        <li>6</li>
-	                        <li>7</li>
-	                        <li>8</li>
+	                        <c:forEach begin="1" end="8" varStatus="i">
+	                    		<li>${i.count}</li>
+	                    	</c:forEach>
 	                    </ul>
 	                    <p>청소년</p>
 	                    <ul>
-	                        <li>1</li>
-	                        <li>2</li>
-	                        <li>3</li>
-	                        <li>4</li>
-	                        <li>5</li>
-	                        <li>6</li>
-	                        <li>7</li>
-	                        <li>8</li>
+	                    	<c:forEach begin="1" end="8" varStatus="i">
+	                    		<li>${i.count}</li>
+	                    	</c:forEach>
 	                    </ul>
 	                </div>
 	            </div>
-	                <div id="select_img">
-	                	<div>
-		                	<img src="/resources/images/screen.png" alt="">
-	                	</div>
+                <div id="select_img">
+                	<div>
+	                	<img src="/resources/images/screen.png" alt="">
+                	</div>
+                	<div>
 	                	<div class="seat-number" style="width: 40px;height: 100%;float: left">
 	                		<a class="seatR">A</a>
 	                		<a class="seatR">B</a>
@@ -70,20 +61,23 @@
 	                		<a class="seatR">I</a>
 	                		<a class="seatR">J</a>
 	                	</div>
-	                	<div class="seat-container">
-	                		<div style="width: 70%;margin-top: 5px;">
-					            <c:forEach var="column" begin="1" end="100">
-					            	<c:if test="${columne eq 4 }">
-						                <div class="seat A" style="float:left;">${column}</div>
-						                <span style="width: 100px;height: 30px;"></span>
-					            	</c:if>
-					            	<c:if test="${columne ne 4 }">
-						                <div class="seat A" style="float:left;">${column}</div>
-					            	</c:if>
-					            </c:forEach>
+	                	<div class="seat-container" style="margin-top: 30px;">
+	                		<div style="width: 54%;margin: 0px auto;">
+	                			<c:forEach var="column" begin="1" end="10">
+						            <c:forEach var="column" begin="1" end="15">
+						            	<c:if test="${column eq 5}">						            	
+							                <div class="seat A" style="float:left;">${column}</div>
+							                <div class="seatblank" style="float:left;"></div>
+						            	</c:if>
+						            	<c:if test="${column ne 5}">						            	
+							                <div class="seat A" style="float:left;">${column}</div>
+						            	</c:if>
+						            </c:forEach>
+						        </c:forEach>
 	                		</div>
 					    </div>
 	                </div>
+               	</div>
 	        </div>
 	        <div id="price">
 	            <div id="price1">
@@ -98,7 +92,39 @@
 	                    <img src="/resources/images/범죄도시.png" alt="">
 	                </div>
 	            </div>
-	            <div id="price3"><img src="/resources/images/스크린샷(99).png" alt=""></div>
+	            <div id="price3">
+<!-- 	            	<img src="/resources/images/스크린샷(99).png" alt=""> -->
+					<div style="width: 300px;height:250px;border: 1px solid #5c5c5c;margin:0 auto;border-radius:5px;margin-top:10px;">
+						<div style="width:58%;height:100%;float:left;border-right: 1px solid #5c5c5c;">
+							<div class="seat-menu">
+								<div class="seat-shape"><div class="shape-menu shape-A"></div><p class="shape-text">선택</p></div>
+							</div>
+							<div class="seat-menu">
+								<div class="seat-shape"><div class="shape-menu shape-B">X</div><p class="shape-text">예매완료</p></div>
+							</div>
+							<div class="seat-menu">
+								<div class="seat-shape"><div class="shape-menu shape-C"></div><p class="shape-text">선택불가</p></div>
+							</div>
+							<div class="seat-menu">
+								<div class="seat-shape"><div class="shape-menu shape-D"></div><p class="shape-text">일반</p></div>
+							</div>
+							<div class="seat-menu">
+								<div class="seat-shape"><div class="shape-menu shape-E"></div><p class="shape-text">장애인석</p></div>
+							</div>
+						</div>
+						<div style="width:42%;height:100%;float:left;">
+							<div style="font-family: 'Pretendard-Regular';padding: 15px;">선택좌석</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+							<div class="seatbox">-</div>
+						</div>
+					</div>
+            	</div>
 	            <div id="price4">
 	                <div id="price4-1">
 	                    최종결제금액
